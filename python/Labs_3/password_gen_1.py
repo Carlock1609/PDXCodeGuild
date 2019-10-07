@@ -54,9 +54,9 @@ def get_chars():
         special_chars.append(rand_length_special)
     return special_chars_str
 
-def main():
-    password = [get_lower(), get_upper(), get_nums(), get_chars()]
+def main(get_lower, get_upper, get_nums, get_chars):
+    password = [lower_case_str, upper_case_str, numbers_list_str, special_chars_str]
 
     print("".join(password))
 
-print(get_chars())
+main(get_lower(), get_upper(), get_nums(), get_chars())
