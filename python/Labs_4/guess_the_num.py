@@ -1,13 +1,12 @@
 #! python3
 
-# v1
+# v3
 
 import random
 
-def get_random_num(get_guess):
+def get_random_num():
     secret_num = random.randint(0,10)
-    if get_guess == secret_num:
-        return True
+    return secret_num
 
 def get_user_guess():
     get_guess = int(input("Please enter in a number: "))
@@ -17,18 +16,23 @@ def main():
     print("Welcome to guess a number!")
     print("You have 10 guesses to guess the secret number between 1-10.")
     guesses = 1
+    random_num = get_random_num()
+
 
     while guesses <= 10:
-        guess_eval = get_random_num(get_user_guess())
+        guess = get_user_guess()
 
-        if guess_eval != True:
+        if guess != random_num:
             print("Wrong!")
             guesses += 1
+            if guess > random_num:
+                print("Too high!")
+            elif guess < random_num:
+                print("Too low!")
         elif guesses == 10:
             print("You ran out of guesses!")
             break
         else:
-            print(f"You guessed the correct number in {guesses} tries!")
+            print(f"Correct! You guessed the secret number in {guesses} tries!")
             break
-
 main()
