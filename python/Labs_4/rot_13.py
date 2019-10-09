@@ -4,11 +4,11 @@
 import string
 
 def get_abc_list():
-    abc_list = list(string.ascii_lowercase)
+    abc_list = list("abcdefghijklmnopqrstuvwxyz ")
     return abc_list
 
 def get_rot_list():
-    rot_list = list("nopqrstuvwxyzabcdefghijklmd")
+    rot_list = list("nopqrstuvwxyzabcdefghijklmd ")
     return rot_list
 
 def get_user_input():
@@ -28,6 +28,7 @@ def main():
         encrypt = abc_list.index(user_input)  
         encrypt_list.append(rot_list[encrypt])
     else:
-        print("".join(encrypt_list))
+        print("Your message has been encrypted: " + "".join(encrypt_list))
+        
 
 main()
