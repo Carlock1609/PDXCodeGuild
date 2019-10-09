@@ -8,15 +8,26 @@ def get_abc_list():
     return abc_list
 
 def get_rot_list():
-    rot_list = ["n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
+    rot_list = list("nopqrstuvwxyzabcdefghijklmd")
     return rot_list
 
-abc_list = get_abc_list()
-rot_list = get_rot_list()
+def get_user_input():
+    return input("Please enter in a letter to be encrypted: ")
 
-print(abc_list.index("a"))
+def main():
+    rot_list = get_rot_list()
+    abc_list = get_abc_list()
+    encrypt_list = []
 
-print(rot_list.index("a"))
+    print("Welcome to rot 13!\nEnter in one letter at a time to be encrypted.")
 
-if rot_list.index("a") in abc_list:
-    print(rot_list)
+    get_length = int(input("How long would you like the encrypted msg to be?: (int)"))
+
+    while len(encrypt_list) < get_length:
+        user_input = get_user_input()
+        encrypt = abc_list.index(user_input)  
+        encrypt_list.append(rot_list[encrypt])
+    else:
+        print("".join(encrypt_list))
+
+main()
