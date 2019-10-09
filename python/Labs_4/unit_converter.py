@@ -1,10 +1,4 @@
 #! python3
-
-# 1 ft is 0.3048 m
-# 1 mi is 1609.34 m
-# 1 m is 1 m
-# 1 km is 1000 m
-
 # v4
 
 def get_user_distance():
