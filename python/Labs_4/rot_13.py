@@ -14,4 +14,9 @@ def get_rot_list():
 abc_list = get_abc_list()
 rot_list = get_rot_list()
 
-rot_list = abc_list
+print(abc_list.index("a"))
+
+print(rot_list.index("a"))
+
+if rot_list.index("a") in abc_list:
+    print(rot_list)
