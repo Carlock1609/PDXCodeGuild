@@ -33,4 +33,15 @@ def main():
         print("\nYour message has been encrypted: " + "".join(encrypt_list))
         print("Your message decrypted is: " + "".join(decrypted_list))
 
-main()
+
+def main2():
+    rot_list = get_rot_list()
+    abc_list = get_abc_list()
+    encrypt_list = []
+    decrypted_list = []
+    user_input = get_user_input()
+
+    for letter in user_input:
+        if user_input in abc_list:
+            encrypt_list.append(letter)
+
