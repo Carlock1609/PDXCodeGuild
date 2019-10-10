@@ -74,6 +74,6 @@ def main():
         tickets_bought += 2
     roi = (sim_earnings - tickets_bought)/tickets_bought
     print(f"You bought {sim_length} tickets, and made a total of ${sim_earnings}.00 ")
-    print(f"It cost you $2 for every ticket lot, your ROI is {roi}")
+    print(f"It cost you $2.00 for every ticket lot, your ROI is {roi}")
     
 main()
