@@ -1,6 +1,6 @@
 #! python3
 
-# v1
+# v2
 
 import random
 
@@ -24,7 +24,7 @@ def sim_user_guesses():
         counter += 1
     return guesses
 
-def num_matches(user_guesses,winning_nums):
+def correct_nums(user_guesses,winning_nums):
     winning_tickets_list = 0
 
     if user_guesses[0] == winning_nums[0]:
@@ -41,7 +41,7 @@ def num_matches(user_guesses,winning_nums):
         winning_tickets_list += 1
     return winning_tickets_list
 
-def get_balance(winning_tickets_list):
+def get_total_earnings(winning_tickets_list):
     total_earnings = 0
 
     if winning_tickets_list == 1:
@@ -58,26 +58,22 @@ def get_balance(winning_tickets_list):
         total_earnings += 25000000
     return total_earnings
 
-def get_run_sim():
+def main():
     sim_counter = 0
     sim_earnings = 0
     tickets_bought = 0
+    sim_length = 100000
 
-    while sim_counter < 1000:
-        winning_nums = pick6()
-        user_guesses = sim_user_guesses()
-        total_tickets =  num_matches(user_guesses, winning_nums)
-        run_sim = get_balance(total_tickets)
-        print(f"You made {run_sim} on current ticket picks {user_guesses}, the winning tickets were {winning_nums}\n")
+    while sim_counter < sim_length:
+        total_tickets =  correct_nums(pick6(), sim_user_guesses())
+        current_sim_earnings = get_total_earnings(total_tickets)
+        print(f"You made {current_sim_earnings} on current ticket picks {sim_user_guesses()}, the winning tickets were {pick6()}\n")
+
         sim_counter += 1
-        sim_earnings += run_sim
+        sim_earnings += current_sim_earnings
         tickets_bought += 2
     roi = (sim_earnings - tickets_bought)/tickets_bought
-    print(f"You have ${sim_earnings}.00")
-    print(f"If it cost you $2 for every ticket lot, your ROI is {roi}")
+    print(f"You bought {sim_length} tickets, and made a total of ${sim_earnings}.00 ")
+    print(f"It cost you $2 for every ticket lot, your ROI is {roi}")
     
-def main():
-   get_run_sim()
-        
-
 main()
