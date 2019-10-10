@@ -1,5 +1,7 @@
 #! python3
 
+# v1
+
 import random
 
 def pick6():
@@ -7,7 +9,7 @@ def pick6():
     counter = 1
 
     while counter <= 6:
-        gen_num = random.randint(1,2)
+        gen_num = random.randint(1,1000)
         winning_nums.append(gen_num)
         counter += 1
     return winning_nums
@@ -17,21 +19,10 @@ def sim_user_guesses():
     counter = 1
 
     while counter <= 6:
-        get_guesses = random.randint(1,10)
-        guesses.append(get_guesses)
+        gen_num = random.randint(1,1000)
+        guesses.append(gen_num)
         counter += 1
     return guesses
-
-# user input option
-# def get_user_guesses():
-#     guesses = []
-#     counter = 1
-
-#     while counter <= 6:
-#         get_guesses = int(input("Please enter in 6 numbers: (1-100)"))
-#         guesses.append(get_guesses)
-#         counter += 1
-#     return guesses
 
 def num_matches(user_guesses,winning_nums):
     winning_tickets_list = 0
@@ -66,16 +57,6 @@ def get_balance(winning_tickets_list):
     elif winning_tickets_list == 6:
         total_earnings += 25000000
     return total_earnings
-
-# user input option
-# add and subtract winnings, keep looping until player done, then print total winnings.
-# def main():
-#     winning_nums = pick6()
-#     user_guesses = get_user_guesses()
-#     total_tickets =  num_matches(user_guesses, winning_nums)
-#     get_balance(total_tickets)
-
-   
 
 def get_run_sim():
     sim_counter = 0
