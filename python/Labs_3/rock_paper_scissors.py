@@ -31,7 +31,7 @@ def determine_win(user, comp):
     elif user == "Scissors" and comp == "Rock":
         print("You lose!")
 
-def display_game():
+def main():
     print("Welcome to Rock Paper Scissors!")
     play_game = input("Do you want to play Rock Paper Scissors?: (Yes or No)").lower()
     
@@ -40,4 +40,5 @@ def display_game():
         print(f"The computer picked {get_comp_turn()}!")
     else:
         print("Goodbye!")
-        break
+        
+main()
