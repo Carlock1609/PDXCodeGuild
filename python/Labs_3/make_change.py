@@ -3,13 +3,13 @@
 # v2
 
 def get_user_input():
-    return float(input("Please enter in an amount of pennies to be converted to dollars: "))
+    return int(input("Please enter in a dollar amount to be converted to pennies: (150 or 4.50)"))
 
 def convert_pennies(change):
     return str(int(change * 100))
 
-def display_game():
+def main():
     get_change = get_user_input()
-    print(f"{get_change} dollars converted to {convert_pennies(get_change)} pennies.")
+    print(f"{get_change}.00 dollars converted to pennies is {convert_pennies(get_change)} pennies.")
 
-display_game()
+main()()
