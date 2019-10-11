@@ -4,7 +4,7 @@
 # HOW DO I GET IT TO DO TENS!
 
 def get_user_input():
-    return int(input("Please enter in the same number twice to be converted into phrase: (55 -> Fifty-Five)"))
+    return int(input("Please enter in the same number THREE TIMES to be converted into phrase: \n(550 -> Five-Hundred and Fifty-Five)"))
 
 def get_hundreds(get_num):
     if get_num > 100:
@@ -12,11 +12,11 @@ def get_hundreds(get_num):
 
 def get_tens(get_num):
     if get_num > 100:
-        return get_num//10
+        return get_num%100
 
 def get_singles(get_num):
     if get_num > 100:
-        return get_num%100
+        return get_num%10
 
 def convert_hundreds(get_hundreds):
     list_hundreds = ["One-Hundred", "Two-Hundred", "Three-Hundred", "Four-Hundred", "Fifty-Hundred", "Sixty-Hundred", "Seven-Hundred", "Eight-Hundred", "Nine-Hundred"]
@@ -41,6 +41,24 @@ def convert_hundreds(get_hundreds):
         return list_hundreds[8]
 
 def convert_tens(get_tens):
+    list_tens = ["Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"]
+
+    if get_tens >= 20 and get_tens < 30:
+        return list_tens[0]
+    if get_tens >= 30 and get_tens < 40:
+        return list_tens[1]
+    if get_tens >= 40 and get_tens < 50:
+        return list_tens[2]
+    if get_tens >= 50 and get_tens < 60:
+        return list_tens[3]
+    if get_tens >= 60 and get_tens < 70:
+        return list_tens[4]
+    if get_tens >= 70 and get_tens < 80:
+        return list_tens[5]
+    if get_tens >= 80 and get_tens < 90:
+        return list_tens[6]
+    if get_tens >= 90 and get_tens < 100:
+        return list_tens[7]
     
 
 def convert_singles(get_singles):
@@ -68,11 +86,9 @@ def convert_singles(get_singles):
         return list_singles[9]
 
 def main():
-    tens = convert_hundreds(get_hundreds(get_user_input()))
+    hundreds = convert_hundreds(get_hundreds(get_user_input()))
+    tens = convert_tens(get_tens(get_user_input()))
     singles = convert_singles(get_singles(get_user_input()))
-    
-    print(f"{tens}-{singles}")
+    print(f"{hundreds} and {tens}-{singles}")
 
-
-# WORKS
-print(convert_hundreds(get_hundreds(get_user_input())))
+main()
