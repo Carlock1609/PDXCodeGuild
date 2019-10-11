@@ -62,7 +62,7 @@ def main():
     sim_counter = 0
     sim_earnings = 0
     tickets_bought = 0
-    sim_length = 100000
+    sim_length = 10000
 
     while sim_counter < sim_length:
         total_tickets =  correct_nums(pick6(), sim_user_guesses())
