@@ -24,13 +24,13 @@ def get_valleys(data):
     pass
     
 
-def main():
-    peaks = get_peaks(get_data())
-    valleys = get_valleys(get_data())
-    peaks_and_valleys_list = []
-    peaks_and_valleys_list.append(peaks)
-    peaks_and_valleys_list.append(valleys)
-    print(peaks_and_valleys_list)
+# def main():
+#     peaks = get_peaks(get_data())
+#     valleys = get_valleys(get_data())
+#     peaks_and_valleys_list = []
+#     peaks_and_valleys_list.append(peaks)
+#     peaks_and_valleys_list.append(valleys)
+#     print(peaks_and_valleys_list)
 
 print(get_peaks(get_data()))
 
