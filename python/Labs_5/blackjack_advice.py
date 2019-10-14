@@ -1,6 +1,6 @@
 #! python3
 
-#v1
+#v2
 
 # Try a dictionary
 def get_player_hand():
