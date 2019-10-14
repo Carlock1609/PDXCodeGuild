@@ -3,20 +3,21 @@
 # v1
 
 # find solution for the first iteration and how to skip it on the for loop
+# and the last
 
 def get_data():
-    data = [9,5,1,1,1,3,1,1,1,9,1,1,7,1,9,1,1,1,]
+    data = [6,5,1,1,1,3,1,1,1,9,1,1,7,1,9,1,1,1,8,]
     return data
 
 def get_peaks(data):
     peaks_list = []
 
-    if data[0] > data[1]:
-        peaks_list.append(data[0])
-
     for i in data:
-        if data[i-1] < i and data[i+1] < i:
+        if i == data[0] and data[i+1] < i:
             peaks_list.append(i)
+        else:
+            if data[i-1] < i and data[i+1] < i:
+                peaks_list.append(i)
     return peaks_list
 
 def get_valleys(data):
@@ -31,4 +32,5 @@ def main():
     peaks_and_valleys_list.append(valleys)
     print(peaks_and_valleys_list)
 
+print(get_peaks(get_data()))
 
