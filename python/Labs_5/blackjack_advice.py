@@ -3,7 +3,6 @@
 #v1
 
 # Try a dictionary
-
 def get_player_hand():
     deck = {"A": 1,
         "2": 2,
@@ -32,12 +31,10 @@ def get_hand_worth(player_hand):
     return total_hand
 
 def main():
-
     play_again = True
 
     while play_again:
-        play_again = input("Do you want blackjack advice?: (Yes or No?)").lower()
-        
+        play_again = input("Do you want blackjack advice?: (Yes or No?)").lower()     
         if play_again != "yes":
             print("Goodbye!")
             play_again = False
@@ -52,6 +49,5 @@ def main():
 
             if play_again != "yes":
                 play_again = False
-            
-            
+                     
 main()
