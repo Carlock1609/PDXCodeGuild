@@ -3,6 +3,11 @@
 # v1
 # new loop for replace2
 
+#REMOVE PUNCS FROM TXTS
+# Try for looping over .strip() or replace()
+# Try making a var with string.ascii_letters and check if in
+# Learn .translate()
+
 def get_opened_book():
     open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
     read_book = open_book.read().replace("'", "")
