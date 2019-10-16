@@ -1,19 +1,20 @@
 #! python3
 
-# v1
-# new loop for replace2
+# v2
 
-#REMOVE PUNCS FROM TXTS
-# Try for looping over .strip() or replace()
-# Try making a var with string.ascii_letters and check if in
-# Learn .translate()
+# Finished translate()
+
+import string
 
 def get_opened_book():
-    open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
-    read_book = open_book.read().replace("'", "")
-    newbook = read_book.lower().split()
+    delete_list = "1234567890,.'!@#$%^&*()-[]/<>-\"=+_"
+    replace_list = "                                  "
 
-        
+    open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
+    read_book = open_book.read()
+    clean_book = str.maketrans(delete_list, replace_list)
+    cleaned_book = read_book.translate(clean_book)
+    newbook = cleaned_book.lower().split()
 
     return newbook
 
@@ -34,8 +35,3 @@ def main(word_dict):
 
 main(get_word_dict(get_opened_book()))
 
-# # word_dict is a dictionary where the key is the word and the value is the count
-# words = list(word_dict.items()) # .items() returns a list of tuples
-# words.sort(key=lambda tup: tup[1], reverse=True)  # sort largest to smallest, based on count
-# for i in range(min(10, len(words))):  # print the top 10 words, or all of them, whichever is smaller
-#     print(words[i])
