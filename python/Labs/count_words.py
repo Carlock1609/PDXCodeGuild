@@ -1,7 +1,7 @@
 #! python3
 
 # v1
-
+# new loop for replace
 
 def get_opened_book():
     open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
