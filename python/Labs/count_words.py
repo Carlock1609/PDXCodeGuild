@@ -7,8 +7,8 @@
 import string
 
 def get_opened_book():
-    delete_list = "1234567890,.'!@#$%^&*()-[]/<>-\"=+_"
-    replace_list = "                                  "
+    delete_list = " 1234567890,.'!@#$%^&*()-[]/<>-\"=+_"
+    replace_list = "                                   "
 
     open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
     read_book = open_book.read()
