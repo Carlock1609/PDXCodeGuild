@@ -1,6 +1,6 @@
 #! python3
 
-#v1 DONE!
+#v1 DONE! :crown:
 
 import string
 
