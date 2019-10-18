@@ -1,6 +1,6 @@
 #! python3
 
-# v2
+# v2  :jeans:
 
 # Finished translate()
 
