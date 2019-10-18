@@ -2,6 +2,9 @@
 
 # v2
 
+# What happened to palindrome?
+# redo palindrome
+
 def get_user_input():
     get_input = input("Please enter in a word to check whether it is an anagram: ").lower()
     return get_input
