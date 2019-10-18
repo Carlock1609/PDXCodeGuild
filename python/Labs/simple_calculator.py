@@ -1,6 +1,7 @@
 #! python3
 
 # v2
+# currently working on update in simple_calc_feature
 
 def get_first_number():
     return int(input("Please enter in a first num: "))
