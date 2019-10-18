@@ -9,15 +9,16 @@ def get_second_number():
     return int(input("Please enter in a second num: "))
 
 def get_operation():
-   operation = input("Please enter in an operation: ")
-
-   operation_dict = {   "+": +,
-                        "-": -,
-                        "*": *,
-                        "/": /, 
-                    }
-    print(operation_dict[operation])
+   return input("Please enter in an opperation: ")
 
 def main():
-    pass
-get_operation()
+    while True:
+        run_again = input("Do you want to enter in equation?: (yes or no)").lower()
+
+        if run_again == "yes":
+            print(eval(f"{get_first_number()} {get_operation()} {get_second_number()}"))
+        else:
+            print("Goodbye!")
+            break
+
+main()
