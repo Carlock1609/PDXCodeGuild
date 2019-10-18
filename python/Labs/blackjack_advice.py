@@ -1,6 +1,6 @@
 #! python3
 
-#v2
+#v2 :tshirt:
 
 # Try a dictionary
 def get_player_hand():
