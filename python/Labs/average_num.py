@@ -1,6 +1,6 @@
 #! python3
 
-# v2
+# v2 :godmode:
 
 def average(nums_list):
     return sum(nums_list) / len(nums_list)
