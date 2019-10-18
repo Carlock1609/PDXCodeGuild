@@ -1,7 +1,6 @@
 #! python3
 
-# v2
-# currently working on update in simple_calc_feature
+# v2 updated solution
 
 def get_first_number():
     return int(input("Please enter in a first num: "))
@@ -10,29 +9,16 @@ def get_second_number():
     return int(input("Please enter in a second num: "))
 
 def get_operation():
-    get_user_operation = input("Please enter in a operation: ")
-
-    if get_user_operation == "-":
-        return get_first_number() - get_second_number()
-    elif get_user_operation == "+":
-        return get_first_number() + get_second_number()
-    elif get_user_operation == "*":
-        return get_first_number() * get_second_number()
-    elif get_user_operation == "/":
-        return get_first_number() / get_second_number()
+   return input("Please enter in an opperation: ")
 
 def main():
-    run_again = True
+    while True:
+        run_again = input("Do you want to enter in equation?: (yes or no)").lower()
 
-    while run_again:
-        print(get_operation())
-
-        play_again = input("Would you like to use calc again?: (Yes or No)").lower()
-
-        if play_again == "yes":
-            run_again = True
+        if run_again == "yes":
+            print(eval(f"{get_first_number()} {get_operation()} {get_second_number()}"))
         else:
             print("Goodbye!")
-            run_again = False
+            break
 
 main()
