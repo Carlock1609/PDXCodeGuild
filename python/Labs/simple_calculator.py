@@ -2,21 +2,15 @@
 
 # v2 updated solution
 
-def get_first_number():
-    return int(input("Please enter in a first num: "))
-
-def get_second_number():
-    return int(input("Please enter in a second num: "))
-
-def get_operation():
-   return input("Please enter in an opperation: ")
+def get_equation():
+    return input("Please enter in a number, an operation and another number with spaces imbetween: example(5 + 4) ")
 
 def main():
     while True:
-        run_again = input("Do you want to enter in equation?: (yes or no)").lower()
+        run_again = input("Do you want to enter in equation?: (yes or no) ").lower()
 
         if run_again == "yes":
-            print(eval(f"{get_first_number()} {get_operation()} {get_second_number()}"))
+            print(eval(f"{get_equation()}"))
         else:
             print("Goodbye!")
             break
