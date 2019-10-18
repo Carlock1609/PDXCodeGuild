@@ -65,4 +65,5 @@ def get_num_tuple(user_input):
 
 def main():
     get_num_tuple(get_user_input())
+    
 main()

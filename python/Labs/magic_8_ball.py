@@ -1,5 +1,7 @@
 #! python3
 
+# v1
+
 import random
 
 def gen_response_list():
@@ -11,19 +13,16 @@ def get_rand_response():
     return random.choice(gen_response_list())
 
 def main():
+    print("Welcome to Magic Eight Ball Game!")
+
     while True:
-        print("Welcome to Magic Eight Ball Game!")
+        play_again = input("Would you like to play?: ").lower()
 
-        while True:
-            play_again = input("Would you like to play?").lower()
-
-            if play_again == "yes":
-                player_input = input("Please enter in a question: ")
-                print(get_rand_response())
-                print()
-            else:
-                print("Goodbye!")
-                break
-        break
+        if play_again == "yes":
+            player_input = input("Please enter in a question: ")
+            print(f"{get_rand_response()}\n ")
+        else:
+            print("Goodbye!")
+            break
 
 main()

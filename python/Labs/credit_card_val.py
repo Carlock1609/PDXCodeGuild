@@ -8,7 +8,6 @@ def get_digit_dict():
     credit_card_digits = [4,5,5,6,7,3,7,5,8,6,8,9,9,8,5,5]
     check_digit = credit_card_digits.pop(15)
     digit_dict = {"credit_card_digits": credit_card_digits, "check_digit": check_digit}
-
     return digit_dict
 
 def reverse_digit_list(digit_dict):
@@ -27,8 +26,10 @@ def get_total_sum(digit_dict):
     add_total = sum(digit_dict["credit_card_digits"])
     final_digit = list(str(add_total))
     if int(final_digit[1]) == digit_dict["check_digit"]:
+        print(f"The sum was {add_total} and the final digit was {final_digit[1]}.")
         return True
     else:
+        print(f"The final digit {final_digit[1]} did not match the check digit")
         return False
 
 def main():

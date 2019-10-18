@@ -15,10 +15,8 @@ def get_user_num():
     return nums_list
 
 def main():
-    print("You will enter in a length of a list, aswell as the numbers. And then it will find the average of the list of numbers.")
-
+    print("You will enter in a length of a list, aswell as the numbers.\nAnd then it will find the average of the list of numbers.")
     nums_list = get_user_num()
-
     print(average(nums_list))
 
 main()
