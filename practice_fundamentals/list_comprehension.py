@@ -52,3 +52,6 @@
 # for char in string.ascii_lowercase:
 #     dict1.update({char: ord(char)})
 # print(dict1)
+
+# the_big_ugly_nested_list_comprehension = [[[ num for num in range(1,4)] for num in range(3)] for num in range(5)]
+# print(the_big_ugly_nested_list_comprehension)
