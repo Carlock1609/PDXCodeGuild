@@ -10,7 +10,7 @@ def get_comp_turn():
 
 def get_user_turn():
     moves = ["Scissors", "Paper", "Rock"]
-    get_turn = input("Please enter in a move: (Rock, Paper or Scissors)").capitalize()
+    get_turn = input("Please enter in a move: (Rock, Paper or Scissors) ").capitalize()
     while get_turn not in moves:
         get_user_turn()
     else:
@@ -33,7 +33,7 @@ def determine_win(user, comp):
 
 def main():
     print("Welcome to Rock Paper Scissors!")
-    play_game = input("Do you want to play Rock Paper Scissors?: (Yes or No)").lower()
+    play_game = input("Do you want to play Rock Paper Scissors?: (Yes or No) ").lower()
     
     if play_game == "yes":
         determine_win(get_user_turn(), get_comp_turn())
