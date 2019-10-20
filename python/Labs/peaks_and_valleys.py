@@ -6,15 +6,14 @@
 # I dont think data[i-1] will work because it still doesnt know indices
 
 def get_data():
-    data = [6,5,1,1,1,3,1,1,1,9,1,1,7,9,1,1,8,]
-
+    data = [4,5,1,1,1,3,1,1,1,9,1,1,7,9,1,1,2,]
     return data
 
 def get_peaks(data):
     peaks_list = []
 
     for i in data:
-        if i == data[0] and data[1] < i:
+        if i == data[0] and data[0] > data[1]:
             peaks_list.append(i)
         elif i == data[::-1][0] and data[::-1][1] < i:
             peaks_list.append(i)
