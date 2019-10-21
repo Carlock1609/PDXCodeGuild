@@ -17,9 +17,9 @@ def problem_1():
 # Write a function that takes a string, and returns a list of strings, each missing a different character.
 def problem_2(word):
     for i in word:
-        if i in word:
-            pass
-# problem_2("kitten")
+        
+
+problem_2("kitten")
 
 # Problem 3
 # Return the letter that appears the latest in the english alphabet.
