@@ -16,19 +16,22 @@ def problem_1():
 # Problem 2
 # Write a function that takes a string, and returns a list of strings, each missing a different character.
 def problem_2(word):
+    list1 = []
     for i in word:
-        
-
-problem_2("kitten")
+        list1.append(word.replace(i, ""))
+    print(list1)
+# problem_2("kitten")
 
 # Problem 3
 # Return the letter that appears the latest in the english alphabet.
+# IMPLEMENT .sort() METHOD PLEASE
 def latest_letter(letters):
-    letter_list = string.ascii_lowercase
-    for i in letters:
-        if letters[i] > letters: 
-            print(letter_list)
-# latest_letter("pneumonoultramicroscopicsilicovolcanoconiosis")
+    get_list = letters.split()
+    for i in get_list:
+        print(get_list.sort())
+
+
+latest_letter("pneumonoultramicroscopicsilicovolcanoconiosixys")
 
 # Problem 4
 # Write a function that returns the number of occurances of 'hi' in a given string.
@@ -37,7 +40,7 @@ def count_hi(word):
     if word.find("hi"):
         counter += 1
     print(counter)
-count_hi("hihi")
+# count_hi("hihi")
 
 # Problem 5
 # Write a function that returns True if a given string contains the same number of 'cat' as it does 'dog'
