@@ -20,7 +20,7 @@ class ATM():
     # Use this 
     def check_withdrawel(self, amount):
         return amount > self.balance
-
+    # THIS WAS RETURNING SELF.BALANCE NOT AMOUNT
     def get_withdraw(self, amount):
         self.balance -= amount
         self.print_transactions.append(f"You withdrew ${amount}")
@@ -43,6 +43,7 @@ def main():
         if user_input == "deposit":
             my_atm.get_deposit(get_amount())
         elif user_input == "withdraw":
+            # MAKING AMOUNT A VARIABLE IN THE IF STATEMENT SO IT IS A INTERGER AND YOU DONT HAVE TO CALL IT AGAIN
             amount = get_amount()
             if my_atm.check_withdrawel(amount) == False:
                 my_atm.get_withdraw(amount)
