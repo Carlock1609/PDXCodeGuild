@@ -17,7 +17,7 @@ class Dog():
     
     # OPERATIONS/Actions -> Methods
     def bark(self, number):
-        print(f"WOOF! my name is {self.name} and the number is {number}")
+        print(f"WOOF! my name is, {self.name} and the number is {number}")
 
 my_dog = Dog(breed="Lab",
             name="Sammy",
