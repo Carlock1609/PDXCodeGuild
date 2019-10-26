@@ -35,21 +35,35 @@ def eveneven(list):
 # print(eveneven([5,6,2]))
 # print(eveneven([5,5,2]))
 
-# Problem 4
+# Problem 4 Done**
 # Print out every other element of a list, first using a while loop, then using a for loop.
+def print_every_other(nums):
+    counter = 0
+    while counter < (len(nums)/2):
+        for i in nums[::2]:
+            counter += 1
+            print(i)      
+# print_every_other([0,1,2,3,4,5,6,7,8,])
 
-
-
-# Problem 5
+# Problem 5 Done**
 # Write a function that returns the reverse of a list.
-
+def reverse(nums):
+    nums.reverse()
+    return nums
+# print(reverse([1,2,3]))
 
 # Problem 6
 # Write a function to move all the elements of a list with value less than 10 to a new list and return it.
-
+def extract_less_than_ten(nums):
+    new_list = []
+    [new_list.append(i) for i in nums if i < 10]
+    return new_list
+print(extract_less_than_ten([1,2,3,10,20,14,16,8,6]))
 
 # Problem 7
 # Write a function to find all common elements between two lists.
+def common_elements(nums1, nums2):
+    pass
 
 
 # Problem 8
