@@ -58,17 +58,31 @@ def extract_less_than_ten(nums):
     new_list = []
     [new_list.append(i) for i in nums if i < 10]
     return new_list
-print(extract_less_than_ten([1,2,3,10,20,14,16,8,6]))
+# print(extract_less_than_ten([1,2,3,10,20,14,16,8,6]))
 
 # Problem 7
 # Write a function to find all common elements between two lists.
 def common_elements(nums1, nums2):
-    pass
-
+    commons = []
+    [commons.append(ele) for ele in nums1 if ele in nums2]
+    return commons
+# print(common_elements([1,2,3],[2,3,6]))
 
 # Problem 8
 # Write a function to combine two lists of equal length into one, alternating elements.
-
+def combine(nums1,nums2):
+    nums_list1 = "".join(nums1)
+    nums_list2 = "".join(nums2)
+    new_list = []
+    
+    for i in nums_list1[::2]:
+        new_list.append(i)
+    for i in nums_list2[::1]:
+        new_list.append(i)
+    return new_list
+        
+        
+print(combine(["a","b","c"],[1,2,3]))
 
 # Problem 9
 # Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number
