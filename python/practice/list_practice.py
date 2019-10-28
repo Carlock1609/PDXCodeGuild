@@ -52,7 +52,7 @@ def reverse(nums):
     return nums
 # print(reverse([1,2,3]))
 
-# Problem 6
+# Problem 6 Done**
 # Write a function to move all the elements of a list with value less than 10 to a new list and return it.
 def extract_less_than_ten(nums):
     new_list = []
@@ -60,7 +60,7 @@ def extract_less_than_ten(nums):
     return new_list
 # print(extract_less_than_ten([1,2,3,10,20,14,16,8,6]))
 
-# Problem 7
+# Problem 7 Done**
 # Write a function to find all common elements between two lists.
 def common_elements(nums1, nums2):
     commons = []
@@ -68,25 +68,24 @@ def common_elements(nums1, nums2):
     return commons
 # print(common_elements([1,2,3],[2,3,6]))
 
-# Problem 8
+# Problem 8 Done**
 # Write a function to combine two lists of equal length into one, alternating elements.
 def combine(nums1,nums2):
-    nums_list1 = "".join(nums1)
-    nums_list2 = "".join(nums2)
     new_list = []
-    
-    for i in nums_list1[::2]:
-        new_list.append(i)
-    for i in nums_list2[::1]:
-        new_list.append(i)
+    while len(new_list) <= 5:
+            new_list.append(nums1.pop(0))
+            new_list.append(nums2.pop(0))
     return new_list
-        
-        
-print(combine(["a","b","c"],[1,2,3]))
+# print(combine(["a","b","c"],[1,2,3]))
 
 # Problem 9
 # Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number
-
+def find_pair(nums,target):
+    for i in nums:
+        print(i)
+        if i + nums[0] == target:
+            print(f"{i}")
+find_pair([5,6,2,3], 7)
 
 # Problem 10
 # Write a function that merges two lists into a single list, where each element of the output list is a list containing two elements, one from each of the input lists.
