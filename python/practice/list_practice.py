@@ -78,7 +78,7 @@ def combine(nums1,nums2):
     return new_list
 # print(combine(["a","b","c"],[1,2,3]))
 
-# Problem 9
+# Problem 9 Done**
 # Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number
 def find_pair(nums,target):
     for i in nums:
@@ -87,7 +87,7 @@ def find_pair(nums,target):
             print(f"{i}")
 # find_pair([5,6,2,3], 7)
 
-# Problem 10
+# Problem 10 Done**
 # Write a function that merges two lists into a single list, where each element of the output list is a list containing two elements, one from each of the input lists.
 def merge(nums1,nums2):
     list1 = []
@@ -106,7 +106,7 @@ def merge(nums1,nums2):
     return new_list
 # print(merge([5,2,1],[6,8,2]))
 
-# Problem 11
+# Problem 11 Done**
 # Write a function combine_all that takes a list of lists, and returns a list containing each element from each of the lists.
 def combine_all(nums):
     new_list = []
@@ -114,15 +114,28 @@ def combine_all(nums):
     [new_list.append(i) for i in nums[1]]
     [new_list.append(i) for i in nums[2]]
     return new_list
-print(combine_all([[5,2,3],[4,5,1],[7,6,3]]))
+# print(combine_all([[5,2,3],[4,5,1],[7,6,3]]))
 
 # Problem 12
 # Write a function that takes n as a parameter, and returns a list containing the first n Fibonacci Numbers.
 
 
-# Problem 13
+# Problem 13 Done**
 # Write functions to find the minimum, maximum, mean, and (optionally) mode of a list of numbers.
+def minimum(nums):
+    return min(nums)
+# print(minimum([2,4,5,6,8]))
+def maximum(nums):
+    return max(nums)
+# print(maximum([2,4,5,6,8]))
+def mean(nums):
+    return (sum(nums)/len(nums))
+# print(mean([2,4,5,6,8]))
 
-
-# Problem 14
+# Problem 14 Done**
 # Write a function which takes a list as a parameter and returns a new list with any duplicates removed.
+def find_unique(nums):
+    unique_nums = []
+    [unique_nums.append(i) for i in nums if i not in unique_nums]
+    return unique_nums
+# print(find_unique([12, 24, 35, 24, 88, 120, 155, 88, 120, 155]))
