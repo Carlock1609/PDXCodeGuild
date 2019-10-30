@@ -85,11 +85,26 @@ def find_pair(nums,target):
         print(i)
         if i + nums[0] == target:
             print(f"{i}")
-find_pair([5,6,2,3], 7)
+# find_pair([5,6,2,3], 7)
 
 # Problem 10
 # Write a function that merges two lists into a single list, where each element of the output list is a list containing two elements, one from each of the input lists.
+def merge(nums1,nums2):
+    list1 = []
+    list2 = []
+    list3 = []
+    new_list = [list1, list2, list3]
 
+    while True:
+        list1.append(nums1.pop(0))
+        list1.append(nums2.pop(0))
+        list2.append(nums1.pop(0))
+        list2.append(nums2.pop(0))
+        list3.append(nums1.pop(0))
+        list3.append(nums2.pop(0))
+        break
+    return new_list
+# print(merge([5,2,1],[6,8,2]))
 
 # Problem 11
 # Write a function combine_all that takes a list of lists, and returns a list containing each element from each of the lists.
