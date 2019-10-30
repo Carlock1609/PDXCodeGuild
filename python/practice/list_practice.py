@@ -108,7 +108,13 @@ def merge(nums1,nums2):
 
 # Problem 11
 # Write a function combine_all that takes a list of lists, and returns a list containing each element from each of the lists.
-
+def combine_all(nums):
+    new_list = []
+    [new_list.append(i) for i in nums[0]]
+    [new_list.append(i) for i in nums[1]]
+    [new_list.append(i) for i in nums[2]]
+    return new_list
+print(combine_all([[5,2,3],[4,5,1],[7,6,3]]))
 
 # Problem 12
 # Write a function that takes n as a parameter, and returns a list containing the first n Fibonacci Numbers.
