@@ -17,7 +17,7 @@ def evens(nums):
 def swapsky(dic):
     list1 = {value:key for key, value in dic.items()}
     return list1
-# print(swapsky({"a":1,"b":2}))
+print(swapsky({"a":1,"b":2}))
 
 import string
 # Problem 4 Done**
