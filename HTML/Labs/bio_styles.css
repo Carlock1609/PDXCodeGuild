@@ -9,8 +9,7 @@ body{
     margin: 0 auto;
     width: 80%;
     padding:20px;
-    background-color: lightgray;
-    
+    background-color: lightgray; 
 }
 h1{
     text-align: center;
@@ -37,7 +36,7 @@ hr{
 }
 ul{
     margin: auto;
-    font-size: ;
+    font-size: 25px;
 }
 .quote{
     font-family: 'Lobster', cursive;
