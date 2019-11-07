@@ -1,0 +1,18 @@
+body { 
+    background: url(Pics/background.jfif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.btn{
+    color: rgb(0, 0, 0);
+}
+.btn-outline-primary:hover {
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+.jumbotron{
+    background-color: rgba(200, 210, 212, 0.486);
+}
