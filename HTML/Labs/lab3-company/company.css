@@ -16,3 +16,13 @@ body {
 .jumbotron{
     background-color: rgba(200, 210, 212, 0.486);
 }
+#gallery{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.card{
+    margin-bottom: 32px;
+}
