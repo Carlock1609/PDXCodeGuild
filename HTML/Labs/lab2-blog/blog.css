@@ -26,14 +26,6 @@ body {
     width: 300px;
     margin-bottom: 10px;
 }
-hr.style-two {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-.btn-primary:hover {
-    color:black;
-}
 h1{
     text-align: center;
     font-weight: 700;
@@ -41,4 +33,19 @@ h1{
 .about{
     font-size: xx-large;
     color: rgb(6, 28, 29);
+}
+#quote{
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+}
+.display-4 {
+    font-weight: 600;
+}
+.btn{
+    background-color: rgb(96, 129, 39);
+    border-color: black;
+    color: white;
+}
+.btn:hover{
+    background-color: black;
 }
