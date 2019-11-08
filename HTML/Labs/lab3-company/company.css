@@ -14,7 +14,7 @@ body {
     border-color: black;
 }
 .jumbotron{
-    background-color: rgba(200, 210, 212, 0.486);
+    background-color: rgba(147, 152, 155, 0.781);
 }
 #gallery{
     display: flex;
@@ -25,4 +25,15 @@ body {
 }
 .card{
     margin-bottom: 32px;
+}
+#mainNavbar{
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.navbar.scrolled {
+    background: rgb(255, 255, 255);
+    transition: background 1s;
+}
+.lead{
+    font-weight: 600;
 }
