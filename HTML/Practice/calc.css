@@ -57,3 +57,9 @@ button:hover{
     grid-gap: 20px;
     padding: 20px;
 }
+@media screen and (max-width: 600px) {
+    .equal-sign {
+        background-color: yellow;
+        color: black;
+    }
+}
