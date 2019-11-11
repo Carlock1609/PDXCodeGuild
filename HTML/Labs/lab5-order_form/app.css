@@ -1,7 +1,12 @@
+
+
 header{
     background-color: #c97858;
     font-family: 'Bangers', cursive;
     height: 150px;
 }
-
+#mainPost{
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+}
 /* #58c978 #7858c9 #c97858 */
