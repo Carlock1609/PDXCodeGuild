@@ -93,6 +93,9 @@ header{
     background-color: #58c978;
     border-color:#58c978;
 }
+.btn-outline-secondary {
+  color: #6c757d;
+}
 
 /* submit button ** */
 .btn-primary{
@@ -106,3 +109,8 @@ header{
 background-color:#58c978;
 border-color: #58c978;
 }
+.form-control::placeholder {
+  color: #aeb3b0;
+  opacity: 1;
+} 
+
