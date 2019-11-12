@@ -17,35 +17,66 @@
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-4 text-left">
-                  <h2>Pizza Pizza!</h2>
+                  <img src="Pics\pizza_logo2.png" alt="">
                 </div>
                 <div class="col-4 text-center">
-                  <h1 class="display-4">PAPA JON'S</h1>
+                  <h1 class="display-4 element">PAPA JON'S</h1>
                 </div>
-                <div class="col-4 text-right">
-                    <h2>Pizza Pizza!</h2>
-                </div>
+                <div class="col-4 text-left">
+                    <img src="Pics\pizza_logo2.png" alt="">
+                  </div>
             </div>
         </div>
       </header>
-      <div class="container">
+      <div class="container mt-2">
         <div class="row align-items-right">
           <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <img src="Pics/pizza1.webp" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                      <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                    </div>
                 </div>
                 <div class="carousel-item">
                   <img src="Pics/pizza2.webp" class="d-block w-100" alt="...">
+                  <div class="carousel-caption">
+                      <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="Pics/pizza4.webp" class="d-block w-100" alt="...">
+                    <img src="Pics/pizza3.webp" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                      </div>
                   </div>
+                <div class="carousel-item">
+                    <img src="Pics/pizza4.webp" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                      </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Pics/pizza5.webp" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                      </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Pics/pizza6.webp" class="d-block w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="display-4">$7.99 X-Large Pizza's!</h1>
+                      </div>
+                </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -150,7 +181,7 @@
           <!-- Put price here -->
 
           <!-- put forms here -->
-          <div class="container-fluid">
+      <div class="container-fluid">
         <form action="https://requestb.in/u96nubu9" method="post">
           <div class="form-row justify-content-center">
               <div class="form-group col-md-2">
@@ -159,7 +190,7 @@
               </div>
               <div class="form-group col-md-2">
                 <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required>
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required minlength="4" maxlength="12">
               </div>
             </div>
             <div class="form-row justify-content-center">
@@ -230,7 +261,7 @@
               </div>
               <div class="form-group col-md-1">
                 <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip" required>
+                  <input type="text" class="form-control" id="inputZip" required minlength="6">
               </div>
             </div>
             <div class="form-row form-group justify-content-center">
@@ -252,10 +283,6 @@
 
 
           <!-- Put checkboxes here -->
-
-
-  
-    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

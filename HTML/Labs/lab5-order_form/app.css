@@ -1,9 +1,19 @@
 
-
+/* header */
+body{
+    font-family: 'Bangers', cursive;
+}
 header{
     background-color: #c97858;
     font-family: 'Bangers', cursive;
     height: 150px;
+}
+.element {
+	text-shadow:
+		-1px -1px 0 rgb(255, 255, 255),
+		2px 0px 0 rgb(255, 255, 255),
+		-1px 2px 0 rgb(255, 255, 255),
+		2px 2px 0 rgb(255, 255, 255);
 }
 
 /* #58c978 #7858c9 #c97858 */
