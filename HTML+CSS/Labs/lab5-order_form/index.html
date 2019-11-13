@@ -92,7 +92,8 @@
       </div>
 
 
-
+      <form action="https://requestb.in/u96nubu9" method="post">
+        <!-- testingout form here -->
           <div id="mainPost" class="container">
             <div class="text-center">
               <h1><i class="fas fa-pizza-slice"></i> Build Your Pizza With Unlimited Toppings! <i class="fas fa-pizza-slice"></i></h1>
@@ -102,11 +103,11 @@
               <!-- radio -->
               <div class="input-group mb-3 col-3">
                 <h2>Pizza Style:</h2>
-                  <div class="input-group-prepend d-flex flex-column" id="button-addon3">
-                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio">Hand-Tossed</button>
-                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio">New York Style</button>
-                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio">Handmade Pan</button>
-                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio">Gluten Free Crust</button>
+                  <div class="input-group-prepend d-flex flex-column" id="button-addon3" name="Crust Style">
+                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio" value="Hand-Tossed">Hand-Tossed</button>
+                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio" value="New York Styles">New York Style</button>
+                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio" value="Handmade Pan">Handmade Pan</button>
+                    <button id="radio1" class="radio btn-outline-secondary mb-1" type="radio" value="Gluten Free Crust">Gluten Free Crust</button>
                   </div>
               </div>
     
@@ -114,22 +115,22 @@
             <div class="col-3">
               <h2>Meat's: <i class="fas fa-bacon"></i></h2>
             <label class="container">Sardines
-                <input type="checkbox">
+                <input type="checkbox" value="Sardines">
                 <span class="checkmark"></span>
               </label>
               
               <label class="container">Tofu
-                <input type="checkbox">
+                <input type="checkbox" value="Tofu">
                 <span class="checkmark"></span>
               </label>
               
               <label class="container">Calamari <i class="fas fa-pepper-hot"></i>
-                <input type="checkbox">
+                <input type="checkbox" value="Calamari">
                 <span class="checkmark"></span>
               </label>
               
               <label class="container">Jerky <i class="fas fa-pepper-hot"></i>
-                <input type="checkbox">
+                <input type="checkbox" value="Jerky">
                 <span class="checkmark"></span>
               </label> 
             </div>
@@ -138,22 +139,22 @@
             <div class="col-3">
                 <h2>Veggie's: <i class="fas fa-carrot"></i></h2>
               <label class="container">Avocado
-                  <input type="checkbox">
+                  <input type="checkbox" value="Avocado">
                   <span class="checkmark"></span>
                 </label>
                 
                 <label class="container">Artichoke
-                  <input type="checkbox">
+                  <input type="checkbox" value="Artichoke">
                   <span class="checkmark"></span>
                 </label>
                 
                 <label class="container">Olives
-                  <input type="checkbox">
+                  <input type="checkbox" value="Olives">
                   <span class="checkmark"></span>
                 </label>
                 
                 <label class="container">Lettace
-                  <input type="checkbox">
+                  <input type="checkbox" value="Lettace">
                   <span class="checkmark"></span>
                 </label> 
               </div>
@@ -162,22 +163,22 @@
               <div class="col-3">
                   <h2>Cheese's: <i class="fas fa-cheese"></i></h2>
                 <label class="container">Feta
-                    <input type="checkbox">
+                    <input type="checkbox" value="Feta">
                     <span class="checkmark"></span>
                   </label>
                   
                   <label class="container">Parmesan
-                    <input type="checkbox">
+                    <input type="checkbox" value="Parmesan">
                     <span class="checkmark"></span>
                   </label>
                   
                   <label class="container">Harvarti
-                    <input type="checkbox">
+                    <input type="checkbox" value="Harvarti">
                     <span class="checkmark"></span>
                   </label>
                   
                   <label class="container">Provolong
-                    <input type="checkbox">
+                    <input type="checkbox" value="Provolong">
                     <span class="checkmark"></span>
                   </label> 
                 </div>
@@ -188,29 +189,29 @@
           <!-- put forms here -->
       <div class="container-fluid">
 
-        <form action="https://requestb.in/u96nubu9" method="post">
+        <!-- form was here -->
           <div class="form-row justify-content-center">
               <div class="form-group col-md-2">
                 <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="jonyates123@inbox.com" required>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="jonyates123@inbox.com" name="Email" required>
               </div>
               <div class="form-group col-md-2">
                 <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required minlength="4" maxlength="12">
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="Password" required minlength="4" maxlength="12">
               </div>
             </div>
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-2">
                     <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="Address" required>
                   </div>
               <div class="form-group col-md-1">
                 <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="Portland" required>
+                  <input type="text" class="form-control" id="inputCity" placeholder="Portland" name="City" required>
               </div>
               <div class="form-group col-md-2">
                 <label for="inputState">State</label>
-                  <select id="inputState" class="form-control" required>
+                  <select id="inputState" class="form-control" name="State" required>
                     <option selected>Choose...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -267,12 +268,12 @@
               </div>
               <div class="form-group col-md-1">
                 <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip" placeholder="123456" required minlength="5">
+                  <input type="text" class="form-control" id="inputZip" placeholder="123456" name="Zipcode" required minlength="5">
               </div>
             </div>
             <div class="form-row form-group justify-content-center">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="Checkbox" required>
                 <label class="form-check-label" for="gridCheck">
                   Send Me Spam Coupons
                 </label>
@@ -282,13 +283,9 @@
           <div class="form-row form-group justify-content-center">
               <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-        </form>
       </div>
+    </form>
            
-          <!-- end -->
-
-
-          <!-- Put checkboxes here -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
