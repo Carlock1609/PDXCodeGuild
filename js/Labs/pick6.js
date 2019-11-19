@@ -3,7 +3,6 @@ const readline = require("readline-sync");
 // let input = readline.question("enter some text: ")
 // console.log(input);
 
-// generate a list of 6 random numbers, which can then be used for both the winning numbers and tickets
 function pick6() {
     let winningTicket = [];
     for(let i = 0; winningTicket.length <= 5; i++){
@@ -18,20 +17,18 @@ function ticketGen() {
     }
     return randomTicket;
 }
-
-// which returns the number of matches between the winning numbers and the ticket.
 function numMatches(winningTicket, randomTicket) {
     let matches = 0;
-    for(let i = 0; i < matches.length; i++){
+    for(let i = 0; i < randomTicket.length; i++){
         if(randomTicket[i] === winningTicket[i]){
             matches += 1
         }
     }
     return matches
 }
-
 function tableWin(matches) {
     table = {
+        0: 0,
         1: 4,
         2: 7,
         3: 100,
@@ -39,22 +36,29 @@ function tableWin(matches) {
         5: 1000000,
         6: 25000000,
     }
-    return table.matches
+    return table[matches]
 }
-
 
 function main() {
-    let balance = 0
-    let number_loops = 50000
+    let ticketExpenses = 0
+    let earnings = 0
+    let number_loops = 100000
     let counter = 0
+    let roi = (earnings - ticketExpenses)/ticketExpenses
 
     while(counter <= number_loops) {
-        balance -= 2
+        ticketExpenses -= 2
         counter += 1
 
-        let getMatches = numMatches(pick6(), ticketGen())
-        balance += tableWin(getMatches)
+        let getMatches = numMatches(pick6(), ticketGen());
+        earnings += tableWin(getMatches);
+
     }
-    console.log(balance)
+    console.log(`You spent $${ticketExpenses} on tickets.`)
+    console.log(`You earned $${earnings}.`)
+    // ROI isnt working
+    console.log(`Your ROI is $${roi}.`)
 }
 main()
+
+// (earnings - expenses)/expenses
