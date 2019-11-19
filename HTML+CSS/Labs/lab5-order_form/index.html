@@ -13,6 +13,11 @@
 
     <title>Papa Jon's</title>
   </head>
+
+  <!-- TO RUN ON API -->
+  <!-- py -3 -m pipenv shell -->
+  <!-- python manage.py runserver -->
+
   <body>
       <header>
         <div class="container h-100">
@@ -91,8 +96,8 @@
         </div>
       </div>
 
-
-      <form action="https://requestb.in/u96nubu9" method="post">
+      <!-- IF USING INGRIDENTS IN FORM -->
+      <!-- <form action="https://requestb.in/u96nubu9" method="post"> -->
         <!-- testingout form here -->
           <div id="mainPost" class="container">
             <div class="text-center">
@@ -187,31 +192,39 @@
       </div>
           <!-- Put price here -->
           <!-- put forms here -->
+    <form action="http://127.0.0.1:8000" method="post">
       <div class="container-fluid">
-
         <!-- form was here -->
           <div class="form-row justify-content-center">
               <div class="form-group col-md-2">
-                <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="jonyates123@inbox.com" name="Email" required>
+                <label for="inputUSER4">Username</label>
+                  <input type="username" class="form-control" id="inputUSER4" placeholder="Carlock1609" name="username" required>
+              </div>
+              <div class="form-group col-md-1">
+                  <label for="inputNAME4">Name</label>
+                    <input type="name" class="form-control" id="inputNAME4" placeholder="Jon Doe" name="name" required>
+                </div>
+              <div class="form-group col-md-1">
+                <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password" required minlength="4" maxlength="12">
               </div>
               <div class="form-group col-md-2">
-                <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="Password" required minlength="4" maxlength="12">
+                <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="jonyates123@inbox.com" name="email" required>
               </div>
             </div>
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-2">
                     <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="Address" required>
+                      <input type="street" class="form-control" id="inputAddress" placeholder="1234 Main St" name="street" required>
                   </div>
               <div class="form-group col-md-1">
                 <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="Portland" name="City" required>
+                  <input type="city" class="form-control" id="inputCity" placeholder="Portland" name="city" required>
               </div>
               <div class="form-group col-md-2">
                 <label for="inputState">State</label>
-                  <select id="inputState" class="form-control" name="State" required>
+                  <select type="state" id="inputState" class="form-control" name="state" required>
                     <option selected>Choose...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -268,17 +281,33 @@
               </div>
               <div class="form-group col-md-1">
                 <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip" placeholder="123456" name="Zipcode" required minlength="5">
+                  <input type="zip" class="form-control" id="inputZip" placeholder="123456" name="zip" required minlength="5">
               </div>
             </div>
+            <!-- NEW LINE -->
+            <div class="form-row justify-content-center">
+              <div class="form-group col-md-2">
+                <label for="inputDOB4">DoB</label>
+                  <input type="dob" class="form-control" id="inputDOB4" placeholder="07/18/1995" name="dob" required minlength="10" maxlength="11">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputSSN4">SSN</label>
+                  <input type="ssn" class="form-control" id="inputSSN4" placeholder="111-00-3333" name="ssn" required minlength="10" maxlength="11">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputPHONE4">Phone Number</label>
+                  <input type="phone" class="form-control" id="inputPHONE4" placeholder="906-111-3232" name="phone" required minlength="11" maxlength="12">
+              </div>
+            </div>
+            
             <div class="form-row form-group justify-content-center">
-              <div class="form-check">
+              <!-- <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="gridCheck" name="Checkbox" required>
                 <label class="form-check-label" for="gridCheck">
                   Send Me Spam Coupons
                 </label>
               </div>
-              
+               -->
           </div>
           <div class="form-row form-group justify-content-center">
               <button type="submit" class="btn btn-primary">Submit</button>

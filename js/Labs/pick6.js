@@ -32,6 +32,7 @@ function numMatches(winningTicket, randomTicket) {
 
 function tableWin(matches) {
     table = {
+        1: 4,
         2: 7,
         3: 100,
         4: 50000,
@@ -40,9 +41,6 @@ function tableWin(matches) {
     }
     return table.matches
 }
-
-
-
 
 
 function main() {
