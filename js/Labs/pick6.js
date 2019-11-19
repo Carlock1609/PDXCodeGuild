@@ -5,14 +5,14 @@ const readline = require("readline-sync");
 
 function pick6() {
     let winningTicket = [];
-    for(let i = 0; winningTicket.length <= 5; i++){
+    for(let i = 0; i < 6; i++){
         winningTicket.push(Math.floor((Math.random() * 100) + 1));
     }
     return winningTicket;
 }
 function ticketGen() {
     randomTicket = [];
-    for(let i = 0; randomTicket.length <= 5; i++){
+    for(let i = 0; i < 6; i++){
         randomTicket.push(Math.floor((Math.random() * 100) + 1));
     }
     return randomTicket;
