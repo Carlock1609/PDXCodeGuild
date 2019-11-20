@@ -1,6 +1,4 @@
 const readline = require("readline-sync");
-// let input = readline.question("enter some text: ")
-// console.log(input);
 
 function getWinningTic() {
     let winningTicket = [];
@@ -10,7 +8,7 @@ function getWinningTic() {
     return winningTicket;
 }
 function getRandomTic() {
-    randomTicket = [];
+    let = randomTicket = [];
     for(let i = 0; i < 6; i++){
         randomTicket.push(Math.floor((Math.random() * 100) + 1));
     }
@@ -54,8 +52,6 @@ function main() {
     }
     console.log(`You spent $${ticketExpenses} on tickets.`)
     console.log(`You earned $${earnings}.`)
-    // ROI isnt working
     console.log(`Your ROI is $${roi}.`)
 }
 main()
-// (earnings - expenses)/expenses
