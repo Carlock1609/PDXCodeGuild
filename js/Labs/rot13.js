@@ -3,33 +3,33 @@ const readline = require("readline-sync");
 // DONE!
 
 function main() {
-    let rotation = readline.question("Enter in a rotation: ")
-    let encrypt = readline.question("Enter in a msg to be encrypted: ")
+    let rotation = readline.question("Enter in a rotation: ");
+    let encrypt = readline.question("Enter in a msg to be encrypted: ");
 
-    let strLow = "abcdefghijklmnopqrstuvwxyz"
-    let strUpp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let strLow = "abcdefghijklmnopqrstuvwxyz";
+    let strUpp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    let firstHalfLow = strLow.slice(0, rotation % 27)
-    let secondHalfLow = strLow.slice(rotation % 27, strLow.length)
-    let firstHalfUpp = strUpp.slice(0, rotation % 27)
-    let secondHalfUpp = strUpp.slice(rotation % 27, strUpp.length)
+    let firstHalfLow = strLow.slice(0, rotation % 27);
+    let secondHalfLow = strLow.slice(rotation % 27, strLow.length);
+    let firstHalfUpp = strUpp.slice(0, rotation % 27);
+    let secondHalfUpp = strUpp.slice(rotation % 27, strUpp.length);
 
-    let rotatedLow = `${secondHalfLow}${firstHalfLow}`
-    let rotatedUpp = `${secondHalfUpp}${firstHalfUpp}`
+    let rotatedLow = `${secondHalfLow}${firstHalfLow}`;
+    let rotatedUpp = `${secondHalfUpp}${firstHalfUpp}`;
 
-    let encryptedMSG = ""
+    let encryptedMSG = "";
 
     for(let i = 0; i < encrypt.length; i++) {
         if(strLow.includes(encrypt[i])) {
-            encryptedMSG += strLow[rotatedLow.indexOf(encrypt[i])]
-        }
+            encryptedMSG += strLow[rotatedLow.indexOf(encrypt[i])];
+        };
         if(strUpp.includes(encrypt[i])) {
-            encryptedMSG += strUpp[rotatedUpp.indexOf(encrypt[i])]
-        }
+            encryptedMSG += strUpp[rotatedUpp.indexOf(encrypt[i])];
+        };
         if(encrypt[i] === " ") {
             encryptedMSG += " "
-        }
-    }
-    console.log(`Your encrypted message is "${encryptedMSG}"`)
-}
-main()
+        };
+    };
+    console.log(`Your encrypted message is "${encryptedMSG}"`);
+};
+main();
