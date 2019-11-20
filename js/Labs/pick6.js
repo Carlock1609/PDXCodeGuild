@@ -1,16 +1,15 @@
 const readline = require("readline-sync");
-
 // let input = readline.question("enter some text: ")
 // console.log(input);
 
-function pick6() {
+function getWinningTic() {
     let winningTicket = [];
     for(let i = 0; i < 6; i++){
         winningTicket.push(Math.floor((Math.random() * 100) + 1));
     }
     return winningTicket;
 }
-function ticketGen() {
+function getRandomTic() {
     randomTicket = [];
     for(let i = 0; i < 6; i++){
         randomTicket.push(Math.floor((Math.random() * 100) + 1));
@@ -19,7 +18,7 @@ function ticketGen() {
 }
 function numMatches(winningTicket, randomTicket) {
     let matches = 0;
-    for(let i = 0; i < randomTicket.length; i++){
+    for(let i = 0; i < 6; i++){
         if(randomTicket[i] === winningTicket[i]){
             matches += 1
         }
@@ -46,13 +45,12 @@ function main() {
     let counter = 0
     let roi = (earnings - ticketExpenses)/ticketExpenses
 
-    while(counter <= number_loops) {
-        ticketExpenses -= 2
+    while(counter < number_loops) {
+        ticketExpenses += 2
         counter += 1
 
-        let getMatches = numMatches(pick6(), ticketGen());
+        let getMatches = numMatches(getWinningTic(), getRandomTic());
         earnings += tableWin(getMatches);
-
     }
     console.log(`You spent $${ticketExpenses} on tickets.`)
     console.log(`You earned $${earnings}.`)
@@ -60,5 +58,4 @@ function main() {
     console.log(`Your ROI is $${roi}.`)
 }
 main()
-
 // (earnings - expenses)/expenses
