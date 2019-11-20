@@ -1,10 +1,4 @@
-// Unit Converter
-// DONE**
-
 const readline = require("readline-sync");
-
-// let userInput = parseInt(readline.question('enter a number: '));
-// console.log(`you entered: ${userInput}`);
 
 function getFirstUnit(){
     let firstUnit = readline.question("Enter in starting unit (in, ft, yd, m, km, mi): ");
