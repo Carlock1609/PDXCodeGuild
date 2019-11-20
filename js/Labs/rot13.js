@@ -1,18 +1,35 @@
 const readline = require("readline-sync");
-// let input = readline.question("enter some text: ")
-// console.log(input);
+
+// DONE!
 
 function main() {
-    let encrypt = readline.question("Please enter in a msg to be encrypted: ")
+    let rotation = readline.question("Enter in a rotation: ")
+    let encrypt = readline.question("Enter in a msg to be encrypted: ")
 
-    let str = "abcdefghijklmnopqrstuvwxyz "
-    let rot13 = "nopqrstuvwxyzabcdefghijklm "
-    let encrypted = ""
+    let strLow = "abcdefghijklmnopqrstuvwxyz"
+    let strUpp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    let firstHalfLow = strLow.slice(0, rotation % 27)
+    let secondHalfLow = strLow.slice(rotation % 27, strLow.length)
+    let firstHalfUpp = strUpp.slice(0, rotation % 27)
+    let secondHalfUpp = strUpp.slice(rotation % 27, strUpp.length)
+
+    let rotatedLow = `${secondHalfLow}${firstHalfLow}`
+    let rotatedUpp = `${secondHalfUpp}${firstHalfUpp}`
+
+    let encryptedMSG = ""
 
     for(let i = 0; i < encrypt.length; i++) {
-        encrypted += str[rot13.indexOf(encrypt[i])]
+        if(strLow.includes(encrypt[i])) {
+            encryptedMSG += strLow[rotatedLow.indexOf(encrypt[i])]
+        }
+        if(strUpp.includes(encrypt[i])) {
+            encryptedMSG += strUpp[rotatedUpp.indexOf(encrypt[i])]
+        }
+        if(encrypt[i] === " ") {
+            encryptedMSG += " "
+        }
     }
-
-    console.log(`Your encrypted message is "${encrypted}"`)
+    console.log(`Your encrypted message is "${encryptedMSG}"`)
 }
 main()
