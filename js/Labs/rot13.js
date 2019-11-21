@@ -6,6 +6,7 @@ function main() {
 
     let strLow = "abcdefghijklmnopqrstuvwxyz";
     let strUpp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let specialChar = ""
 
     let firstHalfLow = strLow.slice(0, rotation % 26);
     let secondHalfLow = strLow.slice(rotation % 26, strLow.length);
@@ -20,13 +21,17 @@ function main() {
     for(let i = 0; i < encrypt.length; i++) {
         if(strLow.includes(encrypt[i])) {
             encryptedMSG += strLow[rotatedLow.indexOf(encrypt[i])];
-        };
-        if(strUpp.includes(encrypt[i])) {
+        }
+        else if(strUpp.includes(encrypt[i])) {
             encryptedMSG += strUpp[rotatedUpp.indexOf(encrypt[i])];
-        };
-        if(encrypt[i] === " ") {
+        }
+        else if(encrypt[i] === " ") {
             encryptedMSG += " "
-        };
+        }
+        else{
+            encryptedMSG += encrypt[i]
+        }
+
     };
     console.log(`Your encrypted message is "${encryptedMSG}"`);
 };
