@@ -1,86 +1,57 @@
-let addEle = document.getElementById("add")
-let remEle = document.getElementById("remove")
-let strikeEle = document.getElementById("todos")
+let addEle = document.getElementById("add");
+let remEle = document.getElementById("remove");
 
-let counter = 0
+addEle.addEventListener("click", function() {
+  let newList = document.querySelector("ul");
+  let userInput = document.getElementById("someInput");
+  let newEle = document.createElement("li");
 
-// WORKING
-// addEle.addEventListener("click", event => {
-//     let newList = document.getElementById("todos")
-//     let userInput = document.getElementById("someInput")
-//     let newEle = document.createElement("li")
-    
-//     newEle.appendChild(document.createTextNode(userInput.value))
-//     newEle.setAttribute("id", `list-item${counter}`)
-//     newEle.setAttribute("onclick", `lineThrough('list-item${counter}', '${userInput.value}')`)
-//     newList.appendChild(newEle)
-//     counter += 1
+  newEle.appendChild(document.createTextNode(userInput.value));
+  newList.appendChild(newEle);
+});
+
+addEle.addEventListener("click", function() {
+  let lis = document.querySelectorAll("li");
+  for(let i = 0; i < lis.length; i++) {
+    lis[i].addEventListener("mouseover", function() {
+      this.classList.add("selected");
+    });
+    lis[i].addEventListener("mouseout", function() {
+      this.classList.remove("selected");
+    });
+    lis[i].addEventListener("click", function() {
+      this.classList.toggle("done");
+    });
+    console.log(lis)
+  };
+})
+
+// working on removing li
+remEle.addEventListener("click", function() {
+  let lis = document.querySelectorAll("li");
+  for(let i = 0; i < lis.length; i++){
+      if(lis[i].classList.contains("done")) {
+        lis[i].remove()
+        console.log("ladkasddlk")
+      }
+    }
+})
+
+
+// get remove to work
+// remEle.addEventListener("click", function() {
+//   newEle[-1].remove()
 // })
-
-// function lineThrough(item, userInput) {
-//     let result = userInput.strike()    
-//     document.getElementById(`${item}`).innerHTML = result
-// }
-
-// remEle.addEventListener("click", event => {
-//     let remove = newEle.remove()
-// })
-
-
-
-
-/* <form id="form">FORM
-    <div>DIV
-      <p>P</p>
-    </div>
-  </form> */
-
-//   form.onclick = function(event) {
-//     event.target.style.backgroundColor = 'yellow';
-  
-//     // chrome needs some time to paint yellow
-//     setTimeout(() => {
-//       alert("target = " + event.target.tagName + ", this=" + this.tagName);
-//       event.target.style.backgroundColor = ''
-//     }, 0);
-//   };
-
-
-// <script>
-//   for(let elem of document.querySelectorAll('*')) {
-//     elem.addEventListener("click", e => alert(`Capturing: ${elem.tagName}`), true);
-//     elem.addEventListener("click", e => alert(`Bubbling: ${elem.tagName}`));
-//   }
-// </script>
-
-// x.addEventListener("click", lineThrough => {
-//     x.style.color = "pink"
-// })
-
-// function lineThrough() {
-//     let x = document.getElementsByTagName("li")
-//     x.style.color = "pink"
-// }
-
-// wait to edit until click on add and it moves over
-// remEle.addEventListener("click", event => {
-//     let doneList = document.getElementById("done")
-//     let userInput = document.getElementById("someInput")
-//     let newEle = document.createElement("li")
-
-//     newEle.appendChild(document.createTextNode(userInput.value))
-//     newEle.setAttribute("id", "list-item")
-//     doneList.appendChild(newEle)
+// document.querySelector("element").addEventListener("click", event => {
+//   event.target.remove()
 // })
 
 
-// let btn = document.getElementById('testbtn');
-// btn.addEventListener('click', function(blargle){
-//     print_event(blargle);
-// });
 
-// function print_event(blargle){
-//     console.log(blargle);
+//move incomplete taks to completed tasks
+// document.querySelector("class").addEventListener("click", event => {
+//   event.target.classList.remove("class")
+//   event.target.classList.add("class")
+//   document.querySelector("class").append(event.target);
+// })
 
-//     event.target.remove();
-// }
