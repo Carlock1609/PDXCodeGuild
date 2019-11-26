@@ -22,7 +22,6 @@ addEle.addEventListener("click", function() {
     lis[i].addEventListener("click", function() {
       this.classList.toggle("done");
     });
-    console.log(lis)
   };
 })
 
