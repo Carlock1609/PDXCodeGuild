@@ -19,21 +19,25 @@
 
 
 // VERSION 1 DONE
-let span = document.querySelector("span")
+let quote = document.querySelector("#quote")
 let footer = document.querySelector("footer")
+let reset = document.querySelector("a")
 
-function main() {
+function findData() {
     (function() {
         const url = "https://favqs.com/api/qotd"
         axios.get(url)
-            .then(request =>  getAuthor(request))
+            .then(request =>  getData(request))
             .catch(error => console.log(error))
     })()
 }
 
-function getAuthor(request) {
-    span.textContent = request.data.quote.body
+function getData(request) {
+    quote.textContent = request.data.quote.body
     footer.textContent = request.data.quote.author
 }
 
-main()
+findData()
+reset.addEventListener("click", function() {
+    findData()
+})

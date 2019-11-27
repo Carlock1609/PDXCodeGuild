@@ -5,3 +5,52 @@
     display: flex;
     align-items: center;
   }
+.jumbotron {
+   background-color: rgb(82, 116, 59);
+}
+.blockquote-footer {
+  color: rgb(221, 219, 219);
+  font-family: 'Amatic SC', cursive;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 4px;
+}
+#h1 {
+  font-family: 'Archivo Black', sans-serif;
+}
+.btn {
+  color: white;
+  font-size: 2rem;
+}
+.btn-primary {
+  background-color: rgb(82, 116, 59);
+  border: none;
+}
+.btn:hover {
+  background-color: black;
+  transition: 2s;
+}
+#hrbottom {
+  border-bottom: 3px solid white;
+  font-size: 3rem;
+}
+#quote {
+  font-size: 2rem;
+}
+body {
+  color: white;
+  
+}
+blockquote {
+  color: white;
+  margin-top: 10px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 600;
+}
+/* 
+font-family: 'Indie Flower', cursive;
+
+font-family: 'Amatic SC', cursive;
+
+font-family: 'Archivo Black', sans-serif;
+ */
