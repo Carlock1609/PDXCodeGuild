@@ -5,14 +5,30 @@
     display: flex;
     align-items: center;
   }
+
 .jumbotron {
    background-color: rgb(88, 121, 86);
 }
 #quote{
     color: white;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 600;
 }
 h1 {
     color: white;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
+    font-family: 'Archivo Black', sans-serif;
+
+}
+a:hover {
+    background: black;
+    color: white;
+    transition: 1s;
+}
+.blockquote-footer {
+    color: rgb(0, 0, 0);
+    font-size: 1.8rem;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
 }

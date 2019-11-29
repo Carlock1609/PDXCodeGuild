@@ -1,14 +1,17 @@
 // DO NOT PUSH API KEY TO GITHUB
+
 let quotes = []
-let userInput = prompt("Enter in a keyword to recieve a related QUOTE.")
+let authors = []
 let div = document.getElementById("quote")
+let footer = document.querySelector("footer")
+let start = document.querySelector("a")
 
 function getData(userInput) {
     const url = 'https://favqs.com/api/quotes?filter=' + userInput
     
     axios.get(url, {
         headers: {
-            'Authorization': `Token token="API KEY GOES HERE***"`
+            'Authorization': `Token token="ADD API KEY HERE"`
         }
     })
     .then(request => {
@@ -20,30 +23,19 @@ function getData(userInput) {
 function getBody(request) {
     for(let quote of request.data.quotes) {
         let addBody = quote.body
+        let addAuthor = quote.author
+        authors.push(addAuthor)
         quotes.push(addBody)
+    
     }
-    div.textContent = quotes[Math.floor(Math.random() * quotes.length)]
+    let x = Math.floor(Math.random() * quotes.length)
+    div.textContent = quotes[x]
+    footer.textContent = authors[x]
 
 }
-getData(userInput)
 
-
-// document.createTextNode(userInput.value)
-
-// // V2
-// function http_get(url, success) {
-//     let xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState === 1) {
-//             xhttp.setRequestHeader('Authorization', 'Token token="<api kep here>"')
-//         } else if (this.readyState === 4 && this.status === 200) {
-//             let data = JSON.parse(xhttp.responseText);
-//             success(data);
-//         } else if (this.readyState === 4 && this.status === 404) {
-//             // handle 404
-//         }
-//     };
-//     xhttp.open("GET", url);
-//     xhttp.send();
-// }
+start.addEventListener("click", function() {
+    let userInput = prompt("Enter in a WORD to get related QUOTES.")
+    getData(userInput)
+})
 
