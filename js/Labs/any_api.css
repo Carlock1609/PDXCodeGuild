@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+}
+.container-fluid {
+    height: 100%;
+}
+
+#left-side {
+    background: rgb(88, 121, 86);
+    color: white;
+}
+#right-side {
+    background: black;
+    color: white;
+}
