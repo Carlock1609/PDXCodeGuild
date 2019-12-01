@@ -1,14 +1,11 @@
 // USA POPULATION API
 
 // nation level vars
-let allNations = [];
 let nationPop = [];
-let nationYears = [];
 
 // state level vars
 let allStates = [];
 let statePop = [];
-let stateYears = [];
 
 // NATION LEVEL
 function nationData() {
@@ -22,16 +19,10 @@ function nationData() {
 }
 function getNationData(request) {
     for(let ele of request.data.data) {
-        let addYear = ele.Year;
         let addPop = ele.Population;
-        let addNat = ele.Nation
-        nationYears.push(addYear);
         nationPop.push(addPop);
-        allNations.push(addNat);
     }
-    console.log(allNations);
     console.log(nationPop);
-    console.log(nationYears);
 }
 
 // STATE LEVEL
@@ -40,7 +31,7 @@ function stateData() {
     
     axios.get(url)
     .then(request => {
-        getStateData(request)
+        getStateData(request);
     })
     .catch(error => console.log(error));
 }
@@ -48,23 +39,61 @@ function getStateData(request) {
     for(ele of request.data.data) {
         let addState = ele.State;
         let addPop = ele.Population;
-        let addYears = ele.Year;
 
         allStates.push(addState);
         statePop.push(addPop);
-        stateYears.push(addYears);
     }
     console.log(allStates);
     console.log(statePop);
-    console.log(stateYears);
 }
 
 function main() {
     nationData();
     stateData();
 }
+main();
+// DATA IN ARRAYS DONE. 
+// PROCESS FOR DISPLAYING BELOW
 
-main()
+let dropdown = document.getElementById("inputState");
+let selectedState = document.getElementById("state")
+let population = document.getElementById("population")
+
+dropdown.addEventListener("click", function() {
+    let state = document.querySelectorAll("option");
+    for(let i = 0; i < state.length; i++) {
+        state[i].addEventListener("click", function() {
+            this.classList.add("pickedState")
+        })
+    }
+    for(let i = 0; i < state.length; i++) {
+        if(state[i].classList.contains("pickedState")) {
+            selectedState.textContent = allStates[i] + " is "
+            population.textContent = statePop[i]
+            state[i].classList.remove("pickedState")
+        }
+    }
+})
+
+
+
+
+
+// addEle.addEventListener("click", function() {
+//     let lis = document.querySelectorAll("li");
+//     for(let i = 0; i < lis.length; i++) {
+//       lis[i].addEventListener("mouseover", function() {
+//         this.classList.add("selected");
+//       });
+//       lis[i].addEventListener("mouseout", function() {
+//         this.classList.remove("selected");
+//       });
+//       lis[i].addEventListener("click", function() {
+//         this.classList.toggle("done");
+//       });
+//     };
+//   })
+  
 
 // STATE API
 
