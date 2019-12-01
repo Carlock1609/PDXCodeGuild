@@ -56,21 +56,23 @@ main();
 // PROCESS FOR DISPLAYING BELOW
 
 let dropdown = document.getElementById("inputState");
-let selectedState = document.getElementById("state")
-let population = document.getElementById("population")
+let selectedState = document.getElementById("state");
+let population = document.getElementById("population");
+
 
 dropdown.addEventListener("click", function() {
     let state = document.querySelectorAll("option");
     for(let i = 0; i < state.length; i++) {
         state[i].addEventListener("click", function() {
-            this.classList.add("pickedState")
+            this.classList.add("pickedState");
         })
     }
     for(let i = 0; i < state.length; i++) {
         if(state[i].classList.contains("pickedState")) {
-            selectedState.textContent = allStates[i] + " is "
+            selectedState.textContent = allStates[i] + " is ";
             population.textContent = statePop[i]
-            state[i].classList.remove("pickedState")
+
+            state[i].classList.remove("pickedState");
         }
     }
 })
