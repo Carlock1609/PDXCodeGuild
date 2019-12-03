@@ -1,5 +1,3 @@
-// DONT COMMIT API KEYS
-
 // map
 var mymap = L.map('mapid').setView([15.505, 1], 1.6);
 
@@ -7,17 +5,52 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
-    accessToken: 'API KEY HERE'
+    accessToken: 'pk.eyJ1IjoiY2FybG9jazkwNiIsImEiOiJjazNvMjdsNnYwMHc0M2d0MzJpdG8yamxxIn0.L_ac0fmj1jp0wrM-9T_IKw'
 }).addTo(mymap);
 
-var myIcon = L.icon({
-    iconUrl: 'temp_pics/icon_flag.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowSize: [68, 95],
-    shadowAnchor: [22, 94]
-});
+//markers
+// MARKER EXAMPLE
+// var marker = L.marker([51.5, -0.09]).addTo(mymap);
+// CIRCLE EXAMPLE
+// var circle = L.circle([51.508, -0.11], {
+//     color: 'red',
+//     fillColor: '#f03',
+//     fillOpacity: 0.5,
+//     radius: 400,
+// }).addTo(mymap);
+
+// POLYGON EXAMPLE
+// var polygon = L.polygon([
+//     [51.509, -0.08],
+//     [51.503, -0.06],
+//     [51.51, -0.047],
+// ]).addTo(mymap);
+
+// Discriptions for markers
+// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+// circle.bindPopup("I am a circle.");
+// polygon.bindPopup("I am a polygon.");
+
+// popup with a discription
+// var popup = L.popup()
+//     .setLatLng({ lat: "-68.6102", lng: "-47.0653" })
+//     .setContent("I am a standalone popup.")
+//     .openOn(mymap);
+
+// Coordinates of user click
+// var popup = L.popup();
+
+// function onMapClick(e) {
+//     popup
+//         .setLatLng(e.latlng)
+//         .setContent("You clicked the map at " + e.latlng.toString())
+//         .openOn(mymap);
+//     let mapInfo = document.querySelector("span");
+//     mapInfo.textContent = e.latlng;
+// }
+
+// mymap.on('click', onMapClick);
+
 
 // JSONPLACEHOLDER EXAMPLES
 let coordinates = []
@@ -31,7 +64,6 @@ let zipcode = []
 let usernames = []
 let emails = []
 
-// figure out what fetch is?
 function getData() {
     const url = 'https://jsonplaceholder.typicode.com/users'
     
@@ -66,16 +98,27 @@ function getLists(request) {
     }
 
     for(let i = 0; i < coordinates.length; i++) {
-        let marker = L.marker(coordinates[i], {icon: myIcon}).addTo(mymap);
+        let marker = L.marker(coordinates[i]).addTo(mymap);
         marker.bindPopup(`${names[i]}<br><br>
                             ${street[i]}<br><br>
                             ${apartment[i]}<br><br>
                             ${city[i]}<br><br>
                             ${zipcode[i]}<br><br>
-                            `);
+                            `).openPopup();
     }
+
+    // console.log(city)
+    // console.log(coordinates)
+    // console.log(names)
+    // console.log(usernames)
+    // console.log(emails)
 }
 getData()
+
+
+// fetch('https://jsonplaceholder.typicode.com/users/1')
+//   .then(response => response.json())
+//   .then(json => console.log(json))
 
 // addTo method adds variable to map
 // openPopup activates bindPopup on open
