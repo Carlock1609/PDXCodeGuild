@@ -7,7 +7,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
-    accessToken: 'API KEY GOES HERE'
+    accessToken: 'API HERE'
 }).addTo(mymap);
 
 var myIcon = L.icon({
@@ -19,31 +19,19 @@ var myIcon = L.icon({
     shadowAnchor: [22, 94]
 });
 
-// JSONPLACEHOLDER EXAMPLES
-let coordinates = []
-let coordLat = []
-let coordLng = []
-let names = []
-let street = []
-let apartment = []
-let city = []
-let zipcode = []
-let usernames = []
-let emails = []
-
 // figure out what fetch is?
 function getData() {
     const url = 'https://jsonplaceholder.typicode.com/users'
     
     axios.get(url)
-    .then(request => {
-        getLists(request)
-    })
+    .then(request => 
+        getLists(request))
+    
     .catch(error => console.log(error))
 } 
 
 function getWeatherData(lat, lon) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=API KEY GOES HERE`
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=API HERE`
 
     axios.get(url)
     .then(request => {
@@ -52,8 +40,27 @@ function getWeatherData(lat, lon) {
     .catch(error => console.log(error))
 }
 
-// get data
-function getLists(request) {
+// JSONPLACEHOLDER EXAMPLES
+// use an object instead
+
+// request call to get data for arr
+function getDataList() {
+    let dataList = {
+        "coordinates": [],
+        "coordLat": [],
+        "coordLng": [],
+        "names": [],
+        "street": [],
+        "apartment": [],
+        "city": [],
+        "zipcode": [],
+        "usernames": [],
+        "emails": [],
+        }
+    return dataList
+}
+
+function getLists(request, dataList) {
     for(let ele of request.data) {
         let addLat = ele.address.geo.lat
         let addLng = ele.address.geo.lng
@@ -65,42 +72,48 @@ function getLists(request) {
         let addUsernames = ele.username
         let addEmails = ele.email
 
-        coordinates.push([addLat, addLng])
-        names.push(addNames)
-        street.push(addSt)
-        apartment.push(addApt)
-        city.push(addCity)
-        zipcode.push(addZip)
-        usernames.push(addUsernames)
-        emails.push(addEmails)
+        dataList.coordinates.push([addLat, addLng])
+        dataList.names.push(addNames)
+        dataList.street.push(addSt)
+        dataList.apartment.push(addApt)
+        dataList.city.push(addCity)
+        dataList.zipcode.push(addZip)
+        dataList.usernames.push(addUsernames)
+        dataList.emails.push(addEmails)
     }
-    for(let i = 0; i < coordinates.length; i++) {
-        let marker = L.marker(coordinates[i], {icon: myIcon}).addTo(mymap);
+}
+function getIcons(dataList) {
+    for(let i = 0; i < 11; i++) {
+        let marker = L.marker(dataList.coordinates[i], {icon: myIcon}).addTo(mymap);
         marker.bindPopup(`
-            ${names[i]}<br><br>
-            ${street[i]}<br><br>
-            ${apartment[i]}<br><br>
-            ${city[i]}<br><br>
-            ${zipcode[i]}<br><br>
+            ${dataList.names[i]}<br><br>
+            ${dataList.street[i]}<br><br>
+            ${dataList.apartment[i]}<br><br>
+            ${dataList.city[i]}<br><br>
+            ${dataList.zipcode[i]}<br><br>
         `);
         let newList = document.querySelector("ul");
         let newEle = document.createElement("li");
 
-        newEle.appendChild(document.createTextNode(`Name: ${names[i]} | Username: ${usernames[i]} | Email: ${emails[i]}`));
+        newEle.appendChild(document.createTextNode(`Name: ${dataList.names[i]} | Username: ${dataList.usernames[i]} | Email: ${dataList.emails[i]}`));
         newList.appendChild(newEle);
-        
-        // FIGURE OUT HOW TO GET CURRENT USER ON TOP
-        // for(let i = 0; i < coordinates.length; i++) {
-        //     name1Div.textContent = names[i]
-        //     username1Div.textContent = usernames[i]
-        //     email1Div.textContent = emails[i]
-        // }
     }
 }
 
-getData()
-console.log(coordinates[1])
+    // Trying to figure out how to add curent selection
+    // let x = document.querySelectorAll("img");
+    // let name1Div = document.querySelector("#name1Div");
+    // let email1Div = document.querySelector("#email1Div");
+    //     for(let i = 0; i < names.length; i++){
+    //         x[i].addEventListener("click", function() {
+    //             this.name1Div.textContent = names[i];
+    //             this.email1Div.textContent = emails[i];
+    //         })
+    //     }
 
+getData();
+
+// console.log(getDataList())
 // for(let i = 0; i < coordinates.length; i++) {
 //     getWeatherData(coordinates[i][i], coordinates[i][i+1])
 // }
