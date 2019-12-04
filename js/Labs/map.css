@@ -6,6 +6,7 @@ body {
 #mapid {
     height: 700px;
     widows: 300px;
+    border-radius: 50%;
 }
 .vertical-center {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -14,4 +15,3 @@ body {
     display: flex;
     align-items: center;
 }
-
