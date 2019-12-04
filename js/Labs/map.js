@@ -70,4 +70,4 @@ function getLists(request) {
 function main() {
     getData()
 }
-main();
+main()
