@@ -30,6 +30,7 @@ let city = []
 let zipcode = []
 let usernames = []
 let emails = []
+let currentWeather = []
 
 // figure out what fetch is?
 function getData() {
@@ -47,10 +48,16 @@ function getWeatherData(lat, lon) {
 
     axios.get(url)
     .then(request => {
-        console.log(request.data)
+        weatherData(request)
     })
     .catch(error => console.log(error))
 }
+
+function weatherData(request) {
+    let addWeather = request.data.main.temp
+    currentWeather.push(addWeather)
+    }
+
 
 // get data
 function getLists(request) {
@@ -95,11 +102,12 @@ function getLists(request) {
         //     username1Div.textContent = usernames[i]
         //     email1Div.textContent = emails[i]
         // }
+        // getWeatherData(coordinates[i][i], coordinates[i][i+1])
     }
+    
 }
 
 getData()
-console.log(coordinates[1])
 
 // for(let i = 0; i < coordinates.length; i++) {
 //     getWeatherData(coordinates[i][i], coordinates[i][i+1])
