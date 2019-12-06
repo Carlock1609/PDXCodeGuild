@@ -34,16 +34,6 @@ function makePretty() {
         div.appendChild(span)
         origString.remove()
     }
-        
-        // span.appendChild(document.createTextNode(strings[i]).style.color = getColor())
-        // strings.appendChild(span)
-    
-
-    
-    // WHY DOESNT THIS LOOP AND WOwRK
-    // for(let ele of strings) {
-        
-    //     }
 }
 
 function getColor() {
@@ -60,14 +50,3 @@ function main() {
     makePretty();
 }
 main();
-
-
-// addEle.addEventListener("click", function() {
-//     let newList = document.querySelector("ul");
-//     let userInput = document.getElementById("someInput");
-//     let newEle = document.createElement("li");
-  
-//     newEle.appendChild(document.createTextNode(userInput.value));
-//     newList.appendChild(newEle);
-//   });
-  
