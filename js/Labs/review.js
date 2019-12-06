@@ -16,30 +16,42 @@ axios.get(url)
 };
 
 function moveCookies() {
-    let oldCookies = document.querySelector("#cookie-jar").textContent;
+    let oldCookies = document.querySelector("#cookie-jar").innerText;
     let newCookies = document.querySelector("#newJar");
 
     newCookies.textContent = oldCookies;
-    document.querySelector("#cookie-jar").remove();
+    document.querySelector("#cookie-jar").innerText = " "
 }
 function makePretty() {
-    let strings = document.querySelector("#pretty").textContent;
+    let div = document.querySelector("#pretty")
+    let div_value = document.querySelector("#pretty").textContent
+    let origString = document.querySelector("#remove")
+
+    for(let i = 0; i < div_value.length; i++) {
+        let span = document.createElement("span")
+        span.innerHTML = div_value[i]
+        span.setAttribute("style", `color: ${getColor()}`)
+        div.appendChild(span)
+        origString.remove()
+    }
+        
+        // span.appendChild(document.createTextNode(strings[i]).style.color = getColor())
+        // strings.appendChild(span)
+    
+
+    
+    // WHY DOESNT THIS LOOP AND WOwRK
+    // for(let ele of strings) {
+        
+    //     }
+}
+
+function getColor() {
     let r = Math.floor(Math.random() * 255)
     let g = Math.floor(Math.random() * 255)
     let b = Math.floor(Math.random() * 255)
-    console.log(strings[])
-    for(let ele of strings) {
-        document.querySelector("#pretty").style.color = `rgb(${r}, ${g}, ${b})`
-        }
-    
-    
-    // for(let ele of strings) {
-    //     ele.style.color = "red"
-    // }
 
-
-        // ele.style.color = "blue"
-    
+    return `rgb(${r}, ${g}, ${b})`
 }
 
 function main() {
@@ -49,3 +61,13 @@ function main() {
 }
 main();
 
+
+// addEle.addEventListener("click", function() {
+//     let newList = document.querySelector("ul");
+//     let userInput = document.getElementById("someInput");
+//     let newEle = document.createElement("li");
+  
+//     newEle.appendChild(document.createTextNode(userInput.value));
+//     newList.appendChild(newEle);
+//   });
+  
