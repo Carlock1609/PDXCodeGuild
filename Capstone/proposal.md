@@ -1,19 +1,30 @@
-# Capstone Project
+# **Capstone Project**
 
-## Name: AchieveSTATUS.com
+## **Name:** AchieveSTATUS.com
 
-## Project Overview
+#
+## **Project Overview**
 
 ### Discription:
 - This is an application to bring Photographers and Influencers into one social media application. 
 The purpose of the application is to make it easier for Influencers and Photographers to gain experience, and build both portfolios.
-Instead of having to go through countless DM's that could be about anthing people--Everyone in this application is here for the same reason, to Achieve STATUS.
+Instead of having to go through private messages, random DM's, and business queries that could be about anything--Everyone in this application is here for the same reason, to Achieve STATUS.
 
 - Photographers can filter through a list of influencers by their follower count, and Influencers
 can filter through a list of Photographers based on their past portfolios, collaborations and linked pages.
-Once one is found found, the user can message directly for connections or to collaborate.
+Once one is found, the user can message directly for connections or to collaborate.
 
-## Functionality
+- The idea for this application is to help new Photographers and Influencers get their start, by inticing them to work with newer users rather than collaborting with users who have already made it.
+
+    ### Libraries/Frameworks
+
+    - BeautifulSoup4 - Will be used to scrape linked social media accounts for follower counts.
+    - Django - will be used to authenticate users and make sure they have actually social media accounts. And to store their profiles properly in DB.
+    - Leaflet, MapBoxing - Will be used to plot out local spots perfect for taking photos.
+    - Bootstrap4 - This will be pretty heavy in frontend
+#
+
+## **Functionality**
 
 ### Influencer:
 - User must signup and are also required to link their social media accounts to get their follower counts.
@@ -41,15 +52,17 @@ Once one is found found, the user can message directly for connections or to col
 
 ### Function Ideas:
 - Photo Location marker - When photos are used, a suggestion comes up to share location so it will be plotted on a map, so other Users can find cool spots to take pictures.
+#
 
-
-## Data Model
+## **Data Model**
 
 - User Login information
 - User Profile Info, photos, portfolios, follower counts, display
 - User Messages, Community board messages
 - Marked photo locations on map
 
-## Schedule
+#
+## **Schedule**
 - Complete this
 
+#
