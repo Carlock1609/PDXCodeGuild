@@ -19,7 +19,7 @@ Once one is found, the user can message directly for connections or to collabora
     ### Libraries/Frameworks
 
     - BeautifulSoup4 - Will be used to scrape linked social media accounts for follower counts.
-    - Django - will be used to authenticate users and make sure they have actually social media accounts. And to store their profiles properly in DB.
+    - Django - will be used to authenticate users and make sure they have actual social media accounts. And to store their profiles properly in a DB.
     - Leaflet, MapBoxing - Will be used to plot out local spots perfect for taking photos.
     - Bootstrap4 - This will be pretty heavy in frontend
 #
@@ -28,7 +28,7 @@ Once one is found, the user can message directly for connections or to collabora
 
 ### Influencer:
 - User must signup and are also required to link their social media accounts to get their follower counts.
-- User will have the follower count displayed on their profile for each application and total folower count combined aswell.
+- User will have the follower count displayed on their profile for each application and total follower count combined aswell.
 - User can set filter on Photographer based on experience and search a list that matches.
 - User can send message to Photographer to collaborate
 - User can gain more points for working with photographers with less experience.
@@ -37,7 +37,7 @@ Once one is found, the user can message directly for connections or to collabora
 - User must signup and upload portfolio/experience and other collaborations to their profile.
 - User can set filter on search to get a list that meets the preffered follower count criteria.
 - User can send message to Influencer to collaborate.
-- User can gain points for working with Influencers with lower follower count to get there portfolio on main website feed.
+- User can gain points for working with Influencers with lower follower count to get there portfolio on the main website feed.
 
 ### Functions:
 - User Signup Form
@@ -56,10 +56,9 @@ Once one is found, the user can message directly for connections or to collabora
 
 ## **Data Model**
 
-- User Login information
-- User Profile Info, photos, portfolios, follower counts, display
-- User Messages, Community board messages
-- Marked photo locations on map
+- User - Login information, Profile Info, photos, portfolios, follower counts, display
+- Messages - private messages, Community board messages
+- Map locatoions - local markers locations for Map
 
 #
 ## **Schedule**
