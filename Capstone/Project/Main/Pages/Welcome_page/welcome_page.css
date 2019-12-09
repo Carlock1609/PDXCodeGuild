@@ -1,0 +1,31 @@
+/* Welcome Page */
+
+
+body {
+  padding: 25px;
+  background: url(/Capstone/Project/Photos/welcome_page.webp);
+  background-repeat: no-repeat;
+  background-size: auto;
+
+  
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.jumbrotron {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.164);
+}
+
+
+
+
+
+/* blurred */
+
