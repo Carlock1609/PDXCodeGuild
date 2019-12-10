@@ -26,17 +26,27 @@ Once one is found, the user can message directly for connections or to collabora
 
 ## **Functionality**
 
-### Influencer:
-- User must signup and are also required to link their social media accounts to get their follower counts.
-- User will have the follower count displayed on their profile for each application and total follower count combined aswell.
-- User can set filter on Photographer based on experience and search a list that matches.
-- User can send message to Photographer to collaborate
-- User can gain more points for working with photographers with less experience.
+### USER:
+- Welcome Page, screen transitions upwards to Sign-up page when button clicked.
 
-### Photographer:
+- User Sign-up Page, in the form they check whether they are a model or photographer.
+    - Data will be stored in seperate tables under the User table (Influencer/Photographer).
+    - When submited the page will transition to Profile page.
+
+### USER/Influencer:
+- Profile Page, User can customize their page. A profile pic, experience form, photo library, about, links, body posts.
+    - Main function will be asking the user for their Social media accounts, and using beautifulsoup to scrape accounts for user Amounts. And Displaying follower counts on profile.
+    - Direct messaging.
+    - Search for photographer.
+
+### USER/Photographer:
 - User must signup and upload portfolio/experience and other collaborations to their profile.
 - User can set filter on search to get a list that meets the preffered follower count criteria.
 - User can send message to Influencer to collaborate.
+
+
+### Rank System:
+- User can gain more points for working with photographers with less experience.
 - User can gain points for working with Influencers with lower follower count to get there portfolio on the main website feed.
 
 ### Functions:
@@ -65,3 +75,13 @@ Once one is found, the user can message directly for connections or to collabora
 - Complete this
 
 #
+
+
+
+<!-- 
+
+### Influencer:
+- User must signup and are also required to link their social media accounts to get their follower counts.
+- User will have the follower count displayed on their profile for each application and total follower count combined aswell.
+- User can set filter on Photographer based on experience and search a list that matches.
+- User can send message to Photographer to collaborate -->
