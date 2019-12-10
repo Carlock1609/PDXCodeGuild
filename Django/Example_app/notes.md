@@ -5,8 +5,8 @@ get in desired fodler to have pipenv
 - then initiate pip shell by py -3 -m pipenv shell 
 - pip list for lsit of pip
 
-// HOW TO INSTALL
-- py -3 -m pip install django
+// HOW TO INSTALL IN PIPENV
+- py -3 -m pipenv install django
 -  specific version django===2.0
 
 // CREATE ADMIN-FOLDER
