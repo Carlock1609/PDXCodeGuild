@@ -1,12 +1,12 @@
-li a {
-    color: green;
-}
-
 body {
     
     background: white url("images/background_1.webp") no-repeat center;
     background-size: cover;
   }
+  
+li a {
+    color: black;
+}
 
   .vertical-center {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -15,7 +15,8 @@ body {
     display: flex;
     align-items: center;
   }
-
 .jumbotron {
-   background-color: rgba(88, 121, 86, 0);
+   background-color: rgba(255, 255, 255, 0);
 }
+
+
