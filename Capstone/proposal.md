@@ -26,6 +26,7 @@ Once one is found, the user can message directly for connections or to collabora
 
 ## **Functionality**
 
+### PLAY-BY-PLAY ----
 ### USER:
 - Welcome Page, screen transitions upwards to Sign-up page when button clicked.
 
@@ -36,29 +37,45 @@ Once one is found, the user can message directly for connections or to collabora
 ### USER/Influencer:
 - Profile Page, User can customize their page. A profile pic, experience form, photo library, about, links, body posts.
     - Main function will be asking the user for their Social media accounts, and using beautifulsoup to scrape accounts for user Amounts. And Displaying follower counts on profile.
-    - Direct messaging.
-    - Search for photographer.
+- Direct messaging.
 
 ### USER/Photographer:
-- User must signup and upload portfolio/experience and other collaborations to their profile.
-- User can set filter on search to get a list that meets the preffered follower count criteria.
-- User can send message to Influencer to collaborate.
+- Profile Page, User can customize their page.  A profile pic, experience form, photo library, about, links, body posts.
+    - User will be able to link their own personal portfolios
+- Direct messaging.
 
+### USER:
+- Search Page, Influencer/Photographer will use the search page to search through a list of other photographers or influencers on the application.
+- User can set different filters for better results, (follower count/work experience)
+- Once user clicks on user, they are able checkout their profile and send direct messages.
+### PLAY-BY-PLAY-end ----
+
+### PAGES:
+- Welcome Page **MVP
+- Sign-up Page **MVP
+- Profile Page **MVP
+- Search Page **MVP
+- Direct Messaging Page **MVP
+- Community Board Page
+- Main Feed Page (More used for rank system atm)
 
 ### Rank System:
 - User can gain more points for working with photographers with less experience.
 - User can gain points for working with Influencers with lower follower count to get there portfolio on the main website feed.
 
 ### Functions:
-- User Signup Form
-- User Authentication
-
-- WebScraper to obtain follower counts - BeautifulSoup4
-- User Rank system that intices users to work with other users who need more experience and there foot in the door. Rank system gives extra points for that.
-- Chat system
-    - Direct Messaging 
-    - Group Messaging
-    - Community boards
+- User Signup form. **MVP
+- User Authentication. **MVP
+- Profile Customization.
+    - Saving User Profile and bringing it back when authenticated.
+    - Other Users able to post on profile Body. **MVP - instead of DM
+- Search page, able to search through User Database (photographer or incluencer). **MVP
+    - User is able to filter preferences. (Follower count/Experience).
+- Direct messaging. **MVP
+- Community Board.
+- User manaully enters follower count on profile. **MVP
+    - WebScraper to obtain follower counts - BeautifulSoup4.
+- User rank system to intice users to work with lessers, display top users on main feed.
 
 ### Function Ideas:
 - Photo Location marker - When photos are used, a suggestion comes up to share location so it will be plotted on a map, so other Users can find cool spots to take pictures.
@@ -66,9 +83,9 @@ Once one is found, the user can message directly for connections or to collabora
 
 ## **Data Model**
 
-- User - Login information, Profile Info, photos, portfolios, follower counts, display
-- Messages - private messages, Community board messages
-- Map locatoions - local markers locations for Map
+- User - Login information, Profile Info(photos, portfolios, follower counts, display, experience forms). **MVP
+- Messages - private messages, Community board messages. **MVP
+- Map locations - local markers locations for Map.
 
 #
 ## **Schedule**
@@ -76,12 +93,3 @@ Once one is found, the user can message directly for connections or to collabora
 
 #
 
-
-
-<!-- 
-
-### Influencer:
-- User must signup and are also required to link their social media accounts to get their follower counts.
-- User will have the follower count displayed on their profile for each application and total follower count combined aswell.
-- User can set filter on Photographer based on experience and search a list that matches.
-- User can send message to Photographer to collaborate -->
