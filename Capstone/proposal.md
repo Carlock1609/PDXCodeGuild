@@ -93,3 +93,7 @@ Once one is found, the user can message directly for connections or to collabora
 
 #
 
+
+
+<!-- FIGURE out how to store images on another server, and keep app seperate -->
+<!-- That’s what django.contrib.staticfiles is for: it collects static files from each of your applications (and any other places you specify) into a single location that can easily be served in production. -->
