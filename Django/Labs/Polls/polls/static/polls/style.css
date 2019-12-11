@@ -4,6 +4,18 @@ li a {
 
 body {
     
-    background: white url("images/background_pencil.webp") no-repeat center;
+    background: white url("images/background_1.webp") no-repeat center;
     background-size: cover;
   }
+
+  .vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
+
+.jumbotron {
+   background-color: rgba(88, 121, 86, 0);
+}
