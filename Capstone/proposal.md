@@ -78,9 +78,20 @@
 #
 
 ## **Data Model**
-- User - Login information, Profile Info(photos, portfolios, follower counts, display, experience forms). **MVP
-- Messages - private messages, Community board messages. **MVP
-- Map locations - local markers locations for Map.
+- User MODEL:
+    - Login information 
+    - Profile Info **MVP
+        - Pictures
+        - Body Posts
+        - Portfolios 
+        - Follower counts 
+        - Display 
+        - Experience forms 
+- Messages MODEL **MVP
+    - Private messages
+    - Community board messages.
+- Map locations MODEL 
+    - Local markers locations for Map.
 
 #
 ## MVP
