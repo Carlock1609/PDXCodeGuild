@@ -45,7 +45,7 @@
 - User can set different filters for better results, (follower count/work experience)
 - Once user clicks on another user, they are able checkout their profile and send direct messages/Make body posts.
 ### PLAY-BY-PLAY-end ----
-
+## (Listed items that contain **MVP at the end is what I want to be done by the capstone.)
 ### PAGES:
 - Welcome Page **MVP
 - Sign-up Page **MVP
