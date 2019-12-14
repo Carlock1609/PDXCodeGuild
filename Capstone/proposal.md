@@ -79,6 +79,7 @@
 
 ## **Data Model**
 (Models with two attributes with sub attributes? Better organization?)
+(Should I rather make two seperate models (Credentials and Profile)?)
 - User MODEL:
     - Credentials **MVP
         - Username 
