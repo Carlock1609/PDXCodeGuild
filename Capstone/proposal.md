@@ -15,9 +15,9 @@
     ### Libraries/Frameworks
 
     - BeautifulSoup4 - Will be used to scrape linked social media account for follower counts.
-    - Django - will be used to authenticate users and make sure they have actual social media accounts. And to store their profiles properly in a DB.
+    - Django - will be used for web framework.
     - Leaflet, MapBoxing - Will be used to plot out local spots perfect for taking photos.
-    - Bootstrap4 - This will be pretty heavy in frontend
+    - Bootstrap4 - This will be pretty heavy in frontend.
 #
 
 ## **Functionality**
@@ -31,17 +31,17 @@
     - When submited the page will transition to Profile page.
 
 ### USER/Influencer:
-- Profile Page-- User can customize their page. A profile pic, experience form, photo library, about form, links, body posts.
-    - Main function will be asking the user for their Social media accounts, and using beautifulsoup to scrape accounts for user Amounts. And Displaying follower counts on profile.
+- Profile Page-- User can customize their page. A profile pic, experience form, photo library, about form, portfolio links and body posts.
+    - Main function will be asking the user for their Social media accounts, and using beautifulsoup to scrape accounts for follower amounts, and Displaying follower counts on profile.
 - Direct messaging.
 
 ### USER/Photographer:
-- Profile Page-- User can customize their page. A profile pic, experience form, photo library, about, links, body posts.
+- Profile Page-- User can customize their page. A profile pic, experience form, photo library, about form, portfolio links and body posts.
     - User will be able to link their own personal portfolios
 - Direct messaging.
 
 ### USER/BOTH:
-- Search Page-- Influencer/Photographer will use the search page to search through a list of other photographers or influencers on the application.
+- Search Page-- Influencer/Photographer will use the search page to search through a list of other photographers or influencers on the application database.
 - User can set different filters for better results, (follower count/work experience)
 - Once user clicks on another user, they are able checkout their profile and send direct messages/Make body posts.
 ### PLAY-BY-PLAY-end ----
@@ -53,17 +53,17 @@
 - Search Page **MVP
 - Direct Messaging Page **MVP
 - Community Board Page
-- Main Feed Page (More used for rank system atm)
+- Main Feed Page (will be used for rank system ideas)
 
 ### Rank System:
-- User can gain more points for working with photographers with less experience.
-- User can gain points for working with Influencers with lower follower count to get there portfolio on the main website feed.
+- Influencer can gain more points for working with photographers with less experience.
+- Photographer can gain points for working with Influencers with lower follower count to get there portfolio on the main website feed.
 
 ### Functions:
 - User Signup form. **MVP
 - User Authentication. **MVP
 - Profile Customization.
-    - Saving User Profile and bringing it back when authenticated.
+    - Saving User Profile and bringing it back when authenticated. **MVP
     - Other Users able to post on profile Body. **MVP
 - Search page, able to search through User Database (photographer or incluencer). **MVP
     - User is able to filter preferences. (Follower count/Experience).
@@ -71,26 +71,30 @@
 - Community Board.
 - User manaully enters follower count on profile. **MVP
     - WebScraper to obtain follower counts - BeautifulSoup4.
-- User rank system to intice users to work with lessers, display top users on main feed.
+- User rank system to intice users to work with lessers, and display top users on main feed.
 
 ### Function Ideas:
 - Photo Location marker - When photos are used, a suggestion comes up to share location so it will be plotted on a map, so other Users can find cool spots to take pictures.
 #
 
 ## **Data Model**
+(Models with two attributes with sub attributes? Better organization?)
 - User MODEL:
-    - Login information 
-    - Profile Info **MVP
-        - Pictures
+    - Credentials **MVP
+        - Username 
+        - Password
+        - Email
+    - Profile Info 
+        - Pictures **MVP
         - Body Posts
-        - Portfolios 
-        - Follower counts 
-        - Display 
-        - Experience forms 
-- Messages MODEL **MVP
-    - Private messages
+        - Portfolio links **MVP
+        - Follower counts **MVP
+        - Display (ability to customize profile)
+        - Experience forms **MVP
+- Messages MODEL: 
+    - Private messages **MVP
     - Community board messages.
-- Map locations MODEL 
+- Map locations MODEL: 
     - Local markers locations for Map.
 
 #
@@ -105,7 +109,7 @@
 - User manaully enters follower count on profile. **MVP
 ### Stored Data MVP's
 - User - Login information, Profile Info(photos, portfolios, follower counts, display, experience forms). **MVP
-- Messages - private messages, Community board messages. **MVP
+- Messages - private messages, Community bord messages. **MVP
 
 #
 ## **Schedule**
