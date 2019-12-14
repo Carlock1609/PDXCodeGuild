@@ -11,7 +11,7 @@ class PersonLibrary(models.Model):
 
     # THIS IS THE NAME OF THE OBJECT ELEMENT FACE
     def __str__(self):
-            return f'{self.names}, {self.age}'
+            return self.names
 
     def displayPerson(self):
         return f'{self.names} is {self.age} and lives in {self.state}'
