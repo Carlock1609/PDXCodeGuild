@@ -109,3 +109,5 @@ URLS & VIEWS
 # VIEWS RECIEVES URL'S PICKED FUNCTION AND FIRES RESPONSE HTML TO BROWSER
 
 # FROM . IMPORT VIEWS GETS THE PATH TO LOCAL VIEWS.py FILE
+
+# DEPENDENCIES in migrations is tables that depend on other table data-- list will empty if the model does not use other DB for their data
