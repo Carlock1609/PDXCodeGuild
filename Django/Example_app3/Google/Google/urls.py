@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# SERVER RECIEVES REQUEST TO /about
+# THEN URL FIGURESOUT WHICH FUNCTION TO FIRE TO VIEWS
+# IN THIS CASE INDEX
+
 urlpatterns = [
     path("app1/", include("app1.urls")),
     path('admin/', admin.site.urls),

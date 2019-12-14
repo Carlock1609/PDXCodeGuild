@@ -88,4 +88,24 @@ print(x.name)
 
 3. Nullable fields, if you a field is not required if field out, you must set params(null=True, blank=True) so it can be blank without errors
 
-4. 
+
+***
+CLIENT
+- browser
+
+SERVER
+- django framework
+- python code
+- database
+- html templates
+
+Client request to myapp.com/profile
+Server reponds and sends html template back
+
+URLS & VIEWS
+# SERVER RECIEVES REQUEST TO /about
+# THEN URL FIGURESOUT WHICH FUNCTION TO FIRE TO VIEWS
+# IN THIS CASE INDEX
+# VIEWS RECIEVES URL'S PICKED FUNCTION AND FIRES RESPONSE HTML TO BROWSER
+
+# FROM . IMPORT VIEWS GETS THE PATH TO LOCAL VIEWS.py FILE
