@@ -118,4 +118,8 @@ URLS & VIEWS
 
 In project URLS it says "app.urls" which links to to the apps URL.py file
 
-When setting the Base.html template. anything in the block content will happen to anything it extends to
+When setting the Base.html template. anything in the block content will happen to anything it extends to.
+
+Do I make another USERS App specifically to signup/registration page
+
+Make sub Template folders for different apps, but extend from the original BASE.html
