@@ -111,3 +111,11 @@ URLS & VIEWS
 # FROM . IMPORT VIEWS GETS THE PATH TO LOCAL VIEWS.py FILE
 
 # DEPENDENCIES in migrations is tables that depend on other table data-- list will empty if the model does not use other DB for their data
+
+
+** YOU ARE ABLE TO HAVE MULTIPLE APPS, IF YOU LIKE ONE APP YOU MADE SAY LIKE A BLOG, YOU CAN ADD THAT BLOG APP TO OTHER SITES
+
+
+In project URLS it says "app.urls" which links to to the apps URL.py file
+
+When setting the Base.html template. anything in the block content will happen to anything it extends to
