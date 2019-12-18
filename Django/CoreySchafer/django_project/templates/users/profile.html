@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+<!-- THIS IS A INSTALLED LIBRARY TO MAKE FORM LOOK PRETTY -->
+{% load crispy_forms_tags %}
+
+<!-- DOUBLE CURLY for queries -->
+{% block content %}
+    <h1>{{ user.username }}</h1>
+{% endblock %}

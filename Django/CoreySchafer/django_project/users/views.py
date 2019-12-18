@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
 # GET USERREGISTERFORM FROM FORM.py
@@ -14,11 +15,16 @@ def register(request):
             # is valid will have cleaned_data in dict
             username = form.cleaned_data.get('username')
             # flash message
-            messages.success(request, f'Account created for {username}!')
-            return redirect('blog-home')
+            messages.success(request, f'Your account has been created! You are now able to log in.')
+            return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+# DECORATED. USER MUST BE LOGGED IN TO GO INTO THIS PAGE -- from django.contrib.auth.decorators import login_required
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
 
 
 
