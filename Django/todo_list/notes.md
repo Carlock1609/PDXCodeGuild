@@ -227,6 +227,8 @@ details(request, id)
         'todo': a_todo - variable
     }
 
+START HERE - 12/18
+
 FOR add_todo go to create.html
     - create form action= http://localhost:8000/todos/add/ and post
     - add crsf_token
@@ -261,3 +263,9 @@ on list.html
 - OVERVIEW OF DETAIL 
     - when someone goes to id 1
         which the object will grab that id Todo.objects.get(id = id)
+
+
+When path('todos/', include('todo_app.urls')) points-> to todo_app/urls.py it looks at which path('url/' was put into link, when action href was pushed. and depending on that, then looks at the views and looks at what function you set, views.add_todo, and does that function add_todo()
+User request -> url.py -> views.py(selects function/template sends) -> Responds to User
+
+<!-- When the form action happens it goes to the add/ function and it has a if elif statement. The if statement checks for the post method, then redirects to list page, and if it has get method then it adds to the model-->

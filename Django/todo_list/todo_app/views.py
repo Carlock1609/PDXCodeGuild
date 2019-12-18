@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 
 # Create your views here.
@@ -10,16 +10,19 @@ def list_todos(request):
     }
     return render(request, 'todos/list.html', context)
 
-def  add_todo(request):
+def add_todo(request):
     if(request.method == 'GET'):
+        # sends user to create.html to add task
         return render(request, 'todos/create.html')
     elif(request.method == 'POST'):
+        # else posts task to list DB
         #  - THIS CREATES NEW POST, THIS IS LIKE USING save()
         new_todo = Todo.objects.create(
-            title = request.POST['title']
-            text = request.POST['text']
-            status = request.POST['status']
+            title = request.POST['title'],
+            text = request.POST['text'],
+            status = request.POST['status'],
         )
+        # returns to list page
     return redirect('list')
 
 def remove_todo(request):

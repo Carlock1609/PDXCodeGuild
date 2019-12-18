@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>connected detail</h1>
+    <h2>{{ todo.title }}</h2><br>
+    <h3>{{ todo.text }}</h3>
+    <h3>{{ todo.status }}</h3><br>
+    <h3>{{ todo.create_at }}</h3><br>
+    <a href="http://localhost:8000/todos/mark/">Mark Done</a>
+    <a href="http://localhost:8000/todos/remove/">Remove</a>
+    <a href="http://localhost:8000/todos/update/">Update</a>
+    <a href="http://localhost:8000/todos/">Back to list</a>
 {% endblock %}
+

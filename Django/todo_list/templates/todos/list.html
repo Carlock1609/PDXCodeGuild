@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href=" http://localhost:8000/todos/add/">Add todo</a>
-    <ul>
-        {% for todo in todos %}
-            <li>
-                {{ todos.title }}
-            </li>
-        {% empty %}
-            <p>List is EMPTY</p>
-        {% endfor %}
-    </ul>
+    <h2>
+        <a href="http://localhost:8000/todos/add/" action="GET">Add task</a>
+        
+        <ul>
+            {% for todo in todos %}
+                <li>
+                    <!-- FIGURE OUT HOW TO GET ID -->
+                    <a href="http://localhost:8000/todos/detail/">{{ todos.title }}</a>
+                </li>
+            {% empty %}
+                <p>List is EMPTY</p>
+            {% endfor %}
+        </ul>
+    </h2>
 {% endblock %}
