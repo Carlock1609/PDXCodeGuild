@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href=" http://localhost:8000/todos/add/">Add todo</a>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                {{ todos.title }}
+            </li>
+        {% empty %}
+            <p>List is EMPTY</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
