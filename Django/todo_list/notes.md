@@ -269,3 +269,5 @@ When path('todos/', include('todo_app.urls')) points-> to todo_app/urls.py it lo
 User request -> url.py -> views.py(selects function/template sends) -> Responds to User
 
 <!-- When the form action happens it goes to the add/ function and it has a if elif statement. The if statement checks for the post method, then redirects to list page, and if it has get method then it adds to the model-->
+
+EPISODE 8 GOES OVER ONE TO ONE WITH USERS AND THEIR PROFILES

@@ -1,8 +1,15 @@
-{% extends 'blog/base.html' %}
-<!-- THIS IS A INSTALLED LIBRARY TO MAKE FORM LOOK PRETTY -->
+{% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
-
-<!-- DOUBLE CURLY for queries -->
 {% block content %}
-    <h1>{{ user.username }}</h1>
-{% endblock %}
+    <div class="content-section">
+      <div class="media">
+          <!-- THIS IS HOW YOU IMPORT PHOTO -->
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+{% endblock content %}
