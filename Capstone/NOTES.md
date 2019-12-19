@@ -1,3 +1,15 @@
+**STRUCTURE**
+DONT EDIT FILES OR EDIT NAMES - SHIT STORM
+
+My_capstone - container
+    my_project
+    my_app1
+    my_app2
+    manage.py
+    static
+    templates
+    pipfile
+
 **IDEAS:**
 - Should I make seperate apps for each function? 
     - Profile app
@@ -15,7 +27,6 @@
         - search page
         - about
 - For django's default User_Auth -- Should I make a custome Auth to incorp unique social media accounts?
-
 
 **RANDOM NOTES:**
 

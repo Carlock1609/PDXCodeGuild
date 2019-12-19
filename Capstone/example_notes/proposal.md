@@ -131,7 +131,7 @@
     - Search Page function-- Day Thu-Sun
 4. WEEK:
     - Heavy Front-end-- Day Mon-Fri 
-    - Beautifulsoup4 function-- Day Fri-Sun
+    - BeautifulSoup4 function-- Day Fri-Sun
 
 After Presentation
 
@@ -149,4 +149,16 @@ After Presentation
 
 #
 
+# INSTRUCTOR NOTES TO WORK ON
 
+FIRST WORK ON USER-TO-USER MESSAGING ON CHRISTMAS BREAK
+    - Get simple layout
+
+Figure out rank system idea, kind of redundant
+    - WORK ON RANK SYSTEM, 
+
+API, ON INSTAGRAM YOUTUBE CAN I USE? AXIOS
+    - USE API to get Followers off of instagram and youtube
+
+MAKE A CUSTOM USER MODEL
+    - CUSTOMIZE USER MODEL

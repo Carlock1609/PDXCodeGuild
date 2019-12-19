@@ -271,3 +271,7 @@ User request -> url.py -> views.py(selects function/template sends) -> Responds 
 <!-- When the form action happens it goes to the add/ function and it has a if elif statement. The if statement checks for the post method, then redirects to list page, and if it has get method then it adds to the model-->
 
 EPISODE 8 GOES OVER ONE TO ONE WITH USERS AND THEIR PROFILES
+
+
+FOR TIMEZONES
+created_at = models.DateTimeField(created_at = timezone.now)

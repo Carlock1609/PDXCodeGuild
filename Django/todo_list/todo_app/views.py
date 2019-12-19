@@ -22,6 +22,7 @@ def add_todo(request):
             text = request.POST['text'],
             status = request.POST['status'],
         )
+        new_todo.save()
         # returns to list page
     return redirect('list')
 
@@ -32,7 +33,11 @@ def update(request, id):
     pass
 
 def mark(request, id):
-    pass
+    a_todo = Todo.objects.get(id = id)
+    a_todo.status=True
+    print("HHHHHHHHHHHHHHHHHHHHHEDSADJKSDJASDJAKLSDHJLDHSJADJSAJHKSADJSDALJHKASDJK")
+    a_todo.save()
+    return redirect('list')
 
 def detail(request, id):
     a_todo = Todo.objects.get(id = id)
