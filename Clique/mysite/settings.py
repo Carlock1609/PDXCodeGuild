@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'pages',
 ]
 
+# 'users.apps.UsersConfig'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,3 +128,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+# FOR PROFILE PIC, it uploads to specific media folder instead of have profile pic folder
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
