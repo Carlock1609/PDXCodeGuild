@@ -1,8 +1,8 @@
 console.log('connected')
 
-// let mark = document.querySelector("#mark")
+let ul = document.querySelector('ul')
+let li = document.querySelector('li')
 
-// mark.addEventListener("click", function(){
-//     alert("HELLO")
-//     {{ todo.status="True" }}
-// })
+for(li in ul) {
+    console.log(Todo.title)
+}

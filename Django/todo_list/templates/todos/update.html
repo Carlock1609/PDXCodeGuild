@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>connected update</h1>
+    <form action="http://localhost:8000/todos/update/{{ todo.id }}" method="POST">
+        {% csrf_token %}
+        <br>
+        <h2>Title:</h2><input type="title" name="title" value="{{ todo.title }}"><br>
+        <br>
+        <h2>Description:</h2><textarea name="text" type="text" cols="20" rows="10">{{ todo.text }}</textarea><br>
+        <select class="mt-3" name="status" type="status">
+            <option value="True">True</option>
+            <option selected="selected" value="False" >False</option>
+        </select><br>
+        <button class="btn btn-primary mt-4" type="submit" value="add">Submit</button>
+    </form>
 {% endblock %}
+
+ <!-- When the form action happens it goes to the add/ function and it has a if elif statement. The if statement checks for the post method, then redirects to list page, and if it has get method then it adds to the model-->

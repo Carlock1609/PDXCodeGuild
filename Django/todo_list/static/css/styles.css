@@ -10,3 +10,10 @@ h1, h2, h3, h4 {
     background-color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
 }
+
+form {
+    margin-top: 5px;
+}
+div {
+    margin-top: 5px;
+}

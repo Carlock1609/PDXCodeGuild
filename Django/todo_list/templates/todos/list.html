@@ -7,7 +7,6 @@
         <ul>
             {% for todo in todos %}
                 <li>
-                    <!-- FIGURE OUT HOW TO GET ID -->
                     <a href="http://localhost:8000/todos/detail/{{ todo.id }}">{{ todo.title }}</a>
                 </li>
             {% empty %}

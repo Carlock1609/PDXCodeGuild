@@ -6,12 +6,27 @@
     <h4>{{ todo.text }}</h4><br>
     <h3>Current Status: {{ todo.status }}</h3><br>
     <h3>{{ todo.create_at }}</h3><br>
-    <span><form method="POST" action="http://localhost:8000/todos/mark/{{ todo.id }}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Mark Done</button></form> |
-    <a id="remove" href="http://localhost:8000/todos/remove/">Remove</a> |
-    <a id="update" href="http://localhost:8000/todos/update/">Update</a> | 
-    <a id="list" href="http://localhost:8000/todos/">Back to list</a> | </span>
+
+        <form method="POST" action="http://localhost:8000/todos/mark/{{ todo.id }}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Mark Done</button>
+        </form>
+        <form method="POST" action="http://localhost:8000/todos/remove/{{ todo.id }}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Remove</button>
+        </form>
+        <div>
+            <a href="http://localhost:8000/todos/update/{{ todo.id }}">
+                <button type="submit" class="btn btn-primary">Update</button> 
+            </a>
+        </div>
+        <div>
+            <a href="http://localhost:8000/todos/">
+                <button type="submit" class="btn btn-primary">Back to list</button>
+            </a>
+        </div>
+        
+        
 {% endblock %}
 
 <!-- <a id="mark" method="POST" href="http://localhost:8000/todos/mark/{{ todo.id }}/" action="">Mark Done</a> -->

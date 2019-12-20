@@ -26,16 +26,33 @@ def add_todo(request):
         # returns to list page
     return redirect('list')
 
-def remove_todo(request):
-    pass
+def remove_todo(request, id):
+    a_todo = Todo.objects.get(id = id)
+    a_todo.delete()
+    return redirect('list')
 
 def update(request, id):
-    pass
+    a_todo = Todo.objects.get(id= id)
+
+    if(request.method == 'GET'):
+        # else posts task to list DB
+        #  - THIS CREATES NEW POST, THIS IS LIKE USING save()
+        context = {
+            'todo': a_todo,
+        }
+        # returns to list page
+        return render(request, 'todos/update.html', context)
+    elif(request.method == 'POST'):
+        a_todo.title = request.POST['title']
+        a_todo.text = request.POST['text']
+        a_todo.status = request.POST['status']
+        a_todo.save()
+                
+        return redirect('list')
 
 def mark(request, id):
     a_todo = Todo.objects.get(id = id)
     a_todo.status=True
-    print("HHHHHHHHHHHHHHHHHHHHHEDSADJKSDJASDJAKLSDHJLDHSJADJSAJHKSADJSDALJHKASDJK")
     a_todo.save()
     return redirect('list')
 
