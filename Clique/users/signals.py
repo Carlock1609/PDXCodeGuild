@@ -10,7 +10,7 @@ def create_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
-def save_profile(sender,instance, **kwargs):
+def save_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 # when finished go to apps.py

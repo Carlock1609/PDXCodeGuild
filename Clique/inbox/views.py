@@ -1,6 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
+def search_page(request):
+    return render(request, 'inbox/search_page')
+
+def community_page(request):
+    return render(request, 'inbox/community_page')
+
 
 
 
