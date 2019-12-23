@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <title>{% block title %}Clique - Login{% endblock %}</title>
+
+    {% if title %}
+      <title>Clique - {{ title }}</title>
+    {% else %}
+      <title>Clique</title>
+    {% endif %}
 
   </head>
   <body>
