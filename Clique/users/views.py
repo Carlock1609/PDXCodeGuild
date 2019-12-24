@@ -1,20 +1,29 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-from .models import Profile, CustomUser
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import UserRegisterForm
 
-from .forms import CustomUserCreationForm
+
 # Create your views here.
+# GET USERREGISTERFORM FROM FORM.py
+# Create your views here.
+def register(request):
+    # Checks to see if method is POST
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            # hashes password and secured.
+            form.save()
+            # is valid will have cleaned_data in dict
+            username = form.cleaned_data.get('username')
+            # flash message
+            messages.success(request, f'Your account has been created! You are now able to log in.')
+            return redirect('login')
+    else:
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
 
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'users/signup.html'
-
+# DECORATED. USER MUST BE LOGGED IN TO GO INTO THIS PAGE -- from django.contrib.auth.decorators import login_required
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
-
-def home(request):
-    return render(request, 'users/home.html')

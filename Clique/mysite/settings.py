@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#hz7qnl&d(nge*pxq9h9cov)6%iu_@9=kb_0%hk_y%2h96m#=$'
+SECRET_KEY = '^wj&zl6inxr)+!9d+m!lw4=7i_gahzopx-=2dwn*kco7$f-=er'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,8 +122,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'users.CustomUser'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
-# REDIRECT LINKS
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# THIS IS HOW TO LINK LIBRARYS
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# AFTER LOGIN IT REDIRECTS TO THE URL NAME
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+# IF USER TRIES TO ACCESS PROFILE PAGE WHILE LOGOUT, REDIRECTS TO LOG IN PAGE
+LOGIN_URL = 'login'
+

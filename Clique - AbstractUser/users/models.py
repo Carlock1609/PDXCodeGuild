@@ -1,11 +1,17 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-# THIS IMPORTS BUILTIN USER MODEL
-from django.contrib.auth.models import User
+from django import forms
+
 
 # Create your models here.
+class CustomUser(AbstractUser):
+    pass
+
+    def __str__(self):
+        return self.username
+    
 class Profile(models.Model):
-    # The param gives it a one to one relationship, models.CASCADE means if user is deleted, then everything is gone.
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     firstname = models.CharField(default='', max_length=20)
     city = models.CharField(default='', max_length=30)
     socialname = models.CharField(max_length=30)
@@ -18,4 +24,3 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-# MUST INSTALL PILLOW
