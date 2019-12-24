@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="http://localhost:8000/app/saveurl/" method="POST">
+        {% csrf_token %}
+        <br>
+        <h2>URL:</h2><input type="url" name="url" placeholder="Enter url here..."><br>
+        <br>
+        <button class="btn btn-primary mt-4" type="submit" value="add">Submit</button>
+    </form>
+{% endblock %}
+
+ <!-- When the form action happens it goes to the add/ function and it has a if elif statement. The if statement checks for the post method, then redirects to list page, and if it has get method then it adds to the model-->

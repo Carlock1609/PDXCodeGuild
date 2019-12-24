@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>
+        <a href="http://localhost:8000/app/saveurl/" action="GET">Add URL</a>
+        
+        <ul>
+            {% for ele in urls %}
+                <li>
+                    <h4> ID: {{ ele.id }} - Code: <a href="http://localhost:8000/app/redirecting/{{ ele.code }}/">{{ ele.code }}</a> - URL: {{ ele.url }}</h4>
+                </li>
+            {% empty %}
+                <p>URL List is EMPTY</p>
+            {% endfor %}
+        </ul>
+    </h2>
+{% endblock %}
