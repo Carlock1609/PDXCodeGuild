@@ -28,9 +28,7 @@ def saveurl(request):
 
 
 def redirecting(request, code):
-    a_url = URLS.objects.get(code = code)
-    context = {
-        'a_url': a_url
-    }
+    a_url = URLS.objects.filter(code = code)
 
-    return render(request, 'redirector/redirecting.html', context)
+    return redirect('redirecting/{{ a_url.url }}')
+    # return redirect("redirecting/{{ a_url }}")

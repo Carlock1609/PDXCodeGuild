@@ -4,14 +4,21 @@
     <h2>
         <a href="http://localhost:8000/app/saveurl/" action="GET">Add URL</a>
         
-        <ul>
+        <table style="width:100%">
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>URL</th>
+            </tr>
             {% for ele in urls %}
-                <li>
-                    <h4> ID: {{ ele.id }} - Code: <a href="http://localhost:8000/app/redirecting/{{ ele.code }}/">{{ ele.code }}</a> - URL: {{ ele.url }}</h4>
-                </li>
+            <tr>
+                <td>{{ ele.id }}</td>
+                <td><a href="http://localhost:8000/app/redirecting/{{ ele.code }}/">{{ ele.code }}</a></td>
+                <td>{{ ele.url }}</td>
+            </tr>
             {% empty %}
                 <p>URL List is EMPTY</p>
             {% endfor %}
-        </ul>
+        </table>
     </h2>
 {% endblock %}

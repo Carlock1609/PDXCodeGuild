@@ -7,7 +7,7 @@ class URLS(models.Model):
     code = models.CharField(max_length=10)
 
     def __str__(self):
-        return f'{self.code} - {self.url}'
+        return f'{self.code}, {self.url}'
     
     class Meta:
         ordering = ['code','url']
