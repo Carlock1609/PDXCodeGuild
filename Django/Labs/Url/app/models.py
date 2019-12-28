@@ -1,5 +1,5 @@
 from django.db import models
-from random_string import random_gen
+from random_string import random_code
 
 # Create your models here.
 class URLS(models.Model):

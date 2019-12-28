@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from random_string import random_gen
+from random_string import random_code
 from .models import URLS
 
 # Create your views here.
@@ -20,7 +20,7 @@ def saveurl(request):
         #  - THIS CREATES NEW POST, THIS IS LIKE USING save()
         new_url = URLS.objects.create(
             url = request.POST['url'],
-            code = random_gen(),
+            code = random_code(),
         )
         new_url.save()
         # returns to list page
@@ -29,6 +29,8 @@ def saveurl(request):
 
 def redirecting(request, code):
     a_url = URLS.objects.filter(code = code)
+    new_url = a_url[0].url
 
-    return redirect('redirecting/{{ a_url.url }}')
+    return redirect(new_url)
+    # return redirect('redirecting')
     # return redirect("redirecting/{{ a_url }}")
