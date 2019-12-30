@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="tbody">
+        {% for message in received %}
+        <div class="ui card mcard" onclick="openMessage(--insert--here)">
+            <div class="content">
+                <div class="header">{{message.subject}}</div>
+                    <div class="text">{{message.text}}</div>
+                </div>
+            </div>      
+        {% endfor %}                
+    </div>
+
+    <div class="ui column"> 
+        <div class="row">
+            <div id="subject">     </div>
+            <div id="firstname">    </div>
+            <div id="lastname">     </div>
+        </div>
+        <div class="row" id="text"> </div>
+    </div> 
+{% endblock %}

@@ -11,9 +11,9 @@ body {
   ul {
     margin: 0;
   }
-  
-  .bg-steel {
-    background-color: #5f788a;
+
+  #bg-dark {
+    background-color: rgb(59, 59, 59);
   }
   
   .site-header .navbar-nav .nav-link {
