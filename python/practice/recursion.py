@@ -35,3 +35,12 @@ def factorial(num):
     else:
         return num * factorial(num - 1)
 # print(f"factorial calculated from recursion: {factorial(6)}")
+
+def blastoff(num):
+    if num > 0:
+        print(num)
+        blastoff(num-1)
+    else:
+        print(f'BlastOff!!!!')
+# blastoff(3)
+
