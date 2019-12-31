@@ -28,4 +28,4 @@ class InboxDB(models.Model):
                     )    
 
     def __str__(self):
-        return f'{self.Inbox.to}'
+        return f'{self.InboxDB.to}'

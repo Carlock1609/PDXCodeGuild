@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'messenger.apps.MessengerConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
