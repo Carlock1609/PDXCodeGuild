@@ -34,3 +34,19 @@ urlpatterns = [
 # easier to understand instead of directly adding to ulrpatterns
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+# from django.conf.urls import url, include
+# from django.contrib import admin
+# from django.contrib.auth import views as auth_views
+
+# from mysite.core import views as core_views
+
+# urlpatterns = [
+#     url(r'^$', core_views.home, name='home'),
+#     url(r'^login/$', auth_views.login, name='login'),
+#     url(r'^logout/$', auth_views.logout, name='logout'),
+#     url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
+#     url(r'^admin/', admin.site.urls),
+# ]

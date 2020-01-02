@@ -16,6 +16,8 @@
                 <button class="btn btn-outline-info" type="submit">Sign Up</button>
             </div>
         </form>
+        <p><strong>-- OR --</strong></p>
+        <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
         <div class="border-top pt-3">
             <small class="text-muted">
                 Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
