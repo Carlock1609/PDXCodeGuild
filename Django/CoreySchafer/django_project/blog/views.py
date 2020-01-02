@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from .models import Post
+
+# makes you login before posting
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # LIST BASED VIEWS - 
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 # DUMMY DATA
 # posts = [
 #     {
@@ -36,13 +39,41 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView(CreateView): # This template only has two fields for the form.
+class PostCreateView(LoginRequiredMixin, CreateView): # This template only has two fields for the form.
     model = Post  
     fields = ['title', 'content']
 
-    # This sets the post form to have the current logged in user
+    # This sets the post form to have the current logged in user. OVERRIDE
     def form_valid(self, form):
         form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): # This template only has two fields for the form.
+    model = Post  
+    fields = ['title', 'content']
+
+    # This sets the post form to have the current logged in user. OVERRIDE
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = self.get_object()
+        # Checking to see if person making post is author logged in
+        if self.request.user == post.author:
+            return True
+        return False
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+        # Checking to see if person making post is author logged in
+        if self.request.user == post.author:
+            return True
+        return False
 
 
 def about(request):
