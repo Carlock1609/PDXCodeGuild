@@ -19,3 +19,9 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 # MUST INSTALL PILLOW
+
+
+
+# class PostCreateView(CreateView): # This template only has two fields for the form.
+#     model = Post  
+#     fields = ['title', 'content']
