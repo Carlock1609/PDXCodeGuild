@@ -41,12 +41,16 @@ create signals.py in users app
 class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post -->
 
-    
-<!-- class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): # This template only has two fields for the form.
+
+
+**THIS IS USER POST AND SECURITY EXAMPLES**
+**ALSO LIST AND CLASS BASED VIEWS**
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): # This template only has two fields for the form.
 model = Post  
 fields = ['title', 'content']
 
-# This sets the post form to have the current logged in user. OVERRIDE
+ This sets the post form to have the current logged in user. OVERRIDE
 def form_valid(self, form):
     form.instance.author = self.request.user
     return super().form_valid(form)
@@ -68,8 +72,7 @@ def test_func(self):
         return True
     return False -->
 
-
-<!-- {% if object.author == user  %}
+ {% if object.author == user  %}
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
@@ -79,3 +82,68 @@ def test_func(self):
 <h2 class="article-title">{{ object.title }}</h2>
 <p class="article-content">{{ object.content }}</p>
 </div> -->
+
+
+**JSON FAKE DATA**
+>>> import json
+>>> from blog.models import Post
+
+ with open('posts.json') as f:
+...     posts_json = json.load(f)
+
+>>> for post in posts_json:
+...     post = Post(title=post['title'], content =post['content'], author_id=post['user_id'])
+...     post.save()
+...
+>>> exit()
+
+**PAGINATION SHELL CODES**
+>>> from django.core.paginator import Paginator
+>>> posts = ['1', '2', '3', '4', '5']
+>>> p = Paginator(posts, 2)
+>>> p.num_pages
+3
+>>> for page in p.page_range:
+...     print(page)
+...
+1
+2
+3
+>>> p1 = p.page(1)
+>>>
+>>> p1
+<Page 1 of 3>
+>>> p1.number
+1
+>>> p1.object_list
+['1', '2']
+>>> p1.has_previous()
+False
+>>> p1.has_next()
+True
+>>> p1.next_page_number()
+2
+>>>
+
+**PAGINATION TEMPLATE EXAMPLES**
+
+{% if is_paginated %}
+  {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+  {% endif %}
+
+  {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>  
+      {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+  {% endif %}
+
+{% endif %}

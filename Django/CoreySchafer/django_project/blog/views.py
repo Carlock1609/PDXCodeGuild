@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.contrib.auth.models import User
 
 # makes you login before posting
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -8,7 +9,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 # DUMMY DATA
 # posts = [
 #     {
-#         'author': 'CoreyMS',
 #         'title': 'Blog Post 1',
 #         'content': 'First post content',
 #         'date_posted': 'Augest 27, 2018',
@@ -34,10 +34,20 @@ class PostListView(ListView):
     template_name = 'blog/home.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']  # how to change posts. - makes it newest
+    paginate_by = 5 # Pagination, setting posts per page
+
+class UserPostListView(ListView): # User views
+    model = Post
+    template_name = 'blog/user_posts.html' # <app>/<model>_<viewtype>.html
+    context_object_name = 'posts'
+    paginate_by = 5 # Pagination, setting posts per page
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
 
 class PostDetailView(DetailView):
     model = Post
-
 
 class PostCreateView(LoginRequiredMixin, CreateView): # This template only has two fields for the form.
     model = Post  
