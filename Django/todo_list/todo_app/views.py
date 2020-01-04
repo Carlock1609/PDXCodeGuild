@@ -3,6 +3,7 @@ from .models import Todo
 
 # Create your views here.
 def list_todos(request):
+    # todos = Todo.objects.filter(user = request.user) # 
     todos = Todo.objects.all()
 
     context = {
@@ -21,6 +22,7 @@ def add_todo(request):
             title = request.POST['title'],
             text = request.POST['text'],
             status = request.POST['status'],
+            # user = request.user # MUST ADD IF YOU WANT TO HAD LIST FOR
         )
         new_todo.save()
         # returns to list page
