@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for image in images %}
+        <img src="{{ image.user_image.url }}" alt="">
+    {% endfor %}
+{% endblock %}
+
+<!-- <img src="{{image.url}}"/> -->
+
+<!-- create a link -->
+<!-- <a href="{{image.url}}">{{image.name}}</a> -->

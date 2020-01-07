@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+ Hi {{ user.username }}!
+ <p><a href="{% url 'logout' %}">logout</a></p>
+  <!-- IF AUTHENTICATED PHOTOS -->
+<!-- display the image-->
+
+
+<form action="http://127.0.0.1:8000/pages/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="image" name="my_image" accept="image/*" required>
+  <button type="submit">submit</button>
+</form>
+
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a> |
+  <a href="{% url 'signup' %}">signup</a>
+{% endif %}
+{% endblock %}
