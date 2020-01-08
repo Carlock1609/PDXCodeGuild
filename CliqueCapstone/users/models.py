@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -27,8 +28,13 @@ class UserProfile(models.Model):
     photo_library = models.ImageField()
 
     def __str__(self):
-        return f"{self.username}'s Profile"
+        return f"{self.user.username}'s Profile"
 
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+        
+post_save.connect(create_profile, sender=CustomUser)
 
 
 # class UserImage(models.Model):

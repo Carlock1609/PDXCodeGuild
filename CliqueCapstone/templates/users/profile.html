@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <title>Profile</title>
+{% endblock %}
+
 {% block content %}
-    <h1>CONNECTED TO PROFILE</h1>
+<div>
+     <h1>Profile</h1>
+     <p>Username: {{ user_profile.user.bio }}</p>
+     <p>First name: {{ user_profile }}</p>
+     <p>Last name: {{ user_profile.First_name }}</p>
+     <p>Email: {{ user_profile.email }}</p>
+     <p>Bio: {{ user_profile.bio }}</p>
+</div>
 {% endblock %}
