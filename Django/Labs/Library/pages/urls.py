@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.UploadPhoto, name='profile')
+    path('', views.UploadPhoto, name='upload'),
+    path('profile/', views.profile, name='profile'),
 ]

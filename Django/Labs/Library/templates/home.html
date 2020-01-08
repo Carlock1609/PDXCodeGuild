@@ -9,10 +9,9 @@
   <!-- IF AUTHENTICATED PHOTOS -->
 <!-- display the image-->
 
-
 <form action="http://127.0.0.1:8000/pages/" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  <input type="image" name="my_image" accept="image/*" required>
+  <input type="file" name="user_image" required>
   <button type="submit">submit</button>
 </form>
 
