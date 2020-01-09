@@ -4,13 +4,34 @@
     <title>Profile</title>
 {% endblock %}
 
+
 {% block content %}
-<div>
-     <h1>Profile</h1>
-     <p>Username: {{ user_profile.user.bio }}</p>
-     <p>First name: {{ user_profile }}</p>
-     <p>Last name: {{ user_profile.First_name }}</p>
-     <p>Email: {{ user_profile.email }}</p>
-     <p>Bio: {{ user_profile.bio }}</p>
-</div>
+{% if user.is_authenticated %}
+    <div class="container text-center mt-5">
+        <br>
+        <h3>{{ user_profile }}</h1>
+        <br>
+        <h3>Username: {{ user.username }}</h3>
+        <br>
+        <h3>Email: {{ user.email }}</h2>
+        <br>
+        <h3>First name: {{ user_profile.first_name }}</h2>
+        <br>
+        <h3>Social Media: {{ user_profile.social_media }}</h2>
+        <br>
+        <h3>Follower Amount: {{ user_profile.follower_amount }}</h2>
+        <br>
+        <h3>Friends: {{ user_profile.friends }}</h2>
+        <br>
+        <h3>Experience Amount: {{ user_profile.experience }}</h2>
+        <br>
+        <h3>Bio: {{ user_profile.bio }}</h2>
+        <br>
+        <h3>City: {{ user_profile.city }}</h2>
+        <br>
+        <h3>Country: {{ user_profile.country }}</h2>
+        <br>
+    </div>
+{% endif %}
+
 {% endblock %}

@@ -4,6 +4,6 @@ from .views import SignUpView
 
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name='signup'),
-    path('profile/', views.profile_page, name='profile'),
-    # FIX THIS (r'^accounts/update/(?P<pk>[\-\w]+)/$', views.edit_user, name='account_update'),
+    path('profile/<int:id>/', views.profile_page, name='profile'),
+
 ]

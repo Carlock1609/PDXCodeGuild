@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required # Decorators
 from .models import CustomUser, UserProfile
 # from .forms import UserProfileForm
 from django.forms.models import inlineformset_factory
@@ -11,17 +11,21 @@ from django import forms
 
 from .forms import CustomUserCreationForm
 
+from django.contrib.auth import authenticate, login # More authentication
+
 # Create your views here.
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
-def profile_page(request):
-    user_profile = UserProfile.objects.all()
+
+def profile_page(request, id):
+    user_profile = UserProfile.objects.get(id = id)
     context = {
         'user_profile': user_profile
     }
+
     return render(request, 'users/profile.html', context)
 
 # def edit_user(request, pk):
