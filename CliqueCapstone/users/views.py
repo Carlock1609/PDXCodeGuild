@@ -21,9 +21,9 @@ class SignUpView(CreateView):
 
 
 def profile_page(request, id):
-    user_profile = UserProfile.objects.get(id = id)
     context = {
-        'user_profile': user_profile
+        'user': CustomUser.objects.get(id = id),
+        'user_profile': UserProfile.objects.get(id = id),
     }
 
     return render(request, 'users/profile.html', context)

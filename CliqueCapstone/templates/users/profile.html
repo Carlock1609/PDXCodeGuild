@@ -4,7 +4,7 @@
     <title>Profile</title>
 {% endblock %}
 
-
+<!-- DO I ITERATE OVER THE OBJECT TO GET ALL ATTS? -->
 {% block content %}
 {% if user.is_authenticated %}
     <div class="container text-center mt-5">
@@ -23,7 +23,7 @@
         <br>
         <h3>Friends: {{ user_profile.friends }}</h2>
         <br>
-        <h3>Experience Amount: {{ user_profile.experience }}</h2>
+        <h3>Experience: {{ user_profile.experience }}</h2>
         <br>
         <h3>Bio: {{ user_profile.bio }}</h2>
         <br>
