@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required # Decorators
 from .models import CustomUser, UserProfile
 # from .forms import UserProfileForm
@@ -18,12 +18,11 @@ class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
-
-
+    
+@login_required
 def profile_page(request, id):
     context = {
-        'user': CustomUser.objects.get(id = id),
-        'user_profile': UserProfile.objects.get(id = id),
+        'user_profile': UserProfile.objects.get(user=id),
     }
 
     return render(request, 'users/profile.html', context)

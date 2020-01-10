@@ -14,8 +14,7 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email')
 
-
-# DONT LET USERS CHANGE USERNAMES
+# DONT LET USERS CHANGE USERNAME
 #  class UserProfileForm(forms.ModelForm):
 #     class Meta:
 #         model = CustomUser
