@@ -1,15 +1,20 @@
 from django.shortcuts import render
 from .models import InboxDB, DirectMsgDB
+from django.contrib.auth.decorators import login_required # Decorators
 
 # Create your views here.
-def user_inbox(request):
+@login_required
+def user_inbox(request, id):
     context = {
-        'messages': InboxDB.objects.all(),
+        'inbox': InboxDB.objects.get(users_inbox=id),
     }
-    return render(request, 'inbox/user-inbox.html', context)
+    return render(request, 'inbox/user_inbox.html', context)
 
-def direct_msg(request):
+@login_required
+def direct_msg(request, id):
     context = {
-        'messages': DirectMsgDB.objects.all(),
+        'messages': DirectMsgDB.objects.get(sender=id),
     }
-    return render(request, 'inbox/direct-msg.html', context)
+    return render(request, 'inbox/direct_msg.html', context)
+
+
