@@ -1,0 +1,14 @@
+body{
+    font-family: 'Halant', serif;
+}
+
+/* PROFILE TEMPLATE */
+#profile_pic, img {
+    width: 100px;
+    height: 100px;
+}
+
+
+h1 {
+    color: green;
+}

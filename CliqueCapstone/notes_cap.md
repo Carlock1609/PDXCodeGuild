@@ -18,3 +18,8 @@ THOUGHTS, ERRORS, IDEAS
             - Body
             - Time
         InboxDB -> DirectMsgDB -> EmailsDB
+    
+**01/10/2020**
+    - Migrated DB, I only need two DB's for the Inbox, Try and figure out how to associate the two users PK's
+    - Need to add Data to inboxDB's.
+    - Did some frontend work

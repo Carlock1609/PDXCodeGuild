@@ -22,9 +22,9 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=500, default='', blank=True, null=True)
     city = models.CharField(max_length=20, default='', blank=True, null=True)
     country = models.CharField(max_length=20, default='', blank=True, null=True)
-    friends = models.IntegerField(default=0, blank=True, null=True) # CALL IT CLIQUES
+    cliques = models.IntegerField(default=0, blank=True, null=True) # CALL IT CLIQUES
 
-    profile_pic = models.ImageField() # FIGURE OUT PILLOW FROM LIBRARY LAB
+    profile_pic = models.ImageField(upload_to='images/') # FIGURE OUT PILLOW FROM LIBRARY LAB
     photo_library = models.ImageField()
 
     def __str__(self):

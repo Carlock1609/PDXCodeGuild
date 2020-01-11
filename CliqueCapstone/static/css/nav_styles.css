@@ -1,0 +1,11 @@
+#navbar {
+    background: rgb(63, 63, 63);
+    color: white;
+}
+a.navbar-brand {
+    font-family: 'Spectral', serif;
+    color: white;
+}
+a.nav-link {
+    color: white;
+}
