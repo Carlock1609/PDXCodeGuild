@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Message{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="container text-center mt-5">
+            <h3>{{ inbox_msgs }}</h3>
+            <h3>Subject: {{ inbox_msgs.subject }}</h3>
+            <h3>Body: {{ inbox_msgs.body }}</h2>
+            <h3>Date created: {{ inbox_msgs.published }}</h2>
+        </div>
+    {% endif %}
+    
+{% endblock %}
+
+

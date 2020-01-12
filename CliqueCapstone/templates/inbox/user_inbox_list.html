@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="container text-center mt-5">
+            <ul>
+                {% for msg in inbox_msgs %}
+                    <li>
+                        <h3><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></h3>
+                        <h3>Subject: {{ msg.subject }}</h3>
+                    </li>
+                {% empty %}
+                    <h3>Inbox is EMPTY</h3>
+                {% endfor %}
+            </ul>
+            <br>
+        </div>
+    {% endif %}
+
+{% endblock %}

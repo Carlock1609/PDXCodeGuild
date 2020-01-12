@@ -1,40 +1,41 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    <title>Profile</title>
-{% endblock %}
+
+{% block title %}Profile{% endblock %}
 
 <!-- DO I ITERATE OVER THE OBJECT TO GET ALL ATTS? -->
 {% block content %}
-{% if user.is_authenticated %}
-    <div class="container text-center mt-5">
-        <br>
-        <h3>{{ user_profile }}</h1>
-        <br>
-        <h3>Username: {{ user.username }}</h3>
-        <br>
-        <h3>Email: {{ user.email }}</h2>
-        <br>
-        <h3>First name: {{ user_profile.first_name }}</h2>
-        <br>
-        <h3>Social Media: <a href="{{ user_profile.social_media }}">{{ user_profile.social_media }}</a></h2>
-        <br>
-        <h3>Follower Amount: {{ user_profile.follower_amount }}</h2>
-        <br>
-        <h3>Cliques: {{ user_profile.cliques }}</h2>
-        <br>
-        <h3>Experience: {{ user_profile.experience }}</h2>
-        <br>
-        <h3>Bio: {{ user_profile.bio }}</h2>
-        <br>
-        <h3>City: {{ user_profile.city }}</h2>
-        <br>
-        <h3>Country: {{ user_profile.country }}</h2>
-        <br>
-        <img id="profile_pic" src="{{ user_profile.profile_pic.url }}" alt=""> 
-        <br>
-        <br>
-    </div>
-{% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="container text-center mt-5">
+            <br>
+            <h3>{{ user_profile }}</h1>
+            <br>
+            <h3>Username: {{ user.username }}</h3>
+            <br>
+            <h3>Email: {{ user.email }}</h2>
+            <br>
+            <h3>First name: {{ user_profile.first_name }}</h2>
+            <br>
+            <h3>Social Media: <a href="{{ user_profile.social_media }}">{{ user_profile.social_media }}</a></h2>
+            <br>
+            <h3>Follower Amount: {{ user_profile.follower_amount }}</h2>
+            <br>
+            <h3>Cliques: {{ user_profile.cliques }}</h2>
+            <br>
+            <h3>Experience: {{ user_profile.experience }}</h2>
+            <br>
+            <h3>Bio: {{ user_profile.bio }}</h2>
+            <br>
+            <h3>City: {{ user_profile.city }}</h2>
+            <br>
+            <h3>Country: {{ user_profile.country }}</h2>
+            <br>
+            <img id="profile_pic" src="{{ user_profile.profile_pic.url }}" alt=""> 
+            <br>
+            <br>
+        </div>
+    {% endif %}
 
 {% endblock %}
+
