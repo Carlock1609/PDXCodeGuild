@@ -6,14 +6,8 @@ from django.contrib.auth.decorators import login_required # Decorators
 
 @login_required
 def user_inbox(request, id):
-    context = {
-        'inbox_msgs': InboxDB.objects.filter(sender=id),
-    }
-    return render(request, 'inbox/user_inbox_list.html', context)
+    return render(request, 'inbox/user_inbox_list.html', {'inbox_msgs': InboxDB.objects.filter(sender=id)})
 
 @login_required
 def user_msg(request, id):
-    context = {
-        'inbox_msgs': InboxDB.objects.get(id=id),
-    }
-    return render(request, 'inbox/user_inbox_msg.html', context)
+    return render(request, 'inbox/user_inbox_msg.html', {'inbox_msgs': InboxDB.objects.get(id=id)})

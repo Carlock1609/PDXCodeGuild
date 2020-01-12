@@ -21,11 +21,7 @@ class SignUpView(CreateView):
     
 @login_required
 def profile_page(request, id):
-    context = {
-        'user_profile': UserProfile.objects.get(user=id),
-    }
-
-    return render(request, 'users/profile.html', context)
+    return render(request, 'users/profile.html', {'user_profile': UserProfile.objects.get(user=id)})
 
 # def edit_user(request, pk):
 #     user = CustomUser.objects.get(pk=pk)

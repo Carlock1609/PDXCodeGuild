@@ -3,10 +3,7 @@ from users.models import UserProfile, CustomUser
 
 # Create your views here.
 def home(request):
-    context = {
-        'user_profile': UserProfile.objects.all(),
-    }
-    return render(request, 'pages/home.html', context)
+    return render(request, 'pages/home.html', {'user_profile': UserProfile.objects.all()})
 
 def about(request):
     return render(request, 'pages/about.html')
