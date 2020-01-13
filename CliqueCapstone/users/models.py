@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 
+
 # creating inbox instance when created aswell
 # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
 # from inboxApp.models import InboxDB
@@ -42,6 +43,15 @@ def create_profile(sender, **kwargs):
         # user_inbox = InboxDB.objects.create(users_inbox=kwargs['instance'])
         
 post_save.connect(create_profile, sender=CustomUser)
+
+
+# def create_inbox(sender, **kwargs):
+#     if kwargs['created']:
+#         user_inbox = InboxDB.objects.create(user=kwargs['instance'])
+        
+# post_save.connect(create_inbox, sender=CustomUser)
+
+
 
 # class UserImage(models.Model):
 #     user_image = models.ImageField(upload_to='images/')

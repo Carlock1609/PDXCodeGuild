@@ -24,7 +24,7 @@ THOUGHTS, ERRORS, IDEAS
     - Need to add Data to inboxDB's.
     - Did some frontend work
 
-**01/11/2020**
+**01/11/2020 - 01/12/2020** 
     - Figure out how to get the Inbox created for the user when signup, just like profile.
     - Figure out how to add subject ot messages
     - When user clicks on Inbox, make a view to filter all his messages
@@ -40,3 +40,25 @@ THOUGHTS, ERRORS, IDEAS
     - FIXED** So to fix the issue of getting two id's, each message created in the DB with two users gets saved as and id in the DB, so msg user to user2 has id of 2
     which is fine, it works for filtering to get the list of msgs, but filter gives back a list of objects, so to be able to click on one we needed to set it as get(id=id)
     to get the specific msg and be able to query through it **FIXED
+
+    - WORK ON THIS 
+        - How to get inbox created when user created. JUST LIKE PROFILE
+
+    - **HOLD UP ERROR**
+        - With only one DB that gives a sender-receiver one ID. Will that Cause issues with inboxes? would it be better to still have two DB's?
+            - One DB that gives a user a Inbox ID
+            - and then another ID for the sender and receiver, but it uses their inbox id as Primary.
+            - REEVALUATE INBOX
+            
+            - ON THE VIEWS I MAY HAVE FOUND SOLUTION, YOU MUST ADD TO THE CONTEXT AND LOOK FOR MATCHES OF receiver=id AND sender=id
+            - MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
+    
+    - IF API NEEDED FOR GRAD, user map API and share city or state location
+
+    - Check out mixins - LoginRequiredMixins and UserPassesTestMixins for account security on forms. Do i ad this func to all models?
+     # security mixins, add to all models?
+    def test_func(self):
+        msg = self.get_object()
+        if self.request.user == msg.author:
+            return True
+        return False

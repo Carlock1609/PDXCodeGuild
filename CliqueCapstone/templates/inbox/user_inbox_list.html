@@ -6,18 +6,32 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        <div class="container text-center mt-5">
-            <ul>
+        <div class="container-fluid mt-5 mb-5">
                 {% for msg in inbox_msgs %}
-                    <li>
-                        <h3><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></h3>
-                        <h3>Subject: {{ msg.subject }}</h3>
-                    </li>
+                <table style="width:100%">
+                    <tr>
+                        <th>Date:</th>
+                        <th>Conversation:</th>
+                        <th>Subject:</th>
+                    </tr>
+                    <tr>
+                        <td>{{ msg.published | date:"F d" }} - {{ msg.published.time }}</td>
+                        <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
+                        <td><p>Subject: {{ msg.subject }}</p></td>
+                    </tr>
                 {% empty %}
-                    <h3>Inbox is EMPTY</h3>
+                    <p>Inbox is EMPTY</p>
                 {% endfor %}
-            </ul>
-            <br>
+                {% for msg in inbox_froms %}
+                    <tr>
+                        <td>{{ msg.published | date:"F d" }} - {{ msg.published.time }}</td>
+                        <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
+                        <td><p>Subject: {{ msg.subject }}</p></td>
+                    </tr>
+                {% empty %}
+                    <p>Inbox is EMPTY</p>
+                {% endfor %}
+                </table>
         </div>
     {% endif %}
 
