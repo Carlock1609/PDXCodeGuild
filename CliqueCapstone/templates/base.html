@@ -33,7 +33,7 @@
               <a method="GET" class="nav-link" href="{% url 'profile' user.id %}">Profile </a>
             </li>
             <li class="nav-item active">
-              <a method="GET" class="nav-link" href="{% url 'user-inbox' user.id %}">Inbox </a>
+              <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
             </li>
             {% else %}
             <li class="nav-item active">

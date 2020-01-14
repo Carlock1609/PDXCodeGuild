@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 
@@ -15,9 +16,9 @@
                     <th>Conversation:</th>
                     <th>Subject:</th>
                 </tr>
-                {% for msg in inbox_msgs %}
+                {% for msg in inbox_tos %}
                     <tr>
-                        <td>{{ msg.published | date:"F d" }} - {{ msg.published.time }}</td>
+                        <td>{{ msg.sent_date | date:"F d" }} - {{ msg.sent_date.time }}</td>
                         <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
                         <td><p>Subject: {{ msg.subject }}</p></td>
                     </tr>
@@ -26,14 +27,14 @@
                 {% endfor %}
                 {% for msg in inbox_froms %}
                     <tr>
-                        <td>{{ msg.published | date:"F d" }} - {{ msg.published.time }}</td>
+                        <td>{{ msg.sent_date | date:"F d" }} - {{ msg.sent_date.time }}</td>
                         <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
                         <td><p>Subject: {{ msg.subject }}</p></td>
                     </tr>
                 {% empty %}
                     <p>Inbox is EMPTY</p>
                 {% endfor %}
-                </table>
+            </table>
         </div>
     {% endif %}
 

@@ -72,3 +72,5 @@ THOUGHTS, ERRORS, IDEAS
 
 
     - Working on Welcome Screen picture when user not logged in **ERROR importing picture
+
+    - Figure out the Inbox Model, How do i grab two different uses and have them direct posts to each other?? WOnt the id's keep changing every message?
