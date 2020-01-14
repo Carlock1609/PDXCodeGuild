@@ -4,16 +4,18 @@
 {% block title %}Inbox{% endblock %}
 
 {% block content %}
-
+    <div class="container text-center">
+        <h2><b>{{ user }}'s Inbox</b></h2>
+    </div>
     {% if user.is_authenticated %}
         <div class="container-fluid mt-5 mb-5">
+            <table style="width:100%">
+                <tr>
+                    <th>Date:</th>
+                    <th>Conversation:</th>
+                    <th>Subject:</th>
+                </tr>
                 {% for msg in inbox_msgs %}
-                <table style="width:100%">
-                    <tr>
-                        <th>Date:</th>
-                        <th>Conversation:</th>
-                        <th>Subject:</th>
-                    </tr>
                     <tr>
                         <td>{{ msg.published | date:"F d" }} - {{ msg.published.time }}</td>
                         <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>

@@ -62,3 +62,13 @@ THOUGHTS, ERRORS, IDEAS
         if self.request.user == msg.author:
             return True
         return False
+
+**01.13.2020**
+    - NOTES FOR INBOX MODELS
+        - So with the 2nd model, it all worked out, 
+            - Im able to user self.conversation.receiver
+            - AND it doesnt let you duplicate the msg that is FROM and TO
+                - HOWEVER This causes an error*** If you switch it up and to TO and FROM, it makes another. So its still a duplicate if both users switch.
+
+
+    - Working on Welcome Screen picture when user not logged in **ERROR importing picture
