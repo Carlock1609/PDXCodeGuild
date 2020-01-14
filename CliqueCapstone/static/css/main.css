@@ -2,7 +2,6 @@
 body, html {
     font-family: 'Halant', serif;
     height: 100%;
-    margin: 0;
 }
 
 /* PROFILE TEMPLATE */
@@ -21,11 +20,25 @@ table, th, td {
 /* FULL IMAGE FOR START */
 .bg {
 
-    background-image: url("../../jCVOltE.jpg");
+    background-image: url("../../uploaded_files/images/welcome_page.webp");
 
     height: 100%;
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.caption {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+.caption span.border {
+    color: #fff;
+    padding: 4.7px;
+    font-size: 25px;
+    letter-spacing: 10px;
 }
