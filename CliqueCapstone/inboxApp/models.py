@@ -1,8 +1,8 @@
 from django.db import models
 from users.models import CustomUser    # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
 
-import datetime
 from django.db.models.signals import post_save
+import datetime
 from django.utils import timezone
 
 # I NEED TO MAKE ANOTHER DB, ONE DB TO HAVE A PRIVATE INBOX ONETOONE WITH USER, AND THEN ANOTHER DB TO HAVE THE ID's ASSOCIATED TO THE USER AND SENDER
@@ -16,6 +16,7 @@ from django.utils import timezone
 # MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
 
 # THIS IS THE WWORKING DB
+# Find something to use Distinct with, Att = sender and receiver Conversation
 class InboxDB(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)
     receiver = models.ForeignKey(CustomUser, related_name='receiver', on_delete=models.CASCADE, null=True)
@@ -24,7 +25,7 @@ class InboxDB(models.Model):
     sent_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = "User Inboxes"
+        verbose_name_plural = "User Messages"
 
     def __str__(self):
         if self.sender == self.sender:

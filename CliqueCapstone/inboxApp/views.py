@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required # Decorators
 # MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
 # Need to figure out security issue, user is able to type id number and get in without  login
 
-# THIS IS WORKING
+# RESEARCH DISTINCT AND VALUES AND ORDERBY
 @login_required
 def user_inbox(request):
     user_id = request.user.id
@@ -18,10 +18,10 @@ def user_inbox(request):
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
-    elif request.method == "POST": # OTHER THINGS
+    elif request.method == "POST": # CREATE POST FORM
         return render(request, 'inbox/user_inbox_list.html', context)
 
-# WORK ON THIS
+# WORK ON TEMPLATE
 @login_required
 def user_msg(request, id): # Use this view to continue the conversation
     user_id = request.user.id
@@ -32,8 +32,8 @@ def user_msg(request, id): # Use this view to continue the conversation
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
-# working one
-messages = InboxDB.objects.order_by('sender','receiver','-sent_date').distinct('sender', 'receiver')
+# working on distinct
+# messages = InboxDB.objects.order_by('sender','receiver','-sent_date').distinct('sender', 'receiver')
 
 # messages = Message.objects.order_by('fromUser','toUser','createdAt').distinct('fromUser', 'toUser')
 

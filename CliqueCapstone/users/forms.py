@@ -16,17 +16,17 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    
     class Meta:
         model = UserProfile
         fields = [
-            'social_media',
-            'follower_amount',
             'experience',
-            'portfolio_links',
             'bio',
+            'follower_amount', # SET UP API
+            'social_media',
+            'portfolio_links',
             'city',
             'state',
-            'cliques',
             'profile_pic',
         ]
 

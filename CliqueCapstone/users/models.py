@@ -18,16 +18,16 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=20,) # REQUIRED
+    first_name = models.CharField(max_length=20) # REQUIRED
 
-    social_media = models.URLField(blank=True, null=True) # REQUIRED
-    portfolio_links = models.URLField(blank=True, null=True)
+    social_media = models.URLField() # DEFAULT REQUIRED = ADD AUTH HERE
+    portfolio_links = models.URLField(blank=True, null=True) 
 
-    follower_amount = models.IntegerField(blank=True, null=True) # REQUIRED
+    follower_amount = models.IntegerField(blank=True, null=True) # USE THE API DATA TO STORE HERE, OTHERWISE USER MANUALLY ENTTERS IN AMOUNT
     cliques = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
 
-    bio = models.TextField(max_length=200, blank=True, null=True)
-    experience = models.TextField(max_length=200, blank=True, null=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
+    experience = models.TextField(max_length=500, blank=True, null=True)
 
     city = models.CharField(max_length=20)
     state = models.CharField(max_length=3)
@@ -38,6 +38,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
+    # Saves space and loading time
     def save(self, *args, **kwargs):
         super().save()
 

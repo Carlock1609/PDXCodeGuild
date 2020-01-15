@@ -29,7 +29,8 @@
           <span class="border">CREATORS PARADISE</span>
           <br><br><br><br><br>
           <div>
-            <a class="btn btn-outline-light" href="{% url 'home' %}">Enter</a>
+            <!-- Smooth scrolling js -->
+            <a class="btn btn-outline-light smoothScroll" href="#">Enter</a> 
           </div>
         </div>
       </div>
@@ -41,31 +42,31 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+        <!-- Think about just doing one IF statement with an else. BUT this may be easier to read, because you would then see two of li's on the code -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
-            <li class="nav-item active">
-              <a method="GET" class="nav-link" href="{% url 'profile' %}">Profile </a>
-            </li>
-            <li class="nav-item active">
-              <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
-            </li>
+              <li class="nav-item active">
+                <a method="GET" class="nav-link" href="{% url 'profile' %}">Profile </a>
+              </li>
+              <li class="nav-item active">
+                <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
+              </li>
             {% else %}
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'login' %}">Login </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'signup' %}">Signup </a>
-            </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'login' %}">Login </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'signup' %}">Signup </a>
+              </li>
             {% endif %}
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'about' %}">About </a>
-            </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'about' %}">About </a>
+              </li>
             {% if user.is_authenticated %}
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'logout' %}">Logout </a>
-            </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+              </li>
             {% endif %}
           </ul>
           {% if user.is_authenticated %}
@@ -86,11 +87,12 @@
       {% block content %} {% endblock %}
     </div>
     <br><br><br><br>
+
     <!-- bottom navbar -->
     <!-- Figure out a btter way to have the navbar at bottom of page -->
     {% if user.is_authenticated %}
       <nav class="navbar navbar-expand-xl navbar-light bg-light fixed-bottom">
-        <a class="navbar-brand" href="{% url 'home' %}">CLIQUE</a>
+        <a class="navbar-brand smoothScroll" href="{% url 'home' %}">CLIQUE</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -127,6 +129,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- smoothscroll script -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script> 
 
   </body>
 </html>
