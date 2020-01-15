@@ -23,13 +23,13 @@
             <div class="row">
                     <div class="col-6 align-items-start">
                         <h4><b>Name</b>: {{ user_profile.first_name }}</h4>
-                        <h4><b>Email</b>: {{ user.email }}</h4>
-                        <h4><a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
-                        <h4><a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
+                        <h4><i class="far fa-envelope"></i>   {{ user.email }}</h4>
+                        <h4><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
+                        <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
                     </div>
                     <div class="col-6 align-items-start">
-                        <h4><b>Social Followers</b>: {{ user_profile.follower_amount }}</h4>
-                        <h4><b>Cliques</b>: {{ user_profile.cliques }}</h4>
+                        <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</h4>
+                        <h4><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</h4>
                         <h4><b>State</b>: {{ user_profile.state }}</h4>
                         <h4><b>City</b>: {{ user_profile.city }}</h4>
                     </div>
