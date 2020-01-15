@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required # Decorators
 from .models import CustomUser, UserProfile
 # from .forms import UserProfileForm
@@ -9,9 +9,10 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileUpdateForm
 
 from django.contrib.auth import authenticate, login # More authentication
+from django.contrib import messages
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -20,8 +21,24 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
     
 @login_required
-def profile_page(request, id):
-    return render(request, 'users/profile.html', {'user_profile': UserProfile.objects.get(user=id)})
+def profile_page(request):
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
+        if p_form.is_valid():
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('profile')
+    else:
+        p_form = ProfileUpdateForm(request.POST, instance=request.user.user)
+    user_id = request.user.id
+    context = {
+        'p_form': p_form,
+        'user_profile': UserProfile.objects.get(user_id=user_id),
+    }
+    return render(request, 'users/profile.html', context)
+
+
+
 
 # def edit_user(request, pk):
 #     user = CustomUser.objects.get(pk=pk)

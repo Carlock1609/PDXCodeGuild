@@ -74,3 +74,6 @@ THOUGHTS, ERRORS, IDEAS
     - Working on Welcome Screen picture when user not logged in **ERROR importing picture
 
     - Figure out the Inbox Model, How do i grab two different uses and have them direct posts to each other?? WOnt the id's keep changing every message?
+
+**01.14.2020**
+    - For bottom Navbar figure outa btter way of having fixed buttom, or if im able to when the user scrolls past a certain point it scrolls with it.

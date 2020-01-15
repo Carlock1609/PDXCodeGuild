@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 
 {% block title %}Profile{% endblock %}
@@ -7,34 +8,63 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        <div class="container text-center mt-5">
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-md-2 mt-2">
+                    <img id="profile_pic" src="{{ user_profile.profile_pic.url }}" alt=""> 
+                </div>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3>{{ user.username }}'s Profile</h3>
+                    </div>
+                </div>
+            </div>
             <br>
-            <h3>{{ user_profile }}</h1>
-            <br>
-            <h3>Username: {{ user.username }}</h3>
-            <br>
-            <h3>Email: {{ user.email }}</h2>
-            <br>
-            <h3>First name: {{ user_profile.first_name }}</h2>
-            <br>
-            <h3>Social Media: <a href="{{ user_profile.social_media }}">{{ user_profile.social_media }}</a></h2>
-            <br>
-            <h3>Follower Amount: {{ user_profile.follower_amount }}</h2>
-            <br>
-            <h3>Cliques: {{ user_profile.cliques }}</h2>
-            <br>
-            <h3>Experience: {{ user_profile.experience }}</h2>
-            <br>
-            <h3>Bio: {{ user_profile.bio }}</h2>
-            <br>
-            <h3>City: {{ user_profile.city }}</h2>
-            <br>
-            <h3>Country: {{ user_profile.country }}</h2>
-            <br>
-            <img id="profile_pic" src="{{ user_profile.profile_pic.url }}" alt=""> 
-            <br>
+            <div class="row">
+                    <div class="col-6 align-items-start">
+                        <h4><b>Name</b>: {{ user_profile.first_name }}</h4>
+                        <h4><b>Email</b>: {{ user.email }}</h4>
+                        <h4><a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
+                        <h4><a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
+                    </div>
+                    <div class="col-6 align-items-start">
+                        <h4><b>Social Followers</b>: {{ user_profile.follower_amount }}</h4>
+                        <h4><b>Cliques</b>: {{ user_profile.cliques }}</h4>
+                        <h4><b>State</b>: {{ user_profile.state }}</h4>
+                        <h4><b>City</b>: {{ user_profile.city }}</h4>
+                    </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6 align-items-start">
+                    <div class="container text-center">
+                        <h4><b>Experience</b></h4>
+                    </div>
+                    <h4>{{ user_profile.experience }}</h4>
+                </div>
+                <div class="col-6 align-items-start">
+                    <div class="container text-center">
+                        <h4><b>Bio</b></h4>
+                    </div>
+                    <h4>{{ user_profile.bio }}</h4>
+                </div>
+            </div>
             <br>
         </div>
+        <hr>
+        <!-- CREATE BUTTON TO PUSH INSTEAD -->
+        <!-- DONT FORGET ENCTYPE -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Update Profile</legend>
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-dark" type="submit">Update</button>
+            </div>
+        </form>
+
     {% endif %}
 
 {% endblock %}

@@ -1,4 +1,5 @@
 /* NAVBAR STYLES */
+/* TOP NAVBAR */
 #navbar {
     background: rgb(63, 63, 63);
     color: white;
@@ -10,3 +11,4 @@ a.navbar-brand {
 a.nav-link {
     color: white;
 }
+

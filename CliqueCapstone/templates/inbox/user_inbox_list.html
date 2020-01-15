@@ -5,7 +5,7 @@
 {% block title %}Inbox{% endblock %}
 
 {% block content %}
-    <div class="container text-center">
+    <div class="container text-center mt-5">
         <h2><b>{{ user }}'s Inbox</b></h2>
     </div>
     {% if user.is_authenticated %}
@@ -16,16 +16,7 @@
                     <th>Conversation:</th>
                     <th>Subject:</th>
                 </tr>
-                {% for msg in inbox_tos %}
-                    <tr>
-                        <td>{{ msg.sent_date | date:"F d" }} - {{ msg.sent_date.time }}</td>
-                        <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
-                        <td><p>Subject: {{ msg.subject }}</p></td>
-                    </tr>
-                {% empty %}
-                    <p>Inbox is EMPTY</p>
-                {% endfor %}
-                {% for msg in inbox_froms %}
+                {% for msg in message %}
                     <tr>
                         <td>{{ msg.sent_date | date:"F d" }} - {{ msg.sent_date.time }}</td>
                         <td><p><a href="{% url 'user-msg' msg.id %}">{{ msg }}</a></p></td>
@@ -37,5 +28,4 @@
             </table>
         </div>
     {% endif %}
-
 {% endblock %}

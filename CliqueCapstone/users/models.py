@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
+from PIL import Image
 
 
 # creating inbox instance when created aswell
@@ -17,42 +18,38 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
-    
     first_name = models.CharField(max_length=20,) # REQUIRED
-    social_media = models.URLField(default='', blank=True, null=True) # REQUIRED
-    follower_amount = models.IntegerField(default=0, blank=True, null=True) # REQUIRED
-    experience = models.TextField(max_length=500, default='', blank=True, null=True) # REQUIRED
 
-    portfolio_links = models.URLField(default='', blank=True, null=True)
-    bio = models.TextField(max_length=500, default='', blank=True, null=True)
-    city = models.CharField(max_length=20, default='', blank=True, null=True)
-    country = models.CharField(max_length=20, default='', blank=True, null=True)
-    cliques = models.IntegerField(default=0, blank=True, null=True) # CALL IT CLIQUES
+    social_media = models.URLField(blank=True, null=True) # REQUIRED
+    portfolio_links = models.URLField(blank=True, null=True)
 
-    profile_pic = models.ImageField(upload_to='images/') # FIGURE OUT PILLOW FROM LIBRARY LAB
-    photo_library = models.ImageField()
+    follower_amount = models.IntegerField(blank=True, null=True) # REQUIRED
+    cliques = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
+
+    bio = models.TextField(max_length=200, blank=True, null=True)
+    experience = models.TextField(max_length=200, blank=True, null=True)
+
+    city = models.CharField(max_length=20)
+    state = models.CharField(max_length=3)
+
+    profile_pic = models.ImageField(default='default.jpg', upload_to='images/') # FIGURE OUT PILLOW FROM LIBRARY LAB
+    photo_library = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.profile_pic.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.profile_pic.path)
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user=kwargs['instance'])
         
-        # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
-        # user_inbox = InboxDB.objects.create(users_inbox=kwargs['instance'])
-        
 post_save.connect(create_profile, sender=CustomUser)
-
-
-# def create_inbox(sender, **kwargs):
-#     if kwargs['created']:
-#         user_inbox = InboxDB.objects.create(user=kwargs['instance'])
-        
-# post_save.connect(create_inbox, sender=CustomUser)
-
-
-
-# class UserImage(models.Model):
-#     user_image = models.ImageField(upload_to='images/')
-    

@@ -3,12 +3,16 @@ body, html {
     font-family: 'Halant', serif;
     height: 100%;
 }
+.container {
+    background-color: rgb(245, 245, 245);
+}
 
 /* PROFILE TEMPLATE */
 #profile_pic, img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
+
 
 /* INBOX TEMPLATE */
 table, th, td {

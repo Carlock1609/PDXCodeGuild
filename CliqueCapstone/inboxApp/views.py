@@ -13,8 +13,8 @@ def user_inbox(request):
     user_id = request.user.id
     if request.method == "GET":
         context = {
-            'inbox_tos': InboxDB.objects.filter(sender=user_id),
-            'inbox_froms': InboxDB.objects.filter(receiver=user_id), # I DONT NEED THIS, BECAUSE NAY POST DIRECTED TO ME SHOULD BE THE SAME
+            'message': InboxDB.objects.filter(sender=user_id),
+            'message': InboxDB.objects.filter(receiver=user_id), # I DONT NEED THIS, BECAUSE NAY POST DIRECTED TO ME SHOULD BE THE SAME
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
@@ -25,16 +25,15 @@ def user_inbox(request):
 @login_required
 def user_msg(request, id): # Use this view to continue the conversation
     user_id = request.user.id
-
     if request.method == "GET":
         context = {
-            'inbox_tos': InboxDB.objects.order_by('sender','receiver','-sent_date').distinct('sender', 'receiver'),
-            # 'inbox_froms': InboxDB.objects.filter(sender=id),
+            'message': InboxDB.objects.filter(receiver=user_id),
+            'message': InboxDB.objects.filter(sender=user_id),
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
 # working one
-# messages = InboxDB.objects.order_by('sender','receiver','-sent_date').distinct('sender', 'receiver')
+messages = InboxDB.objects.order_by('sender','receiver','-sent_date').distinct('sender', 'receiver')
 
 # messages = Message.objects.order_by('fromUser','toUser','createdAt').distinct('fromUser', 'toUser')
 
