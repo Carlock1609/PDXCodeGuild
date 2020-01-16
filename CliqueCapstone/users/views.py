@@ -20,10 +20,6 @@ class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
-    
-@login_required
-def home(request):
-    return render(request, 'pages/home.html', {'user_profile': UserProfile.objects.all()})
 
 @login_required
 def profile_page(request):

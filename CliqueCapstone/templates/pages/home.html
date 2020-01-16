@@ -5,6 +5,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
   <h3>Username: {{ user.username }}</h3>
   <br>
@@ -18,4 +19,3 @@
 {% endif %}
 
 {% endblock %}
-

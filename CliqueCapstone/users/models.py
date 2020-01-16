@@ -39,8 +39,8 @@ class UserProfile(models.Model):
         return f"{self.user.username}'s Profile"
 
     # Saves space and loading time
-    def save(self, *args, **kwargs):
-        super().save()
+    def save(self, *args, **kwargs): # ADDED TAGS FOR S3 BUCKETS
+        super().save(*args, **kwargs)
 
         img = Image.open(self.profile_pic.path)
 

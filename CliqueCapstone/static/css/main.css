@@ -3,8 +3,12 @@ body, html {
     font-family: 'Halant', serif;
     height: 100%;
 }
+
+/* CONTAINERS STRETCHS TO BOTTOM OF PAGE */
 .container {
     background-color: rgb(245, 245, 245);
+    min-height: 100%;
+    overflow: hidden;
 }
 
 /* PROFILE TEMPLATE */
@@ -12,7 +16,6 @@ body, html {
     width: 160px;
     height: 160px;
 }
-
 
 /* INBOX TEMPLATE */
 table, th, td {

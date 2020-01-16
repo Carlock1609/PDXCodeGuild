@@ -83,3 +83,13 @@ THOUGHTS, ERRORS, IDEAS
 
 **01.15.2020**
     - Figure out flow of website pages, curretly running into an issue with the login page, you cannot simply add the login form to the home page because of the auth.contrib.urls in the mysite urls. Maybe try making the users the default page instead of home
+        - Currently when user tries to go to homepage without authenticating, user gets redirected to login page. Get rid of the home pages login/signup tages.
+        - Figure out css scroll effect
+
+
+    - Work on getting s3 buckets set up
+
+    - PROFILE TWEAKS** 
+        - Have more items on left side in smaller tags.
+        - Create a button that when clicked lets you update file. Make room for photos.
+        - Make dropdown for extra profile info to save room
