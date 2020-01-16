@@ -22,6 +22,10 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
     
 @login_required
+def home(request):
+    return render(request, 'pages/home.html', {'user_profile': UserProfile.objects.all()})
+
+@login_required
 def profile_page(request):
     if request.method == 'POST':
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
@@ -37,7 +41,6 @@ def profile_page(request):
             'user_profile': UserProfile.objects.get(user_id=user_id),
         }
         return render(request, 'users/profile.html', context)
-
 
 
 

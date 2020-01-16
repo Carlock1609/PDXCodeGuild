@@ -46,3 +46,18 @@ table, th, td {
     font-size: 25px;
     letter-spacing: 10px;
 }
+
+/* Login */
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+#centerStuff {
+    text-align: center;
+}
+.btn-outline-dark:hover {
+background-color:rgb(63, 63, 63);
+border-color:rgb(63, 63, 63);
+}

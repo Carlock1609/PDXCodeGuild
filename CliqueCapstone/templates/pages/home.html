@@ -1,5 +1,6 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Home{% endblock %}
 
@@ -15,4 +16,6 @@
   <a href="{% url 'login' %}">login</a> |
   <a href="{% url 'signup' %}">signup</a>
 {% endif %}
+
 {% endblock %}
+

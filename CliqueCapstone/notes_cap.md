@@ -77,3 +77,9 @@ THOUGHTS, ERRORS, IDEAS
 
 **01.14.2020**
     - For bottom Navbar figure outa btter way of having fixed buttom, or if im able to when the user scrolls past a certain point it scrolls with it.
+
+
+
+
+**01.15.2020**
+    - Figure out flow of website pages, curretly running into an issue with the login page, you cannot simply add the login form to the home page because of the auth.contrib.urls in the mysite urls. Maybe try making the users the default page instead of home

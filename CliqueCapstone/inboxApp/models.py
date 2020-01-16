@@ -29,10 +29,7 @@ class InboxDB(models.Model):
 
     def __str__(self):
         if self.sender == self.sender:
-            return f"Message FROM {self.sender} TO {self.receiver}"
-        # THIS ISN'T WORKING CORRECTLY, IT PRINTS RIGHT BUT NOT THE FROM
-        elif self.receiver == self.receiver:
-            return f"Message TO {self.sender} FROM {self.receiver}"
+            return f"{self.sender} and {self.receiver}'s Conversation"
 
 
 

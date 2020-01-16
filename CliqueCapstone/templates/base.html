@@ -30,12 +30,12 @@
           <br><br><br><br><br>
           <div>
             <!-- Smooth scrolling js -->
-            <a class="btn btn-outline-light smoothScroll" href="#">Enter</a> 
+            <a class="btn btn-outline-light" href="#">Enter</a> 
           </div>
         </div>
       </div>
     {% endif %}
-
+      
     <!-- top navbar -->
     <nav id="navbar" class="navbar navbar-expand-md active">
         <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-camera-retro"></i> CLIQUE <span class="sr-only">(current)</span></a>
@@ -92,13 +92,13 @@
     <!-- Figure out a btter way to have the navbar at bottom of page -->
     {% if user.is_authenticated %}
       <nav class="navbar navbar-expand-xl navbar-light bg-light fixed-bottom">
-        <a class="navbar-brand smoothScroll" href="{% url 'home' %}">CLIQUE</a>
+        <a class="navbar-brand" href="{% url 'home' %}">CLIQUE</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                 <a method="GET" class="nav-link" href="{% url 'profile' %}">Profile </a>
                 <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
                 <a class="nav-link" href="{% url 'about' %}">About </a>
@@ -116,7 +116,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav">
-              <a href="#" class="nav-item nav-link active">Home</a>
+              <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
               <a class="nav-link" href="{% url 'about' %}">About </a>
               <a class="nav-link" href="{% url 'login' %}">Login </a>
           </div>
@@ -130,9 +130,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
-    <!-- smoothscroll script -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script> 
 
   </body>
 </html>
