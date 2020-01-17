@@ -14,6 +14,7 @@ from .models import CustomUser, UserProfile
 from .forms import CustomUserCreationForm, ProfileUpdateForm
 
 from django.contrib import messages
+import boto3
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -23,7 +24,15 @@ class SignUpView(CreateView):
 
 @login_required
 def profile_page(request):
+    user_id = request.user.id
+    profile = UserProfile.objects.get(user_id=user_id)
+    pic = profile.profile_pic
+    s3 = boto3.resource('s3')
+    obj = s3.Object('django-clique-files', 'pic')
+    obj.delete()
+
     if request.method == 'POST':
+        UserProfile.profile_pic
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
         if p_form.is_valid():
             p_form.save()

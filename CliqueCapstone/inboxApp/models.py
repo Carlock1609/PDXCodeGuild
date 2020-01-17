@@ -5,18 +5,7 @@ from django.db.models.signals import post_save
 import datetime
 from django.utils import timezone
 
-# I NEED TO MAKE ANOTHER DB, ONE DB TO HAVE A PRIVATE INBOX ONETOONE WITH USER, AND THEN ANOTHER DB TO HAVE THE ID's ASSOCIATED TO THE USER AND SENDER
-
-# HOWEVER, it only shows on one side
-
-# WAIT A SECOND. BUT IF I HAVE ONE DB. AND I JUST FILTER THROUGH THEM, 
-# HOWEVER, it only shows on one users side, so if a user receives a msg, it doesnt get the sent one.
-
-# ON THE VIEWS I MAY HAVE FOUND SOLUTION, YOU MUST ADD TO THE CONTEXT AND LOOK FOR MATCHES OF receiver=id AND sender=id
-# MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
-
-# THIS IS THE WWORKING DB
-# Find something to use Distinct with, Att = sender and receiver Conversation
+# CREATE ANOTHER MODEL THAT HAS A UNIQUE THREAD ASSOCIATED WITH IT. VAN USES EQUIPMENT ID FROM HIS MODEL. YOU NEED TO MAKE A THREAD INBOX WITH ID FOR THE USERS TO POST TO
 class InboxDB(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)
     receiver = models.ForeignKey(CustomUser, related_name='receiver', on_delete=models.CASCADE, null=True)
@@ -32,6 +21,20 @@ class InboxDB(models.Model):
             return f"{self.sender} and {self.receiver}'s Conversation"
 
 
+
+
+# I NEED TO MAKE ANOTHER DB, ONE DB TO HAVE A PRIVATE INBOX ONETOONE WITH USER, AND THEN ANOTHER DB TO HAVE THE ID's ASSOCIATED TO THE USER AND SENDER
+
+# HOWEVER, it only shows on one side
+
+# WAIT A SECOND. BUT IF I HAVE ONE DB. AND I JUST FILTER THROUGH THEM, 
+# HOWEVER, it only shows on one users side, so if a user receives a msg, it doesnt get the sent one.
+
+# ON THE VIEWS I MAY HAVE FOUND SOLUTION, YOU MUST ADD TO THE CONTEXT AND LOOK FOR MATCHES OF receiver=id AND sender=id
+# MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
+
+# THIS IS THE WWORKING DB
+# Find something to use Distinct with, Att = sender and receiver Conversation
 
 
 # TESTING THIS MODEL SET
