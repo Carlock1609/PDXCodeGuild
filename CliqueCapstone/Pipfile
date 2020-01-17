@@ -11,6 +11,9 @@ django = "*"
 pillow = "*"
 django-crispy-forms = "*"
 psycopg2-binary = "*"
+boto3 = "*"
+django-storages = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.7"
