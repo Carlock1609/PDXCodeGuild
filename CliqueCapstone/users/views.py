@@ -10,8 +10,8 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .models import CustomUser, UserProfile
-from .forms import CustomUserCreationForm, ProfileUpdateForm
+from .models import CustomUser, UserProfile, ProfilePhotoLibrary
+from .forms import CustomUserCreationForm, ProfileUpdateForm, ProfilePostForm
 
 from django.contrib import messages
 import boto3
@@ -24,8 +24,8 @@ class SignUpView(CreateView):
 
 @login_required
 def profile_page(request):
-    user_id = request.user.id
-    profile = UserProfile.objects.get(user_id=user_id)
+    # user_id = request.user.id
+    # profile = UserProfile.objects.get(user_id=user_id)
     
     # FIGURE OUT HOW TO DELETE PICTURE WHEN REPLACED
     # pic = profile.profile_picture
@@ -34,7 +34,8 @@ def profile_page(request):
     # obj.delete()
 
     if request.method == 'POST':
-        UserProfile.profile_picture
+        UserProfile.profile_picture # why are these here? Test this to see
+        UserProfile.cover_picture
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
         if p_form.is_valid():
             p_form.save()
@@ -49,6 +50,24 @@ def profile_page(request):
         }
         return render(request, 'users/profile.html', context)
 
+# Consider making a new view and template to submit multiple photos
+@login_required
+def create_photo_post(request):
+    if request.method == 'POST':
+        ProfilePhotoLibrary.photo_post
+        l_form = ProfilePostForm(request.POST, request.FILES, instance=request.user.user)
+        if l_form.is_valid():
+            l_form.save()
+            messages.success(request, f'Your post has been created!')
+            return redirect('profile')
+    else:
+        l_form = ProfilePostForm(request.POST, instance=request.user.user)
+        user_id = request.user.id
+        context = {
+            'l_form': l_form,
+            'user_profile': UserProfile.objects.get(user_id=user_id)
+        }
+        return render(request, 'users/profile.html', context)
 
 
 # def edit_user(request, pk):

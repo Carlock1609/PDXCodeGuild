@@ -34,29 +34,44 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=20)
     state = models.CharField(max_length=3)
 
-    profile_picture = models.ImageField(default='default_profile.jpg', upload_to='profile/profile_images/', editable=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
-    cover_picture = models.ImageField(default='default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True)
+    profile_picture = models.ImageField(blank=True, null=True, upload_to='profile/profile_images/', editable=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
+    cover_picture = models.ImageField(blank=True, null=True, upload_to='profile/profile_backgrounds/', editable=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
     # Saves space and loading time
     # TRY AND ADD THE BG PHOTO TO THIS ASWELL
-    def save(self, *args, **kwargs): # ADDED TAGS FOR S3 BUCKETS
-        super().save(*args, **kwargs)
+    def save_profile(self, *args, **kwargs): # ADDED TAGS FOR S3 BUCKETS
+        super().save_profile(*args, **kwargs)
 
         profile_img = Image.open(self.profile_picture)
-        background_img = Image.open(self.cover_picture)
 
-        if profile_img.height > 300 or img.width > 300:
+        if profile_img.height > 300 or profile_img.width > 300:
             output_size = (300, 300)
             profile_img.thumbnail(output_size)
             profile_img.save(self.profile_picture)
 
-        if background_img.height > 400 or img.width > 800:
-            output_size = (400, 800)
+    # This isnt reesizing to great
+    def save_cover(self, *args, **kwargs):
+        super().save_cover(*args, **kwargs)
+
+        background_img = Image.open(self.cover_picture)
+
+        if background_img.height > 100 or background_img.width > 400:
+            output_size = (100, 400)
             background_img.thumbnail(output_size)
             background_img.save(self.cover_picture)
+
+# This will be photos for the user
+class ProfilePhotoLibrary(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100)
+    photo_post = models.ImageField(blank=True, null=True, upload_to='profile/profile_library', editable=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s Photo"
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
@@ -65,8 +80,9 @@ def create_profile(sender, **kwargs):
 post_save.connect(create_profile, sender=CustomUser)
 
 
-class PhotoLibrary(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100)
-    photo = models.FileField()
+
+# class PhotoLibrary(models.Model):
+#     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+#     created_at = models.DateTimeField(autorunru_now_add=True)
+#     title = models.CharField(max_length=100)
+#     photo = models.FileField()

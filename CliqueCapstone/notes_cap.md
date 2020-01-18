@@ -108,3 +108,9 @@ THOUGHTS, ERRORS, IDEAS
         - See if you can add profile_bg to that same resizing.
 
     - Figure out how to set default images for profile and cover
+
+    - For profile template, Kindof like FB, i want to have the profile pic with border in the bottom left of jumbotron
+
+    - WORK ON HOME MODEL
+
+    - If your unable to have the two forms on one page, consider making another view/template to submit multiple photos-- Screw that if your only doing one photo at a time.

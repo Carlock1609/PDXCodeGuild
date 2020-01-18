@@ -12,14 +12,15 @@ body, html {
 }
 
 /* PROFILE TEMPLATE */
-#cover_picture {
-    width: 100%;
-    height: 100px;
+.jumbotron {
+    height: 30%;
+    background-color: black;
 }
-#profile_pic, img {
+#profile_pic {
     width: 160px;
     height: 160px;
-    border-radius: 50%;
+    border-radius: 10%;
+    border: 4px solid rgb(182, 182, 182);
 }
 
 /* INBOX TEMPLATE */
