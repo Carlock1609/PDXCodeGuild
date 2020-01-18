@@ -93,3 +93,18 @@ THOUGHTS, ERRORS, IDEAS
         - Have more items on left side in smaller tags.
         - Create a button that when clicked lets you update file. Make room for photos.
         - Make dropdown for extra profile info to save room
+
+
+**01.16.2020**
+    - S3 buckets working and deployed.
+    - Decoupling figured out and working.
+
+**01.17.2020**
+    - Do research on incorporating CDN's
+    - Do more research on S3 bucckets
+
+    - Figure out profile_bg 
+        - Do i need another model for the profile posts? and just use that to also get random photos to home page?
+        - See if you can add profile_bg to that same resizing.
+
+    - Figure out how to set default images for profile and cover

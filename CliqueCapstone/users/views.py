@@ -26,13 +26,15 @@ class SignUpView(CreateView):
 def profile_page(request):
     user_id = request.user.id
     profile = UserProfile.objects.get(user_id=user_id)
-    pic = profile.profile_pic
-    s3 = boto3.resource('s3')
-    obj = s3.Object('django-clique-files', 'pic')
-    obj.delete()
+    
+    # FIGURE OUT HOW TO DELETE PICTURE WHEN REPLACED
+    # pic = profile.profile_picture
+    # s3 = boto3.resource('s3')
+    # obj = s3.Object('django-clique-files', 'pic')
+    # obj.delete()
 
     if request.method == 'POST':
-        UserProfile.profile_pic
+        UserProfile.profile_picture
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
         if p_form.is_valid():
             p_form.save()

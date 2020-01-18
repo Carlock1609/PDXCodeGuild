@@ -12,9 +12,14 @@ body, html {
 }
 
 /* PROFILE TEMPLATE */
+#cover_picture {
+    width: 100%;
+    height: 100px;
+}
 #profile_pic, img {
     width: 160px;
     height: 160px;
+    border-radius: 50%;
 }
 
 /* INBOX TEMPLATE */
@@ -23,11 +28,9 @@ table, th, td {
     height: 5px;
 }
 
-
-/* FULL IMAGE FOR START */
+/* FULL IMAGE FOR WELCOME PAGE */
 .bg {
-
-    background-image: url("../../uploaded_files/images/welcome_page.webp");
+    background-image: url("../../static_images/welcome_page.jpg");
 
     height: 100%;
 

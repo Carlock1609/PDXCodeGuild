@@ -27,7 +27,8 @@ class ProfileUpdateForm(forms.ModelForm):
             'portfolio_links',
             'city',
             'state',
-            'profile_pic',
+            'profile_picture',
+            'cover_picture',
         ]
 
 # DONT LET USERS CHANGE USERNAME

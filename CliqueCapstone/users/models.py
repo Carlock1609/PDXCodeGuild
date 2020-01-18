@@ -34,22 +34,29 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=20)
     state = models.CharField(max_length=3)
 
-    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_images/', editable=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
-    photo_library = models.ImageField(blank=True, null=True)
+    profile_picture = models.ImageField(default='default_profile.jpg', upload_to='profile/profile_images/', editable=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
+    cover_picture = models.ImageField(default='default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
     # Saves space and loading time
+    # TRY AND ADD THE BG PHOTO TO THIS ASWELL
     def save(self, *args, **kwargs): # ADDED TAGS FOR S3 BUCKETS
         super().save(*args, **kwargs)
 
-        img = Image.open(self.profile_pic)
+        profile_img = Image.open(self.profile_picture)
+        background_img = Image.open(self.cover_picture)
 
-        if img.height > 300 or img.width > 300:
+        if profile_img.height > 300 or img.width > 300:
             output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.profile_pic)
+            profile_img.thumbnail(output_size)
+            profile_img.save(self.profile_picture)
+
+        if background_img.height > 400 or img.width > 800:
+            output_size = (400, 800)
+            background_img.thumbnail(output_size)
+            background_img.save(self.cover_picture)
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
