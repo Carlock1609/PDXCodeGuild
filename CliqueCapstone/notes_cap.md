@@ -117,3 +117,4 @@ THOUGHTS, ERRORS, IDEAS
 
 **01.18.2020** 
     - working on twitter allauth in another project, then see about the easiest way of implementing with class
+    - Almost finished tutorial on allauth for twitter, had to submit review to get an API key, finish from there.
