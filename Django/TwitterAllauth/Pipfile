@@ -8,13 +8,9 @@ pylint = "*"
 
 [packages]
 django = "*"
-pillow = "*"
-django-crispy-forms = "*"
-psycopg2-binary = "*"
-boto3 = "*"
-django-storages = "*"
-python-decouple = "*"
 django-decouple = "*"
+psycopg2 = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"

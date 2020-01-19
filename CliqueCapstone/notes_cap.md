@@ -114,3 +114,6 @@ THOUGHTS, ERRORS, IDEAS
     - WORK ON HOME MODEL
 
     - If your unable to have the two forms on one page, consider making another view/template to submit multiple photos-- Screw that if your only doing one photo at a time.
+
+**01.18.2020** 
+    - working on twitter allauth in another project, then see about the easiest way of implementing with class
