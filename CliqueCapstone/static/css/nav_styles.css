@@ -3,6 +3,7 @@
 #navbar {
     background: rgb(63, 63, 63);
     color: white;
+    margin-bottom: 0px;
 }
 a.navbar-brand {
     font-family: 'Spectral', serif;

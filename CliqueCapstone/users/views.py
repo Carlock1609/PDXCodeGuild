@@ -34,8 +34,8 @@ def profile_page(request):
     # obj.delete()
 
     if request.method == 'POST':
-        UserProfile.profile_picture # why are these here? Test this to see
-        UserProfile.cover_picture
+        # UserProfile.profile_picture # why are these here? Test this to see
+        # UserProfile.cover_picture
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
         if p_form.is_valid():
             p_form.save()
@@ -54,7 +54,7 @@ def profile_page(request):
 @login_required
 def create_photo_post(request):
     if request.method == 'POST':
-        ProfilePhotoLibrary.photo_post
+        # ProfilePhotoLibrary.photo_post
         l_form = ProfilePostForm(request.POST, request.FILES, instance=request.user.user)
         if l_form.is_valid():
             l_form.save()

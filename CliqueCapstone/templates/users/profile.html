@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-
 {% block title %}Profile{% endblock %}
 
 <!-- DO I ITERATE OVER THE OBJECT TO GET ALL ATTS? -->
@@ -9,46 +8,48 @@
 
     {% if user.is_authenticated %}
     <div class="jumbotron jumbotron-fluid">
-            <!-- Insert cover pic here pic {{ user_profile.cover_picture.url }}-->
-            <!-- Try to have the tip of the profile pic circle in here -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="user-profile-block">
+                    <div class="fb-profile-block-thumb cover-container"></div>
+                    <div class="profile-img">
+                        <a href="">
+                            <img src="{{ user_profile.profile_picture.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="profile-name">
+                        <h2>{{ user.username }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="container-fluid mt-5">
             <div class="row">
-                <div class="col-md-2 mt-2">
-                    <img class="" id="profile_pic" src="{{ user_profile.profile_picture.url }}" alt=""> 
+                <div class="col-6 align-items-start">
+                    <h4><b>Name</b>: {{ user.first_name }}</h4>
+                    <h4><i class="far fa-envelope"></i> {{ user.email }}</h4>
+                    <h4><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
+                    <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3>{{ user.username }}'s Profile</h3>
-                    </div>
+                <div class="col-6 align-items-start">
+                    <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</h4>
+                    <h4><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</h4>
+                    <h4><b>State</b>: {{ user_profile.state }}</h4>
+                    <h4><b>City</b>: {{ user_profile.city }}</h4>
                 </div>
-            </div>
-            <br>
-            <div class="row">
-                    <div class="col-6 align-items-start">
-                        <h4><b>Name</b>: {{ user_profile.first_name }}</h4>
-                        <h4><i class="far fa-envelope"></i>   {{ user.email }}</h4>
-                        <h4><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
-                        <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
-                    </div>
-                    <div class="col-6 align-items-start">
-                        <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</h4>
-                        <h4><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</h4>
-                        <h4><b>State</b>: {{ user_profile.state }}</h4>
-                        <h4><b>City</b>: {{ user_profile.city }}</h4>
-                    </div>
             </div>
             <hr>
             <div class="row">
-                <div class="col-6 align-items-start">
-                    <div class="container text-center">
+                <div class="col-6">
+                    <div class="text-center">
                         <h4><b>Experience</b></h4>
                     </div>
                     <h4>{{ user_profile.experience }}</h4>
                 </div>
-                <div class="col-6 align-items-start">
-                    <div class="container text-center">
+                <div class="col-6">
+                    <div class="text-center">
                         <h4><b>Bio</b></h4>
                     </div>
                     <h4>{{ user_profile.bio }}</h4>
@@ -59,20 +60,23 @@
         <hr>
         <!-- CREATE BUTTON TO PUSH INSTEAD -->
         <!-- DONT FORGET ENCTYPE -->
-        <form method="POST" enctype="multipart/form-data">
+        <button class="postbtn btn btn-outline-dark">Upload Photo</button>
+        <form class="postform" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Post Photo</legend>
+                <legend class="border-bottom mb-4"></legend>
                 {{ l_form|crispy }}
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-dark" type="submit">Submit</button>
             </div>
         </form>
-        <form method="POST" enctype="multipart/form-data">
+
+        <button class="updatebtn btn btn-outline-dark">Update Profile</button>
+        <form class="updateform" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Update Profile</legend>
+                <legend class="border-bottom mb-4"></legend>
                 {{ p_form|crispy }}
             </fieldset>
             <div class="form-group">

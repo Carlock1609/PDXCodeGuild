@@ -12,15 +12,68 @@ body, html {
 }
 
 /* PROFILE TEMPLATE */
-.jumbotron {
-    height: 30%;
-    background-color: black;
+.user-profile-block {
+    margin: auto;
+    position: relative;
+    width: 100%;
 }
-#profile_pic {
-    width: 160px;
-    height: 160px;
-    border-radius: 10%;
-    border: 4px solid rgb(182, 182, 182);
+.cover-container {
+      background: rgb(0, 0, 0);
+      /* background: -webkit-radial-gradient(bottom, #73D6F5 12%, #1E90FF);
+      background: radial-gradient(at bottom, #73D6F5 12%, #1E90FF) */
+}
+.fb-profile-block-thumb {
+    display: block;
+    height: 315px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+}
+.fb-profile-block-menu {
+    border: 1px solid rgb(245, 245, 245);
+    border-radius: 0 0 3px 3px;
+}
+.profile-img a {
+      bottom: -35px;
+      box-shadow: none;
+      display: block;
+      left: 50px;
+      padding:1px;
+      position: absolute;
+      height: 160px;
+      width: 160px;
+      background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+      z-index:9;
+}
+.profile-img img {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
+    height:158px;
+    padding: 5px;
+    width:158px;
+}
+.profile-name {
+    bottom: 60px;
+    left: 235px;
+    position: absolute;
+}
+.profile-name h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30px;
+    max-width: 275px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+/*  hide form */
+.updateform {
+    display: none;
+}
+.postform {
+    display: none;
 }
 
 /* INBOX TEMPLATE */
@@ -65,6 +118,6 @@ table, th, td {
     text-align: center;
 }
 .btn-outline-dark:hover {
-background-color:rgb(63, 63, 63);
-border-color:rgb(63, 63, 63);
+    background-color:rgb(63, 63, 63);
+    border-color:rgb(63, 63, 63);
 }

@@ -128,5 +128,9 @@ THOUGHTS, ERRORS, IDEAS
         - Got it to work on the TwitterAllauth_2.0... Only took a few minutes. (Faceslap)
     
     - INTEGRATE ALLAUTH AT SOME POINT
+        - When User authenticated, it looks like it actually got extra data in a ATT, and it has everything from there followers. Try using that foir the API
 
     - Work on forms now
+
+    - Getting error when creating new user and going directly to profile. it says there is no default image set
+        - FIGURED OUT WHERE ERROR IS COMING FROM. When deleting the .url it then loads correctly but with image.******** figure this out
