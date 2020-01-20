@@ -1,3 +1,4 @@
+*CAPTAINS LOG*
 THOUGHTS, ERRORS, IDEAS
 
 **01/09/2020**
@@ -118,3 +119,14 @@ THOUGHTS, ERRORS, IDEAS
 **01.18.2020** 
     - working on twitter allauth in another project, then see about the easiest way of implementing with class
     - Almost finished tutorial on allauth for twitter, had to submit review to get an API key, finish from there.
+
+**01.19.2020**
+    - For Multiple image posts, were going to make two or three more models, a Post and a Image that is OnetoOne with post.
+    
+**01.20.2020**
+    - FOLLOWED A STUPID-BUTT TUTORIAL THAT TOOK FOREVER TO DO AND IN THE ND SHE LEFT OUT STUFF. COME ON.
+        - Got it to work on the TwitterAllauth_2.0... Only took a few minutes. (Faceslap)
+    
+    - INTEGRATE ALLAUTH AT SOME POINT
+
+    - Work on forms now

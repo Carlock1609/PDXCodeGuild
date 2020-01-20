@@ -13,22 +13,25 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
     {% if user.is_authenticated %}
-    <li class="nav-item" class="col px-md-5">
-      <a class="nav-link" href="">Hi {{ user.username }}</a>
-    </li>
-    <li class="nav-item" class="col px-md-5">
-      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-    </li>
+    <ul class="nav">
+      <li class="nav-item" class="col px-md-5">
+        <a class="nav-link" href="">Hi {{ user.username }}</a>
+      </li>
+      <li class="nav-item" class="col px-md-5">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
     {% else %}
-    <li class="nav-item" class="col px-md-5">
-      <a class="nav-link" href="{% url 'signup' %}">Signup</a>
-    </li>
-    <li class="nav-item" class="col px-md-5">
-      <a class="nav-link" href="{% url 'login' %}">Login</a>
-    </li>
+    <ul class="nav">
+      <li class="nav-item" class="col px-md-5">
+        <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+      </li>
+      <li class="nav-item" class="col px-md-5">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+    </ul>
+
     {% endif %}
 
 

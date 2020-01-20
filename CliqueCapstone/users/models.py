@@ -63,6 +63,13 @@ class UserProfile(models.Model):
             background_img.thumbnail(output_size)
             background_img.save(self.cover_picture)
 
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+        
+post_save.connect(create_profile, sender=CustomUser)
+
+
 # This will be photos for the user
 class ProfilePhotoLibrary(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -73,16 +80,12 @@ class ProfilePhotoLibrary(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Photo"
 
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = UserProfile.objects.create(user=kwargs['instance'])
-        
-post_save.connect(create_profile, sender=CustomUser)
+# CREATE CLASS FOR POSTS AND IMAGES
 
-
-
-# class PhotoLibrary(models.Model):
-#     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     created_at = models.DateTimeField(autorunru_now_add=True)
-#     title = models.CharField(max_length=100)
-#     photo = models.FileField()
+# User post
+class ProfileUserPost(models.Model):
+    pass
+# User image 
+# Onetoone with ProfileUserPost
+class ProfileUserPhoto(models.Model):
+    pass
