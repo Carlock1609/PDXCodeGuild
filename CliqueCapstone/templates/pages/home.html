@@ -6,16 +6,21 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-  <h3>Username: {{ user.username }}</h3>
-  <br>
-  <h3>User ID: {{ user.id }}</h3>
-  <br>
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a> |
-  <a href="{% url 'signup' %}">signup</a>
-{% endif %}
+<div class="container">
+  {% if user.is_authenticated %}
+      <br>
+      <br>
+      <br>
+      <h3>Username: {{ user.username }}</h3>
+      <br>
+      <h3>User ID: {{ user.id }}</h3>
+      <br>
+      <p><a href="{% url 'logout' %}">logout</a></p>
+  {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a> |
+      <a href="{% url 'signup' %}">signup</a>
+  {% endif %}
+</div>
 
 {% endblock %}
