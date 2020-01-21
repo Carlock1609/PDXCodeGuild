@@ -25,16 +25,22 @@
                     - OR -
                 </p>
                 <h4 class="card-text">
-                    <!-- IF POSSIBLE ADD ALLAUTH OF ANY KIND AND ADD TAG -->
-                    <a href="#">
-                        <a href="{% provider_login_url 'twitter' %}"><i class="fab fa-twitter-square"></i></a>
-                    </a>
+                    <!-- allauth -->
+                    <!-- How do i get clicking affect? -->
+                    <button class="btn" type="submit">
+                        <a href="{% provider_login_url 'twitter' %}">
+                            <img src="../../static_images/signin_twitter.png" alt="">
+                        </a>
+                    </button>
                 </h4>
                 <hr>
 
             </div>
         </div>
     </div>
+
+
+
 
 {% endblock %}
 

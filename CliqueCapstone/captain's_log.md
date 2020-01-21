@@ -134,3 +134,8 @@ THOUGHTS, ERRORS, IDEAS
 
     - Getting error when creating new user and going directly to profile. it says there is no default image set
         - FIGURED OUT WHERE ERROR IS COMING FROM. When deleting the .url it then loads correctly but with image.******** figure this out
+
+    - Allauth was succesful, check admin to see what user does when they sign up that way. Will they be missing other data that the custom users do?
+        - On the user Model, no Email is associated it looks like. nothing to click on
+            - The only difference is they Cant put there first name or Email. 
+                - Should i change there first name then?

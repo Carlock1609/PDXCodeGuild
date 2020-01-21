@@ -1,6 +1,5 @@
 console.log("Connected")
 
-
 // **PROFILE TEMPLATE**
 
 // Hiding profile form with button
