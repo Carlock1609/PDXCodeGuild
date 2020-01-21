@@ -38,12 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'users',
     'pages',
     'inboxApp',
     'crispy_forms',
     'boto3',
     'storages',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.twitter',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +63,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 TEMPLATES = [
     {
@@ -151,5 +162,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' # CRISPY FORMS
 
 AUTH_USER_MODEL = 'users.CustomUser' # SETTING CUSTOM USER
 
-LOGIN_REDIRECT_URL = 'home' # REDIRECTS
+LOGIN_REDIRECT_URL = 'home' 
 LOGOUT_REDIRECT_URL = 'home'
+
+# allauth
+SITE_ID = 1
+

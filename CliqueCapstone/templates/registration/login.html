@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load socialaccount %}
 {% load crispy_forms_tags %}
 
 {% block title %}Login{% endblock %}
@@ -25,8 +26,8 @@
                 </p>
                 <h4 class="card-text">
                     <!-- IF POSSIBLE ADD ALLAUTH OF ANY KIND AND ADD TAG -->
-                    <a href="http://www.twitter.com/">
-                        <i class="fab fa-twitter-square"></i> 
+                    <a href="#">
+                        <a href="{% provider_login_url 'twitter' %}"><i class="fab fa-twitter-square"></i></a>
                     </a>
                 </h4>
                 <hr>
