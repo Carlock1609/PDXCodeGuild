@@ -128,14 +128,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+# STATIC FILES js/css
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# STORING STATIC IMAGES
 MEDIA_URL = '/static_images/' # THESE ARE FOR PILLOW SEE IF I CAN HAVE THIS AND THE PHOTO STORAGE
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_images')
 
+# S3 BUCKET
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID') # DO NOT COMMIT THESE
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY') # DO NOT COMMIT THESE
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

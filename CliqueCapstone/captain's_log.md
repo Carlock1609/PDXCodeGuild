@@ -1,7 +1,7 @@
 *CAPTAINS LOG*
 THOUGHTS, ERRORS, IDEAS
 
-**01/09/2020**
+**StarDate 01/09/2020**
     - ERROR Figure out authenticate for home page, also figure out ID situation *** FIXED (user = id)
     - Do I need to forloop/Iterate over the object to get it to print? - If you want all the posts from a model from different users
 
@@ -20,12 +20,12 @@ THOUGHTS, ERRORS, IDEAS
             - Time
         InboxDB -> DirectMsgDB -> EmailsDB
     
-**01/10/2020**
+**StarDate 01/10/2020**
     - Migrated DB, I only need two DB's for the Inbox, Try and figure out how to associate the two users PK's
     - Need to add Data to inboxDB's.
     - Did some frontend work
 
-**01/11/2020 - 01/12/2020** 
+**StarDate 01/11/2020 - 01/12/2020** 
     - Figure out how to get the Inbox created for the user when signup, just like profile.
     - Figure out how to add subject ot messages
     - When user clicks on Inbox, make a view to filter all his messages
@@ -64,7 +64,7 @@ THOUGHTS, ERRORS, IDEAS
             return True
         return False
 
-**01.13.2020**
+**StarDate 01.13.2020**
     - NOTES FOR INBOX MODELS
         - So with the 2nd model, it all worked out, 
             - Im able to user self.conversation.receiver
@@ -76,13 +76,13 @@ THOUGHTS, ERRORS, IDEAS
 
     - Figure out the Inbox Model, How do i grab two different uses and have them direct posts to each other?? WOnt the id's keep changing every message?
 
-**01.14.2020**
+**StarDate 01.14.2020**
     - For bottom Navbar figure outa btter way of having fixed buttom, or if im able to when the user scrolls past a certain point it scrolls with it.
 
 
 
 
-**01.15.2020**
+**StarDate 01.15.2020**
     - Figure out flow of website pages, curretly running into an issue with the login page, you cannot simply add the login form to the home page because of the auth.contrib.urls in the mysite urls. Maybe try making the users the default page instead of home
         - Currently when user tries to go to homepage without authenticating, user gets redirected to login page. Get rid of the home pages login/signup tages.
         - Figure out css scroll effect
@@ -96,11 +96,11 @@ THOUGHTS, ERRORS, IDEAS
         - Make dropdown for extra profile info to save room
 
 
-**01.16.2020**
+**StarDate 01.16.2020**
     - S3 buckets working and deployed.
     - Decoupling figured out and working.
 
-**01.17.2020**
+**StarDate 01.17.2020**
     - Do research on incorporating CDN's
     - Do more research on S3 bucckets
 
@@ -116,14 +116,14 @@ THOUGHTS, ERRORS, IDEAS
 
     - If your unable to have the two forms on one page, consider making another view/template to submit multiple photos-- Screw that if your only doing one photo at a time.
 
-**01.18.2020** 
+**StarDate 01.18.2020** 
     - working on twitter allauth in another project, then see about the easiest way of implementing with class
     - Almost finished tutorial on allauth for twitter, had to submit review to get an API key, finish from there.
 
-**01.19.2020**
+**StarDate 01.19.2020**
     - For Multiple image posts, were going to make two or three more models, a Post and a Image that is OnetoOne with post.
     
-**01.20.2020**
+**StarDate 01.20.2020**
     - FOLLOWED A STUPID-BUTT TUTORIAL THAT TOOK FOREVER TO DO AND IN THE ND SHE LEFT OUT STUFF. COME ON.
         - Got it to work on the TwitterAllauth_2.0... Only took a few minutes. (Faceslap)
     
