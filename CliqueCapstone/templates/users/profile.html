@@ -7,7 +7,7 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="user-profile-block">
@@ -60,31 +60,32 @@
         <hr>
         <!-- CREATE BUTTON TO PUSH INSTEAD -->
         <!-- DONT FORGET ENCTYPE -->
-        <button class="postbtn btn btn-outline-dark">Upload Photo</button>
-        <form class="postform" method="POST" enctype="multipart/form-data">
+        <button class="postbtn btn btn-outline-dark">Upload Photo</button>    
+        <a href="{% url 'update_profile' %}">
+            <button class="btn btn-outline-dark">Update Profile</button>
+        </a>  
+        <br>
+        <br>
+        <form class="postform" id="post_form" method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4"></legend>
-                {{ l_form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-dark" type="submit">Submit</button>
-            </div>
-        </form>
+            <!-- RESEARCH hidden_fields -->
+            {% for hidden in postForm.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
 
-        <button class="updatebtn btn btn-outline-dark">Update Profile</button>
-        <form class="updateform" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4"></legend>
-                {{ p_form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-dark" type="submit">Update</button>
-            </div>
+            <p>Title*</p>
+            {% for field in postForm %}
+                {{ field }}
+            {% endfor %}
+
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form|crispy }}
+            {% endfor %}
+            <button class="btn btn-outline-dark" type="submit" name="submit" value="Submit">Upload</button>
         </form>
+        <br><br>
     </div>
     {% endif %}
     
 {% endblock %}
-

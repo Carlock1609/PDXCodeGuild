@@ -139,3 +139,15 @@ THOUGHTS, ERRORS, IDEAS
         - On the user Model, no Email is associated it looks like. nothing to click on
             - The only difference is they Cant put there first name or Email. 
                 - Should i change there first name then?
+
+**StarDate 01.21.2020**
+    - HOMEPAGE, get random posts from users posting photos to their profile. 
+        - Eventaully only get the ones that have the most likes
+            - Or Users that have the most likes 
+
+    - Succesful on getting threee different images and posting them to S3
+        - Try to make them seperate and specific to a user, So i can for loop users library?
+            - On s3 there was something a little weird, said that own was Carlock1609 and carlock906 is logged in? look into this
+
+    - Figure out why Navbar js disappear on scroll only works when user logged in
+        - Actually only works on profile page?

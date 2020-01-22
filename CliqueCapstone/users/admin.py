@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, UserProfile, ProfilePhotoLibrary
+from .models import CustomUser, UserProfile,ProfileUserPhoto, ProfileUserPost
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -14,4 +14,6 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(UserProfile)
-admin.site.register(ProfilePhotoLibrary)
+# admin.site.register(ProfilePhotoLibrary)
+admin.site.register(ProfileUserPost)
+admin.site.register(ProfileUserPhoto)

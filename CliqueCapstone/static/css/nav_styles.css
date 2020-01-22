@@ -1,9 +1,11 @@
 /* NAVBAR STYLES */
 /* TOP NAVBAR */
-#navbar {
+.navbar {
     background: rgb(63, 63, 63);
     color: white;
     margin-bottom: 0px;
+    transition: top 0.5s ease;
+    
 }
 a.navbar-brand {
     font-family: 'Spectral', serif;

@@ -10,8 +10,9 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .models import CustomUser, UserProfile, ProfilePhotoLibrary
-from .forms import CustomUserCreationForm, ProfileUpdateForm, ProfilePostForm
+from .models import CustomUser, UserProfile, ProfileUserPost, ProfileUserPhoto
+from .forms import CustomUserCreationForm, ProfileUpdateForm, PostForm, PhotoForm
+from django.forms import modelformset_factory
 
 from django.contrib import messages
 import boto3
@@ -21,9 +22,51 @@ class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
-
+    
 @login_required
 def profile_page(request):
+
+    # Multiple Photo posts
+    ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm, extra=3)
+
+    if request.method == 'POST':
+        # ProfilePhotoLibrary.photo_post
+
+        postForm = PostForm(request.POST)
+        formset = ImageFormSet(request.POST, request.FILES, queryset=ProfileUserPhoto.objects.none())
+
+        if postForm.is_valid() and formset.is_valid():
+            post_form = postForm.save(commit=False)
+            post_form.user = request.user
+            post_form.save()
+
+            for form in formset.cleaned_data:
+                #this helps to not crash if the user   
+                #do not upload all the photos
+                if form:
+                    image = form['image']
+                    photo = ProfileUserPhoto(post=post_form, image=image)
+                    photo.save()
+            messages.success(request, "Yeeew, check it out on the home page!")
+            return redirect('profile')
+        else:
+            print(postForm.errors, formset.errors)
+
+    else:
+        postForm = PostForm()
+        # Research queryset
+        formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
+        user_id = request.user.id
+        context = {
+            'postForm': postForm,
+            'formset': formset,
+            'user_profile': UserProfile.objects.get(user_id=user_id)
+        }
+    return render(request, 'users/profile.html', context)
+
+
+@login_required
+def update_user_profile(request):
     # user_id = request.user.id
     # profile = UserProfile.objects.get(user_id=user_id)
     
@@ -43,31 +86,12 @@ def profile_page(request):
             return redirect('profile')
     else:
         p_form = ProfileUpdateForm(request.POST, instance=request.user.user)
-        user_id = request.user.id
         context = {
             'p_form': p_form,
-            'user_profile': UserProfile.objects.get(user_id=user_id),
         }
-        return render(request, 'users/profile.html', context)
+        return render(request, 'users/update_profile.html', context)
 
 # Consider making a new view and template to submit multiple photos
-@login_required
-def create_photo_post(request):
-    if request.method == 'POST':
-        # ProfilePhotoLibrary.photo_post
-        l_form = ProfilePostForm(request.POST, request.FILES, instance=request.user.user)
-        if l_form.is_valid():
-            l_form.save()
-            messages.success(request, f'Your post has been created!')
-            return redirect('profile')
-    else:
-        l_form = ProfilePostForm(request.POST, instance=request.user.user)
-        user_id = request.user.id
-        context = {
-            'l_form': l_form,
-            'user_profile': UserProfile.objects.get(user_id=user_id)
-        }
-        return render(request, 'users/profile.html', context)
 
 
 # def edit_user(request, pk):

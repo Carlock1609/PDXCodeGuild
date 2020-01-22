@@ -1,19 +1,22 @@
 console.log("Connected")
 
 // **PROFILE TEMPLATE**
-
-// Hiding profile form with button
-// Figure out how to reclose
-updatebtn = document.querySelector('.updatebtn')
-updateform = document.querySelector('.updateform')
-
-updatebtn.addEventListener('click', function() {
-    updateform.style.display = 'block';
-})
-
 postbtn = document.querySelector('.postbtn')
 postform = document.querySelector('.postform')
 
-log.addEventListener('click', function() {
+postbtn.addEventListener('click', function() {
     postform.style.display = 'block';
 })
+
+
+// NAVBAR SCROLL
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  let currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.querySelector(".navbar").style.top = "0";
+  } else {
+    document.querySelector(".navbar").style.top = "-56px";
+  }
+  prevScrollpos = currentScrollPos;
+} 

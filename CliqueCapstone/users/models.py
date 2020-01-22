@@ -53,7 +53,7 @@ class UserProfile(models.Model):
             profile_img.save(self.profile_picture)
 
     # cover photo
-    # This isnt reesizing to great
+    # This isnt reesizing too great - Get exact pixels
     def save_cover(self, *args, **kwargs):
         super().save_cover(*args, **kwargs)
 
@@ -72,21 +72,24 @@ post_save.connect(create_profile, sender=CustomUser)
 
 
 # This will be photos for the user
-class ProfilePhotoLibrary(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=100, blank=True, null=True)
-    photo_post = models.ImageField(upload_to='profile/profile_library', editable=True, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+# class ProfilePhotoLibrary(models.Model):
+#     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+#     title = models.CharField(max_length=100, blank=True, null=True)
+#     photo_post = models.ImageField(upload_to='profile/profile_library', editable=True, blank=True, null=True)
+#     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.user.username}'s Photo"
+#     def __str__(self):
+#         return f"{self.user.username}'s Photo"
 
 # CREATE CLASS FOR POSTS AND IMAGES
 
 # User post
 class ProfileUserPost(models.Model):
-    pass
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
+    title = models.CharField(max_length=128, default="", blank=True, null=True)
+
 # User image 
 # Onetoone with ProfileUserPost
 class ProfileUserPhoto(models.Model):
-    pass
+    post = models.ForeignKey(ProfileUserPost, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='User_photo_library', editable=True, blank=True, null=True)
