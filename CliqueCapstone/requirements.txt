@@ -1,2 +1,1 @@
-pipenv install django
-pipenv install pillow
+# Put pip installs in here

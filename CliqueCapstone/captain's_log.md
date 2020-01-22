@@ -153,3 +153,13 @@ THOUGHTS, ERRORS, IDEAS
         - Actually only works on profile page?
 
     - TRYING to get allauth user an email on signin, and using the ACCOUNT_EMAIL_REQUIRED it gives me an error
+        - Except when you get it in retains the email? maybe it just didnt post to db?
+
+    - Fucked up navbar but i have a new look now.
+    - Change buttons to wide faded out squares
+        - Fixed navbar and buttons
+
+    - I decided to put a Search link in the nav to click
+        - Make model and view for search, and make the template have the search bar in middle of screen
+
+        

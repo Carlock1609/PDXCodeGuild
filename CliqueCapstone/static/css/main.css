@@ -119,3 +119,7 @@ table, th, td {
     background-color:rgb(63, 63, 63);
     border-color:rgb(63, 63, 63);
 }
+.btn {
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
