@@ -67,7 +67,6 @@ body, html {
     position: relative;
     text-transform: uppercase;
 }
-
 /*  hide form */
 .updateform {
     display: none;
@@ -108,7 +107,6 @@ table, th, td {
 }
 
 /* Login */
-
 .card {
     margin: 0 auto; /* Added */
     float: none; /* Added */

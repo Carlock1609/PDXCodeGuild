@@ -5,10 +5,11 @@
 {% block title %}Update Profile{% endblock %}
 
 {% block content %}
-<br><br>
+
+    <br><br>
     {% if user.is_authenticated %}
     <div class="container">
-        <div class="container text-center mt-2">
+        <div class="container text-center mt-4">
             <h4>Updating {{ user.username }}'s Profile</h4>
         </div>
         <form method="POST" enctype="multipart/form-data">

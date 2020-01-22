@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 
 {% block title %}Profile{% endblock %}
@@ -34,7 +35,8 @@
                     <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
                 </div>
                 <div class="col-lg-6 align-items-start">
-                    <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</h4>
+                    <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
+                    <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</h4>
                     <h4><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</h4>
                     <h4><b>State</b>: {{ user_profile.state }}</h4>
                     <h4><b>City</b>: {{ user_profile.city }}</h4>

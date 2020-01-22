@@ -1,13 +1,5 @@
 console.log("Connected")
 
-// **PROFILE TEMPLATE**
-postbtn = document.querySelector('.postbtn')
-postform = document.querySelector('.postform')
-
-postbtn.addEventListener('click', function() {
-    postform.style.display = 'block';
-})
-
 
 // NAVBAR SCROLL
 let prevScrollpos = window.pageYOffset;
@@ -20,3 +12,15 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollPos;
 } 
+
+// **PROFILE TEMPLATE**
+postbtn = document.querySelector('.postbtn')
+postform = document.querySelector('.postform')
+
+postbtn.addEventListener('click', function() {
+    postform.style.display = 'block';
+})
+
+
+
+

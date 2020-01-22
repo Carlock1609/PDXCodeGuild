@@ -151,3 +151,5 @@ THOUGHTS, ERRORS, IDEAS
 
     - Figure out why Navbar js disappear on scroll only works when user logged in
         - Actually only works on profile page?
+
+    - TRYING to get allauth user an email on signin, and using the ACCOUNT_EMAIL_REQUIRED it gives me an error

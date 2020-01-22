@@ -11,6 +11,7 @@ from django.views.generic.edit import CreateView
 from django import forms
 
 from .models import CustomUser, UserProfile, ProfileUserPost, ProfileUserPhoto
+from allauth.socialaccount.models import SocialAccount
 from .forms import CustomUserCreationForm, ProfileUpdateForm, PostForm, PhotoForm
 from django.forms import modelformset_factory
 
@@ -60,7 +61,10 @@ def profile_page(request):
         context = {
             'postForm': postForm,
             'formset': formset,
-            'user_profile': UserProfile.objects.get(user_id=user_id)
+            'user_profile': UserProfile.objects.get(user_id=user_id),
+            # FIGURE OUT HOW TO BE DRY YO
+            'twitter_followers': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['followers_count'],
+            # 'twitter_email': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['email'],
         }
     return render(request, 'users/profile.html', context)
 
