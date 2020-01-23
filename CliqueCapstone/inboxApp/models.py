@@ -32,6 +32,32 @@ class ConversationDB(models.Model):
     def __str__(self):
         return f"{self.owner}'s conversation"
 
+
+
+# >>> user2 = UserProfile.objects.all()
+# >>> user2
+# <QuerySet [<UserProfile: testuser3's Profile>, <UserProfile: testuser1's Profile>, <UserProfile: testuser2's Profile>, <UserProfile: Carlock906's Profile>, <UserProfile: carlock9069's Profile>, <UserProfile: Carlock1609's Profile>]>
+# >>> user2[4]
+# <UserProfile: carlock9069's Profile>
+# >>> user2[3]
+# <UserProfile: Carlock906's Profile>
+# >>> user2[3].id
+# 13
+
+# >>> from inboxApp.models import InboxDB
+# >>> msg = InboxDB.objects.all()
+# >>> msg
+# <QuerySet [<InboxDB: Carlock1609 sent a message to Carlock906>]>
+# >>> msg[0]
+# <InboxDB: Carlock1609 sent a message to Carlock906>
+# >>> msg[0].id
+# 6
+# >>> msg[0].profile_id
+# <UserProfile: Carlock906's Profile>
+# >>> msg[0].profile_id.id
+# 13
+# >>> user2 =
+
 # >>> from users.models import ProfileUserPhoto
 # >>> user1 = ProfileUserPhoto.objects.all()
 # >>> user1

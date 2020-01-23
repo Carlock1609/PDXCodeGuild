@@ -14,13 +14,9 @@ from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WH
 def user_inbox(request):
     user_id = request.user.id
     if request.method == "GET":
-
-        message_sender = InboxDB.objects.filter(sender=user_id)
-        message_receiver = InboxDB.objects.filter(receiver=user_id)
-        
         context = {
-            'message': message_sender.order_by('subject', '-sent_date').distinct('subject'),
-            'message': message_receiver.order_by('subject', '-sent_date').distinct('subject'),
+            'message_list': InboxDB.objects.filter(sender=user_id).order_by('subject', '-sent_date').distinct('subject'),
+            'message_list': InboxDB.objects.filter(receiver=user_id).order_by('subject', '-sent_date').distinct('subject'),
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
