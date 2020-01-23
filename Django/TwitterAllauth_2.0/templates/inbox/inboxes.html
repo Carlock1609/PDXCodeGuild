@@ -1,0 +1,6 @@
+{% load core_tags %}
+...
+{% for inbox in inboxes %}
+{% get_unread_messages inbox request.user as unread_messages %}
+{% endfor %}
+```
