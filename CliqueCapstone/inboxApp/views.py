@@ -35,13 +35,10 @@ def user_msg(request): # Use this view to continue the conversation
     # if request.CustomUser.username == message.sender.username
 
     if request.method == "GET":
-    
-        message_sender = InboxDB.objects.filter(sender=user_id)
-        message_receiver = InboxDB.objects.filter(receiver=user_id)
         
         context = {
-            'message': message_sender.order_by('subject', '-sent_date').distinct('subject'),
-            'message': message_receiver.order_by('subject', '-sent_date').distinct('subject'),
+            'message': InboxDB.objects.filter(sender=user_id).order_by('subject', '-sent_date').distinct('subject'),
+            'message': InboxDB.objects.filter(receiver=user_id).order_by('subject', '-sent_date').distinct('subject'),
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 

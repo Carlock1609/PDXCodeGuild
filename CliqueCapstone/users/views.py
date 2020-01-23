@@ -62,13 +62,14 @@ def profile_page(request):
             'postForm': postForm,
             'formset': formset,
             'user_profile': UserProfile.objects.get(user_id=user_id),
+            'library': ProfileUserPhoto.objects.get(id=user_id),
             # FIGURE OUT HOW TO BE DRY YO
             'twitter_followers': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['followers_count'],
             # 'twitter_email': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['email'],
         }
     return render(request, 'users/profile.html', context)
 
-
+# >>> user1[12].post.id
 @login_required
 def update_user_profile(request):
     # user_id = request.user.id

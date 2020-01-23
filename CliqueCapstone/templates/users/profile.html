@@ -68,6 +68,7 @@
         </a>  
         <br>
         <br>
+        <!-- Upload photos -->
         <form class="postform" id="post_form" method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- RESEARCH hidden_fields -->
@@ -88,6 +89,13 @@
         </form>
         <br><br>
     </div>
+
+    {% for img in library %}
+        <div>
+            <img src="{{ img.image.url }}" alt="">
+        </div>
+    {% endfor %}
+
     {% endif %}
     
 {% endblock %}

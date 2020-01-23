@@ -1,25 +1,102 @@
 from django.db import models
 from users.models import CustomUser    # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
+from users.models import UserProfile
 
 from django.db.models.signals import post_save
 import datetime
 from django.utils import timezone
 
 # CREATE ANOTHER MODEL THAT HAS A UNIQUE THREAD ASSOCIATED WITH IT. VAN USES EQUIPMENT ID FROM HIS MODEL. YOU NEED TO MAKE A THREAD INBOX WITH ID FOR THE USERS TO POST TO
+    
+
 class InboxDB(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)
     receiver = models.ForeignKey(CustomUser, related_name='receiver', on_delete=models.CASCADE, null=True)
     subject = models.CharField(max_length=100, default="Let's Collaborate!", blank=True, null=True)
     body = models.CharField(max_length=1000, default='', blank=True, null=True)
     sent_date = models.DateTimeField(auto_now_add=True)
+    profile_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
 
     class Meta:
-        verbose_name_plural = "User Messages"
+        verbose_name_plural = "User Individual Messages"
 
     def __str__(self):
-        if self.sender == self.sender:
-            return f"{self.sender} and {self.receiver}'s Conversation"
+        return f"{self.sender} sent a message to {self.receiver}"
 
+class ConversationDB(models.Model):
+    owner = models.ForeignKey(CustomUser, related_name='owner', on_delete=models.CASCADE, null=True)
+    
+    class Meta:
+        verbose_name_plural = "User Inbox"
+
+    def __str__(self):
+        return f"{self.owner}'s conversation"
+
+# >>> from users.models import ProfileUserPhoto
+# >>> user1 = ProfileUserPhoto.objects.all()
+# >>> user1
+# <QuerySet [<ProfileUserPhoto: ProfileUserPhoto object (1)>, <ProfileUserPhoto: ProfileUserPhoto object (2)>, <ProfileUserPhoto: ProfileUserPhoto object (3)>, <ProfileUserPhoto: ProfileUserPhoto object (4)>, <ProfileUserPhoto: ProfileUserPhoto object (5)>, <ProfileUserPhoto: ProfileUserPhoto object (6)>, <ProfileUserPhoto: ProfileUserPhoto object (7)>, <ProfileUserPhoto: ProfileUserPhoto object (8)>, <ProfileUserPhoto: ProfileUserPhoto object (9)>, <ProfileUserPhoto: ProfileUserPhoto object (10)>, <ProfileUserPhoto: ProfileUserPhoto object (11)>, <ProfileUserPhoto: ProfileUserPhoto object (12)>, <ProfileUserPhoto: ProfileUserPhoto object (13)>]>
+# >>> user1[0]
+# <ProfileUserPhoto: ProfileUserPhoto object (1)>
+# >>> user1[0].image
+# <ImageFieldFile: User_photo_library/Three_bridge_brewing1.png>
+# >>> user1[0].id
+# 1
+# >>> user1[13]
+# >>> user1[12]
+# <ProfileUserPhoto: ProfileUserPhoto object (13)>
+# >>> user1[12].id
+# 13
+# >>> user1[12].user
+# >>> user1[12].post
+# <ProfileUserPost: ProfileUserPost object (5)>
+# >>> user1[12].post.id
+# 5
+
+# >> user2 = ProfileUserPost.objects.get(id=5)
+# >>> user2
+# <ProfileUserPost: ProfileUserPost object (5)>
+# >>> user2.id
+# 5
+# >>> user2.image
+# >>> user2.title
+# 'kjl'
+# >>> user2 = ProfileUserPost.objects.all()
+# >>> user2
+# <QuerySet [<ProfileUserPost: ProfileUserPost object (1)>, <ProfileUserPost: ProfileUserPost object (2)>, <ProfileUserPost: ProfileUserPost object (3)>, <ProfileUserPost: ProfileUserPost object (4)>, <ProfileUserPost: ProfileUserPost object (5)>]>
+# >>> user2[5]
+# IndexError: list index out of range
+# >>> user2[4]
+# <ProfileUserPost: ProfileUserPost object (5)>
+# >>> user2[4].id
+# 5
+# >>> user2[4].title
+# 'kjl'
+# >>> user2[4].user
+# <CustomUser: Carlock1609>
+# >>> user2[1]
+# <ProfileUserPost: ProfileUserPost object (2)>
+# >>> user2[1].user
+# <CustomUser: Carlock906>
+# >>> user2[0].user
+# <CustomUser: Carlock906>
+# >>> user2[2].user
+# <CustomUser: carlock9069>
+
+
+
+
+# class ConversationDB(models.Model):
+#     created_date = models.DateTimeField(auto_now_add=True)
+#     conversation = models.ForeignKey(InboxDB, on_delete=models.CASCADE)
+
+#     class Meta:
+#         verbose_name_plural = "User Conversation"
+
+#     def __str__(self):
+#         return f"{self.user}"
+
+    
 
 
 

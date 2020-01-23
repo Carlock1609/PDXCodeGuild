@@ -151,6 +151,7 @@ THOUGHTS, ERRORS, IDEAS
 
     - Figure out why Navbar js disappear on scroll only works when user logged in
         - Actually only works on profile page?
+        - FIXED** had to move navbar script to top
 
     - TRYING to get allauth user an email on signin, and using the ACCOUNT_EMAIL_REQUIRED it gives me an error
         - Except when you get it in retains the email? maybe it just didnt post to db?
@@ -162,4 +163,6 @@ THOUGHTS, ERRORS, IDEAS
     - I decided to put a Search link in the nav to click
         - Make model and view for search, and make the template have the search bar in middle of screen
 
-        
+**StarDate 01.21.2020**
+    - Figure out why navbar disappears when smaller
+    - Figure out login page twittter button not center

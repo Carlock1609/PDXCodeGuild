@@ -2,11 +2,12 @@
 body, html {
     font-family: 'Halant', serif;
     height: 100%;
+    background-color: rgb(63, 63, 63);
 }
 
 /* CONTAINERS STRETCHS TO BOTTOM OF PAGE */
 .container {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(231, 231, 231);
     min-height: 100%;
     overflow: hidden;
 }
@@ -30,7 +31,7 @@ body, html {
     text-decoration: none;
 }
 .fb-profile-block-menu {
-    border: 1px solid rgb(245, 245, 245);
+    border: 1px solid rgb(231, 231, 231);
     border-radius: 0 0 3px 3px;
 }
 .profile-img a {
