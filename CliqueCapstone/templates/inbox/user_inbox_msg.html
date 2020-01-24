@@ -4,16 +4,22 @@
 {% block title %}Message{% endblock %}
 
 {% block content %}
-
+    
     {% if user.is_authenticated %}
-        <div class="container mt-5">
-            {% for msg in message %}
-                <p>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} {{ msg.body }}</p>
-            {% empty %}
-                <p>Inbox is EMPTY</p>
-            {% endfor %}
+    <div class="container">
+        <br><br><br><br><br>
+        <h4>{{ message.conversation_name }}</h4>
+        {% for msg in message %}
+        <hr class="mb-1">
+            {% if msg.sender == request.user.username %}
+                <p>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.receiver }}</b>:  {{ msg.body }}
+            {% else %}
+                <p>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender }}</b>:  {{ msg.body }}
+            {% endif %}
+        {% empty %}
+            <p>Inbox is EMPTY</p>
+        {% endfor %}
         </div>
     {% endif %}
+
 {% endblock %}
-
-

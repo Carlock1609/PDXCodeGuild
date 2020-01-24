@@ -20,6 +20,7 @@ from django.utils import timezone
 class UserMessages(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)
     receiver = models.ForeignKey(CustomUser, related_name='receiver', on_delete=models.CASCADE, null=True)
+    conversation_name = models.CharField(max_length=200, default="User1 and User2's Conversation", null=True) # BE SURE TO MAKE THIS NONE EDITABLE AND FIGURE OUT WAY TO INSERT USERNAMES
     subject = models.CharField(max_length=100, default="Let's Collaborate!", blank=True, null=True)
     body = models.CharField(max_length=1000, default='', blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -29,7 +30,7 @@ class UserMessages(models.Model):
         verbose_name_plural = "User Individual Messages"
 
     def __str__(self):
-        return f"{self.sender} sent a message to {self.receiver}"
+        return f"{self.conversation_name}"
 
 
 # >>> msg = UserMessages.objects.all()

@@ -16,14 +16,14 @@ def user_inbox(request):
 
     if request.method == "GET":
         context = {
-            'message_list': UserMessages.objects.filter(sender=user_id).order_by('subject', '-created_date').distinct('subject'),
-            'message_list': UserMessages.objects.filter(receiver=user_id).order_by('subject', '-created_date').distinct('subject'),
+            'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
+            'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
 # WORK ON TEMPLATE
 @login_required
-def user_msg(request, id, subject): # Use this view to continue the conversation
+def user_msg(request, id, conversation_name): # Use this view to continue the conversation_name
     # ID IS INDIVIDUAL MESSAGE ID, NOT USER ID
     user_id = request.user.id
     if request.method == "GET":
@@ -31,7 +31,7 @@ def user_msg(request, id, subject): # Use this view to continue the conversation
             # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
             'message': UserMessages.objects.filter(sender=user_id),
             'message': UserMessages.objects.filter(receiver=user_id),
-            'message': UserMessages.objects.filter(subject=subject),
+            'message': UserMessages.objects.filter(conversation_name=conversation_name),
             'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox),
         }
         return render(request, 'inbox/user_inbox_msg.html', context)

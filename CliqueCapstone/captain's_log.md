@@ -166,3 +166,18 @@ THOUGHTS, ERRORS, IDEAS
 **StarDate 01.21.2020**
     - Figure out why navbar disappears when smaller
     - Figure out login page twittter button not center
+
+**StarDate 01.23.2020**
+    - Figured out INBOX kinda THOROUGLY TEST
+        - You need to figure out distinct instead of doing subject
+        - So even though you change the subject, itll still work goign to the same user, but in the list it is not unique
+
+        - So testing using only one persons profile works great! It posts in order as well
+        - For distinct, The subject will work. I'm going to user their usernames which will be UNIQUE and work. HOWEVER
+            - There will be Two threads possibly. 
+            - If one user sends an email to another, itll be "userone and usertwo's Conversation" for one thread and vice versa if they make another. 
+                - THEY DONT HAVE TO THOUGH, if users keep posting on same thread. not too big of a biggie, Possibly make statement too-
+                    - Check to see if its a polynomal?
+
+        - Figure out how to add sender - reciever names to list
+        
