@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from .models import InboxDB
-from users.models import CustomUser
+from django.shortcuts import render, HttpResponse
+from .models import UserMessages
+from users.models import CustomUser, UserProfile
 
 from django.contrib.auth.decorators import login_required # Decorators
 from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WHEN YOU WANT TO ADD SECURITY
@@ -13,35 +13,34 @@ from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WH
 @login_required
 def user_inbox(request):
     user_id = request.user.id
+
     if request.method == "GET":
         context = {
-            'message_list': InboxDB.objects.filter(sender=user_id).order_by('subject', '-sent_date').distinct('subject'),
-            'message_list': InboxDB.objects.filter(receiver=user_id).order_by('subject', '-sent_date').distinct('subject'),
+            'message_list': UserMessages.objects.filter(sender=user_id).order_by('subject', '-created_date').distinct('subject'),
+            'message_list': UserMessages.objects.filter(receiver=user_id).order_by('subject', '-created_date').distinct('subject'),
         }
-        return render(request, 'inbox/user_inbox_list.html', context)
-
-    elif request.method == "POST": # CREATE POST FORM
         return render(request, 'inbox/user_inbox_list.html', context)
 
 # WORK ON TEMPLATE
 @login_required
-def user_msg(request): # Use this view to continue the conversation
+def user_msg(request, id, subject): # Use this view to continue the conversation
+    # ID IS INDIVIDUAL MESSAGE ID, NOT USER ID
     user_id = request.user.id
-
-    # if request.CustomUser.username == message.sender.username
-
     if request.method == "GET":
-        
         context = {
-            'message': InboxDB.objects.filter(sender=user_id).order_by('subject', '-sent_date').distinct('subject'),
-            'message': InboxDB.objects.filter(receiver=user_id).order_by('subject', '-sent_date').distinct('subject'),
+            # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
+            'message': UserMessages.objects.filter(sender=user_id),
+            'message': UserMessages.objects.filter(receiver=user_id),
+            'message': UserMessages.objects.filter(subject=subject),
+            'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox),
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
-    elif request.method == "POST": # CREATE POST FORM
-        return render(request, 'inbox/user_inbox_msg.html', context)
 
- # SUBJECT DISTINCT
+# >>> user1 = UserMessages.objects.filter(user_inbox=17)
+# >>> user1
+# <QuerySet [<UserMessages: Carlock906 sent a message to Carlock1609>, <UserMessages: Carlock1609 sent a message to Carlock906>]>
+
 # >>> message_sender = InboxDB.objects.filter(sender=1)
 # >>> message_sender.order_by('subject', '-sent_date').distinct('subject')
 # <QuerySet [<InboxDB: Carlock906 and testuser1's Conversation>, <InboxDB: Carlock906 and testuser2's Conversation>]>

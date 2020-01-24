@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser, UserProfile
-from inboxApp.models import InboxDB
+
 
 from django.db.models.signals import post_save
 from PIL import Image

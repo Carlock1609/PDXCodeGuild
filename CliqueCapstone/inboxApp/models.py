@@ -1,21 +1,29 @@
 from django.db import models
-from users.models import CustomUser    # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
-from users.models import UserProfile
+from users.models import CustomUser, UserProfile    # FIGURE OUT WHY THIS CAUSES AN IMPORTING ERROR. 
 
 from django.db.models.signals import post_save
 import datetime
 from django.utils import timezone
 
 # CREATE ANOTHER MODEL THAT HAS A UNIQUE THREAD ASSOCIATED WITH IT. VAN USES EQUIPMENT ID FROM HIS MODEL. YOU NEED TO MAKE A THREAD INBOX WITH ID FOR THE USERS TO POST TO
+
+# class UserInbox(models.Model):
+#     owner = models.ForeignKey(CustomUser, related_name='owner', on_delete=models.CASCADE, null=True)
+    
+#     class Meta:
+#         verbose_name_plural = "User Inbox's"
+
+#     def __str__(self):
+#         return f"{self.owner}'s Inbox"
     
 
-class InboxDB(models.Model):
+class UserMessages(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)
     receiver = models.ForeignKey(CustomUser, related_name='receiver', on_delete=models.CASCADE, null=True)
     subject = models.CharField(max_length=100, default="Let's Collaborate!", blank=True, null=True)
     body = models.CharField(max_length=1000, default='', blank=True, null=True)
-    sent_date = models.DateTimeField(auto_now_add=True)
-    profile_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    user_inbox = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name_plural = "User Individual Messages"
@@ -23,15 +31,33 @@ class InboxDB(models.Model):
     def __str__(self):
         return f"{self.sender} sent a message to {self.receiver}"
 
-class ConversationDB(models.Model):
-    owner = models.ForeignKey(CustomUser, related_name='owner', on_delete=models.CASCADE, null=True)
-    
-    class Meta:
-        verbose_name_plural = "User Inbox"
 
-    def __str__(self):
-        return f"{self.owner}'s conversation"
-
+# >>> msg = UserMessages.objects.all()
+# >>> msg
+# <QuerySet [<UserMessages: Carlock906 sent a message to Carlock1609>, <UserMessages: Carlock1609 sent a message to Carlock906>]>
+# >>> msg[0]
+# <UserMessages: Carlock906 sent a message to Carlock1609>
+# >>> msg[0].id
+# 1
+# >>> msg[0].user_inbox
+# <UserProfile: Carlock1609's Profile>
+# >>> msg[0].user_inbox.id
+# 17
+# >>> msg2 = UserMessages.objects.all()
+# >>> msg2
+# <QuerySet [<UserMessages: Carlock906 sent a message to Carlock1609>, <UserMessages: Carlock1609 sent a message to Carlock906>]>
+# >>> msg2[1]
+# <UserMessages: Carlock1609 sent a message to Carlock906>
+# >>> msg2[1].id
+# 2
+# >>> msg2[1].user_inbox.id
+# 17
+# >>> msg2[1].sender
+# <CustomUser: Carlock1609>
+# >>> msg2[1].receiver
+# <CustomUser: Carlock906>
+# >>> msg2[0].sender
+# <CustomUser: Carlock906>
 
 
 # >>> user2 = UserProfile.objects.all()

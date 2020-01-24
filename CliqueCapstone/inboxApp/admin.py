@@ -1,7 +1,7 @@
 from django.contrib import admin
-from inboxApp.models import InboxDB
+from inboxApp.models import UserMessages
 
 # Register your models here.
-admin.site.register(InboxDB)
+admin.site.register(UserMessages)
 # admin.site.register(DirectMsgDB)
-# admin.site.register(ConversationDB)
+# admin.site.register(UserInbox)

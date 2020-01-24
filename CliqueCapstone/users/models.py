@@ -68,13 +68,8 @@ def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfile.objects.create(user=kwargs['instance'])
 
-# CREATING INBOX ON CREATE
-# def create_inbox(sender, **kwargs):
-#     if kwargs['created']:
-#         user_inbox = ConversationDB.objects.create(user=kwargs['instance'])
-
 post_save.connect(create_profile, sender=CustomUser)
-# post_save.connect(create_inbox, sender=CustomUser)
+
 
 
 # This will be photos for the user
