@@ -197,3 +197,7 @@ THOUGHTS, ERRORS, IDEAS
 
     - Figure out how to build custom form and put in default values
         - Sender, Receiver, Profile
+        - FORM DONE
+    
+    - BUG FORM posts correctly and has the correct data as shown in admin. HOWEVER Inbox is showing up empty and nothing shows on template
+        - ** RECEIVER GETS THE EMAIL AND IT SHOWS, SENDER HAS EMPTY INBOX UNTIL RECEIVER SENDS EMAIL BACK
