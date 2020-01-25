@@ -69,17 +69,18 @@
         <a href="{% url 'update_profile' %}">
             <button class="btn btn-outline-dark">Update Profile</button>
         </a>
+    
+    {% else %}
+        <a href="{% url 'create-msg' create_msg.id %}">
+            <button class="btn btn-outline-dark">Create Message</button>
+        </a>
+        
     {% endif %}
-
-    <a href="{% url 'create-msg' create_msg.id %}">
-        <button class="postbtn btn btn-outline-dark">Create Message</button>
-    </a>
 
     <br><br>
 
-
         <!-- Upload photos -->
-        <form class="postform" id="post_form" method="post" action="" enctype="multipart/form-data">
+        <form class="postform" id="post_form" method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- RESEARCH hidden_fields -->
             {% for hidden in postForm.hidden_fields %}

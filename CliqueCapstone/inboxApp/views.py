@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import UserMessages
 from users.models import CustomUser, UserProfile
-from .forms import SendUserMessageForm
+
 from django.contrib.auth.decorators import login_required # Decorators
 from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WHEN YOU WANT TO ADD SECURITY
 from django.contrib import messages
@@ -37,53 +37,52 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
+
+# Function based form letss go boysss
 @login_required
 def create_msg(request, id):
+    user_id = request.user.id
+    user1 = CustomUser.objects.get(id=user_id).username
+    user2 = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id).username
+
     if request.method == 'POST':
-            # UserProfile.profile_picture # why are these here? Test this to see
-        # UserProfile.cover_picture
-        m_form = SendUserMessageForm(request.POST, instance=request.user.user)
-        if m_form.is_valid():
-            m_form.save()
-            messages.success(request, f'Message has been sent!')
-            return redirect('user-inbox')
-    else:
-        m_form = SendUserMessageForm(request.POST, instance=request.user.user)
+        new_msg = UserMessages.objects.create(
+            sender = CustomUser.objects.get(id=user_id),
+            receiver = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id),
+            conversation_name = f"{user1} and {user2}'s Conversation",
+            subject = request.POST['subject'],
+            body = request.POST['body'],
+            user_inbox = UserProfile.objects.get(id=id),
+        )
+
+        new_msg.save()
+        return redirect('user-inbox')
+
+    elif request.method =='GET':
         context = {
-            'm_form': m_form,
+            'profile': UserProfile.objects.get(user=user_id),
+            'sending_to': UserProfile.objects.get(id=id).user.username,
         }
         return render(request, 'inbox/user_inbox_create.html', context)
 
-# <form action="{% url 'add' %}" method="POST">
-#     {% csrf_token %}
-#     title: <br> <input type="text" name="title" placeholder="enter todo title"><br>
-#     description:<br> <textarea name="text" id="" cols="30" rows="10">type todo description here</textarea><br>
-#     status: <br> <select name="status"><br>
-#         <option value="True">True</option>
-#         <option value="False">False</option>
-#       </select> 
-#       <br>
-#     <input type="submit" value="add">
-# </form>
+# Class based
+# @login_required
+# def create_msg(request, id):
+#     if request.method == 'POST':
+#             # UserProfile.profile_picture # why are these here? Test this to see
+#         # UserProfile.cover_picture
+#         m_form = SendUserMessageForm(request.POST, instance=request.user.user)
+#         if m_form.is_valid():
+#             m_form.save()
+#             messages.success(request, f'Message has been sent!')
+#             return redirect('user-inbox')
+#     else:
+#         m_form = SendUserMessageForm(request.POST, instance=request.user.user)
+#         context = {
+#             'm_form': m_form,
+#         }
+#         return render(request, 'inbox/user_inbox_create.html', context)
 
-# view add a todo to the database. this view handles both GET and POST HTTP requests
-# def add_todo(request):
-#     if request.method == 'GET': # if its a GET request, just display the todos/add.html template
-#         return render(request, 'todos/add.html')
-#     elif request.method == 'POST': # if it's a POST request ...
-#         title = request.POST['title']   # get the title from the POST submission, this comes form a form
-#         text = request.POST['text']     # get the text from the POST submission, this comes form a form
-#         if (request.POST['status'] == 'False'): # check the status because it's a string and booleans are not strings
-#             status = False
-#         else:
-#             status = True
-#         # add the new todo to the databse. objects.create() automatically saves the new todo for us so we
-#         # don't need a separate call to the save() method
-#         todo = Todo.objects.create(title = title, text = text, status = status)
-#         return redirect('list')
-
-
-#  FORM EXAMPLE
 # def add_todo(request):
 #     if(request.method == 'GET'):
 #         # sends user to create.html to add task
@@ -100,6 +99,38 @@ def create_msg(request, id):
 #         new_todo.save()
 #         # returns to list page
 #     return redirect('list')
+
+
+
+# view add a todo to the database. this view handles both GET and POST HTTP requests
+# def add_todo(request):
+#     if request.method == 'GET': # if its a GET request, just display the todos/add.html template
+#         return render(request, 'todos/add.html')
+#     elif request.method == 'POST': # if it's a POST request ...
+#         title = request.POST['title']   # get the title from the POST submission, this comes form a form
+#         text = request.POST['text']     # get the text from the POST submission, this comes form a form
+#         if (request.POST['status'] == 'False'): # check the status because it's a string and booleans are not strings
+#             status = False
+#         else:
+#             status = True
+#         # add the new todo to the databse. objects.create() automatically saves the new todo for us so we
+#         # don't need a separate call to the save() method
+#         todo = Todo.objects.create(title = title, text = text, status = status)
+#         return redirect('list')
+#  FORM EXAMPLE
+# <form action="{% url 'add' %}" method="POST">
+#     {% csrf_token %}
+#     title: <br> <input type="text" name="title" placeholder="enter todo title"><br>
+#     description:<br> <textarea name="text" id="" cols="30" rows="10">type todo description here</textarea><br>
+#     status: <br> <select name="status"><br>
+#         <option value="True">True</option>
+#         <option value="False">False</option>
+#       </select> 
+#       <br>
+#     <input type="submit" value="add">
+# </form>
+
+
 
 
 
