@@ -46,7 +46,7 @@
         <ul class="navbar-nav mx-auto" id="center-nav">
           {% if user.is_authenticated %}
             <li class="nav-item active">
-              <a method="GET" class="nav-link" href="{% url 'profile' %}">Profile </a>
+              <a method="GET" class="nav-link" href="{% url 'profile' user.id %}">Profile </a>
             </li>
             <li class="nav-item active">
               <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
@@ -102,43 +102,6 @@
 
       <!-- content -->
     {% block content %} {% endblock %}
-  
-
-    <!-- bottom navbar -->
-    <!-- Figure out a btter way to have the navbar at bottom of page -->
-    <!-- {% if user.is_authenticated %}
-      <nav class="navbar navbar-expand-xl navbar-light bg-light fixed-bottom">
-        <a class="navbar-brand" href="{% url 'home' %}">CLIQUE</a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-                <a method="GET" class="nav-link" href="{% url 'profile' %}">Profile </a>
-                <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
-                <a class="nav-link" href="{% url 'about' %}">About </a>
-            </div>
-            <div class="navbar-nav ml-auto">
-              <a class="nav-link" href="{% url 'logout' %}">Logout </a>
-            </div>
-        </div>
-      </nav>
-    {% else %}
-      <nav class="navbar navbar-expand-xl navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'home' %}">CLIQUE</a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav">
-              <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-              <a class="nav-link" href="{% url 'about' %}">About </a>
-              <a class="nav-link" href="{% url 'login' %}">Login </a>
-          </div>
-        </div>
-      </nav>
-    {% endif %} -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

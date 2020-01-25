@@ -7,7 +7,7 @@
 <!-- DO I ITERATE OVER THE OBJECT TO GET ALL ATTS? -->
 {% block content %}
 
-    {% if user.is_authenticated %}
+{% if user.is_authenticated %}
     <div class="jumbotron-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -19,7 +19,7 @@
                         </a>
                     </div>
                     <div class="profile-name">
-                        <h2>{{ user.username }}</h2>
+                        <h2>{{ twitter_screen }}</h2>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,8 @@
         <div class="container-fluid mt-5">
             <div class="row">
                 <div class="col-lg-6 align-items-start">
-                    <h4><b>Name</b>: {{ user.first_name }}</h4>
+                    <!-- IF NULL LOAD SCREEN NAME -->
+                    <h4><b>Name</b>: {{ twitter_name }}</h4>
                     <h4><i class="far fa-envelope"></i> {{ user.email }}</h4>
                     <h4><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
                     <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
@@ -60,14 +61,23 @@
             <br>
         </div>
         <hr>
+    <!-- WORK ON AUTH -->
+    {% if request.user.id == auth.id %}
         <!-- CREATE BUTTON TO PUSH INSTEAD -->
         <!-- DONT FORGET ENCTYPE -->
         <button class="postbtn btn btn-outline-dark">Upload Photo</button>    
         <a href="{% url 'update_profile' %}">
             <button class="btn btn-outline-dark">Update Profile</button>
-        </a>  
-        <br>
-        <br>
+        </a>
+    {% endif %}
+
+    <a href="{% url 'create-msg' create_msg.id %}">
+        <button class="postbtn btn btn-outline-dark">Create Message</button>
+    </a>
+
+    <br><br>
+
+
         <!-- Upload photos -->
         <form class="postform" id="post_form" method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
@@ -90,12 +100,6 @@
         <br><br>
     </div>
 
-    {% for img in library %}
-        <div>
-            <img src="{{ img.image.url }}" alt="">
-        </div>
-    {% endfor %}
-
-    {% endif %}
+{% endif %}
     
 {% endblock %}

@@ -181,3 +181,19 @@ THOUGHTS, ERRORS, IDEAS
 
         - Figure out how to add sender - reciever names to list
         
+**StarDate 01.24.2020**
+    - Figure out flow of inbox.
+        - What im thinking is, user looks up user profile, there is a button to send message, when clicked user goes directly to message detail screen instead of list, AND
+            - AND after initiating that it gets add to inbox
+            - FIGURE OUT HOW TO PASS THOSE PARAMS IN URL
+                - SOLUTION
+                    - So I have it working like the profile update.
+                    - What needs to happen is whatever profile they're on, it needs to know that profile id. So when you click the button it also fills that out, The Sending Message too title, and the User Inbox ID as well as Conversation name
+
+    - Figured out how to associate user.id to profile as well as User's Profile to pass to create-msg.
+        - Users are also now able to visit other users profiles.
+    - Figure out permissions for the profile page
+        - DONE
+
+    - Figure out how to build custom form and put in default values
+        - Sender, Receiver, Profile

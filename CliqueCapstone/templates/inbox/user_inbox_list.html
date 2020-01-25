@@ -7,6 +7,9 @@
     <div class="container text-center">
         <br><br><br>
         <h2><b>{{ user }}'s Inbox</b></h2>
+        <!-- <a href="{% url 'create-msg' user.id %}">
+            <button class="postbtn btn btn-outline-dark">Create Message</button>
+        </a> -->
     
         <div class="container mt-5 mb-5 text-left">
             {% for msg in message_list %}
@@ -16,7 +19,9 @@
             {% empty %}
                 <p>Inbox is EMPTY</p>
             {% endfor %}
+            
         </div>
     </div>
+
     {% endif %}
 {% endblock %}

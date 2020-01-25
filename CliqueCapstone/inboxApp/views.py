@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import UserMessages
 from users.models import CustomUser, UserProfile
-
+from .forms import SendUserMessageForm
 from django.contrib.auth.decorators import login_required # Decorators
 from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WHEN YOU WANT TO ADD SECURITY
+from django.contrib import messages
 
 # MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
 # Need to figure out security issue, user is able to type id number and get in without  login
@@ -35,6 +36,85 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox),
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
+
+@login_required
+def create_msg(request, id):
+    if request.method == 'POST':
+            # UserProfile.profile_picture # why are these here? Test this to see
+        # UserProfile.cover_picture
+        m_form = SendUserMessageForm(request.POST, instance=request.user.user)
+        if m_form.is_valid():
+            m_form.save()
+            messages.success(request, f'Message has been sent!')
+            return redirect('user-inbox')
+    else:
+        m_form = SendUserMessageForm(request.POST, instance=request.user.user)
+        context = {
+            'm_form': m_form,
+        }
+        return render(request, 'inbox/user_inbox_create.html', context)
+
+# <form action="{% url 'add' %}" method="POST">
+#     {% csrf_token %}
+#     title: <br> <input type="text" name="title" placeholder="enter todo title"><br>
+#     description:<br> <textarea name="text" id="" cols="30" rows="10">type todo description here</textarea><br>
+#     status: <br> <select name="status"><br>
+#         <option value="True">True</option>
+#         <option value="False">False</option>
+#       </select> 
+#       <br>
+#     <input type="submit" value="add">
+# </form>
+
+# view add a todo to the database. this view handles both GET and POST HTTP requests
+# def add_todo(request):
+#     if request.method == 'GET': # if its a GET request, just display the todos/add.html template
+#         return render(request, 'todos/add.html')
+#     elif request.method == 'POST': # if it's a POST request ...
+#         title = request.POST['title']   # get the title from the POST submission, this comes form a form
+#         text = request.POST['text']     # get the text from the POST submission, this comes form a form
+#         if (request.POST['status'] == 'False'): # check the status because it's a string and booleans are not strings
+#             status = False
+#         else:
+#             status = True
+#         # add the new todo to the databse. objects.create() automatically saves the new todo for us so we
+#         # don't need a separate call to the save() method
+#         todo = Todo.objects.create(title = title, text = text, status = status)
+#         return redirect('list')
+
+
+#  FORM EXAMPLE
+# def add_todo(request):
+#     if(request.method == 'GET'):
+#         # sends user to create.html to add task
+#         return render(request, 'todos/create.html')
+#     elif(request.method == 'POST'):
+#         # else posts task to list DB
+#         #  - THIS CREATES NEW POST, THIS IS LIKE USING save()
+#         new_todo = Todo.objects.create(
+#             title = request.POST['title'],
+#             text = request.POST['text'],
+#             status = request.POST['status'],
+#             # user = request.user # MUST ADD IF YOU WANT TO HAD LIST FOR
+#         )
+#         new_todo.save()
+#         # returns to list page
+#     return redirect('list')
+
+
+
+# >>> user2 = UserProfile.objects.get(user=CustomUser.objects.get(username='Carlock1609'))
+# >>> user2
+# <UserProfile: Carlock1609's Profile>
+# >>> user2.id
+# 17
+
+# FIGURING OUT HOW TO GRAB USERS PROFILE
+# ***********
+# >>> user1 = UserProfile.objects.get(user=CustomUser.objects.get(username='Carlock906'))
+# >>> user1
+# <UserProfile: Carlock906's Profile>
+# *************
 
 
 # >>> user1 = UserMessages.objects.filter(user_inbox=17)

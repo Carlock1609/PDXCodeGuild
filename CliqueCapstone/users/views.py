@@ -25,7 +25,8 @@ class SignUpView(CreateView):
     template_name = 'registration/signup.html'
     
 @login_required
-def profile_page(request):
+def profile_page(request, id):
+
 
     # Multiple Photo posts
     ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm, extra=3)
@@ -57,14 +58,20 @@ def profile_page(request):
         postForm = PostForm()
         # Research queryset
         formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
-        user_id = request.user.id
+        # user_id = request.user.id
+        create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
+
         context = {
+            'create_msg': create_msg,
+            'auth': CustomUser.objects.get(id=id),
             'postForm': postForm,
             'formset': formset,
-            'user_profile': UserProfile.objects.get(user_id=user_id),
-            'library': ProfileUserPhoto.objects.get(id=user_id),
+            'user_profile': UserProfile.objects.get(id=UserProfile.objects.get(user=CustomUser.objects.get(id=id)).id),
+            'library': ProfileUserPhoto.objects.get(id=id),
             # FIGURE OUT HOW TO BE DRY YO
-            'twitter_followers': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['followers_count'],
+            'twitter_followers': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count'],
+            'twitter_name': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name'],
+            'twitter_screen': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['screen_name'],
             # 'twitter_email': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['email'],
         }
     return render(request, 'users/profile.html', context)
