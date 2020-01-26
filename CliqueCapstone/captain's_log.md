@@ -201,3 +201,6 @@ THOUGHTS, ERRORS, IDEAS
     
     - BUG FORM posts correctly and has the correct data as shown in admin. HOWEVER Inbox is showing up empty and nothing shows on template
         - ** RECEIVER GETS THE EMAIL AND IT SHOWS, SENDER HAS EMPTY INBOX UNTIL RECEIVER SENDS EMAIL BACK
+
+**StarDate 01.25.2020**
+    - Figure out how to redirect page to same template after posting. On message page

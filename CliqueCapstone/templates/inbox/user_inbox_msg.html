@@ -19,6 +19,11 @@
         {% empty %}
             <p>Inbox is EMPTY</p>
         {% endfor %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            <br>Body:<br> <input type="text" name="body" cols="30" rows="10" placeholder="Enter in text here...">
+            <button class="btn btn-outline-dark" type="submit">Send Message</button>
+        </form>   
         </div>
     {% endif %}
 

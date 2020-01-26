@@ -22,11 +22,27 @@ def user_inbox(request):
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
-# WORK ON TEMPLATE
+# FIGURE OUT HOW TO AUTOMATICALLY ADD DATA THAT WAS FROM THE INITIAL MESSAGE
 @login_required
 def user_msg(request, id, conversation_name): # Use this view to continue the conversation_name
     # ID IS INDIVIDUAL MESSAGE ID, NOT USER ID
     user_id = request.user.id
+
+    user1 = UserMessages.objects.get(id=id).sender.username
+    user2 = UserMessages.objects.get(id=id).sender.username
+
+    if request.method == 'POST':
+        new_msg = UserMessages.objects.create(
+            sender = UserMessages.objects.get(id=id).sender,
+            receiver = UserMessages.objects.get(id=id).receiver,
+            conversation_name = f"{user1} and {user2}'s Conversation",
+            body = request.POST['body'],
+            user_inbox = UserProfile.objects.get(id=UserMessages.objects.get(id=id).user_inbox.id),
+        )
+        new_msg.save()
+
+        return redirect('user-inbox')
+
     if request.method == "GET":
         context = {
             # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
