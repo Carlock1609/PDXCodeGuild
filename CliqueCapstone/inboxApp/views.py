@@ -27,19 +27,28 @@ def user_inbox(request):
 def user_msg(request, id, conversation_name): # Use this view to continue the conversation_name
     # ID IS INDIVIDUAL MESSAGE ID, NOT USER ID
     user_id = request.user.id
+    # if request.user.username ==  :
+    #     sender_id = CustomUser.objects.get(id=user_id)
+    # else:
+    #     sender_id = CustomUser.objects.get(id=)
 
     user1 = UserMessages.objects.get(id=id).sender.username
-    user2 = UserMessages.objects.get(id=id).sender.username
+    user2 = UserMessages.objects.get(id=id).receiver.username
 
     if request.method == 'POST':
         new_msg = UserMessages.objects.create(
-            sender = UserMessages.objects.get(id=id).sender,
-            receiver = UserMessages.objects.get(id=id).receiver,
+            # sender = CustomUser.objects.get(id=user_id),
+            # receiver = CustomUser.objects.get()
+            # receiver = CustomUser.objects.get(id=UserMessages.objects.get(conversation_name=conversation_name)),
+            sender = CustomUser.objects.get(id=user_id),
+            receiver = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id),
             conversation_name = f"{user1} and {user2}'s Conversation",
             body = request.POST['body'],
             user_inbox = UserProfile.objects.get(id=UserMessages.objects.get(id=id).user_inbox.id),
         )
         new_msg.save()
+
+        
 
         return redirect('user-inbox')
 

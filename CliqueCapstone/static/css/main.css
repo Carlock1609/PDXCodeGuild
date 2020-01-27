@@ -124,3 +124,25 @@ table, th, td {
     padding-left: 4rem;
     padding-right: 4rem;
 }
+
+/* INBOX */
+#chat_sender {
+    border: 100%;
+    border-radius: 15px;
+    background-color: rgb(14, 72, 180);
+    color: white;
+    width: auto;
+    float: right;
+}
+#chat_receiver {
+    border: 100%;
+    border-radius: 15px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    width: auto;
+    float: left;
+}
+#msg_box {
+    width: 100%;
+    border-radius: 7px;
+}

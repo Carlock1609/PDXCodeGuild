@@ -10,21 +10,42 @@
         <br><br><br><br><br>
         <h4>{{ message.conversation_name }}</h4>
         {% for msg in message %}
-        <hr class="mb-1">
-            {% if msg.sender == request.user.username %}
-                <p>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.receiver }}</b>:  {{ msg.body }}
+        <!-- CHECK TO SEE IF THIS IS CRASHING BECAUSE THERE IS NOT AN ELSE STATEMENT CHECKING NOTHING -->
+        <!-- ITS ALWAYS == TO SENDER BECAUSE YOU SET IT TO ALWAYS BE AUTOMATICALLY ADDED ON INITIAL CREATE DUH -->
+
+        <!-- WHEN HOVERING OVER MSG IT EXPANDS AND SHOWS DATE OTHERWISE JUST BODY -->
+            {% if msg.sender == request.user %}
+                <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender.username }}</b>:</span> -->
+                <div>
+                    <img src="{% User %}" alt="Avatar">
+                    
+                    <p id="chat_receiver" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+                </div>
+                <div>
+                    <p id="chat_sender" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+                </div>
             {% else %}
-                <p>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender }}</b>:  {{ msg.body }}
+            <div>
+                <p id="chat_receiver" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+            </div>
+            <div>
+                <p id="chat_sender" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+            </div>
+                <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.receiver.username }}</b>:</span>
+                <span id="chat" class="pr-5 pl-3 pt-1 pb-1">{{ msg.body }}</span> -->
             {% endif %}
         {% empty %}
             <p>Inbox is EMPTY</p>
         {% endfor %}
         <form method="POST" action="">
             {% csrf_token %}
-            <br>Body:<br> <input type="text" name="body" cols="30" rows="10" placeholder="Enter in text here...">
-            <button class="btn btn-outline-dark" type="submit">Send Message</button>
+            <input id="msg_box" class="pl-2 pb-5 mt-2" type="text" name="body" placeholder="Enter in text here...">
+            <div class="container text-center">
+                <button class="btn btn-outline-dark mt-2" type="submit">Send Message</button>
+            </div>
         </form>   
         </div>
     {% endif %}
 
 {% endblock %}
+

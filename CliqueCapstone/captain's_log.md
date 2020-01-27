@@ -204,3 +204,10 @@ THOUGHTS, ERRORS, IDEAS
 
 **StarDate 01.25.2020**
     - Figure out how to redirect page to same template after posting. On message page
+
+**StarDate 01.26.2020**
+    - On message template there is a bug with the names
+        - I think the sender and receiver filters are getting confused
+            - Figure out a way for when the initial message is set, whenever you reply the sender and receiver will always be the same
+
+    - working on frontend for chat, trying to add receivers picture on left and sender on right to space things
