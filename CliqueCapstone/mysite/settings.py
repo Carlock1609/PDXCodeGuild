@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'boto3',
     'storages',
+    'django_filters',
+    'bootstrapform',
+    'widget_tweaks',
 
     'allauth',
     'allauth.account',

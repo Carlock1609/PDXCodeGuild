@@ -15,6 +15,10 @@ boto3 = "*"
 django-storages = "*"
 python-decouple = "*"
 django-decouple = "*"
+django-filter = "*"
+django-bootstrap-form = "*"
+django-filters = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.7"

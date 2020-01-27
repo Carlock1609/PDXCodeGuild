@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="container mt-5">
+        <form action="" method='POST'>
+            {% csrf_token %}
+            <div class="well">
+              <div class="row">
+                <div class="form-group col-sm-4 col-md-3">
+                  {{ filter.form.first_name.label_tag }}
+                  {% render_field filter.form.first_name class="form-control" %}
+                </div>
+                <div class="form-group col-sm-4 col-md-3">
+                  {{ filter.form.follower_amount.label_tag }}
+                  {% render_field filter.form.follower_amount class="form-control" %}
+                </div>
+                
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+              </button>
+            </div>
+          </form>
+        </form>
+    
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Follower Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in filter.qs %}
+                <tr>
+                  <td>{{ user.user.username }}</td>
+                  <td>{{ user.follower_amount }}</td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="5">No data</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+
+{% endblock %}

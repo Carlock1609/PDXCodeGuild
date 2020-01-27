@@ -18,6 +18,8 @@ from django.forms import modelformset_factory
 from django.contrib import messages
 import boto3
 
+
+
 # Create your views here.
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
@@ -102,6 +104,12 @@ def update_user_profile(request):
             'p_form': p_form,
         }
         return render(request, 'users/update_profile.html', context)
+
+
+
+
+# class SnippetDetailView(DetailView):
+#     model = UserProfile
 
 # Consider making a new view and template to submit multiple photos
 

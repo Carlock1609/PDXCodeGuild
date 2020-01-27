@@ -211,3 +211,5 @@ THOUGHTS, ERRORS, IDEAS
             - Figure out a way for when the initial message is set, whenever you reply the sender and receiver will always be the same
 
     - working on frontend for chat, trying to add receivers picture on left and sender on right to space things
+
+    - WELCOME SCREEN have the title transition in, and then the login screen transitions in

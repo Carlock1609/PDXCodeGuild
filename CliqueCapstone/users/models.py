@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from PIL import Image
 
+
 import uuid # S3 bucket
 
 
@@ -39,6 +40,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
 
     # Saves space and loading time
     # TRY AND ADD THE BG PHOTO TO THIS ASWELL
