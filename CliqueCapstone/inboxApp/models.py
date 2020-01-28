@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 import datetime
 from django.utils import timezone
 
+
 # CREATE ANOTHER MODEL THAT HAS A UNIQUE THREAD ASSOCIATED WITH IT. VAN USES EQUIPMENT ID FROM HIS MODEL. YOU NEED TO MAKE A THREAD INBOX WITH ID FOR THE USERS TO POST TO
 
 # class UserInbox(models.Model):
@@ -23,7 +24,7 @@ class UserMessages(models.Model):
     conversation_name = models.CharField(max_length=200, default="User1 and User2's Conversation", null=True) # BE SURE TO MAKE THIS NONE EDITABLE AND FIGURE OUT WAY TO INSERT USERNAMES
     subject = models.CharField(max_length=100, default="Let's Collaborate!", blank=True, null=True)
     body = models.CharField(max_length=1000, default='', blank=True, null=True)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(default=timezone.now)
     user_inbox = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
 
     class Meta:

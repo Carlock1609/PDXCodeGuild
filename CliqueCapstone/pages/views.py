@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from users.models import UserProfile, CustomUser
+from django.contrib.auth.decorators import login_required # Decorators
+from django.utils.decorators import method_decorator
 # search filters
 # from django.contrib.postgres.search import SearchVector
 
@@ -19,22 +21,32 @@ def about(request):
     return render(request, 'pages/about.html')
 
 def search(request):
-    # user_filter = UserFilter(request.GET, queryset=user_list)
-    context = {
-        'user_list': UserProfile.objects.all()
-    }
-    return render(request, 'search/user_list.html', context)
+    query = request.GET.get('q')
 
-class SearchView(ListView):
-    model = UserProfile
-    template_name = 'pages/search.html'
-    context_object_name = 'all_search_results'
+    results = UserProfile.objects.filter(Q(city__icontains=query))
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        username = self.request.GET.get('search', '')
-        context['all_search_results'] = CustomUser.objects.filter(username__icontains=username)
-        return context
+
+    return render(request, 'pages/search.html', context)
+
+
+# if request.method == 'GET':
+#     context = {
+#         'user_filter': UserProfile.objects.filter(city=city),
+#     }
+#     return render(request, 'pages/search.html', context)
+
+    
+
+# class SearchView(ListView):
+#     model = UserProfile
+#     template_name = 'pages/search.html'
+#     context_object_name = 'all_search_results'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         user_name = self.request.GET.get('search', '')
+#         context['all_search_results'] = CustomUser.objects.filter(username__icontains=user_name)
+#         return context
 
 # def newsearch(request):
 #     search_query = 'name'

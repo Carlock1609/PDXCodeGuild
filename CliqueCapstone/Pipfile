@@ -19,6 +19,7 @@ django-filter = "*"
 django-bootstrap-form = "*"
 django-filters = "*"
 django-widget-tweaks = "*"
+django-pagination = "*"
 
 [requires]
 python_version = "3.7"

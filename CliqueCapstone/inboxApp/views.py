@@ -56,7 +56,7 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
 
         
 
-        return redirect('user-inbox')
+        return redirect(f'/inbox/message/{id}/{conversation_name}/')
 
     if request.method == "GET":
         context = {

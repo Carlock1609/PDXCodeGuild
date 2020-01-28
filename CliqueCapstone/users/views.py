@@ -28,8 +28,6 @@ class SignUpView(CreateView):
     
 @login_required
 def profile_page(request, id):
-
-
     # Multiple Photo posts
     ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm, extra=3)
 

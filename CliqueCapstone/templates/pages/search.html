@@ -1,25 +1,38 @@
 {% extends 'base.html' %}
-{% load bootstrap %}
-{% load widget_tweaks %}
+{% block title %}Search{% endblock %}
+{% load pagination_tags %}
+
 
 {% block content %}
 
 <div class="container">
 
-    <div class="container mt-5">
-      <form class="example" method="GET">
-        <input type="text" placeholder="Name here..." name="search">
-        <button type="submit" class="btn btn-outline-dark">Submit</button>
-    </form>
-    
-    {% for result in all_search_results %}
-       {{ result.username }}
-    {% empty %}
-       add something to show no results
-    {% endfor %}
+   <div class="container mt-5">
+      <div class="caption">
+         <form action="{% url 'search' %}" method="GET">
+           <input id="search_bar" type="text" placeholder="Name here..." name="q" value="{{ request.GET.q }}">
+           <br>
+           <button type="submit" value="Search" class="btn btn-outline-dark mt-2">Search</button>
+         </form>
+         <br><br>
 
-    </div>
+         <p>
+            {% for profile in user_filter %}
+                {{ profile.user.username }} - {{ profile.city }}
+            {% empty %}
+                add something to show no results
+            {% endfor %}
+        </p>
+      </div>
+   </div>
 </div>
+<!-- <div class="mt-5">
 
+   <form action="{% url 'search' %}" method="GET">
+      <input id="al-search" type="text" name="profile" value="{{ request.GET.profile }}" class="form-control" />
+      <input type="submit" value="Search" class="btn btn-success" />
+   </form>
+</div> -->
 
 {% endblock %}
+

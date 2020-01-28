@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'boto3',
     'storages',
     'django_filters',
-    'bootstrapform',
-    'widget_tweaks',
+    'pagination',
 
     'allauth',
     'allauth.account',
@@ -133,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Pacific'
 
 USE_I18N = True
 
