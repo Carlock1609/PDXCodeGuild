@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    # testing this
+    'django.contrib.postgres',
+
     'users',
     'pages',
     'inboxApp',

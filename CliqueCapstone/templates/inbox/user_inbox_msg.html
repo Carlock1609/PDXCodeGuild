@@ -9,26 +9,27 @@
     <div class="container">
         <br><br><br><br><br>
         <h4>{{ message.conversation_name }}</h4>
-        {% for msg in message %}
         <!-- CHECK TO SEE IF THIS IS CRASHING BECAUSE THERE IS NOT AN ELSE STATEMENT CHECKING NOTHING -->
         <!-- ITS ALWAYS == TO SENDER BECAUSE YOU SET IT TO ALWAYS BE AUTOMATICALLY ADDED ON INITIAL CREATE DUH -->
 
         <!-- WHEN HOVERING OVER MSG IT EXPANDS AND SHOWS DATE OTHERWISE JUST BODY -->
+        {% for msg in message %}
+        <p class="mt-4 mb-4">
             {% if msg.sender == request.user %}
-                <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender.username }}</b>:</span> -->
-                <div>
-                    <p id="chat_sender" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
-                </div>
-
+                <b>You:</b>
             {% else %}
-                <div>
-                    <p id="chat_receiver" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
-                </div>
-                    <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.receiver.username }}</b>:</span>
-                    <span id="chat" class="pr-5 pl-3 pt-1 pb-1">{{ msg.body }}</span> -->
+                <b id="user_receiver">{{ msg.sender }}:</b>
             {% endif %}
-        {% empty %}
-            <p>Inbox is EMPTY</p>
+            {% if msg.sender == request.user %}
+                <small>
+                    ({{ msg.created_date|date:"n-d, P" }})
+                </small>: <span id="chat_sender" class="ml-3 mb-2">{{ msg.body }}</span>
+            {% else %}
+                <small id="user_receiver">
+                    ({{ msg.created_date|date:"n-d, P" }})
+                </small>: <span id="chat_receiver" class="ml-3 mb-2">{{ msg.body }}</span>
+            {% endif %}
+        </p>
         {% endfor %}
         <form method="POST" action="">
             {% csrf_token %}
@@ -42,3 +43,16 @@
 
 {% endblock %}
 
+<!-- {% if msg.sender == request.user %} -->
+<!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender.username }}</b>:</span> -->
+<!-- <div>
+    <p id="chat_sender" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+</div>
+
+{% else %}
+<div>
+    <p id="chat_receiver" class="pr-5 pl-2 pt-1 pb-1 mt-1">{{ msg.body }}</p>
+</div> -->
+    <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.receiver.username }}</b>:</span>
+    <span id="chat" class="pr-5 pl-3 pt-1 pb-1">{{ msg.body }}</span> -->
+<!-- {% endif %} -->

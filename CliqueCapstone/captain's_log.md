@@ -213,3 +213,9 @@ THOUGHTS, ERRORS, IDEAS
     - working on frontend for chat, trying to add receivers picture on left and sender on right to space things
 
     - WELCOME SCREEN have the title transition in, and then the login screen transitions in
+
+**StarDate 01.27.2020**
+    - Inbox finished at a good spot, try to figure out how to float messages right and left.
+        - Next step is implementing search function so user can get to a profile to send message
+    
+    - Work on search function
