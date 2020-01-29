@@ -31,14 +31,20 @@
             {% endif %}
         </p>
         {% endfor %}
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input id="msg_box" class="pl-2 pb-5 mt-2" type="text" name="body" placeholder="Enter in text here...">
-            <div class="container text-center">
-                <button class="btn btn-outline-dark mt-2" type="submit">Send Message</button>
-            </div>
-        </form>   
+    </div>
+    <div class="container text-center">
+
+        <div class="fixed-bottom mb-5">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="chat_bottom" class="pl-2 pb-5 mt-2" type="text" name="body" placeholder="Enter in text here...">
+                <div class="container text-center">
+                    <button class="btn btn-outline-dark mt-2" type="submit">Send Message</button>
+                </div>
+            </form>   
         </div>
+    
+    </div>
     {% endif %}
 
 {% endblock %}

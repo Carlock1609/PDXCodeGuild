@@ -5,7 +5,7 @@ body, html {
     background-color: rgb(63, 63, 63);
 }
 a {
-    color: white;
+    color: rgb(63,63,63);
 }
 a:hover {
     color: rgb(63, 63, 63)
@@ -161,21 +161,24 @@ table, th, td {
     /* margin-top: 5px; */
     /* float: left; */
 }
+#chat_bottom {
+    width: 65.4%;
+    border-radius: 10px;
+}
 #msg_box {
     width: 100%;
     border-radius: 10px;
-}
+}    
 #msg_list {
     padding: 5px 5px;
     border-radius: 10px;
     width: 100%;
-}
+}    
 #msg_subject {
     padding: 5px 5px;
     border-radius: 10px;
     width: 100%;
-}
-
+}    
 
 
 /* SEARCH FUNCTION */

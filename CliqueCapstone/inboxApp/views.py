@@ -50,7 +50,7 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             receiver = CustomUser.objects.get(id=receiver_id),
             conversation_name = f"{user1} and {user2} Conversation",
             body = request.POST['body'],
-            user_inbox = UserProfile.objects.get(id=UserMessages.objects.get(id=id).user_inbox.id),
+            user_inbox = UserMessages.objects.filter(conversation_name=conversation_name)[0].user_inbox,
         )
         new_msg.save()
 
