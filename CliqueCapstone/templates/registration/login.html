@@ -6,34 +6,22 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-
-    <div class="card bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-header">Sign In</div>
-        <div class="card-body">
-            <p class="card-text">
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div id="centerStuff">
-                        <button class="btn btn-outline-dark" type="submit">Login</button>
-                    </div>
-                </form>
-            </p>
-            <div id="centerStuff">
-                <p class="card-text">
-                    - OR -
-                </p>
-                <h4 class="card-text">
-                    <!-- allauth -->
-                    <!-- How do i get clicking affect? -->
-                    <button class="btn" type="submit">
-                        <a href="{% provider_login_url 'twitter' %}">
-                            <img src="../../static_images/signin_twitter.png" alt="">
-                        </a>
-                    </button>
-                </h4>
-                <hr>
-
+    <div class="caption">
+        <div class="card mb-3" style="max-width: 18rem;">
+            <div class="card-header">Sign In With:</div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <h4 class="card-text">
+                            <!-- allauth -->
+                            <!-- How do i get clicking affect? -->
+                                <button class="btn" type="submit">
+                                    <a href="{% provider_login_url 'twitter' %}">
+                                        <img src="../../static_images/signin_twitter.png" alt="">
+                                    </a>
+                                </button>
+                        </h4>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

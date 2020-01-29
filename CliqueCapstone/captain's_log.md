@@ -219,3 +219,8 @@ THOUGHTS, ERRORS, IDEAS
         - Next step is implementing search function so user can get to a profile to send message
     
     - Work on search function
+
+    - THERE IS A BUG IN UPDATING PROFILE AND USERINBOX. IT IS NOW A COMMUNITY CHAT
+
+**StarDate 01.28.2020**
+    - Fixed profile, i was missing the f string syntax for the Redirect

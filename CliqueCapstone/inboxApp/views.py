@@ -48,7 +48,7 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             # receiver = CustomUser.objects.get(id=UserMessages.objects.get(conversation_name=conversation_name)),
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=receiver_id),
-            conversation_name = f"{user1} and {user2}'s Conversation",
+            conversation_name = f"{user1} and {user2} Conversation",
             body = request.POST['body'],
             user_inbox = UserProfile.objects.get(id=UserMessages.objects.get(id=id).user_inbox.id),
         )
@@ -58,13 +58,15 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
 
         return redirect(f'/inbox/message/{id}/{conversation_name}/')
 
+    # subject = conversation_name.strip(" ")
     if request.method == "GET":
         context = {
             # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
             'message': UserMessages.objects.filter(sender=user_id),
             'message': UserMessages.objects.filter(receiver=user_id),
-            'message': UserMessages.objects.filter(conversation_name=conversation_name),
             'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox),
+            'message': UserMessages.objects.filter(conversation_name=conversation_name),
+            # 'message': UserMessages.objects.filter(user_inbox=17)
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
@@ -80,7 +82,7 @@ def create_msg(request, id):
         new_msg = UserMessages.objects.create(
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id),
-            conversation_name = f"{user1} and {user2}'s Conversation",
+            conversation_name = f"{user1} and {user2} Conversation",
             subject = request.POST['subject'],
             body = request.POST['body'],
             user_inbox = UserProfile.objects.get(id=id),
@@ -93,8 +95,23 @@ def create_msg(request, id):
         context = {
             'profile': UserProfile.objects.get(user=user_id),
             'sending_to': UserProfile.objects.get(id=id).user.username,
+            'redirect': UserProfile.objects.get(id=id).user.id,
         }
         return render(request, 'inbox/user_inbox_create.html', context)
+
+# >>> user2 = UserProfile.objects.get(id=17)
+# >>> user2
+# <UserProfile: Carlock1609's Profile>
+# >>> user2.id
+# 17
+
+# <UserMessages: Carlock1609 and carlock9069's Conversation>
+# >>> user[0].user_inbox
+# <UserProfile: carlock9069's Profile>
+# >>> user[0].user_inbox.id
+# 18
+# >>> user1 = UserMessages.objects.filter(user_inbox_id=18)
+# >>> user1
 
 # Class based
 # @login_required

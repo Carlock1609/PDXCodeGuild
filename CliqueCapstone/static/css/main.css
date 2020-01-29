@@ -4,7 +4,12 @@ body, html {
     height: 100%;
     background-color: rgb(63, 63, 63);
 }
-
+a {
+    color: white;
+}
+a:hover {
+    color: rgb(63, 63, 63)
+}
 /* CONTAINERS STRETCHS TO BOTTOM OF PAGE */
 .container {
     background-color: rgb(231, 231, 231);
@@ -76,6 +81,7 @@ body, html {
     display: none;
 }
 
+
 /* INBOX TEMPLATE */
 table, th, td {
     border: 1px solid black;
@@ -87,7 +93,6 @@ table, th, td {
     background-image: url("../../static_images/welcome_page.jpg");
 
     height: 100%;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -124,6 +129,16 @@ table, th, td {
     padding-left: 4rem;
     padding-right: 4rem;
 }
+.card {
+    background-color: rgba(255, 255, 255, 0.274);
+}
+.textinput {
+    background-color: rgba(255, 255, 255, 0.274);
+}
+#login_cap {
+    color: white;
+}
+
 
 /* INBOX */
 #chat_sender {
@@ -148,8 +163,19 @@ table, th, td {
 }
 #msg_box {
     width: 100%;
-    border-radius: 7px;
+    border-radius: 10px;
 }
+#msg_list {
+    padding: 5px 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+#msg_subject {
+    padding: 5px 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+
 
 
 /* SEARCH FUNCTION */
@@ -158,3 +184,12 @@ table, th, td {
     border-radius: 12px;
     padding: 8px 8px;
 }
+.caption_search {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+

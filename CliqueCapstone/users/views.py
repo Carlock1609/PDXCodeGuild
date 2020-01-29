@@ -87,6 +87,7 @@ def update_user_profile(request):
     # s3 = boto3.resource('s3')
     # obj = s3.Object('django-clique-files', 'pic')
     # obj.delete()
+    user_id = request.user.id
 
     if request.method == 'POST':
         # UserProfile.profile_picture # why are these here? Test this to see
@@ -95,7 +96,8 @@ def update_user_profile(request):
         if p_form.is_valid():
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            # FIX THIS!!!
+            return redirect(f'/users/profile/{user_id}/')
     else:
         p_form = ProfileUpdateForm(request.POST, instance=request.user.user)
         context = {

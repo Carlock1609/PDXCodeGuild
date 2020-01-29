@@ -2,12 +2,11 @@ from django.shortcuts import render, redirect
 from users.models import UserProfile, CustomUser
 from django.contrib.auth.decorators import login_required # Decorators
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 # search filters
 # from django.contrib.postgres.search import SearchVector
 
-# filters
-from .filters import UserFilter
-from django.views.generic import ListView, DetailView
+
 
 # Create your views here.
 
@@ -20,13 +19,18 @@ def home(request):
 def about(request):
     return render(request, 'pages/about.html')
 
+# ADD USERNAME TO SEARCH
 def search(request):
     query = request.GET.get('q')
+    if query == None:
+        return render(request, 'pages/search.html')
+    else:
+        results = UserProfile.objects.filter(Q(follower_amount__icontains=query) | Q(first_name__icontains=query) | Q(state__icontains=query) | Q(city__icontains=query) | Q(user__username=query))
+        context = {
+            'results': results,
+        }
 
-    results = UserProfile.objects.filter(Q(city__icontains=query))
-
-
-    return render(request, 'pages/search.html', context)
+        return render(request, 'pages/search.html', context)
 
 
 # if request.method == 'GET':

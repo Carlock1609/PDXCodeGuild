@@ -1,38 +1,31 @@
 {% extends 'base.html' %}
 {% block title %}Search{% endblock %}
-{% load pagination_tags %}
-
 
 {% block content %}
 
-<div class="container">
-
-   <div class="container mt-5">
-      <div class="caption">
-         <form action="{% url 'search' %}" method="GET">
-           <input id="search_bar" type="text" placeholder="Name here..." name="q" value="{{ request.GET.q }}">
-           <br>
-           <button type="submit" value="Search" class="btn btn-outline-dark mt-2">Search</button>
-         </form>
-         <br><br>
-
-         <p>
-            {% for profile in user_filter %}
-                {{ profile.user.username }} - {{ profile.city }}
+   <div class="container">
+      <div class="container mt-5">
+         <br><br><br><br><br>
+         <div class="text-center">
+            <b><h2>Search</h2></b>
+         </div>
+         <div class="caption_search">
+            <form action="{% url 'search' %}" method="GET">
+               <input id="search_bar" type="text" placeholder="Name here..." name="q" value="{{ request.GET.q }}">
+               <br>
+               <button type="submit" value="Search" class="btn btn-outline-dark mt-2">Search</button>
+            </form>
+            <br><br>
+            {% for profile in results %}
+               <a href="{% url 'profile' profile.user.id %}">
+                  <button id="msg_list" class="btn btn-outline-dark">
+                     <p class="mt-3"><img src="{{ user_profile.profile_picture.url }}" alt=""> {{ profile.user.username }} | {{ profile.city }} | Follower Amount: {{ profile.follower_amount }}</p>
+                  </button>
+               </a>
             {% empty %}
-                add something to show no results
+               NO RESULTS
             {% endfor %}
-        </p>
       </div>
    </div>
-</div>
-<!-- <div class="mt-5">
-
-   <form action="{% url 'search' %}" method="GET">
-      <input id="al-search" type="text" name="profile" value="{{ request.GET.profile }}" class="form-control" />
-      <input type="submit" value="Search" class="btn btn-success" />
-   </form>
-</div> -->
 
 {% endblock %}
-

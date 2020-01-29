@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'boto3',
     'storages',
     'django_filters',
-    'pagination',
 
     'allauth',
     'allauth.account',

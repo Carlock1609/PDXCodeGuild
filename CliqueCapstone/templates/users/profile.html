@@ -27,55 +27,56 @@
     </div>
     <div class="container">
         <div class="container-fluid mt-5">
+            
             <div class="row">
-                <div class="col-lg-6 align-items-start">
+                <div class="col-lg-2 col-sm-12 align-items-start">
                     <!-- IF NULL LOAD SCREEN NAME -->
-                    <h4><b>Name</b>: {{ twitter_name }}</h4>
-                    <h4><i class="far fa-envelope"></i> {{ user.email }}</h4>
-                    <h4><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></h4>
-                    <h4><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></h4>
-                </div>
-                <div class="col-lg-6 align-items-start">
                     <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
-                    <h4><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</h4>
-                    <h4><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</h4>
-                    <h4><b>State</b>: {{ user_profile.state }}</h4>
-                    <h4><b>City</b>: {{ user_profile.city }}</h4>
+                    <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</p>
+                    <p><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</p>
+                    <p><b>State</b>: {{ user_profile.state }}</p>
+                    <p><b>City</b>: {{ user_profile.city }}</p>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        <h4><b>Experience</b></h4>
-                    </div>
-                    <h4>{{ user_profile.experience }}</h4>
+                <div class="col-lg-5 col-sm-12 align-items-start">
+                    <p><b>Name</b>: {{ twitter_name }}</p>
+                    <p><i class="far fa-envelope"></i> {{ user.email }}</p>
+                    <p><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></p>
+                    <p><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></p>
                 </div>
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-3 col-sm-12">
                     <div class="text-center">
-                        <h4><b>Bio</b></h4>
+                        <p><b>Experience</b></p>
                     </div>
-                    <h4>{{ user_profile.bio }}</h4>
+                    <p>{{ user_profile.experience }}</p>
+                </div> -->
+                <div class="col-lg-5 col-sm-12">
+                    <div class="text-center">
+                        <p><b>Bio</b></p>
+                    </div>
+                    <p>{{ user_profile.bio }}</p>
                 </div>
             </div>
             <br>
         </div>
         <hr>
     <!-- WORK ON AUTH -->
-    {% if request.user.id == auth.id %}
-        <!-- CREATE BUTTON TO PUSH INSTEAD -->
-        <!-- DONT FORGET ENCTYPE -->
-        <button class="postbtn btn btn-outline-dark">Upload Photo</button>    
-        <a href="{% url 'update_profile' %}">
-            <button class="btn btn-outline-dark">Update Profile</button>
-        </a>
-    
-    {% else %}
-        <a href="{% url 'create-msg' create_msg.id %}">
-            <button class="btn btn-outline-dark">Create Message</button>
-        </a>
-        
-    {% endif %}
+    <div class="container text-center">
+        {% if request.user.id == auth.id %}
+            
+            <!-- CREATE BUTTON TO PUSH INSTEAD -->
+            <!-- DONT FORGET ENCTYPE -->
+            <button class="postbtn btn btn-outline-dark">Upload Photo</button>    
+            <a method="GET" href="{% url 'update_profile' %}">
+                <button class="btn btn-outline-dark">Update Profile</button>
+            </a>
+            <hr>
+        {% else %}
+            <a href="{% url 'create-msg' create_msg.id %}">
+                <button class="btn btn-outline-dark">Create Message</button>
+            </a>
+            <hr>
+        {% endif %}
+    </div>
 
     <br><br>
 
