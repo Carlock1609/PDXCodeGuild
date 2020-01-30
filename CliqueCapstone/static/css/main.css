@@ -1,20 +1,38 @@
 /* ALL TEMPLATES */
 body, html {
     font-family: 'Halant', serif;
-    height: 100%;
-    background-color: rgb(63, 63, 63);
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    /* background-color: rgb(63, 63, 63); */
+    min-height: 100%;
+    /* SEE HOW TO LET IT SCROLL ON THIS IMAGE */
+    /* overflow: hidden; */
+    background-image: url("../../static_images/welcome_page.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+p {
+    font-size: 1.13rem;
+}
+/* TESTING UNCOMMENT TO GET */
+/* CONTAINERS STRETCHS TO BOTTOM OF PAGE */
+.container {
+    /* background-color: rgb(231, 231, 231); */
+    min-height: 100%;
+    overflow: hidden;
+    background-color: rgba(231, 231, 231, 0.315);
 }
 a {
+    font-size: 1.13rem;
     color: rgb(63,63,63);
 }
 a:hover {
     color: rgb(63, 63, 63)
-}
-/* CONTAINERS STRETCHS TO BOTTOM OF PAGE */
-.container {
-    background-color: rgb(231, 231, 231);
-    min-height: 100%;
-    overflow: hidden;
 }
 
 /* PROFILE TEMPLATE */
@@ -24,7 +42,7 @@ a:hover {
     width: 100%;
 }
 .cover-container {
-      background: rgb(0, 0, 0);
+      background: rgba(63, 63, 63, 0.315);
       /* background: -webkit-radial-gradient(bottom, #73D6F5 12%, #1E90FF);
       background: radial-gradient(at bottom, #73D6F5 12%, #1E90FF) */
 }
@@ -40,16 +58,16 @@ a:hover {
     border-radius: 0 0 3px 3px;
 }
 .profile-img a {
-      bottom: -35px;
-      box-shadow: none;
-      display: block;
-      left: 50px;
-      padding:1px;
-      position: absolute;
-      height: 160px;
-      width: 160px;
-      background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
-      z-index:9;
+    bottom: -35px;
+    box-shadow: none;
+    display: block;
+    left: 50px;
+    padding:1px;
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+    z-index:9;
 }
 .profile-img img {
     background-color: #fff;
@@ -80,7 +98,14 @@ a:hover {
 .postform {
     display: none;
 }
-
+i {
+    color: rgba(180, 56, 56);
+}
+#id_title {
+    width: 55%;
+    border-radius: 12px;
+    padding: 8px 8px;
+}
 
 /* INBOX TEMPLATE */
 table, th, td {
@@ -89,14 +114,14 @@ table, th, td {
 }
 
 /* FULL IMAGE FOR WELCOME PAGE */
-.bg {
+/* .bg {
     background-image: url("../../static_images/welcome_page.jpg");
 
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 .caption {
     position: absolute;
     left: 0;
@@ -121,13 +146,20 @@ table, th, td {
 #centerStuff {
     text-align: center;
 }
+.btn-outline-dark {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.473);
+    background-color: rgba(255, 255, 255, 0.295);
+
+}
 .btn-outline-dark:hover {
-    background-color:rgb(63, 63, 63);
-    border-color:rgb(63, 63, 63);
+    background-color:rgba(180, 56, 56, 0.712);
+    border-color:rgba(180, 56, 56, 0.712);
 }
 .btn {
     padding-left: 4rem;
     padding-right: 4rem;
+    color: black;
 }
 .card {
     background-color: rgba(255, 255, 255, 0.274);
@@ -154,7 +186,7 @@ table, th, td {
 #chat_receiver {
     border: 100%;
     border-radius: 15px;
-    background-color: rgb(63, 63, 63);
+    background-color: rgb(180, 56, 56);
     color: white;
     width: auto;
     padding: 8px 8px;
@@ -188,7 +220,6 @@ table, th, td {
     padding: 8px 8px;
 }
 .caption_search {
-    position: absolute;
     left: 0;
     top: 35%;
     width: 100%;

@@ -29,7 +29,8 @@ class SignUpView(CreateView):
 @login_required
 def profile_page(request, id):
     # Multiple Photo posts
-    ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm, extra=3)
+    user_id = request.user.id
+    ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm)
 
     if request.method == 'POST':
         # ProfilePhotoLibrary.photo_post
@@ -49,8 +50,8 @@ def profile_page(request, id):
                     image = form['image']
                     photo = ProfileUserPhoto(post=post_form, image=image)
                     photo.save()
-            messages.success(request, "Yeeew, check it out on the home page!")
-            return redirect('profile')
+            messages.success(request, "Yeees, check it out on the home page!")
+            return redirect(f'/users/profile/{user_id}/')
         else:
             print(postForm.errors, formset.errors)
 

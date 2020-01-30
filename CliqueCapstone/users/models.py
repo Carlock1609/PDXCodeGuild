@@ -27,7 +27,7 @@ class UserProfile(models.Model):
     portfolio_links = models.URLField(blank=True, null=True) 
 
     follower_amount = models.IntegerField(blank=True, null=True) # USE THE API DATA TO STORE HERE, OTHERWISE USER MANUALLY ENTTERS IN AMOUNT
-    cliques = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
+    friends = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
 
     bio = models.TextField(max_length=500, blank=True, null=True)
     experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS

@@ -33,7 +33,7 @@
                     <!-- IF NULL LOAD SCREEN NAME -->
                     <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
                     <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</p>
-                    <p><b><i class="fas fa-user-plus"></i>  Cliques</b>: {{ user_profile.cliques }}</p>
+                    <p><b><i class="fas fa-user-plus"></i>  Friends</b>: {{ user_profile.friends }}</p>
                     <p><b>State</b>: {{ user_profile.state }}</p>
                     <p><b>City</b>: {{ user_profile.city }}</p>
                 </div>
@@ -60,7 +60,7 @@
         </div>
         <hr>
     <!-- WORK ON AUTH -->
-    <div class="container text-center">
+    <div class="text-center">
         {% if request.user.id == auth.id %}
             
             <!-- CREATE BUTTON TO PUSH INSTEAD -->
@@ -69,39 +69,47 @@
             <a method="GET" href="{% url 'update_profile' %}">
                 <button class="btn btn-outline-dark">Update Profile</button>
             </a>
+            <a href="#">
+                <button class="btn btn-outline-dark">Photo Library</button>
+            </a>
             <hr>
         {% else %}
             <a href="{% url 'create-msg' create_msg.id %}">
                 <button class="btn btn-outline-dark">Create Message</button>
+            </a>
+            <a href="#">
+                <button class="btn btn-outline-dark">Photo Library</button>
             </a>
             <hr>
         {% endif %}
     </div>
 
     <br><br>
-
+    <div class="text-center">
         <!-- Upload photos -->
-        <form class="postform" id="post_form" method="POST" action="" enctype="multipart/form-data">
+        <form class="postform" method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- RESEARCH hidden_fields -->
-            {% for hidden in postForm.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
-
-            <p>Title*</p>
             {% for field in postForm %}
-                {{ field }}
+                <p>Title*</p>  
+                <p class="mt-1">  {{ field }}</p>
             {% endfor %}
 
             {{ formset.management_form }}
-            {% for form in formset %}
+            {% for form in formset %} 
                 {{ form|crispy }}
             {% endfor %}
-            <button class="btn btn-outline-dark" type="submit" name="submit" value="Submit">Upload</button>
+            <button class="btn btn-outline-dark" type="submit" name="submit" value="Submit" multiple>Upload</button>
         </form>
+    </div>
         <br><br>
     </div>
 
 {% endif %}
     
 {% endblock %}
+
+<!-- 
+<form action="/action_page.php">
+    Select images: <input type="file" name="img" multiple>
+    <input type="submit">
+  </form> -->

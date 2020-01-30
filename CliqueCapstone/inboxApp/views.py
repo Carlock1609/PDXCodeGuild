@@ -31,16 +31,16 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
     #     sender_id = CustomUser.objects.get(id=user_id)
     # else:
     #     sender_id = CustomUser.objects.get(id=)
-    user1 = UserMessages.objects.get(id=id).sender.username
-    user2 = UserMessages.objects.get(id=id).receiver.username
+    user1 = UserMessages.objects.filter(conversation_name=conversation_name)[0].sender.username
+    user2 = UserMessages.objects.filter(conversation_name=conversation_name)[0].receiver.username
 
     # DETERMINING WHETHER OR NOT USER IS SENDER AND THEN GETTING THE RECEIVER
     # YASSS THIS WORKED.
     if request.method == 'POST':
         if request.user == UserMessages.objects.get(id=id).sender:
-            receiver_id = UserMessages.objects.get(id=id).receiver.id
-        else:
             receiver_id = UserMessages.objects.get(id=id).sender.id
+        else:
+            receiver_id = UserMessages.objects.get(id=id).receiver.id
 
         new_msg = UserMessages.objects.create(
             # sender = CustomUser.objects.get(id=user_id),
