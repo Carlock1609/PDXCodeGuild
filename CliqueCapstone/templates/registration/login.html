@@ -10,17 +10,11 @@
         <div class="card mb-3" style="max-width: 18rem;">
             <div class="card-header">Sign In With:</div>
                 <div class="card-body">
-                    <p class="card-text">
-                        <h4 class="card-text">
-                            <!-- allauth -->
-                            <!-- How do i get clicking affect? -->
-                                <button class="btn" type="submit">
-                                    <a href="{% provider_login_url 'twitter' %}">
-                                        <img src="../../static_images/signin_twitter.png" alt="">
-                                    </a>
-                                </button>
-                        </h4>
-                    </p>
+                    <button class="btn" id="twitter_btn" type="submit">
+                        <a href="{% provider_login_url 'twitter' %}">
+                            <img src="../../static_images/signin_twitter.png" alt="">
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, HttpResponse, redirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse, redirect, reverse
 
 from django.contrib.auth.decorators import login_required # Decorators
 from django.contrib.auth import authenticate, login # More authentication
@@ -10,15 +10,18 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .models import CustomUser, UserProfile, ProfileUserPost, ProfileUserPhoto
+from .models import CustomUser, UserProfile, PhotoLibrary
 from allauth.socialaccount.models import SocialAccount
-from .forms import CustomUserCreationForm, ProfileUpdateForm, PostForm, PhotoForm
+from .forms import CustomUserCreationForm, ProfileUpdateForm
 from django.forms import modelformset_factory
 
 from django.contrib import messages
 import boto3
+from django.core.files.storage import FileSystemStorage
+from decouple import config
 
-
+# , ProfileUserPost, ProfileUserPhoto
+# , PostForm, PhotoForm
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -30,45 +33,35 @@ class SignUpView(CreateView):
 def profile_page(request, id):
     # Multiple Photo posts
     user_id = request.user.id
-    ImageFormSet = modelformset_factory(ProfileUserPhoto, form=PhotoForm)
-
     if request.method == 'POST':
-        # ProfilePhotoLibrary.photo_post
+        # print(request.FILES)
+        image_file = request.FILES.get('image_file')
+        image_type = request.POST.get('image_type')
+        upload = PhotoLibrary(
+            file=image_file,
+            user=request.user
+        )
+        upload.save()
+        image_url = upload.file.url
 
-        postForm = PostForm(request.POST)
-        formset = ImageFormSet(request.POST, request.FILES, queryset=ProfileUserPhoto.objects.none())
-
-        if postForm.is_valid() and formset.is_valid():
-            post_form = postForm.save(commit=False)
-            post_form.user = request.user
-            post_form.save()
-
-            for form in formset.cleaned_data:
-                #this helps to not crash if the user   
-                #do not upload all the photos
-                if form:
-                    image = form['image']
-                    photo = ProfileUserPhoto(post=post_form, image=image)
-                    photo.save()
-            messages.success(request, "Yeees, check it out on the home page!")
-            return redirect(f'/users/profile/{user_id}/')
-        else:
-            print(postForm.errors, formset.errors)
+        return redirect(f'/users/profile/{user_id}/')
 
     else:
-        postForm = PostForm()
-        # Research queryset
-        formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
+        # postForm = PostForm()
+        # # Research queryset
+        # formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
         # user_id = request.user.id
         create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
+        images = PhotoLibrary.objects.filter(user=request.user)
 
         context = {
+            'images': images,
             'create_msg': create_msg,
             'auth': CustomUser.objects.get(id=id),
-            'postForm': postForm,
-            'formset': formset,
+            # 'postForm': postForm,
+            # 'formset': formset,
             'user_profile': UserProfile.objects.get(id=UserProfile.objects.get(user=CustomUser.objects.get(id=id)).id),
-            'library': ProfileUserPhoto.objects.get(id=id),
+            # 'library': ProfileUserPhoto.objects.get(id=id),
             # FIGURE OUT HOW TO BE DRY YO
             'twitter_followers': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count'],
             'twitter_name': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name'],
@@ -106,8 +99,21 @@ def update_user_profile(request):
         }
         return render(request, 'users/update_profile.html', context)
 
+# AWS S3 VIEWS
+@login_required
+def delete_image(request, id):
+    user_id = request.user.id
+    image = PhotoLibrary.objects.get(id=id)
 
+    s3 = boto3.resource(
+        's3',
+        aws_access_key_id = config("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key = config('AWS_SECRET_ACCESS_KEY')
+    )
 
+    s3.Object('django-clique-files', f'static_images/{image.file.name}').delete()
+    image.delete()
+    return redirect(f'/users/profile/{user_id}/')
 
 # class SnippetDetailView(DetailView):
 #     model = UserProfile

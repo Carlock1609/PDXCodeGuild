@@ -77,7 +77,7 @@
             <a href="{% url 'create-msg' create_msg.id %}">
                 <button class="btn btn-outline-dark">Create Message</button>
             </a>
-            <a href="#">
+            <a href="{% url 'upload' %}">
                 <button class="btn btn-outline-dark">Photo Library</button>
             </a>
             <hr>
@@ -87,19 +87,18 @@
     <br><br>
     <div class="text-center">
         <!-- Upload photos -->
-        <form class="postform" method="POST" action="" enctype="multipart/form-data">
+        <form class="postform" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {% for field in postForm %}
-                <p>Title*</p>  
-                <p class="mt-1">  {{ field }}</p>
-            {% endfor %}
-
-            {{ formset.management_form }}
-            {% for form in formset %} 
-                {{ form|crispy }}
-            {% endfor %}
-            <button class="btn btn-outline-dark" type="submit" name="submit" value="Submit" multiple>Upload</button>
+            <input class="file-input" type="file" name="image_file"><br>
+            <button class="btn btn-outline-dark"><input type="submit" value="Submit"></button>
         </form>
+        <br><br>
+        {% for image in images %}
+            <a href="{{ image.file.url }}"><img class="user-img" src="{{ image.file.url }}" alt=""></a><br>
+            <a href="{% url 'delete' image.id %}">delete image</a><br>
+        {% empty %}
+            no images to display
+        {%endfor %}
     </div>
         <br><br>
     </div>

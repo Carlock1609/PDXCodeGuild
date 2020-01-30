@@ -122,9 +122,9 @@ table, th, td {
     background-repeat: no-repeat;
     background-size: cover;
 } */
+
 .caption {
     position: absolute;
-    left: 0;
     top: 40%;
     width: 100%;
     text-align: center;
@@ -139,8 +139,8 @@ table, th, td {
 
 /* Login */
 .card {
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
+    margin: 0 auto;
+    /* float: none; Added */
     margin-bottom: 10px; /* Added */
 }
 #centerStuff {
@@ -160,6 +160,10 @@ table, th, td {
     padding-left: 4rem;
     padding-right: 4rem;
     color: black;
+}
+#twitter_btn {
+    padding-left: 0;
+    padding-right: 0;
 }
 .card {
     background-color: rgba(255, 255, 255, 0.274);

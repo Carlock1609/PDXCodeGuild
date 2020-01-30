@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 from PIL import Image
-
+from django.utils import timezone
 
 import uuid # S3 bucket
 
@@ -72,6 +72,11 @@ def create_profile(sender, **kwargs):
 
 post_save.connect(create_profile, sender=CustomUser)
 
+class PhotoLibrary(models.Model):
+    created_date = models.DateTimeField(default=timezone.now)
+    file = models.FileField()
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
 
 
 # This will be photos for the user
@@ -86,15 +91,15 @@ post_save.connect(create_profile, sender=CustomUser)
 
 # CREATE CLASS FOR POSTS AND IMAGES
 
-# User post
-class ProfileUserPost(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
-    title = models.CharField(max_length=128, default="", blank=True, null=True)
+# # User post
+# class ProfileUserPost(models.Model):
+#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
+#     title = models.CharField(max_length=128, default="", blank=True, null=True)
 
-# User image 
-# Onetoone with ProfileUserPost
-class ProfileUserPhoto(models.Model):
-    post = models.ForeignKey(ProfileUserPost, default=None, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='User_photo_library', editable=True, blank=True, null=True)
+# # User image 
+# # Onetoone with ProfileUserPost
+# class ProfileUserPhoto(models.Model):
+#     post = models.ForeignKey(ProfileUserPost, default=None, on_delete=models.CASCADE)
+#     image = models.ImageField(upload_to='User_photo_library', editable=True, blank=True, null=True)
 
 

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, UserProfile, ProfileUserPost, ProfileUserPhoto
+from .models import CustomUser, UserProfile
+#  ProfileUserPost, ProfileUserPhoto
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -31,23 +32,23 @@ class ProfileUpdateForm(forms.ModelForm):
             'cover_picture',
         ]
 
-class PostForm(forms.ModelForm):
-    title = forms.CharField(max_length=128)
+# class PostForm(forms.ModelForm):
+#     title = forms.CharField(max_length=128)
 
-    class Meta:
-        model = ProfileUserPost
-        fields = [
-            'title'
-        ]
+#     class Meta:
+#         model = ProfileUserPost
+#         fields = [
+#             'title'
+#         ]
 
-class PhotoForm(forms.ModelForm):
-    image = forms.ImageField()
+# class PhotoForm(forms.ModelForm):
+#     image = forms.ImageField()
 
-    class Meta:
-        model = ProfileUserPhoto
-        fields = [
-            'image'
-        ]
+#     class Meta:
+#         model = ProfileUserPhoto
+#         fields = [
+#             'image'
+#         ]
 
         
 # DONT LET USERS CHANGE USERNAME
