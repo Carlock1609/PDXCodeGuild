@@ -31,8 +31,9 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
     #     sender_id = CustomUser.objects.get(id=user_id)
     # else:
     #     sender_id = CustomUser.objects.get(id=)
-    user1 = UserMessages.objects.filter(conversation_name=conversation_name)[0].sender.username
-    user2 = UserMessages.objects.filter(conversation_name=conversation_name)[0].receiver.username
+    # user1 = UserMessages.objects.filter(conversation_name=conversation_name)[0].sender.username
+    # user2 = UserMessages.objects.filter(conversation_name=conversation_name)[0].receiver.username
+    conversation = conversation_name
 
     # DETERMINING WHETHER OR NOT USER IS SENDER AND THEN GETTING THE RECEIVER
     # YASSS THIS WORKED.
@@ -48,7 +49,8 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             # receiver = CustomUser.objects.get(id=UserMessages.objects.get(conversation_name=conversation_name)),
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=receiver_id),
-            conversation_name = f"{user1} and {user2}'s Conversation",
+            # conversation_name = f"{user1} and {user2}'s Conversation",
+            conversation_name = conversation,
             body = request.POST['body'],
             user_inbox = UserMessages.objects.filter(conversation_name=conversation_name)[0].user_inbox,
         )
