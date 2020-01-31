@@ -1,6 +1,6 @@
 /* ALL TEMPLATES */
 body, html {
-    font-family: 'Halant', serif;
+    font-family: 'Acme', sans-serif;
     height: 100vh;
     padding: 0;
     margin: 0;
@@ -15,7 +15,6 @@ body, html {
     background-size: cover;
     background-attachment: fixed;
 }
-
 p {
     font-size: 1.13rem;
 }
@@ -35,7 +34,29 @@ a:hover {
     color: rgb(63, 63, 63)
 }
 
+
 /* PROFILE TEMPLATE */
+
+/* position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: #000; */
+#crop_photo {
+    display: inline-block;
+    background-color: black;
+    padding: 0;
+    height: 400px;
+    width: 300px;
+}
+#profile_photos {
+    vertical-align: middle;
+    padding: 0;
+
+    max-height: 400px;
+    max-width: 300px;
+    /* align-items: center; */
+}
 .user-profile-block {
     margin: auto;
     position: relative;
@@ -107,6 +128,8 @@ i {
     padding: 8px 8px;
 }
 
+
+
 /* INBOX TEMPLATE */
 table, th, td {
     border: 1px solid black;
@@ -153,8 +176,8 @@ table, th, td {
 
 }
 .btn-outline-dark:hover {
-    background-color:rgba(180, 56, 56, 0.712);
-    border-color:rgba(180, 56, 56, 0.712);
+    background-color:rgba(63,63,63, 0.712);
+    border-color:rgba(63,63,63, 0.712);
 }
 .btn {
     padding-left: 4rem;

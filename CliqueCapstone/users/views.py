@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .models import CustomUser, UserProfile, PhotoLibrary
+from .models import CustomUser, UserProfile, ProfilePhotos, ProfileLibrary
 from allauth.socialaccount.models import SocialAccount
 from .forms import CustomUserCreationForm, ProfileUpdateForm
 from django.forms import modelformset_factory
@@ -37,7 +37,7 @@ def profile_page(request, id):
         # print(request.FILES)
         image_file = request.FILES.get('image_file')
         image_type = request.POST.get('image_type')
-        upload = PhotoLibrary(
+        upload = ProfilePhotos(
             file=image_file,
             user=request.user
         )
@@ -52,7 +52,7 @@ def profile_page(request, id):
         # formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
         # user_id = request.user.id
         create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
-        images = PhotoLibrary.objects.filter(user=request.user)
+        images = ProfilePhotos.objects.filter(user=request.user)
 
         context = {
             'images': images,
@@ -103,7 +103,7 @@ def update_user_profile(request):
 @login_required
 def delete_image(request, id):
     user_id = request.user.id
-    image = PhotoLibrary.objects.get(id=id)
+    image = ProfilePhotos.objects.get(id=id)
 
     s3 = boto3.resource(
         's3',
@@ -111,9 +111,10 @@ def delete_image(request, id):
         aws_secret_access_key = config('AWS_SECRET_ACCESS_KEY')
     )
 
-    s3.Object('django-clique-files', f'static_images/{image.file.name}').delete()
+    s3.Object('django-clique-files', f'{image.file.name}').delete()
     image.delete()
     return redirect(f'/users/profile/{user_id}/')
+    
 
 # class SnippetDetailView(DetailView):
 #     model = UserProfile

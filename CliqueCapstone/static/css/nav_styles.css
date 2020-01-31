@@ -20,7 +20,8 @@
 
 .navbar {
     /* background: rgba(63, 63, 63, 0.322); */
-    background: rgba(226, 60, 60, 0.349);
+    font-family: 'Acme', sans-serif;
+    background: rgba(180, 56, 56);
     color: white;
     margin-bottom: 0px;
     transition: top 0.5s ease;    
@@ -43,7 +44,6 @@
     float:none;
 } */
 a.navbar-brand {
-    font-family: 'Spectral', serif;
     color: white;
 }
 a.nav-link {
@@ -58,4 +58,7 @@ a.nav-link:hover {
     background-color: rgba(255, 255, 255, 0.192);
     transition: 0.5s ease;
     border-radius: 10%;
+}
+#friends_logo {
+    color: white;
 }

@@ -59,7 +59,7 @@ class UserProfile(models.Model):
     def save_cover(self, *args, **kwargs):
         super().save_cover(*args, **kwargs)
 
-        background_img = Image.cpen(self.cover_picture)
+        background_img = Image.open(self.cover_picture)
 
         if background_img.height > 100 or background_img.width > 400:
             output_size = (100, 400)
@@ -72,11 +72,29 @@ def create_profile(sender, **kwargs):
 
 post_save.connect(create_profile, sender=CustomUser)
 
-class PhotoLibrary(models.Model):
+class ProfilePhotos(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     file = models.FileField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = "UserProfile Photos"
 
+    def __str__(self):
+        return f"{self.file}"
+
+    
+
+class ProfileLibrary(models.Model):
+    created_date = models.DateTimeField(default=timezone.now)
+    file = models.FileField()
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = "Library Photos"
+
+    def __str__(self):
+        return f"{self.file}"
 
 
 # This will be photos for the user

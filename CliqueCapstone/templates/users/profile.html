@@ -29,7 +29,7 @@
         <div class="container-fluid mt-5">
             
             <div class="row">
-                <div class="col-lg-2 col-sm-12 align-items-start">
+                <div class="col-lg-3 col-sm-12 align-items-start">
                     <!-- IF NULL LOAD SCREEN NAME -->
                     <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
                     <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</p>
@@ -37,7 +37,7 @@
                     <p><b>State</b>: {{ user_profile.state }}</p>
                     <p><b>City</b>: {{ user_profile.city }}</p>
                 </div>
-                <div class="col-lg-5 col-sm-12 align-items-start">
+                <div class="col-lg-4 col-sm-12 align-items-start">
                     <p><b>Name</b>: {{ twitter_name }}</p>
                     <p><i class="far fa-envelope"></i> {{ user.email }}</p>
                     <p><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></p>
@@ -77,7 +77,7 @@
             <a href="{% url 'create-msg' create_msg.id %}">
                 <button class="btn btn-outline-dark">Create Message</button>
             </a>
-            <a href="{% url 'upload' %}">
+            <a href="{% url 'photo_library' %}">
                 <button class="btn btn-outline-dark">Photo Library</button>
             </a>
             <hr>
@@ -89,19 +89,23 @@
         <!-- Upload photos -->
         <form class="postform" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input class="file-input" type="file" name="image_file"><br>
-            <button class="btn btn-outline-dark"><input type="submit" value="Submit"></button>
+            <input class="file-input mb-2" type="file" name="image_file"><br>
+            <button class="btn btn-outline-dark" type="submit" value="Submit">Submit</button>
         </form>
+        <br>
+        <div class="row">
+            {% for image in images %}
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <div id="crop_photo">
+                        <a href="{{ image.file.url }}"><img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""></a>      
+                    </div>
+                    <a href="{% url 'delete' image.id %}"><button class="btn btn-outline-dark mb-4 mt-1">Delete</button></a>
+                </div>
+            {% endfor %}
+        </div>
         <br><br>
-        {% for image in images %}
-            <a href="{{ image.file.url }}"><img class="user-img" src="{{ image.file.url }}" alt=""></a><br>
-            <a href="{% url 'delete' image.id %}">delete image</a><br>
-        {% empty %}
-            no images to display
-        {%endfor %}
     </div>
-        <br><br>
-    </div>
+</div>
 
 {% endif %}
     

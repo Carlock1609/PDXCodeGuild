@@ -26,7 +26,12 @@ postbtn = document.querySelector('.postbtn')
 postform = document.querySelector('.postform')
 
 postbtn.addEventListener('click', function() {
+  if(postform.style.display == 'block') {
+    postform.style.display = 'none'
+  }
+  else {
     postform.style.display = 'block';
+  }
 })
 
 
