@@ -115,6 +115,10 @@ def delete_image(request, id):
     image.delete()
     return redirect(f'/users/profile/{user_id}/')
     
+@login_required
+def photo_library_page(request):
+    return render(request, 'users/photo_library.html')
+
 
 # class SnippetDetailView(DetailView):
 #     model = UserProfile
