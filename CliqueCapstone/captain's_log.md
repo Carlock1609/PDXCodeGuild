@@ -224,3 +224,6 @@ THOUGHTS, ERRORS, IDEAS
 
 **StarDate 01.28.2020**
     - Fixed profile, i was missing the f string syntax for the Redirect
+
+**StarDate 01/30/2020**
+    - BUG inbox create msg view, the conversation switches on the third msg

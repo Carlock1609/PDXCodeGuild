@@ -17,7 +17,8 @@
             {% for profile in results %}
                <a href="{% url 'profile' profile.user.id %}">
                   <button id="msg_list" class="btn btn-outline-dark">
-                     <h4 class="mt-3"><img src="{{ user_profile.profile_picture.url }}" alt=""> {{ profile.user.username }} | {{ profile.city }} | Follower Amount: {{ profile.follower_amount }}</h4>
+                        <img id="small_img" src="{{ profile.profile_picture.url }}" alt="">
+                        <span id="small_search">{{ profile.user.username }} | {{ profile.city }} | Follower Amount: {{ profile.follower_amount }}</span>
                   </button>
                </a>
             {% empty %}
@@ -27,3 +28,5 @@
    <!-- </div> -->
 
 {% endblock %}
+
+<!-- <img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""> -->

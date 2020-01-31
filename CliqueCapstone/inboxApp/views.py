@@ -38,9 +38,9 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
     # YASSS THIS WORKED.
     if request.method == 'POST':
         if request.user == UserMessages.objects.get(id=id).sender:
-            receiver_id = UserMessages.objects.get(id=id).sender.id
-        else:
             receiver_id = UserMessages.objects.get(id=id).receiver.id
+        else:
+            receiver_id = UserMessages.objects.get(id=id).sender.id
 
         new_msg = UserMessages.objects.create(
             # sender = CustomUser.objects.get(id=user_id),
@@ -48,7 +48,7 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             # receiver = CustomUser.objects.get(id=UserMessages.objects.get(conversation_name=conversation_name)),
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=receiver_id),
-            conversation_name = f"{user1} and {user2} Conversation",
+            conversation_name = f"{user1} and {user2}'s Conversation",
             body = request.POST['body'],
             user_inbox = UserMessages.objects.filter(conversation_name=conversation_name)[0].user_inbox,
         )
@@ -82,7 +82,7 @@ def create_msg(request, id):
         new_msg = UserMessages.objects.create(
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id),
-            conversation_name = f"{user1} and {user2} Conversation",
+            conversation_name = f"{user1} and {user2}'s Conversation",
             subject = request.POST['subject'],
             body = request.POST['body'],
             user_inbox = UserProfile.objects.get(id=id),
