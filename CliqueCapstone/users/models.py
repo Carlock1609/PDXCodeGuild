@@ -21,9 +21,10 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
+    friends_list = models.ManyToManyField(CustomUser, related_name="friends_list")
     first_name = models.CharField(max_length=20) # REQUIRED
 
-    social_media = models.URLField(default="") # DEFAULT REQUIRED = ADD AUTH HERE
+    social_media = models.URLField(default="") # FIGURE OUT HOW TO MAKE THIS REQUIRED THE FIRST TIME
     portfolio_links = models.URLField(blank=True, null=True) 
 
     follower_amount = models.IntegerField(blank=True, null=True) # USE THE API DATA TO STORE HERE, OTHERWISE USER MANUALLY ENTTERS IN AMOUNT
@@ -32,10 +33,11 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True, null=True)
     # experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS
 
-    city = models.CharField(max_length=20)
-    state = models.CharField(max_length=3)
+    location = models.CharField(max_length=80, blank=True, null=True)
+    # city = models.CharField(max_length=20)
+    # state = models.CharField(max_length=3)
 
-    profile_picture = models.ImageField(default='static_images/default_profile.jpg', upload_to='profile/profile_images/', editable=True, blank=True, null=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
+    profile_picture = models.ImageField(default='../../static_images/default_profile.jpg', upload_to='profile/profile_images/', editable=True, blank=True, null=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
     cover_picture = models.ImageField(default='static_images/default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True, blank=True, null=True)
 
     def __str__(self):

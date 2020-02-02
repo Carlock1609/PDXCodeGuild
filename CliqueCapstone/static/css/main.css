@@ -9,12 +9,10 @@ body, html {
     /* SEE HOW TO LET IT SCROLL ON THIS IMAGE */
     /* overflow: hidden; */
     background-image: url("../../static_images/welcome_page.jpg");
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    
 }
 p {
     font-size: 1.13rem;
@@ -25,7 +23,7 @@ p {
     /* background-color: rgb(231, 231, 231); */
     min-height: 100%;
     overflow: hidden;
-    background-color: rgba(231, 231, 231, 0.315);
+    background-color: rgba(231, 231, 231, 0.527);
 }
 a {
     font-size: 1.13rem;
@@ -268,7 +266,7 @@ table, th, td {
     /* float: left; */
 }
 #chat_bottom {
-    width: 65.4%;
+    width: 60%;
     border-radius: 10px;
 }
 #msg_box {

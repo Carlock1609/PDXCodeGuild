@@ -18,7 +18,7 @@
                <a href="{% url 'profile' profile.user.id %}">
                   <button id="msg_list" class="btn btn-outline-dark">
                         <img id="small_img" src="{{ profile.profile_picture.url }}" alt="">
-                        <span id="small_search">{{ profile.user.username }} | {{ profile.city }} | Follower Amount: {{ profile.follower_amount }}</span>
+                        <span id="small_search">{{ profile.user.username }} | {{ profile.location }} | Follower Amount: {{ profile.follower_amount }}</span>
                   </button>
                </a>
             {% empty %}

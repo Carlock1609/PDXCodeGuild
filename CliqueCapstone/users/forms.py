@@ -23,11 +23,11 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = [
             # 'experience',
             'bio',
-            'follower_amount', # SET UP API
             'social_media',
             'portfolio_links',
-            'city',
-            'state',
+            # 'location',
+            # 'city',
+            # 'state',
             'profile_picture',
             'cover_picture',
         ]

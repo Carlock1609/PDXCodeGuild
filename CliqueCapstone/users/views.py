@@ -57,6 +57,7 @@ def profile_page(request, id):
         profile = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
         profile.follower_amount = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count']
         profile.first_name = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name']
+        profile.location = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['location']
         profile.save()
 
         context = {
