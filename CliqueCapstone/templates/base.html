@@ -31,12 +31,24 @@
     <!-- top navbar -->
 <div class="container-fluid">
 
-  <nav class="navbar navbar-expand-md fixed-top active">
+  <nav class="navbar navbar-dark navbar-expand-sm fixed-top active">
+    <div class="row">
+      <div class="col-2">
+        <div class="d-lg-none d-md-none d-sm-none">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-2 d-lg-none d-md-none d-sm-none" id="clique_collapse">
+        <a class="navbar-brand mx-auto col-lg" id="center-nav" href="{% url 'home' %}">CLIQUE <span class="sr-only">(current)</span></a>
+      </div>
+    </div>
 
-    
       <!-- Think about just doing one IF statement with an else. BUT this may be easier to read, because you would then see two of li's on the code -->
-      <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-md-0" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto" id="center-nav">
+      <div class="collapse navbar-collapse order-1 order-md-0" id="navbarSupportedContent"> 
+                <span>{{ user.username }}</span>
+        <ul class="navbar-nav mx-auto">
           {% if user.is_authenticated %}
             <li class="nav-item active">
               <a method="GET" class="nav-link" href="{% url 'profile' user.id %}">Profile </a>
@@ -45,13 +57,13 @@
               <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
             </li>
             <li class="ml-3 mr-3">
-              <a class="navbar-brand mx-auto" id="center-nav" href="{% url 'home' %}"> <!-- <i class="fas fa-camera-retro"></i> --> CLIQUE <span class="sr-only">(current)</span></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <a class="navbar-brand mx-auto" id="center-nav" href="{% url 'home' %}">CLIQUE <span class="sr-only">(current)</span></a>
+              <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
-              </button>
+              </button> -->
             </li>
             <li >
-              <a class="nav-link" href="{% url 'search' %}">Search </a>
+              <a class="nav-link active" href="{% url 'search' %}">Search </a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'logout' %}">Logout </a>

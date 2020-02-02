@@ -32,13 +32,13 @@
                 <div class="col-lg-3 col-sm-12 align-items-start">
                     <!-- IF NULL LOAD SCREEN NAME -->
                     <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
-                    <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ twitter_followers }}</p>
+                    <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</p>
                     <p><b><i class="fas fa-user-plus"></i>  Friends</b>: {{ user_profile.friends }}</p>
                     <p><b>State</b>: {{ user_profile.state }}</p>
                     <p><b>City</b>: {{ user_profile.city }}</p>
                 </div>
                 <div class="col-lg-4 col-sm-12 align-items-start">
-                    <p><b>Name</b>: {{ twitter_name }}</p>
+                    <p><b>Name</b>: {{ user_profile.first_name }}</p>
                     <p><i class="far fa-envelope"></i> {{ user.email }}</p>
                     <p><i class="fab fa-twitter-square"></i>  <a href="{{ user_profile.social_media }}"> {{ user_profile.social_media }}</a></p>
                     <p><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></p>
@@ -96,10 +96,12 @@
         <div class="row">
             {% for image in images %}
                 <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-                    <div id="crop_photo">
+                    <div id="crop_photo" class="test" id="test">
+                        <!-- SWITCH LINK TO PROFILE PAGE AND ALSO CARASEL -->
                         <a href="{{ image.file.url }}"><img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""></a>      
+                        <a href="{% url 'delete' image.id %}" class="remImage"><i class="far fa-times-circle"></i></a>
                     </div>
-                    <a href="{% url 'delete' image.id %}"><button class="btn btn-outline-dark mb-4 mt-1">Delete</button></a>
+                    <hr id="photo_divider">
                 </div>
             {% endfor %}
         </div>
@@ -116,3 +118,11 @@
     Select images: <input type="file" name="img" multiple>
     <input type="submit">
   </form> -->
+<!-- 
+  <div class="test" id="test">
+	<img width="450" height="300" src="http://cdn.wallpapersafari.com/51/38/02ukc1.jpg">	
+	
+	<a class="remImage" href="#" id="delete">
+		<img src="https://image.flaticon.com/icons/svg/261/261935.svg" style="width:40px;height:40px;">
+	</a>   
+</div> -->

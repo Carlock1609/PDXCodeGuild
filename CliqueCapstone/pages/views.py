@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from users.models import UserProfile, CustomUser
+from users.models import UserProfile, CustomUser, ProfilePhotos
 from django.contrib.auth.decorators import login_required # Decorators
 from django.utils.decorators import method_decorator
 from django.db.models import Q
@@ -12,7 +12,14 @@ from django.db.models import Q
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'pages/home.html', {'user_profile': UserProfile.objects.all()})
+
+        images = ProfilePhotos.objects.order_by('?')
+
+        context = {
+            'images': images,
+            'user_profile': UserProfile.objects.all()
+        }
+        return render(request, 'pages/home.html', context)
     else:
         return redirect('login')
 

@@ -54,6 +54,11 @@ def profile_page(request, id):
         create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
         images = ProfilePhotos.objects.filter(user=request.user)
 
+        profile = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
+        profile.follower_amount = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count']
+        profile.first_name = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name']
+        profile.save()
+
         context = {
             'images': images,
             'create_msg': create_msg,
@@ -63,8 +68,8 @@ def profile_page(request, id):
             'user_profile': UserProfile.objects.get(id=UserProfile.objects.get(user=CustomUser.objects.get(id=id)).id),
             # 'library': ProfileUserPhoto.objects.get(id=id),
             # FIGURE OUT HOW TO BE DRY YO
-            'twitter_followers': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count'],
-            'twitter_name': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name'],
+            # 'twitter_followers': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count'],
+            # 'twitter_name': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name'],
             'twitter_screen': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['screen_name'],
             # 'twitter_email': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['email'],
         }

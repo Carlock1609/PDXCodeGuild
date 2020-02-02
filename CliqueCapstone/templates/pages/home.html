@@ -1,26 +1,49 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
 
-<div class="container">
+<div class="container text-center">
   {% if user.is_authenticated %}
-      <br>
-      <br>
-      <br>
-      <h3>Username: {{ user.username }}</h3>
-      <br>
-      <h3>User ID: {{ user.id }}</h3>
-      <br>
-      <p><a href="{% url 'logout' %}">logout</a></p>
-  {% else %}
-      <p>You are not logged in</p>
-      <a href="{% url 'login' %}">login</a> |
-      <a href="{% url 'signup' %}">signup</a>
+      <br><br><br>
+      <h3>Username: {{ user.username }} | ID: {{ user.id }}</h3>
+
+    <div id="homepage_caption">
+
+      <div class="row">
+        <div class="col-lg-6 col-sm-12">
+          <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea consequatur repellat cumque in dignissimos sint explicabo, perspiciatis eos.</h4>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+          <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea consequatur repellat cumque in dignissimos sint explicabo, perspiciatis eos.</h4>
+        </div>
+      </div>
+    </div>
+    
+    <br><br><br><br>
+    <hr>
+    <br><br>
+    <div class="text-center">
+      <h4><span id="gallery_caption">PHOTO GALLERY</span></h4>
+      <br><br>
+
+    </div>
+    <div class="row">
+      {% for image in images %}
+        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+            <div id="crop_photo">
+              <a href="{% url 'profile' image.user.id %}"><img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""></a> 
+            </div>
+            <hr id="homepage_hr">
+        </div>
+      {% endfor %}
+    </div>
+    <br><br><br>
+
   {% endif %}
+
 </div>
 
 {% endblock %}

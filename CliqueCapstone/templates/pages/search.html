@@ -7,7 +7,7 @@
       <div class="container text-center">
          <br><br><br><br><br>
             <b><h2>Search</h2></b>
-         <div class="caption_search">
+         <div id="homepage_caption">
             <form action="{% url 'search' %}" method="GET">
                <input id="search_bar" type="text" placeholder="Name here..." name="q" value="{{ request.GET.q }}">
                <br>

@@ -30,13 +30,13 @@ class UserProfile(models.Model):
     friends = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
 
     bio = models.TextField(max_length=500, blank=True, null=True)
-    experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS
+    # experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS
 
     city = models.CharField(max_length=20)
     state = models.CharField(max_length=3)
 
-    profile_picture = models.ImageField(default='default_profile.jpg', upload_to='profile/profile_images/', editable=True, blank=True, null=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
-    cover_picture = models.ImageField(default='default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True, blank=True, null=True)
+    profile_picture = models.ImageField(default='static_images/default_profile.jpg', upload_to='profile/profile_images/', editable=True, blank=True, null=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
+    cover_picture = models.ImageField(default='static_images/default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True, blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

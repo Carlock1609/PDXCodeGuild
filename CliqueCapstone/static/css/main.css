@@ -14,6 +14,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    
 }
 p {
     font-size: 1.13rem;
@@ -48,7 +49,13 @@ a:hover {
     padding: 0;
     height: 400px;
     width: 300px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.774);
+    
 }
+/* #delete_btn {
+    display: none;
+} */
 #profile_photos {
     vertical-align: middle;
     padding: 0;
@@ -56,6 +63,7 @@ a:hover {
     max-height: 400px;
     max-width: 300px;
     /* align-items: center; */
+    border-radius: 15px;
 }
 .user-profile-block {
     margin: auto;
@@ -126,6 +134,45 @@ i {
     width: 55%;
     border-radius: 12px;
     padding: 8px 8px;
+}
+
+.test {
+    position: relative;
+    float: left;
+}
+a.remImage i {
+    box-shadow: none;
+    position: absolute;
+    right: 7px;
+    top: -5px;
+    margin-top: 4px;
+    opacity: 0;
+    display: block;
+    transition: all .5s ease-in-out;
+    height: 35px;
+    width: 35px;
+}
+.test:hover a.remImage i {
+    opacity: 1;
+    z-index: 99;
+    position: absolute;
+    top: 5px;
+}
+.test:after {
+    content: '';
+    height: 400px;
+    width: 300px;
+    border-radius: 15px;
+    position: absolute;
+    display: block;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0px;
+    z-index: 0;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+.test:hover:after{
+    opacity: 1;
 }
 
 
@@ -263,4 +310,21 @@ table, th, td {
 }
 #small_search{
     margin-right: 200px;
+}
+
+
+/* HOMEPAGE TEMPLATE */
+#homepage_caption {
+    margin-top: 200px;
+    top: 40%;
+    color: #000;
+
+}
+#gallery_caption {
+    border-bottom: 2px solid black;
+}
+#photo_divider {
+    width: 35%;
+    height: 5px;
+    color: black;
 }

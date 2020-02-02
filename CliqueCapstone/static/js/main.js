@@ -34,4 +34,22 @@ postbtn.addEventListener('click', function() {
   }
 })
 
+// image_ = document.querySelector('.profile_photo_btn')
+// delete_btn = document.querySelector('#delete_btn')
 
+// profile_photo_btn.addEventListener('mouseover', function() {
+//   if(delete_btn.style.display == 'block') {
+//     delete_btn.style.display = 'none'
+//   }
+//   else {
+//     delete_btn.style.display = 'block'
+//   }
+// })
+// profile_photo_btn.addEventListener('mouseout', function() {
+//   if(delete_btn.style.display == 'block') {
+//     delete_btn.style.display = 'none'
+//   }
+//   else {
+//     delete_btn.style.display = 'block'
+//   }
+// })
