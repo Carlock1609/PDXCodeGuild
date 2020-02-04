@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, UserProfile, ProfilePhotos, ProfileLibrary
+from .models import CustomUser, UserProfile, ProfilePhotos, ProfileLibrary, FriendRequest
 # ProfileUserPhoto, ProfileUserPost
 
 class CustomUserAdmin(UserAdmin):
@@ -21,3 +21,4 @@ admin.site.register(UserProfile)
 
 admin.site.register(ProfilePhotos)
 admin.site.register(ProfileLibrary)
+admin.site.register(FriendRequest)

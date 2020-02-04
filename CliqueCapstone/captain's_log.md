@@ -227,3 +227,12 @@ THOUGHTS, ERRORS, IDEAS
 
 **StarDate 01/30/2020**
     - BUG inbox create msg view, the conversation switches on the third msg
+        -fixed
+
+**StarDate 02/2/2020**
+    - Changed city and state to location from twitter extradata
+        - Search function is slightly different
+    - FIX THE DEFAULT IMAGE
+    - Add friends list function, already added to model.
+    
+

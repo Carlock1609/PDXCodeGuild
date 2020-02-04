@@ -21,14 +21,12 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
-    friends_list = models.ManyToManyField(CustomUser, related_name="friends_list")
     first_name = models.CharField(max_length=20) # REQUIRED
 
     social_media = models.URLField(default="") # FIGURE OUT HOW TO MAKE THIS REQUIRED THE FIRST TIME
     portfolio_links = models.URLField(blank=True, null=True) 
 
     follower_amount = models.IntegerField(blank=True, null=True) # USE THE API DATA TO STORE HERE, OTHERWISE USER MANUALLY ENTTERS IN AMOUNT
-    friends = models.IntegerField(blank=True, null=True) # CALL IT CLIQUES # USER CANNOT FILL THIS IN 
 
     bio = models.TextField(max_length=500, blank=True, null=True)
     # experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS
@@ -74,6 +72,16 @@ def create_profile(sender, **kwargs):
 
 post_save.connect(create_profile, sender=CustomUser)
 
+
+class FriendRequest(models.Model):
+    to_user = models.ForeignKey(CustomUser, related_name='to_user', on_delete=models.CASCADE)
+    from_user = models.ForeignKey(CustomUser, related_name='from_user', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.to_user.username}"
+
+
+
 class ProfilePhotos(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     file = models.FileField()
@@ -98,6 +106,15 @@ class ProfileLibrary(models.Model):
     def __str__(self):
         return f"{self.file}"
 
+# class UserFriendsList(models.Model):
+#     user = models.OneToOneField(CustomUser, related_name='users_friend_list', on_delete=models.CASCADE)
+#     friends_list = models.ManyToManyField(CustomUser, related_name='friends_list')
+
+#     class Meta:
+#         verbose_name_plural = "FriendsList"
+
+#     def __str__(self):
+#         return f"{self.friends_list}"
 
 # This will be photos for the user
 # class ProfilePhotoLibrary(models.Model):

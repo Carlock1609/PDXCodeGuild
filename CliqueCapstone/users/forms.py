@@ -23,13 +23,13 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = [
             # 'experience',
             'bio',
-            'social_media',
+            # 'social_media',
             'portfolio_links',
             # 'location',
             # 'city',
             # 'state',
             'profile_picture',
-            'cover_picture',
+            # 'cover_picture',
         ]
 
 # class PostForm(forms.ModelForm):

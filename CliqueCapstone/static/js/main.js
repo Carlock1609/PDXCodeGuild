@@ -30,9 +30,53 @@ postbtn.addEventListener('click', function() {
     postform.style.display = 'none'
   }
   else {
-    postform.style.display = 'block';
+    postform.style.display = 'block'
   }
 })
+
+
+let modal = document.querySelector("#myModal")
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+let img = document.querySelector("#myImg")
+let modalImg = document.querySelector("#img01")
+let captionText = document.querySelector("#caption")
+img.addEventListener('click', function() {
+  alert('HELLO')
+  modal.style.display = "block"
+  modalImg.src = this.src
+  captionText.innerHTML = this.alt
+})
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0]
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none"
+}
+
+
+let chat_box = document.querySelector('#chat_box')
+chat_box.scrollTop += chat_box.scrollHeight;
+// chat_box.scrollTop += chat_box.scrollHeight;
+
+// $(document).on('submit', '#add_friend', function(e) {
+//     e.preventDefault();
+
+//     $.ajax({
+//       type:'POST',
+//       url:'/users/profile/6/',
+//       data:{
+//         friends_list:$('#friends_list').val(),
+//         csrfmiddlewaretoken:$('input[friends_list=csrfmiddlewaretoken]').val()
+//         },
+//         success:function(){
+//           alert('Added Friend!')
+
+//         }
+//     })
+// })
+
+
 
 // image_ = document.querySelector('.profile_photo_btn')
 // delete_btn = document.querySelector('#delete_btn')

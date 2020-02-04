@@ -85,7 +85,7 @@
         </ul>
         {% if user.is_authenticated %}
         <!-- This will be link to friends/"cliques" -->
-          <a class="nav-link" href="#"><i id="friends_logo" class="fas fa-user-check"></i> </a> 
+          <a class="nav-link" href="{% url 'friends_list' user.id %}"><i id="friends_logo" class="fas fa-user-check"></i> </a> 
         {% else %}
         {% endif %}
 

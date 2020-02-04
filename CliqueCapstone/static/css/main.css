@@ -23,7 +23,9 @@ p {
     /* background-color: rgb(231, 231, 231); */
     min-height: 100%;
     overflow: hidden;
-    background-color: rgba(231, 231, 231, 0.527);
+    background-color: rgba(231, 231, 231, 0.8);
+    box-shadow: 0px 0px 5px white;
+    padding: 0px 50px;
 }
 a {
     font-size: 1.13rem;
@@ -54,7 +56,7 @@ a:hover {
 /* #delete_btn {
     display: none;
 } */
-#profile_photos {
+.profile_photos {
     vertical-align: middle;
     padding: 0;
 
@@ -266,8 +268,21 @@ table, th, td {
     /* float: left; */
 }
 #chat_bottom {
-    width: 60%;
-    border-radius: 10px;
+    width: 40%;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    margin-right: 0px;
+}
+#chat_send_btn {
+    height: 33px;
+    margin-bottom: 10px;
+    margin-top: 13.5px;
+    margin-left: 0px;
+    padding-bottom: 40px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+
+
 }
 #msg_box {
     width: 100%;
@@ -282,13 +297,23 @@ table, th, td {
     padding: 5px 5px;
     border-radius: 10px;
     width: 100%;
-}    
+}
+#chat_box {
+    overflow-y: scroll;
+    min-height: 80vh;
+    max-height: 80vh;
+}
+#msgbar_bottom {
+    min-height: 20vh;
+}
+
 
 
 /* SEARCH FUNCTION */
 #search_bar {
-    width: 55%;
-    border-radius: 12px;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
     padding: 8px 8px;
 }
 .caption_search {
@@ -297,6 +322,21 @@ table, th, td {
     width: 100%;
     text-align: center;
     color: #000;
+}
+#searchbar_form {
+    width: 80%;
+}
+
+#dropdownMenuButton {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 43px;
+}
+#searchbar_container {
+    display: flex;
+    margin-left: 80px;
 }
 
 /* SMALL IMAGES */

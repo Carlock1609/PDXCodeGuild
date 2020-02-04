@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django import forms
 
-from .models import CustomUser, UserProfile, ProfilePhotos, ProfileLibrary
+from .models import CustomUser, UserProfile, ProfilePhotos, ProfileLibrary, FriendRequest
 from allauth.socialaccount.models import SocialAccount
 from .forms import CustomUserCreationForm, ProfileUpdateForm
 from django.forms import modelformset_factory
@@ -53,6 +53,7 @@ def profile_page(request, id):
         # user_id = request.user.id
         create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
         images = ProfilePhotos.objects.filter(user=request.user)
+        friends = FriendRequest.objects.filter(from_user_id=id).count()
 
         profile = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
         profile.follower_amount = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count']
@@ -61,6 +62,7 @@ def profile_page(request, id):
         profile.save()
 
         context = {
+            'friends': friends,
             'images': images,
             'create_msg': create_msg,
             'auth': CustomUser.objects.get(id=id),
@@ -124,6 +126,51 @@ def delete_image(request, id):
 @login_required
 def photo_library_page(request):
     return render(request, 'users/photo_library.html')
+
+
+def friends_list_page(request, id):
+    user_id = request.user.id
+    user = request.user
+    from_id = CustomUser.objects.get(id=user_id)
+    to_id = CustomUser.objects.get(id=id)
+
+    if request.method == 'POST':
+        add = FriendRequest(
+            from_user=from_id,
+            to_user=to_id,
+        )
+        add.save()
+        
+        return redirect(f'/users/profile/{id}/')
+    else:
+        context = {
+            'friends': FriendRequest.objects.filter(from_user_id=id)
+        }
+        return render(request, 'users/friends_list.html', context)
+
+
+# def add_friend(request, id):
+#     user_id = request.user.id
+#     friend_id = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id)
+#     user = UserProfile.objects.get(user_id=user_id)
+
+#     if request.method == 'POST':
+#         add_friend_btn = request.POST['friends_list']
+#         update = user(
+#             friends_list=add_friend_btn,
+#         )
+#         update.save()
+# NOT WORKING!
+    # user.Object(friend_id).add() 
+
+        # profile.follower_amount = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count']
+        # profile.first_name = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name']
+        # profile.location = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['location']
+        # profile.save()
+    # user.save()
+
+
+    # return redirect(f'/users/profile/{friend_id}/')
 
 
 # class SnippetDetailView(DetailView):

@@ -32,7 +32,9 @@ def search(request):
     if query == None:
         return render(request, 'pages/search.html')
     else:
-        results = UserProfile.objects.filter(Q(follower_amount__icontains=query) | Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query))
+        # THIS WORKS BUT FIGURE OUT HOW THE FLOW WOULD WORK
+        # Q(follower_amount__gte=query) AND Q(follower_amount__lte=query)
+        results = UserProfile.objects.filter(Q(follower_amount__icontains=query) | Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query))
         context = {
             'results': results,
         }

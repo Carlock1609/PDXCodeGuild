@@ -34,7 +34,7 @@
       {% for image in images %}
         <div class="col-lg-4 col-md-6 col-sm-12 text-center">
             <div id="crop_photo">
-              <a href="{% url 'profile' image.user.id %}"><img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""></a> 
+              <a href="{% url 'profile' image.user.id %}"><img class="user-img profile_photos" src="{{ image.file.url }}" alt=""></a> 
             </div>
             <hr id="homepage_hr">
         </div>

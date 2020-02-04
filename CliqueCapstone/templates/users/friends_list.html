@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <br><br><br><br>
+        {% for friend in friends %}
+            <button class="btn btn-outline-dark" id="msg_list">{{ friend.to_user }} | </button>
+        {% endfor %}
+    </div>
+
+{% endblock %}
