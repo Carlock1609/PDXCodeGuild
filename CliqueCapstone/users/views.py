@@ -131,8 +131,9 @@ def photo_library_page(request):
 def friends_list_page(request, id):
     user_id = request.user.id
     # user = request.user
-    from_id = CustomUser.objects.get(id=user_id).user
-    to_id = CustomUser.objects.get(id=id).user
+
+    from_id = CustomUser.objects.get(id=user_id)
+    to_id = CustomUser.objects.get(id=id)
 
     if request.method == 'POST':
         add = FriendRequest(
@@ -144,13 +145,15 @@ def friends_list_page(request, id):
         return redirect(f'/users/profile/{id}/')
     else:
         # This is only return one sense i specifide it
-        friends = FriendRequest.objects.filter(from_user=from_id).user
-        user_profiles = UserProfile.objects.filter(user=friends)
+        friends = FriendRequest.objects.filter(from_user=user_id)
+
         context = {
             'friends': friends,
             # 'friends': FriendRequest.objects.filter(from_user=user_id),
         }
         return render(request, 'users/friends_list.html', context)
+
+
 
 # >>> FriendRequest.objects.filter(from_user=7)[0].to_user
 # <CustomUser: Carlock1609>

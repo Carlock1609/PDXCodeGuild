@@ -31,9 +31,19 @@
             <br><br>
             {% for profile in results %}
                <a href="{% url 'profile' profile.user.id %}">
-                  <button id="msg_list" class="btn btn-outline-dark">
+                  <!-- <button id="msg_list" class="btn btn-outline-dark">
                         <img id="small_img" src="{{ profile.profile_picture.url }}" alt="">
                         <span id="small_search">{{ profile.user.username }} | {{ profile.location }} | Follower Amount: {{ profile.follower_amount }}</span>
+                  </button> -->
+                  <button id="small_search_result" class="btn btn-outline-dark shadow mb-1">
+                     <div class="row">
+                         <div class="col-3 text-left">
+                             <img id="search_img" src="{{ profile.profile_picture.url }}" alt="">
+                         </div>
+                         <div class="col-9 text-right pt-2">
+                             <span id="small_search">{{ profile.user.username }} | {{ profile.location }} | Follower Amount: {{ profile.follower_amount }}</span>
+                         </div>
+                     </div>
                   </button>
                </a>
             {% empty %}
@@ -52,3 +62,14 @@
 {% endblock %}
 
 <!-- <img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""> -->
+
+<button id="small_search_result" class="btn btn-outline-dark shadow p-3 mb-1">
+   <div class="row">
+       <div class="col-3 text-left">
+           <img id="search_img" src="{{ friend.to_user.user.profile_picture.url }}" alt="">
+       </div>
+       <div class="col-9 text-right pt-2">
+           <span id="small_search">{{ friend.to_user.username }} | {{ friend.to_user.user.location }} | Follower Amount: {{ friend.to_user.user.follower_amount }}</span>
+       </div>
+   </div>
+</button>

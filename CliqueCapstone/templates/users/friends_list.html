@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}Friends List{% endblock %}
+
 {% block content %}
-    <div class="container">
+
+    <div class="container shadow">
         <br><br><br><br>
         <div class="text-center">
             <h4>{{ user }}'s Friends list</h4>
@@ -9,17 +12,22 @@
         <br><br>
         <!-- Figure out how to iterate over everything -->
         {% for friend in friends %}
-            <!-- {% for profile in user_profiles %} -->
-
-                <a href="{% url 'profile' friend.to_user.user.id %}">
-                    <button id="msg_list" class="btn btn-outline-dark">
-                        <img id="small_img" src="{{ friend }}" alt="">
-                        <span id="small_search">{{ friend }} | {{ friend }} | Follower Amount: {{ friend }}</span>
+            <div class="text-center">
+                <a href="{% url 'profile' friend.to_user.id %}">
+                    <button id="small_search_result" class="btn btn-outline-dark shadow mb-1">
+                        <div class="row">
+                            <div class="col-3 text-left">
+                                <img id="search_img" src="{{ friend.to_user.user.profile_picture.url }}" alt="">
+                            </div>
+                            <div class="col-9 text-right pt-2">
+                                <span id="small_search">{{ friend.to_user.username }} | {{ friend.to_user.user.location }} | Follower Amount: {{ friend.to_user.user.follower_amount }}</span>
+                            </div>
+                        </div>
                     </button>
                 </a>
-            <!-- <button class="btn btn-outline-dark" id="msg_list">{{ friend.user }} | {{ friend.location }} | {{ friend.follower_amount }} </button> -->
-            {% endfor %}
+            </div>
         {% endfor %}
     </div>
 
 {% endblock %}
+
