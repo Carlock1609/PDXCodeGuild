@@ -3,8 +3,22 @@
 {% block content %}
     <div class="container">
         <br><br><br><br>
+        <div class="text-center">
+            <h4>{{ user }}'s Friends list</h4>
+        </div>
+        <br><br>
+        <!-- Figure out how to iterate over everything -->
         {% for friend in friends %}
-            <button class="btn btn-outline-dark" id="msg_list">{{ friend.to_user }} | </button>
+            <!-- {% for profile in user_profiles %} -->
+
+                <a href="{% url 'profile' friend.to_user.user.id %}">
+                    <button id="msg_list" class="btn btn-outline-dark">
+                        <img id="small_img" src="{{ friend }}" alt="">
+                        <span id="small_search">{{ friend }} | {{ friend }} | Follower Amount: {{ friend }}</span>
+                    </button>
+                </a>
+            <!-- <button class="btn btn-outline-dark" id="msg_list">{{ friend.user }} | {{ friend.location }} | {{ friend.follower_amount }} </button> -->
+            {% endfor %}
         {% endfor %}
     </div>
 
