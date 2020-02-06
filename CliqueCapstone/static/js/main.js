@@ -34,25 +34,36 @@ postbtn.addEventListener('click', function() {
   }
 })
 
+// expandinfo = document.querySelector('.expandinfo')
+// info = document.querySelector('.info')
 
-let modal = document.querySelector("#myModal")
+// expandinfo.addEventListener('click', function() {
+//   if(info.style.display == 'block') {
+//     info.style.display = 'none'
+//   }
+//   else {
+//     info.style.display = 'block'
+//   }
+// })
+
+
+// Get the modal
+let modal = document.getElementById("myModal");
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-let img = document.querySelector("#myImg")
-let modalImg = document.querySelector("#img01")
-let captionText = document.querySelector("#caption")
+let img = document.querySelector(".myImg");
+let modalImg = document.getElementById("img01");
+let captionText = document.getElementById("caption");
 img.addEventListener('click', function() {
-  alert('HELLO')
-  modal.style.display = "block"
-  modalImg.src = this.src
-  captionText.innerHTML = this.alt
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
 })
 // Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0]
-
+let span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none"
-}
+span.onclick = function() {
+  modal.style.display = "none";
+} 
 
 
 let chat_box = document.querySelector('#chat_box')

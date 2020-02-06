@@ -4,21 +4,39 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<br><br>
 
-<div class="container text-center">
+<div id="homepage_caption">
+  <!-- ADD JUMBTRON HERE AND HAVE THE CLIQUE CAPTION AND THEN THE ABOUT BELOW ALL IN THE GREY -->
+  <div class="row">
+    <div class="col-4">
+      <div class="mt-5 mb-5 pl-5">
+        <h4 class="display-4">CREATE</h4>
+        <h4 class="display-4">CONNECT</h4>
+        <h4 class="display-4" id="title_brand">CLIQUE</h4>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="text-center" id="title_text">
+
+        <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
   {% if user.is_authenticated %}
-      <br><br><br>
-      <h3>Username: {{ user.username }} | ID: {{ user.id }}</h3>
+    <br><br>
 
-    <div id="homepage_caption">
+ 
 
-      <div class="row">
-        <div class="col-lg-6 col-sm-12">
-          <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea consequatur repellat cumque in dignissimos sint explicabo, perspiciatis eos.</h4>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-          <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea consequatur repellat cumque in dignissimos sint explicabo, perspiciatis eos.</h4>
-        </div>
+
+    <div class="row text-center mt-5">
+      <div class="col-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet eum dolorum similique quae error quaerat culpa harum id maxime, sit accusamus doloribus distinctio, deserunt quia saepe, assumenda adipisci fuga.
+      </div>
+      <div class="col-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae culpa amet laborum totam delectus dolores rem, necessitatibus enim possimus nemo minus alias fugiat porro quos, aspernatur in, expedita nihil!
       </div>
     </div>
     
@@ -26,19 +44,22 @@
     <hr>
     <br><br>
     <div class="text-center">
-      <h4><span id="gallery_caption">PHOTO GALLERY</span></h4>
+      <h4><span id="gallery_caption">EXPLORE PHOTO GALLERY</span></h4>
       <br><br>
 
     </div>
-    <div class="row">
-      {% for image in images %}
-        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-            <div id="crop_photo">
-              <a href="{% url 'profile' image.user.id %}"><img class="user-img profile_photos" src="{{ image.file.url }}" alt=""></a> 
-            </div>
-            <hr id="homepage_hr">
-        </div>
-      {% endfor %}
+    <div class="container shadow-lg">
+      <div class="row mt-4 mr-0 ">
+        {% for image in images %}
+          <div class="col-lg-2 col-md-4 col-sm-6 text-center">
+              <div id="crop_photo_home" class="">
+                <a href="{% url 'profile' image.user.id %}"><img class="user-img home_photos" src="{{ image.file.url }}" alt=""></a> 
+              </div>
+              <hr id="homepage_hr">
+          </div>
+        {% endfor %}
+      </div>
+
     </div>
     <br><br><br>
 

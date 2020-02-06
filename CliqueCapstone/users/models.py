@@ -22,7 +22,7 @@ class CustomUser(AbstractUser):
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20) # REQUIRED
-
+    email = models.EmailField(default='', blank=True, null=True)
 
     social_media = models.URLField(default="") # FIGURE OUT HOW TO MAKE THIS REQUIRED THE FIRST TIME
     portfolio_links = models.URLField(blank=True, null=True) 
@@ -79,7 +79,7 @@ class FriendRequest(models.Model):
     from_user = models.ForeignKey(CustomUser, related_name='from_user', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.to_user}"
+        return f"{self.from_user.username}'s Friend {self.to_user.username}"
 
 
 

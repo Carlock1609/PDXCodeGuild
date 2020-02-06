@@ -145,9 +145,11 @@ def friends_list_page(request, id):
         return redirect(f'/users/profile/{id}/')
     else:
         # This is only return one sense i specifide it
-        friends = FriendRequest.objects.filter(from_user=user_id)
+        friends = FriendRequest.objects.filter(from_user=id)
+        users_list = CustomUser.objects.get(id=id)
 
         context = {
+            'users_list': users_list,
             'friends': friends,
             # 'friends': FriendRequest.objects.filter(from_user=user_id),
         }

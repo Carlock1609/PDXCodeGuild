@@ -7,8 +7,17 @@
       <div class="container text-center">
          <br><br><br><br><br>
             <b><h2>Search</h2></b>
+            <br>
+            <h4>
+               <ul>Lookup Users by one of the following:
+                  <li>First Name</li>
+                  <li>Username</li>
+                  <li>Location</li>
+                  <li>Follower Amount</li>
+               </ul>
+            </h4>
          
-         <div id="homepage_caption">
+         <div id="search_caption">
             <div class="row">
                <div class="col-lg-12" id="searchbar_container">
                <form action="{% url 'search' %}" method="GET" id="searchbar_form">
@@ -17,13 +26,12 @@
                   <button type="submit" value="Search" class="btn btn-outline-dark mt-2 ml-5">Search</button>
                </form>
                <div class="dropdown ml-0">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Lesser</a>
+                    <a class="dropdown-item" href="#">Greater</a>
                   </div>
                 </div>
                </div>
@@ -46,15 +54,6 @@
                      </div>
                   </button>
                </a>
-            {% empty %}
-            <h4>
-               <ul>Lookup Users by one of the following:
-                  <li>First Name</li>
-                  <li>Username</li>
-                  <li>Location</li>
-                  <li>Follower Amount</li>
-               </ul>
-            </h4>
             {% endfor %}
       </div>
    <!-- </div> -->
@@ -63,13 +62,4 @@
 
 <!-- <img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""> -->
 
-<button id="small_search_result" class="btn btn-outline-dark shadow p-3 mb-1">
-   <div class="row">
-       <div class="col-3 text-left">
-           <img id="search_img" src="{{ friend.to_user.user.profile_picture.url }}" alt="">
-       </div>
-       <div class="col-9 text-right pt-2">
-           <span id="small_search">{{ friend.to_user.username }} | {{ friend.to_user.user.location }} | Follower Amount: {{ friend.to_user.user.follower_amount }}</span>
-       </div>
-   </div>
-</button>
+

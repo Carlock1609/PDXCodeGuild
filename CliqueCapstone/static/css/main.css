@@ -38,17 +38,20 @@ a:hover {
 
 /* PROFILE TEMPLATE */
 
+#center_profile_btn {
+    margin-left: 200px;
+}
 /* position: absolute;
     top: 40%;
     width: 100%;
     text-align: center;
     color: #000; */
-#crop_photo {
+.crop_photo {
     display: inline-block;
     background-color: black;
     padding: 0;
-    height: 400px;
-    width: 300px;
+    height: 325px;
+    width: 225px;
     border-radius: 15px;
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.774);
     
@@ -59,9 +62,9 @@ a:hover {
 .profile_photos {
     vertical-align: middle;
     padding: 0;
-
-    max-height: 400px;
-    max-width: 300px;
+    margin: 20px 10px 10px 20px;
+    max-height: 325px;
+    max-width: 225px;
     /* align-items: center; */
     border-radius: 15px;
 }
@@ -83,7 +86,7 @@ a:hover {
     text-decoration: none;
 }
 .fb-profile-block-menu {
-    border: 1px solid rgb(231, 231, 231);
+    border: 1px solid rgba(231, 231, 231, 0.438);
     border-radius: 0 0 3px 3px;
 }
 .profile-img a {
@@ -99,7 +102,7 @@ a:hover {
     z-index:9;
 }
 .profile-img img {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.719);
     border-radius: 2px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
     height:158px;
@@ -120,6 +123,9 @@ a:hover {
     position: relative;
     text-transform: uppercase;
 }
+#center_info {
+    border-bottom: 1px solid black;
+}
 
 /*  hide form */
 .updateform {
@@ -136,6 +142,11 @@ i {
     border-radius: 12px;
     padding: 8px 8px;
 }
+#links {
+    border-bottom: 1px solid black;
+    width: auto;
+}
+
 
 .test {
     position: relative;
@@ -175,7 +186,25 @@ a.remImage i {
 .test:hover:after{
     opacity: 1;
 }
+.info {
+    display: none;
+}
+.info_btn {
+    color: black;
+    border-color: rgba(255, 255, 255, 0.473);
+    background-color: rgba(255, 255, 255, 0.295);
+    box-shadow: 1px 1px 3px black;
+    padding-top: 1px;
+    transition: ease .3s;
+    border: 0;
+    border-radius: 3px;
 
+}
+.info_btn:hover {
+    background-color:rgba(63,63,63, 0.712);
+    border-color:rgba(63,63,63, 0.712);
+    color: white;
+}
 
 
 /* INBOX TEMPLATE */
@@ -236,6 +265,8 @@ table, th, td {
 #twitter_btn {
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 1px;
+    padding-top: 0px;
 }
 .card {
     background-color: rgba(255, 255, 255, 0.274);
@@ -310,6 +341,12 @@ table, th, td {
 
 
 /* SEARCH FUNCTION */
+#search_caption {
+    margin-top: 70px;
+    top: 40%;
+    color: #000;
+}
+
 #search_bar {
     width: 100%;
     border-top-left-radius: 12px;
@@ -350,13 +387,30 @@ table, th, td {
     margin-right: 200px;
 }
 
-
 /* HOMEPAGE TEMPLATE */
+#title_text {
+    margin-top: 142px;
+}
+.display-4 {
+    font-family: 'Bowlby One SC', cursive;
+}
+#title_brand {
+    border-bottom: 2px solid white;
+    width:12.5%;
+}
 #homepage_caption {
-    margin-top: 200px;
-    top: 40%;
-    color: #000;
-
+    padding-top: 40px;
+    padding-left: 20px;
+    height: 400px;
+    width: 100%;
+    /* padding-left: 50px; */
+    /* margin-right: 100px; */
+    /* margin-left: 100px; */
+    /* margin-right: 40px; */
+    background: rgba(63,63,63, 0.315);
+    /* margin-top: 150px; */
+    /* top: 20%; */
+    color: white;
 }
 #gallery_caption {
     border-bottom: 2px solid black;
@@ -366,7 +420,29 @@ table, th, td {
     height: 5px;
     color: black;
 }
+.home_photos {
+    vertical-align: middle;
+    padding: 0;
 
+    max-height: 250px;
+    max-width: 150px;
+    /* align-items: center; */
+    border-radius: 15px;
+}
+#crop_photo_home {
+    display: inline-block;
+    background-color: black;
+    padding: 0;
+    height: 225px;
+    width: 150px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.774);
+    
+}
+
+
+
+/* FRIENDSLIST TEMPLATE */
 #search_results {
     border: 1px;
     padding-left: 80%;

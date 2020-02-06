@@ -23,6 +23,7 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = [
             # 'experience',
             'bio',
+            'email',
             # 'social_media',
             'portfolio_links',
             # 'location',

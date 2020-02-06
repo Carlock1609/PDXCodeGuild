@@ -28,65 +28,63 @@
     <div class="container">
         <div class="container-fluid mt-5">
             <div class="container shadow">
-            <div class="row">
-                <div class="col-lg-3 col-sm-12 align-items-start">
-                    <!-- IF NULL LOAD SCREEN NAME -->
-                    <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
-                    <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</p>
-                    <p><b><i class="fas fa-user-plus"></i>  <a href="{% url 'friends_list' user_profile.user.id %}">Friends</a></b>: {{ friends }}</p>
-                    <p><b>Location</b>: {{ user_profile.location }}</p>
-                    <!-- <p><b>City</b>: {{ user_profile.city }}</p> -->
-                </div>
-                <div class="col-lg-4 col-sm-12 align-items-start">
-                    <p><b>Name</b>: {{ user_profile.first_name }}</p>
-                    <p><i class="far fa-envelope"></i> {{ user.email }}</p>
-                    <p><i class="fab fa-twitter-square"></i>  <a href="https://www.twitter.com/{{ twitter_screen }}/">https://www.twitter.com/{{ twitter_screen }}/</a></p>
-                    <p><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></p>
-                </div>
-                <!-- <div class="col-lg-3 col-sm-12">
-                    <div class="text-center">
-                        <p><b>Experience</b></p>
+                <h4 class="text-center mt-1" id="center_info">Info</h4>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 mt-2 align-items-start">
+                        <!-- IF NULL LOAD SCREEN NAME -->
+                        <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
+                        <p><b>Name</b>: {{ user_profile.first_name }}</p>
+                        <p><b>Location</b>: {{ user_profile.location }}</p>
+                        <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</p>
+                        <p><b><i class="fas fa-user-plus"></i>  <a href="{% url 'friends_list' user_profile.user.id %}">Friends</a></b>: {{ friends }}</p>
+                        <p><i class="far fa-envelope"></i> {{ user_profile.email }}</p>
+                        <div class="text-left">
+                            <span class="text-center"><h4 id="links">Links</h4></span>
+                            <p><i class="fab fa-twitter-square"></i>  <a href="https://www.twitter.com/{{ twitter_screen }}/">https://www.twitter.com/{{ twitter_screen }}/</a></p>
+                            <p><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></p>
+                        </div>
+                    
+                 
                     </div>
-                    <p>{{ user_profile.experience }}</p>
-                </div> -->
-                <div class="col-lg-5 col-sm-12">
-                    <div class="text-center">
-                        <p><b>Bio</b></p>
+                    <div class="col-lg-6 col-sm-12 mt-2">
+                        <div class="text-center">
+                            <p><b>Bio</b></p>
+                        </div>
+                        <p>{{ user_profile.bio }}</p>
                     </div>
-                    <p>{{ user_profile.bio }}</p>
                 </div>
             </div>
-        </div>
             <br>
         </div>
         <hr>
     <!-- WORK ON AUTH -->
     <div class="text-center">
         {% if request.user.id == auth.id %}
-            
             <!-- CREATE BUTTON TO PUSH INSTEAD -->
             <!-- DONT FORGET ENCTYPE -->
-            <button class="postbtn btn btn-outline-dark">Upload Photo</button>    
+            <button class="postbtn btn btn-outline-dark mr-1">Upload Photo</button>    
             <a method="GET" href="{% url 'update_profile' %}">
                 <button class="btn btn-outline-dark">Update Profile</button>
             </a>
             <a href="{% url 'photo_library' %}">
-                <button class="btn btn-outline-dark">Photo Library</button>
+                <button class="btn btn-outline-dark ml-1">Photo Library</button>
             </a>
             <hr>
         {% else %}
-            <form action="{% url 'friends_list' user_profile.user.id %}" method='POST'>
-                <a href="#">
-                    {% csrf_token %}
-                    <button type='Submit' class="btn btn-outline-dark">Add Friend</button>
-                </a>
-            </form>
-            <a href="{% url 'create-msg' create_msg.id %}">
-                <button class="btn btn-outline-dark">Create Message</button>
-            </a>
-            <a href="{% url 'photo_library' %}">
-                <button class="btn btn-outline-dark">Photo Library</button>
-            </a>
+            <div class="row" id="center_profile_btn">
+                    <form action="{% url 'friends_list' user_profile.user.id %}" method='POST'>
+                        <a href="#">
+                            {% csrf_token %}
+                            <button type='Submit' class="btn btn-outline-dark mr-1">Add Friend</button>
+                        </a>
+                    </form>
+                    <a href="{% url 'create-msg' create_msg.id %}">
+                        <button class="btn btn-outline-dark mr-1 ml-1">Create Message</button>
+                    </a>
+                    <a href="{% url 'photo_library' %}">
+                        <button class="btn btn-outline-dark ml-1">Photo Library</button>
+                    </a>       
+            </div>
             <hr>
         {% endif %}
     </div>
@@ -100,22 +98,25 @@
             <button class="btn btn-outline-dark" type="submit" value="Submit">Submit</button>
         </form>
         <br>
-        <div class="row">
-            {% for image in images %}
-                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-                    <div id="crop_photo" class="test" id="test">
-                        <!-- SWITCH LINK TO PROFILE PAGE AND ALSO CARASEL -->
-                        <a href="{{ image.file.url }}"><img id="myImg" class="user-img profile_photos" src="{{ image.file.url }}" alt=""></a>      
-                        <a href="{% url 'delete' image.id %}" class="remImage"><i class="far fa-times-circle"></i></a>
+        <div class="container shadow-lg">
+
+            <div class="row">
+                {% for image in images %}
+                    <div class="col-lg-3 col-md-4 col-sm-9 text-center">
+                        <!-- <div class="test mb-3 ml-3 crop_photo"> -->
+                            <!-- SWITCH LINK TO PROFILE PAGE AND ALSO CARASEL -->
+                            <img class="user-img profile_photos myImg test" src="{{ image.file.url }}" alt="">
+                            <a href="{% url 'delete' image.id %}" class="remImage"><i class="far fa-times-circle"></i></a>
+                        <!-- </div> -->
+                        <!-- <hr id="photo_divider"> -->
                     </div>
-                    <hr id="photo_divider">
+                {% endfor %}
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
                 </div>
-            {% endfor %}
-        </div>
-        <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
+            </div>
         </div>
         <br><br>
     </div>
