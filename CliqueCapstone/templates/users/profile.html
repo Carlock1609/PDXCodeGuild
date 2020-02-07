@@ -34,10 +34,10 @@
                         <!-- IF NULL LOAD SCREEN NAME -->
                         <!-- SEARCH FUNCTION ON SOCIAL FOLLOWERS -->
                         <p><b>Name</b>: {{ user_profile.first_name }}</p>
-                        <p><b>Location</b>: {{ user_profile.location }}</p>
+                        <p><b><i class="fas fa-map-marker-alt"></i>  Location</b>: {{ user_profile.location }}</p>
                         <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</p>
                         <p><b><i class="fas fa-user-plus"></i>  <a href="{% url 'friends_list' user_profile.user.id %}">Friends</a></b>: {{ friends }}</p>
-                        <p><i class="far fa-envelope"></i> {{ user_profile.email }}</p>
+                        <p><i class="far fa-envelope"></i>  {{ user_profile.email }}</p>
                         <div class="text-left">
                             <span class="text-center"><h4 id="links">Links</h4></span>
                             <p><i class="fab fa-twitter-square"></i>  <a href="https://www.twitter.com/{{ twitter_screen }}/">https://www.twitter.com/{{ twitter_screen }}/</a></p>
@@ -75,7 +75,7 @@
                     <form action="{% url 'friends_list' user_profile.user.id %}" method='POST'>
                         <a href="#">
                             {% csrf_token %}
-                            <button type='Submit' class="btn btn-outline-dark mr-1">Add Friend</button>
+                            <button type='Submit' class="btn btn-outline-dark mr-1"><i class="fas fa-user-plus"></i> Add Friend</button>
                         </a>
                     </form>
                     <a href="{% url 'create-msg' create_msg.id %}">
@@ -98,24 +98,24 @@
             <button class="btn btn-outline-dark" type="submit" value="Submit">Submit</button>
         </form>
         <br>
-        <div class="container shadow-lg">
+        <div class="container shadow-lg pt-5 pb-4">
 
             <div class="row">
                 {% for image in images %}
                     <div class="col-lg-3 col-md-4 col-sm-9 text-center">
-                        <!-- <div class="test mb-3 ml-3 crop_photo"> -->
+                        <div class="test crop_photo mb-4">
                             <!-- SWITCH LINK TO PROFILE PAGE AND ALSO CARASEL -->
-                            <img class="user-img profile_photos myImg test" src="{{ image.file.url }}" alt="">
+                            <img class="user-img profile_photos" src="{{ image.file.url }}" alt="">
                             <a href="{% url 'delete' image.id %}" class="remImage"><i class="far fa-times-circle"></i></a>
-                        <!-- </div> -->
+                        </div>
                         <!-- <hr id="photo_divider"> -->
                     </div>
                 {% endfor %}
-                <div id="myModal" class="modal">
+                <!-- <div id="myModal" class="modal">
                     <span class="close">&times;</span>
                     <img class="modal-content" id="img01">
                     <div id="caption"></div>
-                </div>
+                </div> -->
             </div>
         </div>
         <br><br>

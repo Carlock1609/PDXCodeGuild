@@ -20,8 +20,15 @@
 
 .navbar {
     /* background: rgba(63, 63, 63, 0.322); */
-    font-family: 'Acme', sans-serif;
-    background: rgba(180, 56, 56);
+    
+    font-family: 'Roboto Slab', serif;
+
+    /* font-family: 'Acme', sans-serif; */
+    /* background: rgba(180, 56, 56); */
+    /* background: rgb(65, 139, 199); */
+    /* background: rgb(121, 160, 89); */
+    background: rgb(128, 155, 106);
+
     color: white;
     margin-bottom: 0px;
     transition: top 0.5s ease;    

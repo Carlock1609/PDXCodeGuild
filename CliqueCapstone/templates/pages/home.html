@@ -9,17 +9,20 @@
 <div id="homepage_caption">
   <!-- ADD JUMBTRON HERE AND HAVE THE CLIQUE CAPTION AND THEN THE ABOUT BELOW ALL IN THE GREY -->
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <div class="mt-5 mb-5 pl-5">
         <h4 class="display-4">CREATE</h4>
         <h4 class="display-4">CONNECT</h4>
-        <h4 class="display-4" id="title_brand">CLIQUE</h4>
+        <h4 class="display-4 title_brand">CLIQUE</h4>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-9">
       <div class="text-center" id="title_text">
-
-        <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4>
+        <blockquote class="blockquote">
+          <h4 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</h4>
+          <footer class="blockquote-footer">Jonathan Yates</footer>
+        </blockquote>
+        <!-- <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4> -->
       </div>
     </div>
   </div>
@@ -28,15 +31,20 @@
   {% if user.is_authenticated %}
     <br><br>
 
- 
 
 
     <div class="row text-center mt-5">
       <div class="col-6">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet eum dolorum similique quae error quaerat culpa harum id maxime, sit accusamus doloribus distinctio, deserunt quia saepe, assumenda adipisci fuga.
+        <p>
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet eum dolorum similique quae error quaerat culpa harum id maxime, sit accusamus doloribus distinctio, deserunt quia saepe, assumenda adipisci fuga.
+        </p>
       </div>
       <div class="col-6">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae culpa amet laborum totam delectus dolores rem, necessitatibus enim possimus nemo minus alias fugiat porro quos, aspernatur in, expedita nihil!
+        <p>
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae culpa amet laborum totam delectus dolores rem, necessitatibus enim possimus nemo minus alias fugiat porro quos, aspernatur in, expedita nihil!
+        </p>
       </div>
     </div>
     
@@ -48,14 +56,16 @@
       <br><br>
 
     </div>
-    <div class="container shadow-lg">
+    <div class="container shadow-lg" id="picture_container">
       <div class="row mt-4 mr-0 ">
         {% for image in images %}
           <div class="col-lg-2 col-md-4 col-sm-6 text-center">
-              <div id="crop_photo_home" class="">
+              <div id="crop_photo_home" class="zoom">
                 <a href="{% url 'profile' image.user.id %}"><img class="user-img home_photos" src="{{ image.file.url }}" alt=""></a> 
               </div>
-              <hr id="homepage_hr">
+              <!-- <hr id="homepage_hr"> -->
+              <br>
+              
           </div>
         {% endfor %}
       </div>

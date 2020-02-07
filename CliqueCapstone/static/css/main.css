@@ -1,6 +1,15 @@
 /* ALL TEMPLATES */
 body, html {
-    font-family: 'Acme', sans-serif;
+    
+
+    /* font-family: 'Bowlby One SC', cursive; */
+
+    font-family: 'Sriracha', cursive;
+
+    /* font-family: 'Roboto Slab', serif; */
+
+
+    /* font-family: 'Acme', sans-serif; */
     height: 100vh;
     padding: 0;
     margin: 0;
@@ -62,7 +71,7 @@ a:hover {
 .profile_photos {
     vertical-align: middle;
     padding: 0;
-    margin: 20px 10px 10px 20px;
+    /* margin: 20px 10px 10px 20px; */
     max-height: 325px;
     max-width: 225px;
     /* align-items: center; */
@@ -135,7 +144,8 @@ a:hover {
     display: none;
 }
 i {
-    color: rgba(180, 56, 56);
+    color: rgb(128, 155, 106);
+    /* color: rgba(180, 56, 56); */
 }
 #id_title {
     width: 55%;
@@ -172,8 +182,8 @@ a.remImage i {
 }
 .test:after {
     content: '';
-    height: 400px;
-    width: 300px;
+    height: 325px;
+    width: 225px;
     border-radius: 15px;
     position: absolute;
     display: block;
@@ -280,6 +290,7 @@ table, th, td {
 
 
 /* INBOX */
+
 #chat_sender {
     border: 100%;
     border-radius: 15px;
@@ -293,7 +304,8 @@ table, th, td {
 #chat_receiver {
     border: 100%;
     border-radius: 15px;
-    background-color: rgb(180, 56, 56);
+    /* background-color: rgb(180, 56, 56); */
+    background-color: rgb(128, 155, 106);
     color: white;
     width: auto;
     padding: 8px 8px;
@@ -388,15 +400,41 @@ table, th, td {
 }
 
 /* HOMEPAGE TEMPLATE */
+.title_brand {
+    /* margin-bottom: 0; */
+    width: 58%;
+    border-bottom: 5px solid white;
+    border-radius: 6px;
+}
+.blockquote-footer {
+    font-size: 1.3rem;
+    color: white;
+}
+#picture_container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.zoom {
+    padding: 50px;
+    background-color: green;
+    transition: transform .2s;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+  }
+  
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+    z-index: 1;
+}
 #title_text {
     margin-top: 142px;
+    margin-right: 100px;
 }
 .display-4 {
     font-family: 'Bowlby One SC', cursive;
-}
-#title_brand {
-    border-bottom: 2px solid white;
-    width:12.5%;
 }
 #homepage_caption {
     padding-top: 40px;
