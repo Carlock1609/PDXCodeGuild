@@ -4,9 +4,9 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<br><br>
 
 <div id="homepage_caption">
+  <br><br>
   <!-- ADD JUMBTRON HERE AND HAVE THE CLIQUE CAPTION AND THEN THE ABOUT BELOW ALL IN THE GREY -->
   <div class="row">
     <div class="col-3">
@@ -59,7 +59,7 @@
     <div class="container shadow-lg" id="picture_container">
       <div class="row mt-4 mr-0 ">
         {% for image in images %}
-          <div class="col-lg-2 col-md-4 col-sm-6 text-center">
+          <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
               <div id="crop_photo_home" class="zoom">
                 <a href="{% url 'profile' image.user.id %}"><img class="user-img home_photos" src="{{ image.file.url }}" alt=""></a> 
               </div>

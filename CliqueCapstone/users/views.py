@@ -45,7 +45,6 @@ def profile_page(request, id):
         image_url = upload.file.url
 
         return redirect(f'/users/profile/{user_id}/')
-
     else:
         # postForm = PostForm()
         # # Research queryset

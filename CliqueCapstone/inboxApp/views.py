@@ -56,8 +56,6 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
         )
         new_msg.save()
 
-        
-
         return redirect(f'/inbox/message/{id}/{conversation_name}/')
 
     # subject = conversation_name.strip(" ")

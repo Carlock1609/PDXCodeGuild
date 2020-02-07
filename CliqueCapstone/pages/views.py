@@ -34,13 +34,31 @@ def search(request):
     else:
         # THIS WORKS BUT FIGURE OUT HOW THE FLOW WOULD WORK
         # Q(follower_amount__gte=query) AND Q(follower_amount__lte=query)
+        # Dataset.objects.filter(i_begin_int__lte=170, i_end_int__gte=170)
+        # Item.objects.filter(price__range=(min_price, max_price))
+
+        # number1 = request.FILES.get('number1')
+        # number2 = request.FILES.get('number2')
+        # number3 = request.FILES.get('number3')
+        # number4 = request.FILES.get('number4')
+        # number5 = request.FILES.get('number5')
+
+        # follower_filter = UserProfile.objects.filter(Q(follower_amount__lte=num1) & Q(follower_amount__gte=num2))
+
+        # follower_filter = UserProfile.objects.filter(Q(follower_amount__icontains=lte_filter) & Q(follower_amount__icontains=gte_filter))
         results = UserProfile.objects.filter(Q(follower_amount__icontains=query) | Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query))
+        
         context = {
             'results': results,
         }
 
         return render(request, 'pages/search.html', context)
 
+
+f request.method == 'POST':
+        # print(request.FILES)
+        image_file = request.FILES.get('image_file')
+        image_type = request.POST.get('image_type')
 
 # if request.method == 'GET':
 #     context = {

@@ -42,7 +42,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
-
     # Saves space and loading time
     # TRY AND ADD THE BG PHOTO TO THIS ASWELL
     def save_profile(self, *args, **kwargs): # ADDED TAGS FOR S3 BUCKETS
@@ -80,7 +79,6 @@ class FriendRequest(models.Model):
 
     def __str__(self):
         return f"{self.from_user.username}'s Friend {self.to_user.username}"
-
 
 
 class ProfilePhotos(models.Model):

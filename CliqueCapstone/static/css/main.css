@@ -45,6 +45,16 @@ a:hover {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /* PROFILE TEMPLATE */
 
 #center_profile_btn {
@@ -105,22 +115,22 @@ a:hover {
     left: 50px;
     padding:1px;
     position: absolute;
-    height: 160px;
-    width: 160px;
+    height: 200px;
+    width: 200px;
     background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
-    z-index:9;
+    z-index:3;
 }
 .profile-img img {
     background-color: rgba(255, 255, 255, 0.719);
     border-radius: 2px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
-    height:158px;
+    height:220px;
     padding: 5px;
-    width:158px;
+    width:220px;
 }
 .profile-name {
     bottom: 60px;
-    left: 235px;
+    left: 288px;
     position: absolute;
 }
 .profile-name h2 {
@@ -217,6 +227,10 @@ a.remImage i {
 }
 
 
+
+
+
+
 /* INBOX TEMPLATE */
 table, th, td {
     border: 1px solid black;
@@ -246,6 +260,13 @@ table, th, td {
     font-size: 25px;
     letter-spacing: 10px;
 }
+
+
+
+
+
+
+
 
 /* Login */
 .card {
@@ -287,6 +308,14 @@ table, th, td {
 #login_cap {
     color: white;
 }
+
+
+
+
+
+
+
+
 
 
 /* INBOX */
@@ -352,6 +381,13 @@ table, th, td {
 
 
 
+
+
+
+
+
+
+
 /* SEARCH FUNCTION */
 #search_caption {
     margin-top: 70px;
@@ -399,6 +435,18 @@ table, th, td {
     margin-right: 200px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* HOMEPAGE TEMPLATE */
 .title_brand {
     /* margin-bottom: 0; */
@@ -439,7 +487,7 @@ table, th, td {
 #homepage_caption {
     padding-top: 40px;
     padding-left: 20px;
-    height: 400px;
+    height: 450px;
     width: 100%;
     /* padding-left: 50px; */
     /* margin-right: 100px; */
@@ -477,6 +525,14 @@ table, th, td {
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.774);
     
 }
+
+
+
+
+
+
+
+
 
 
 
