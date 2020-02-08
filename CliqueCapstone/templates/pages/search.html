@@ -6,7 +6,7 @@
    <!-- <div class="container"> -->
       <div class="container text-center">
          <br><br><br><br><br>
-            <b><h2>Search</h2></b>
+            <b><h2>Search for Users</h2></b>
             <br>
             <h4>
                <ul>Lookup Users by one of the following:
@@ -20,24 +20,28 @@
          <div id="search_caption">
             <div class="row">
                <div class="col-lg-12" id="searchbar_container">
-               <form action="{% url 'search' %}" method="GET" id="searchbar_form">
-                  <input id="search_bar" type="text" placeholder="Search here..." name="q" value="{{ request.GET.q }}">
-                  <br>
-                  <button type="submit" value="Search" class="btn btn-outline-dark mt-2 ml-5">Search</button>
-               </form>
-               <div class="dropdown ml-0">
-                  <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fas fa-search"></i> Filter
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <!-- give each filter a value -->
-                    <a class="dropdown-item" type="text" name="number1" href="#">0 to 100</a>
-                    <a class="dropdown-item" type="text" name="number2" href="#">100 to 1000</a>
-                    <a class="dropdown-item" type="text" name="number3" href="#">1000 to 5000</a>
-                    <a class="dropdown-item" type="text" name="number4" href="#">5000 to 10000</a>
-                    <a class="dropdown-item" type="text" name="number5" href="#">10000 to 50000</a>
-                  </div>
-                </div>
+                  <form action="{% url 'search' %}" method="GET" id="searchbar_form">
+                     {% csrf_token %}
+                     <input id="search_bar" type="text" placeholder="Search here..." name="q" value="{{ request.GET.q }}">
+                     <br>
+                     <button type="submit" value="Search" class="btn btn-outline-dark mt-2 ml-5">Search</button>
+                  
+                     <div class="form-group ml-0">
+                        <!-- <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="fas fa-search"></i> Filter
+                        </button> -->
+                        <select class="form-control" name="follower_range">
+                           <!-- give each filter a value -->
+                           <option value="0">Any</option>
+                           <option value="100">0 to 100</option>
+                           <option value="1000">100 to 1000</option>
+                           <option value="5000">1000 to 5000</option>
+                           <option value="10000">5000 to 10000</option>
+                           <option value="50000">10000 to 50000</option>
+                           <option value="100000">50000 to 100000</option>
+                        </select>
+                     </div>
+                  </form>
                </div>
             </div>
             <br><br>
@@ -65,5 +69,4 @@
 {% endblock %}
 
 <!-- <img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""> -->
-
-
+   
