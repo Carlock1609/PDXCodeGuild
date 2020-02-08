@@ -392,14 +392,15 @@ table, th, td {
 #search_btn {
     margin-left: 139px;
 }
-.form-control {
-    /* margin-bottom: 50px; */
+.dropdown_search {
     width: 170px;
     float: right;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     margin-top: 0;
+
 }
+
 #search_caption {
     margin-top: 70px;
     top: 40%;
@@ -459,9 +460,19 @@ table, th, td {
 
 
 /* HOMEPAGE TEMPLATE */
+#home_i{
+    font-size: 7rem;
+    margin-bottom: 30px;
+    color: rgb(128, 155, 106);
+}
+/* SEE HOW TO EASE IN HOME PAGE */
+#home_p {
+    transition: ease-in 1s;
+    font-size: 1.5rem;
+}
 .title_brand {
     /* margin-bottom: 0; */
-    width: 58%;
+    width: 230px;
     border-bottom: 5px solid white;
     border-radius: 6px;
 }
