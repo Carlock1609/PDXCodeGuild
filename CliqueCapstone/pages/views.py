@@ -28,10 +28,9 @@ def about(request):
 
 # ADD USERNAME TO SEARCH
 def search(request):
-    if request.method == 'GET':
-        query = request.GET.get('q')
-        follower = request.GET.get('follower_range')
-
+    if request.method == 'POST':
+        query = request.POST.get('q')
+        follower = int(request.POST.get('follower_amount'))
 
         if query == None and follower == None:
             return render(request, 'pages/search.html')
@@ -45,19 +44,19 @@ def search(request):
             #     results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__gte=follower)
 
             if follower == 0:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__gte=follower)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & Q(follower_amount__gte=follower))
             elif follower == 100:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower,)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & Q(follower_amount__lte=follower))
             elif follower == 1000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower, follower_range__gte=follower-900)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-900)))
             elif follower == 5000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower, follower_range__gte=follower-4000)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-4000)))
             elif follower == 10000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower, follower_range__gte=follower-5000)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-5000)))
             elif follower == 50000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower, follower_range__gte=follower-40000)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-40000)))
             elif follower == 100000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__lte=follower, follower_range__gte=follower-50000)
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-50000)))
             
 
             # follower_filter = UserProfile.objects.filter(Q(follower_amount__lte=num1) & Q(follower_amount__gte=num2))
@@ -65,12 +64,13 @@ def search(request):
             # follower_filter = UserProfile.objects.filter(Q(follower_amount__icontains=lte_filter) & Q(follower_amount__icontains=gte_filter))
             # results = UserProfile.objects.filter(Q(follower_amount__icontains=query) | Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query))
 
-            
             context = {
                 'results': results,
             }
 
             return render(request, 'pages/search.html', context)
+    else:
+        return render(request, 'pages/search.html')
 
 
 
