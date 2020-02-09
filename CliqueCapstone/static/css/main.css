@@ -460,6 +460,12 @@ table, th, td {
 
 
 /* HOMEPAGE TEMPLATE */
+#home_transitions {
+    /* visibility: hidden; */
+    transition-delay: ease s;
+
+
+}
 #home_i{
     font-size: 7rem;
     margin-bottom: 30px;
