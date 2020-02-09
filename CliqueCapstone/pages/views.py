@@ -44,19 +44,19 @@ def search(request):
             #     results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__startswith=query), follower_range__gte=follower)
 
             if follower == 0:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & Q(follower_amount__gte=follower))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), Q(follower_amount__gte=follower))
             elif follower == 100:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & Q(follower_amount__lte=follower))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), Q(follower_amount__lte=follower))
             elif follower == 1000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-900)))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-900)))
             elif follower == 5000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-4000)))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-4000)))
             elif follower == 10000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-5000)))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-5000)))
             elif follower == 50000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-40000)))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-40000)))
             elif follower == 100000:
-                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query) & (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-50000)))
+                results = UserProfile.objects.filter(Q(first_name__icontains=query) | Q(location__icontains=query) | Q(user__username=query) | Q(user__username__istartswith=query), (Q(follower_amount__lte=follower) & Q(follower_amount__gte=follower-50000)))
             
 
             # follower_filter = UserProfile.objects.filter(Q(follower_amount__lte=num1) & Q(follower_amount__gte=num2))
