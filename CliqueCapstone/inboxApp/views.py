@@ -17,8 +17,10 @@ def user_inbox(request):
 
     if request.method == "GET":
         context = {
-            'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
+            # SWAPPING THESE WILL MAKE IT NOT VISIBLE TO SENDER BUT VISIBLE TO RECIEVER AND VICE VERSA
+            
             'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
+            'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
@@ -75,6 +77,7 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
 @login_required
 def create_msg(request, id):
     user_id = request.user.id
+    user_profile = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id).id
     user1 = CustomUser.objects.get(id=user_id).username
     user2 = CustomUser.objects.get(id=UserProfile.objects.get(id=id).user.id).username
 
@@ -88,8 +91,13 @@ def create_msg(request, id):
             user_inbox = UserProfile.objects.get(id=id),
         )
 
+        new_msg_id = UserMessages.objects.get(id=new_msg.id).id
+
+
         new_msg.save()
-        return redirect('user-inbox')
+        # FIGURE THIS BUG OUT, IF NOT REDIRECT TO LIST AND FIGURE OUT BETTER SOLUTION
+        # return redirect(f'inbox/message/{new_msg_id}/{new_msg.conversation_name}/')
+        return redirect(f'/users/profile/{user_profile}/')
 
     elif request.method =='GET':
         context = {

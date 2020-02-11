@@ -19,7 +19,7 @@
     <div class="col-9">
       <div class="text-center" id="title_text">
         <blockquote class="blockquote">
-          <h4 class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</h4>
+          <h4 class="mb-0">Life is like Photography. You need Negatives to Develope.</h4>
           <footer class="blockquote-footer">Jonathan Yates</footer>
         </blockquote>
         <!-- <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4> -->
@@ -29,30 +29,59 @@
 </div>
 <div class="container">
   {% if user.is_authenticated %}
-    <br><br>
-
-
+    <br>
 
     <div class="row text-center mt-5" id="home_transitions">
-      <div class="col-6">
-        <div><a href="{% url 'search' %}"><i class="fas fa-search" id="home_i"></i></a></div>
+      <div class="col-5 col-sm-12 order-1">
         <p id="home_p">
           Use the Search to connect with Other Users
         </p>
       </div>
-      <!-- ADD VERTICAL TAG HERE -->
-      <!-- FIGURE OUT HOW TO SCROLL DOWN TO PHOTOS ON CLICK -->
-      <div class="col-6">
-        <div><i class="fas fa-photo-video" id="home_i"></i></div>
+      <div class="col-2 col-sm-12 order-2">
+        <p id="home_p">
+          - OR -
+        </p>
+      </div>
+      <div class="col-5 col-sm-12 order-3">
         <p id="home_p">
           Explore the Photos below to find Users
         </p>
       </div>
     </div>
-    
-    <br><br><br><br>
     <hr>
-    <br><br>
+
+    <!-- THIS NEEDS TO BE TWEAKED. NEED MORE DUMMY DATA -->
+    <h4>This Weeks TOP Users</h4>
+    <div class="container shadow-lg" id="rank_container">
+      <div class="row mt-2">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+        {% for user in user_profile %}
+          <div class="text-center">
+            <a href="{% url 'profile' user.user.id %}">
+                <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
+                    <div class="row">
+                        <div class="col-3 text-left">
+                            <img id="small_rank_img" src="{{ user.profile_picture.url }}" alt="">
+                        </div>
+                        <div class="col-9 text-right pt-2">
+                          <p>
+                            <span id="small_rank_p">{{ user.user }} | {{ user.location }} | Follower Amount: {{ user.follower_amount }}</span>
+                          </p>
+                        </div>
+                    </div>
+                </button>
+            </a>
+          </div>
+        {% endfor %}
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          50-100
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <br>
     <div class="text-center">
       <h4><span id="gallery_caption">EXPLORE PHOTO GALLERY</span></h4>
       <br><br>
@@ -80,3 +109,4 @@
 </div>
 
 {% endblock %}
+

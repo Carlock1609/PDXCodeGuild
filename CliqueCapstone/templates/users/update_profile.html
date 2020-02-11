@@ -6,13 +6,19 @@
 {% block content %}
 
     {% if user.is_authenticated %}
+
+    <div id="search_jumbo">
+
+        <div class="row align-items-center">
+        <div class="col-12">
+    
+            <h4 class="display-4 search_brand">Updating {{ user.username }}</h4>
+        </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="container shadow-lg pb-5">
-
-            <div class="text-center mt-4">
-                <br><br>
-                <h4>Updating {{ user.username }}'s Profile</h4>
-            </div>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">

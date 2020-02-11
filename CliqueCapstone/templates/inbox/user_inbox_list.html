@@ -5,9 +5,19 @@
 {% block content %}
 
     {% if user.is_authenticated %}
+
+        <div id="search_jumbo">
+
+            <div class="row align-items-center">
+            <div class="col-12">
+        
+                <h4 class="display-4 search_brand">{{ user }}'s Inbox</h4>
+            </div>
+            </div>
+        </div>
+
         <div class="container text-center">
-            <br><br><br>
-            <h2><b>{{ user }}'s Inbox</b></h2>
+            <br><br>
             <div class="mt-5 mb-5">
                 {% for msg in message_list %}
                 <a href="{% url 'user-msg' msg.id msg.conversation_name %}">

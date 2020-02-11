@@ -4,12 +4,19 @@
 
 {% block content %}
 
-    <div class="container shadow">
-        <br><br><br><br>
-        <div class="text-center">
-            <h4>{{ users_list.username }}'s Friends list</h4>
+    <div id="search_jumbo">
+
+        <div class="row align-items-center">
+        <div class="col-12">
+    
+            <h4 class="display-4 search_brand">{{ users_list.username }}'s Friends</h4>
         </div>
-        <br><br>
+        </div>
+    </div>
+
+    <div class="container shadow">
+        <br><br><br>
+
         <!-- Figure out how to iterate over everything -->
         {% for friend in friends %}
             <div class="text-center">
