@@ -154,8 +154,6 @@ def friends_list_page(request, id):
         }
         return render(request, 'users/friends_list.html', context)
 
-
-
 # >>> FriendRequest.objects.filter(from_user=7)[0].to_user
 # <CustomUser: Carlock1609>
 # >>> FriendRequest.objects.filter(from_user=7)[0].to_user.user

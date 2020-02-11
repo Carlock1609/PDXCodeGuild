@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Donate{% endblock %}
+
+
+{% block content %}
+
+    <div id="search_jumbo">
+        <div class="row align-items-center">
+        <div class="col-12">
+    
+            <h4 class="display-4 search_brand">DONATIONS</h4>
+        </div>
+        </div>
+    </div>
+
+    <div class="container animation_in">
+
+        <div class="container text-center shadow-lg" id="donate_container">
+
+            <div class="" id="donate_caption">
+                
+                <h2>Support my website! Donate 5$!</h2>
+                <form action="{% url 'charge' %}" method="post">
+                    {% csrf_token %}
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="{{ key }}"
+                            data-description="Donations"
+                            data-amount="500"
+                            data-locale="auto">
+                    </script>
+                </form>
+    
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+

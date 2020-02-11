@@ -2,13 +2,20 @@ from django.shortcuts import render, redirect
 from users.models import UserProfile, CustomUser, ProfilePhotos
 from django.contrib.auth.decorators import login_required # Decorators
 from django.utils.decorators import method_decorator
+# CUSTOM SEARCH
 from django.db.models import Q
-# search filters
-# from django.contrib.postgres.search import SearchVector
+
+# STRIPE
+from django.conf import settings
+import stripe
+from django.views.generic.base import TemplateView
+
+
 
 
 
 # Create your views here.
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def home(request):
     if request.user.is_authenticated:
@@ -26,7 +33,32 @@ def home(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-# ADD USERNAME TO SEARCH
+# def donations(request):
+#     user_id = request.user.id
+#     context = {
+#         'user': CustomUser.objects.get(id=user_id)
+#     }
+#     return render(request, 'pages/donate.html', context)
+
+
+class HomePageView(TemplateView):
+    template_name = 'pages/donate.html'
+
+    def get_context_data(self, **kwargs): # new
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
+
+def charge(request):
+    if request.method == 'POST':
+        charge = stripe.Charge.create(
+            amount=500,
+            currency='usd',
+            description='Donations',
+            source=request.POST['stripeToken'],
+        )
+        return render(request, 'pages/charge.html')
+
 def search(request):
     if request.method == 'POST':
         query = request.POST.get('q')

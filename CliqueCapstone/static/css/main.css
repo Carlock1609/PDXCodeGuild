@@ -71,9 +71,6 @@ i {
 
 
 
-
-
-
 /* PROFILE TEMPLATE */
 #profile_delete {
     padding-top: 0;
@@ -625,3 +622,38 @@ a.remImage i {
     border-radius: 10px;
     width: 100%;
 }   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DONATE */
+
+.stripe-button-el span {
+    background: rgb(128, 155, 106) !important;
+    background-image:none !important;
+    background-color: rgb(128, 155, 106) !important;
+    border: rgb(128, 155, 106) !important;
+  }
+#donate_caption {
+    
+    /* margin-top: 400px; */
+    padding-bottom: 150px;
+    padding-top: 150px;
+    /* margin-right: 200px; */
+    /* margin-right: 200px; */
+}
+#donate_container {
+    /* margin: 200px; */
+    /* margin-right: 200px; */
+    margin-top: 120px;
+}
+
