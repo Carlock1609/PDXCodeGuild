@@ -37,14 +37,13 @@
                         <p><b><i class="fas fa-map-marker-alt"></i>  Location</b>: {{ user_profile.location }}</p>
                         <p><b><i class="fas fa-users"></i>  Social Followers</b>: {{ user_profile.follower_amount }}</p>
                         <p><b><i class="fas fa-user-plus"></i>  <a href="{% url 'friends_list' user_profile.user.id %}">Friends</a></b>: {{ friends }}</p>
-                        <p><i class="far fa-envelope"></i>  {{ user_profile.email }}</p>
+                        <p><b>Profession:</b> {{ user_profile.profession }}</p>
                         <div class="text-left">
                             <span class="text-center"><h4 id="links">Links</h4></span>
+                            <p><i class="far fa-envelope"></i>  {{ user_profile.email }}</p>
                             <p><i class="fab fa-twitter-square"></i>  <a href="https://www.twitter.com/{{ twitter_screen }}/">https://www.twitter.com/{{ twitter_screen }}/</a></p>
                             <p><i class="fas fa-photo-video"></i>  <a href="{{ user_profile.portfolio.links }}"> {{ user_profile.portfolio_links }}</a></p>
                         </div>
-                    
-                 
                     </div>
                     <div class="col-lg-6 col-sm-12 mt-2">
                         <div class="text-center">
@@ -100,13 +99,18 @@
         <br>
         <div class="container shadow-lg pt-5 pb-4">
 
+            <!-- BUG FORSOME REASON THIS ONLY WORKS ON CURRENT PROFILE -->
             <div class="row">
                 {% for image in images %}
                     <div class="col-lg-3 col-md-4 col-sm-9 text-center">
                         <img class="user-img profile_photos" id="myImg" src="{{ image.file.url }}" alt="">
-                        <a href="{% url 'delete' image.id %}" class="remImage">
-                            <button type="submit" class="btn btn-outline-dark mb-3" id="profile_delete">X</button>
-                        </a>
+                        {% if request.user.id == auth.id %}
+                            <a href="{% url 'delete' image.id %}" class="remImage">
+                                <button type="submit" class="btn btn-outline-dark mb-3" id="profile_delete">X</button>
+                            </a>
+                        {% else %}
+                            <br><br>
+                        {% endif %}
                     </div>
                 {% endfor %}
                 <!-- The Modal -->
@@ -127,6 +131,7 @@
 {% endif %}
     
 {% endblock %}
+
 
 <!-- 
 <form action="/action_page.php">

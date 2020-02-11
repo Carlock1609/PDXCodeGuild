@@ -29,8 +29,10 @@ class ProfileUpdateForm(forms.ModelForm):
             # 'location',
             # 'city',
             # 'state',
+            'profession',
             'profile_picture',
             # 'cover_picture',
+
         ]
 
 # class PostForm(forms.ModelForm):

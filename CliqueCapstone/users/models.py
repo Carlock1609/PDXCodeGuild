@@ -35,6 +35,12 @@ class UserProfile(models.Model):
     location = models.CharField(max_length=80, blank=True, null=True)
     # city = models.CharField(max_length=20)
     # state = models.CharField(max_length=3)
+    
+    PROFESSION_CHOICE = [
+        ('Photographer', 'Photographer'),
+        ('Creator', 'Creator'),
+    ]
+    profession = models.CharField(max_length=12, choices=PROFESSION_CHOICE, null=True, blank=True)
 
     profile_picture = models.ImageField(default='../../static_images/default_profile.jpg', upload_to='profile/profile_images/', editable=True, blank=True, null=True) # FIGURE OUT PILLOW FROM LIBRARY LAB
     cover_picture = models.ImageField(default='static_images/default_bg.jpg', upload_to='profile/profile_backgrounds/', editable=True, blank=True, null=True)
