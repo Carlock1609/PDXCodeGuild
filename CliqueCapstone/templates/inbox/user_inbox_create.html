@@ -6,19 +6,48 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    <div class="container text-center">
-        <div class="mt-5">
-            <br><br>
-            <b><h3>Sending Message to {{ sending_to }}</h3></b>
+    
+    <div id="search_jumbo">
+        <div class="row align-items-center">
+        <div class="col-12">
+    
+            <h4 class="display-4 search_brand">MESSAGING {{ sending_to }}</h4>
         </div>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input id="msg_subject" class="mt-5 mb-0" type="text" name="subject" placeholder="Add Subject here...">
-            <input id="msg_box" class="pl-2 pb-5 mt-0" type="text" name="body" placeholder="Enter in text here...">
-            <button class="btn btn-outline-dark mt-2" type="submit">Send Message</button>
-        </form>
-            <a href="{% url 'profile' redirect %}"><button class="btn btn-outline-dark mt-2">Discard Message</button></a>
+        </div>
+    </div>
+
+    <div class="container text-center animation_in">
+        <div class="container shadow-lg" id="create_msg_container">
+
+            <div class="mt-5">
+                <br><br>
+            </div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="msg_subject" class="mt-5 mb-0" type="text" name="subject" placeholder="Add Subject here...">
+                <input id="msg_box" class="pl-2 pb-5 mt-0" type="text" name="body" placeholder="Enter in text here...">
+                <button class="btn btn-outline-dark mt-2" type="submit">Send Message</button>
+            </form>
+                <a href="{% url 'profile' redirect %}"><button class="btn btn-outline-dark mt-2">Discard Message</button></a>
+        </div>
     </div>
     {% endif %}
 
 {% endblock %}
+
+
+<div id="search_caption">
+    <div class="row">
+       <form action="{% url 'search' %}" method="POST" id="searchbar_form">
+          {% csrf_token %}
+          <div class="col-10">
+             
+          </div>
+          <div class="row">
+             <div class="col text-center">
+                <br>
+                <button type="submit" value="Search" id="search_btn" class="btn btn-outline-dark mt-2">Search</button>
+             </div>
+          </div>
+       </form>
+    </div>

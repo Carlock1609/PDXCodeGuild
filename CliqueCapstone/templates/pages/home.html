@@ -19,7 +19,7 @@
     <div class="col-9">
       <div class="text-center" id="title_text">
         <blockquote class="blockquote">
-          <h4 class="mb-0">Life is like Photography. You need Negatives to Develope.</h4>
+          <h4 class="mb-0">You miss 100% of the shots you Don't take.</h4>
           <footer class="blockquote-footer">Jonathan Yates</footer>
         </blockquote>
         <!-- <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4> -->
@@ -27,14 +27,14 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container animation_in">
   {% if user.is_authenticated %}
     <br>
 
     <div class="row text-center mt-5" id="home_transitions">
       <div class="col-5 col-sm-12 order-1">
         <p id="home_p">
-          Use the Search to connect with Other Users
+          Use the SEARCH to connect with Other Users
         </p>
       </div>
       <div class="col-2 col-sm-12 order-2">
@@ -51,32 +51,47 @@
     <hr>
 
     <!-- THIS NEEDS TO BE TWEAKED. NEED MORE DUMMY DATA -->
+    <!-- FIGURE OUT HOW TO JUST WRAP THIS INSTEAD OF TWO ROWS -->
     <h4>This Weeks TOP Users</h4>
     <div class="container shadow-lg" id="rank_container">
-      <div class="row mt-2">
-        <div class="col-lg-6 col-md-12 col-sm-12">
+      <div class="row mt-1">
         {% for user in user_profile %}
-          <div class="text-center">
-            <a href="{% url 'profile' user.user.id %}">
-                <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
-                    <div class="row">
-                        <div class="col-3 text-left">
-                            <img id="small_rank_img" src="{{ user.profile_picture.url }}" alt="">
-                        </div>
-                        <div class="col-9 text-right pt-2">
-                          <p>
-                            <span id="small_rank_p">{{ user.user }} | {{ user.location }} | Follower Amount: {{ user.follower_amount }}</span>
-                          </p>
-                        </div>
-                    </div>
-                </button>
-            </a>
-          </div>
-        {% endfor %}
-        </div>
-        <div class="col-lg-6 col-md-12 col-sm-12">
-          50-100
-        </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+              <a href="{% url 'profile' user.user.id %}">
+                  <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
+                      <div class="row">
+                          <div class="col-2 text-left">
+                              <img id="small_rank_img" src="{{ user.profile_picture.url }}" alt="">
+                          </div>
+                          <div class="col-10 text-left">
+                            <p id="small_rank_p">
+                              {{ user.user }} | {{ user.location }} | Follower Amount: {{ user.follower_amount }}
+                            </p>
+                          </div>
+                      </div>
+                  </button>
+              </a>
+            </div>
+          {% endfor %}
+          
+          {% for user in user_profile %}
+          <div class="col-lg-6 col-md-12 col-sm-12">
+              <a href="{% url 'profile' user.user.id %}">
+                  <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
+                      <div class="row">
+                          <div class="col-2 text-left">
+                              <img id="small_rank_img" src="{{ user.profile_picture.url }}" alt="">
+                          </div>
+                          <div class="col-10 text-left">
+                            <p id="small_rank_p">
+                              {{ user.user }} | {{ user.location }} | Follower Amount: {{ user.follower_amount }}
+                            </p>
+                          </div>
+                      </div>
+                  </button>
+              </a>
+            </div>
+          {% endfor %}
       </div>
     </div>
 

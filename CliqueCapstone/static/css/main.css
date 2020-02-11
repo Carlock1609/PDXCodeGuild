@@ -43,7 +43,6 @@ a {
 a:hover {
     color: rgb(63, 63, 63)
 }
-
 i {
     color: rgb(128, 155, 106);
     /* color: rgb(63,63,63); */
@@ -52,8 +51,22 @@ i {
 }
 
 
+/* ANIMATIONS */
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    
+    to {
+        opacity: 1;
+        transform: rotateX();
+    }
+}
 
-
+.animation_in {
+    animation: transitionIn .8s;
+}
 
 
 
@@ -62,6 +75,12 @@ i {
 
 
 /* PROFILE TEMPLATE */
+#profile_delete {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 80px;
+    padding-right: 80px;
+}
 
 #center_profile_btn {
     margin-left: 200px;
@@ -71,7 +90,7 @@ i {
     width: 100%;
     text-align: center;
     color: #000; */
-.crop_photo {
+/* .crop_photo {
     display: inline-block;
     background-color: black;
     padding: 0;
@@ -80,7 +99,7 @@ i {
     border-radius: 15px;
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.774);
     
-}
+} */
 /* #delete_btn {
     display: none;
 } */
@@ -233,42 +252,6 @@ a.remImage i {
 
 
 
-/* INBOX TEMPLATE */
-table, th, td {
-    border: 1px solid black;
-    height: 5px;
-}
-
-/* FULL IMAGE FOR WELCOME PAGE */
-/* .bg {
-    background-image: url("../../static_images/welcome_page.jpg");
-
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-} */
-
-.caption {
-    position: absolute;
-    top: 40%;
-    width: 100%;
-    text-align: center;
-    color: #000;
-}
-.caption span.border {
-    color: #fff;
-    padding: 4.7px;
-    font-size: 25px;
-    letter-spacing: 10px;
-}
-
-
-
-
-
-
-
 
 /* Login */
 .card {
@@ -321,6 +304,26 @@ table, th, td {
 
 
 /* INBOX */
+.caption {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+.caption span.border {
+    color: #fff;
+    padding: 4.7px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+#create_msg_container {
+    padding-bottom: 150px;
+    margin-top: 110px;
+}
+#msg_container {
+    height: 65vh;
+}
 
 #chat_sender {
     border: 100%;
@@ -350,13 +353,15 @@ table, th, td {
     margin-right: 0px;
 }
 #chat_send_btn {
-    height: 33px;
+    height: 26px;
     margin-bottom: 10px;
-    margin-top: 13.5px;
-    margin-left: 0px;
+    margin-top: 20px;
+    margin-left: 0;
     padding-bottom: 40px;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 #msg_box {
     width: 100%;
@@ -374,8 +379,8 @@ table, th, td {
 }
 #chat_box {
     overflow-y: scroll;
-    min-height: 80vh;
-    max-height: 80vh;
+    min-height: 65vh;
+    max-height: 65vh;
 }
 #msgbar_bottom {
     min-height: 20vh;
@@ -476,10 +481,6 @@ table, th, td {
 
 
 /* HOMEPAGE TEMPLATE */
-#home_transitions {
-    /* visibility: hidden; */
-    transition-delay: ease s;
-}
 #rank_container {
     height: 175px;
 }
@@ -490,7 +491,6 @@ table, th, td {
 }
 /* SEE HOW TO EASE IN HOME PAGE */
 #home_p {
-    transition: ease-in 1s;
     font-size: 1.5rem;
 }
 .title_brand {
@@ -571,22 +571,21 @@ table, th, td {
 }
 #small_rank_btn {
     height: 30px;
-
+    padding-left: 1.5rem;
 }
 #small_rank_img {
+    /* float: left; */
     height: 20px;
     width: 20px;
     border-radius: 5px;
     margin-right: 70px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 #small_rank_p {
     /* margin-right: 10px; */
     margin-bottom: 50px;
     font-size: 13px;
 }
-
-
 
 
 

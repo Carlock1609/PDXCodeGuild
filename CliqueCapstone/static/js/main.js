@@ -38,6 +38,25 @@ postbtn.addEventListener('click', function() {
   }
 })
 
+
+// Get the modal
+let modal = document.querySelector("#myModal");
+// Get the image
+let images = document.querySelectorAll("#myImg");
+for(let i=0; i<images.length; i++) {
+  images[i].addEventListener("click", function() {
+    images.id = "myImg"
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  })
+}
+let modalImg = document.querySelector("#img01");
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+// When the user clicks on <span> (x), close the modal
+span.addEventListener('click', function() {
+  modal.style.display = "none";
+}) 
 // expandinfo = document.querySelector('.expandinfo')
 // info = document.querySelector('.info')
 
