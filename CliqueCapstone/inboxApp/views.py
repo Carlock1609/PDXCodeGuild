@@ -19,8 +19,8 @@ def user_inbox(request):
         context = {
             # SWAPPING THESE WILL MAKE IT NOT VISIBLE TO SENDER BUT VISIBLE TO RECIEVER AND VICE VERSA
             
-            'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
             'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
+            'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 

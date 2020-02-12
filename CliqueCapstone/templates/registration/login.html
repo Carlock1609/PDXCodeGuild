@@ -7,9 +7,17 @@
 
 {% block content %}
 
+    <div class="bg">
+        <div class="text-center">
+        <br><br><br><br><br><br>
+        <span id="login_cap"><h3>CREATE | CONNECT | <b>CLIQUE</b></h3></span>
+        </div>
+    </div>
+
+    
     <div class="caption animation_in">
         <div class="card mb-3" style="max-width: 18rem;">
-            <div class="card-header">Sign In With:</div>
+            <div class="card-header" id="login_caption">SIGN IN WITH:</div>
                 <div class="card-body">
                     <button class="btn" id="twitter_btn" type="submit">
                         <a href="{% provider_login_url 'twitter' %}">

@@ -111,6 +111,7 @@ class ProfileLibrary(models.Model):
     def __str__(self):
         return f"{self.file}"
 
+
 # class UserFriendsList(models.Model):
 #     user = models.OneToOneField(CustomUser, related_name='users_friend_list', on_delete=models.CASCADE)
 #     friends_list = models.ManyToManyField(CustomUser, related_name='friends_list')

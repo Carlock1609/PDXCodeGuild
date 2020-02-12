@@ -290,9 +290,10 @@ a.remImage i {
 #login_cap {
     color: white;
 }
-
-
-
+#login_caption {
+    color: white;
+    font-size: 1.2rem;
+}
 
 
 
@@ -657,3 +658,12 @@ a.remImage i {
     margin-top: 120px;
 }
 
+
+
+
+
+
+/* ABOUT TEMPLATE */
+#about_container {
+    height: 80vh;
+}
