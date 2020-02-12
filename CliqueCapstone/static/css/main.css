@@ -306,6 +306,13 @@ a.remImage i {
 
 
 /* INBOX */
+
+#list_container {
+    overflow-y: scroll;
+    min-height: 75vh;
+    max-height: 75vh;
+}
+
 .caption {
     position: absolute;
     top: 40%;
@@ -357,9 +364,9 @@ a.remImage i {
 #chat_send_btn {
     height: 26px;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 9px;
     margin-left: 0;
-    padding-bottom: 40px;
+    padding-bottom: 32px;
     border-bottom-right-radius: 12px;
     border-top-right-radius: 12px;
     border-top-left-radius: 0px;

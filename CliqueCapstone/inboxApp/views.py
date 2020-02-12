@@ -64,10 +64,10 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
     if request.method == "GET":
         context = {
             # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
-            'message': UserMessages.objects.filter(sender=user_id),
-            'message': UserMessages.objects.filter(receiver=user_id),
-            'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox),
-            'message': UserMessages.objects.filter(conversation_name=conversation_name),
+            'message': UserMessages.objects.filter(sender=user_id).order_by('sender', 'created_date'),
+            'message': UserMessages.objects.filter(receiver=user_id).order_by('receiver', 'created_date'),
+            'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox).order_by('user_inbox', 'created_date'),
+            'message': UserMessages.objects.filter(conversation_name=conversation_name).order_by('conversation_name', 'created_date'),
             # 'message': UserMessages.objects.filter(user_inbox=17)
         }
         return render(request, 'inbox/user_inbox_msg.html', context)

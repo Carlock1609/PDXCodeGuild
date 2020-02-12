@@ -17,19 +17,20 @@
         </div>
 
         <div class="container text-center animation_in">
-            <br><br>
-            <div class="mt-5 mb-5">
-                {% for msg in message_list %}
-                <a href="{% url 'user-msg' msg.id msg.conversation_name %}">
-                    <button id="msg_list" class="btn btn-outline-dark mb-1 shadow">
-                        <h4>Subject: {{ msg.subject }}</h4>
-                        <hr>
-                        <h4>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} {{ msg }}</h4>
-                    </button>
-                    </a>
-                {% empty %}
-                    <p>Inbox is EMPTY</p>
-                {% endfor %}
+            <div class="container mt-5 shadow-lg" id="list_container">
+                <div class="mt-5 mb-5">
+                    {% for msg in message_list %}
+                    <a href="{% url 'user-msg' msg.id msg.conversation_name %}">
+                        <button id="msg_list" class="btn btn-outline-dark mb-1 shadow">
+                            <h4>Subject: {{ msg.subject }}</h4>
+                            <hr>
+                            <h4>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} {{ msg }}</h4>
+                        </button>
+                        </a>
+                    {% empty %}
+                        <p>Inbox is EMPTY</p>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% endif %}
