@@ -59,7 +59,7 @@ def profile_page(request, id):
         profile.first_name = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name']
         profile.location = SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['location']
         profile.save()
-
+    
         context = {
             'friends': friends,
             'images': images,

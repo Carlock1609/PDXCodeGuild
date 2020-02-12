@@ -13,12 +13,10 @@ from django.views.generic.base import TemplateView
 
 
 
-
-
 def home(request):
     if request.user.is_authenticated:
 
-        images = ProfilePhotos.objects.order_by('?')
+        images = ProfilePhotos.objects.order_by('?')[:50]
 
         context = {
             'images': images,
@@ -38,7 +36,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 class HomePageView(TemplateView):
     template_name = 'pages/donate.html'
 
-    def get_context_data(self, **kwargs): # new
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['key'] = settings.STRIPE_PUBLISHABLE_KEY
         return context

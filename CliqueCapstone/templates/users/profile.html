@@ -61,7 +61,11 @@
         {% if request.user.id == auth.id %}
             <!-- CREATE BUTTON TO PUSH INSTEAD -->
             <!-- DONT FORGET ENCTYPE -->
-            <button class="postbtn btn btn-outline-dark mr-1">Upload Photo</button>    
+            {% if images.count <= 12 %}
+                <button class="postbtn btn btn-outline-dark mr-1">Upload Photo</button>
+            {% else %}
+                <p>MAX PHOTO</p>
+            {% endif %}  
             <a method="GET" href="{% url 'update_profile' %}">
                 <button class="btn btn-outline-dark">Update Profile</button>
             </a>

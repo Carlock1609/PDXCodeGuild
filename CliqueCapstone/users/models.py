@@ -38,7 +38,7 @@ class UserProfile(models.Model):
     
     PROFESSION_CHOICE = [
         ('Photographer', 'Photographer'),
-        ('Creator', 'Creator'),
+        ('Influencer', 'Influencer'),
     ]
     profession = models.CharField(max_length=12, choices=PROFESSION_CHOICE, null=True, blank=True)
 

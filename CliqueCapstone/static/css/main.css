@@ -71,6 +71,10 @@ i {
 
 
 
+
+
+
+
 /* PROFILE TEMPLATE */
 #profile_delete {
     padding-top: 0;
@@ -319,9 +323,9 @@ a.remImage i {
     padding-bottom: 150px;
     margin-top: 110px;
 }
-#msg_container {
-    height: 65vh;
-}
+/* #msg_container {
+    height: 100vh;
+} */
 
 #chat_sender {
     border: 100%;
@@ -383,9 +387,10 @@ a.remImage i {
 #msgbar_bottom {
     min-height: 20vh;
 }
-
-
-
+#msg_box_container {
+    min-height: 65vh;
+    max-height: 65vh;
+}
 
 
 
@@ -394,6 +399,9 @@ a.remImage i {
 
 
 /* SEARCH FUNCTION */
+/* #search_form_drop {
+    
+} */
 #search_btn {
     margin-left: 139px;
 }
@@ -416,7 +424,7 @@ a.remImage i {
     width: 100%;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
-    padding: 5px 5px;
+    /* padding: 1px 1px; */
 }
 .caption_search {
     left: 0;
@@ -569,7 +577,8 @@ a.remImage i {
 }
 #small_rank_btn {
     height: 30px;
-    padding-left: 1.5rem;
+    padding-left: .5rem;
+    width: 100%;
 }
 #small_rank_img {
     /* float: left; */

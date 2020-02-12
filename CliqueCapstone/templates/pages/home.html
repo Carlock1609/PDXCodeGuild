@@ -31,21 +31,32 @@
   {% if user.is_authenticated %}
     <br>
 
-    <div class="row text-center mt-5" id="home_transitions">
-      <div class="col-5 col-sm-12 order-1">
-        <p id="home_p">
-          Use the SEARCH to connect with Other Users
-        </p>
+    <div class="container shadow-lg mt-5">
+
+      <div class="row text-center mt-5">
+        <div class="col-12">
+            <p id="home_p">
+              Clique is a place for Photographers looking to build their portfolio's and Social Media Influencers looking for a Photographer. 
+            </p>
+        </div>
       </div>
-      <div class="col-2 col-sm-12 order-2">
-        <p id="home_p">
-          - OR -
-        </p>
-      </div>
-      <div class="col-5 col-sm-12 order-3">
-        <p id="home_p">
-          Explore the Photos below to find Users
-        </p>
+  
+      <div class="row text-center mt-5" id="home_transitions">
+        <div class="col-5 col-sm-12 order-1">
+          <p id="home_p">
+            Use the SEARCH to connect with Other Users
+          </p>
+        </div>
+        <div class="col-2 col-sm-12 order-2">
+          <p id="home_p">
+            - OR -
+          </p>
+        </div>
+        <div class="col-5 col-sm-12 order-3 mb-4">
+          <p id="home_p">
+            Explore the Photos below to find Users
+          </p>
+        </div>
       </div>
     </div>
     <hr>
@@ -53,7 +64,7 @@
     <!-- THIS NEEDS TO BE TWEAKED. NEED MORE DUMMY DATA -->
     <!-- FIGURE OUT HOW TO JUST WRAP THIS INSTEAD OF TWO ROWS -->
     <h4>This Weeks TOP Users</h4>
-    <div class="container shadow-lg" id="rank_container">
+    <div class="container-fluid shadow-lg" id="rank_container">
       <div class="row mt-1">
         {% for user in user_profile %}
           <div class="col-lg-6 col-md-12 col-sm-12">

@@ -16,8 +16,8 @@
         </div>
     </div>
 
-    <div class="container animation_in" id="chat_box">
-        <div class="container shadow-lg" id="msg_container">
+    <div class="container animation_in" id="msg_box_container">
+        <div class="container shadow-lg" id="chat_box">
 
             <br>
             <h4>{{ message.conversation_name }}</h4>
@@ -67,6 +67,7 @@
     {% endif %}
 
 {% endblock %}
+
 
 <!-- {% if msg.sender == request.user %} -->
 <!-- <span>{{ msg.created_date | date:"F d" }} - {{ msg.created_date.time }} | <b>{{ msg.sender.username }}</b>:</span> -->
