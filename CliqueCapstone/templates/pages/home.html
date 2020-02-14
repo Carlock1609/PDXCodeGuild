@@ -20,8 +20,9 @@
       <div class="text-center" id="title_text">
         <blockquote class="blockquote">
           <h4 class="mb-0">You miss 100% of the shots you Don't take.</h4>
-          <footer class="blockquote-footer">Jonathan Yates</footer>
+          <footer class="blockquote-footer ml-5">Michael Scott</footer>
         </blockquote>
+
         <!-- <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam ab, sapiente, voluptas commodi obcaecati odit consectetur aliquam suscipit nobis error, </h4> -->
       </div>
     </div>
@@ -65,7 +66,7 @@
     <!-- FIGURE OUT HOW TO JUST WRAP THIS INSTEAD OF TWO ROWS -->
     <h4>This Weeks TOP Users</h4>
     <div class="container-fluid shadow-lg" id="rank_container">
-      <div class="row mt-1">
+      <div class="row mt-2">
         {% for user in user_profile %}
           <div class="col-lg-6 col-md-12 col-sm-12">
               <a href="{% url 'profile' user.user.id %}">
@@ -135,4 +136,5 @@
 </div>
 
 {% endblock %}
+
 

@@ -6,17 +6,6 @@ import datetime
 from django.utils import timezone
 
 
-# CREATE ANOTHER MODEL THAT HAS A UNIQUE THREAD ASSOCIATED WITH IT. VAN USES EQUIPMENT ID FROM HIS MODEL. YOU NEED TO MAKE A THREAD INBOX WITH ID FOR THE USERS TO POST TO
-
-# class UserInbox(models.Model):
-#     owner = models.ForeignKey(CustomUser, related_name='owner', on_delete=models.CASCADE, null=True)
-    
-#     class Meta:
-#         verbose_name_plural = "User Inbox's"
-
-#     def __str__(self):
-#         return f"{self.owner}'s Inbox"
-    
 
 class UserMessages(models.Model):
     sender = models.ForeignKey(CustomUser, related_name='sender', on_delete=models.CASCADE, null=True)

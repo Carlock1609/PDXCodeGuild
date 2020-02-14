@@ -21,20 +21,18 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='user', on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=20) # REQUIRED
-    email = models.EmailField(default='', blank=True, null=True)
+    first_name = models.CharField(max_length=40, blank=True, null=True) # REQUIRED
+    email = models.EmailField(default='example@example.com', blank=True, null=True)
 
-    social_media = models.URLField(default="") # FIGURE OUT HOW TO MAKE THIS REQUIRED THE FIRST TIME
+    social_media = models.URLField(default="", blank=True, null=True) # FIGURE OUT HOW TO MAKE THIS REQUIRED THE FIRST TIME
     portfolio_links = models.URLField(blank=True, null=True) 
 
-    follower_amount = models.IntegerField(blank=True, null=True) # USE THE API DATA TO STORE HERE, OTHERWISE USER MANUALLY ENTTERS IN AMOUNT
+    follower_amount = models.IntegerField(blank=True, null=True) 
 
-    bio = models.TextField(max_length=500, blank=True, null=True)
+    bio = models.TextField(max_length=500, default="Bio goes here...", blank=True, null=True)
     # experience = models.TextField(max_length=500, blank=True, null=True) # CONSIDER DELETEING THIS
 
     location = models.CharField(max_length=80, blank=True, null=True)
-    # city = models.CharField(max_length=20)
-    # state = models.CharField(max_length=3)
     
     PROFESSION_CHOICE = [
         ('Photographer', 'Photographer'),

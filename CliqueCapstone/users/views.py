@@ -20,10 +20,8 @@ import boto3
 from django.core.files.storage import FileSystemStorage
 from decouple import config
 
-# , ProfileUserPost, ProfileUserPhoto
-# , PostForm, PhotoForm
 
-# Create your views here.
+
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
@@ -34,7 +32,6 @@ def profile_page(request, id):
     # Multiple Photo posts
     user_id = request.user.id
     if request.method == 'POST':
-        # print(request.FILES)
         image_file = request.FILES.get('image_file')
         image_type = request.POST.get('image_type')
         upload = ProfilePhotos(
@@ -46,10 +43,6 @@ def profile_page(request, id):
 
         return redirect(f'/users/profile/{user_id}/')
     else:
-        # postForm = PostForm()
-        # # Research queryset
-        # formset = ImageFormSet(queryset=ProfileUserPhoto.objects.none())
-        # user_id = request.user.id
         create_msg = UserProfile.objects.get(user=CustomUser.objects.get(id=id))
         images = ProfilePhotos.objects.filter(user=request.user)
         friends = FriendRequest.objects.filter(from_user_id=id).count()
@@ -65,39 +58,22 @@ def profile_page(request, id):
             'images': images,
             'create_msg': create_msg,
             'auth': CustomUser.objects.get(id=id),
-            # 'postForm': postForm,
-            # 'formset': formset,
             'user_profile': UserProfile.objects.get(id=UserProfile.objects.get(user=CustomUser.objects.get(id=id)).id),
-            # 'library': ProfileUserPhoto.objects.get(id=id),
-            # FIGURE OUT HOW TO BE DRY YO
-            # 'twitter_followers': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['followers_count'],
-            # 'twitter_name': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['name'],
             'twitter_screen': SocialAccount.objects.filter(user=CustomUser.objects.get(id=id), provider='twitter')[0].extra_data['screen_name'],
-            # 'twitter_email': SocialAccount.objects.filter(user=request.user, provider='twitter')[0].extra_data['email'],
         }
     return render(request, 'users/profile.html', context)
 
 # >>> user1[12].post.id
 @login_required
 def update_user_profile(request):
-    # user_id = request.user.id
-    # profile = UserProfile.objects.get(user_id=user_id)
-    
     # FIGURE OUT HOW TO DELETE PICTURE WHEN REPLACED
-    # pic = profile.profile_picture
-    # s3 = boto3.resource('s3')
-    # obj = s3.Object('django-clique-files', 'pic')
-    # obj.delete()
     user_id = request.user.id
 
     if request.method == 'POST':
-        # UserProfile.profile_picture # why are these here? Test this to see
-        # UserProfile.cover_picture
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.user)
         if p_form.is_valid():
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            # FIX THIS!!!
             return redirect(f'/users/profile/{user_id}/')
     else:
         p_form = ProfileUpdateForm(request.POST, instance=request.user.user)

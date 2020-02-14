@@ -30,7 +30,6 @@ def about(request):
     return render(request, 'pages/about.html')
 
 
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class HomePageView(TemplateView):

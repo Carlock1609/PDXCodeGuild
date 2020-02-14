@@ -3,13 +3,9 @@ from .models import UserMessages
 from users.models import CustomUser, UserProfile
 
 from django.contrib.auth.decorators import login_required # Decorators
-from django.contrib.auth.decorators import user_passes_test # CREATE TEST FOR WHEN YOU WANT TO ADD SECURITY
 from django.contrib import messages
 
-# MUST DO THIS VIEW TO GET THE ONES SENT TO YOU AND ONES YOUVE SENT
-# Need to figure out security issue, user is able to type id number and get in without  login
 
-# RESEARCH DISTINCT AND VALUES AND ORDERBY
 
 @login_required
 def user_inbox(request):
@@ -18,26 +14,17 @@ def user_inbox(request):
     if request.method == "GET":
         context = {
             # SWAPPING THESE WILL MAKE IT NOT VISIBLE TO SENDER BUT VISIBLE TO RECIEVER AND VICE VERSA
-            
             'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
             'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
         }
         return render(request, 'inbox/user_inbox_list.html', context)
 
-# FIGURE OUT HOW TO AUTOMATICALLY ADD DATA THAT WAS FROM THE INITIAL MESSAGE
 @login_required
-def user_msg(request, id, conversation_name): # Use this view to continue the conversation_name
+def user_msg(request, id, conversation_name):
     # ID IS INDIVIDUAL MESSAGE ID, NOT USER ID
     user_id = request.user.id
-    # if request.user.username ==  :
-    #     sender_id = CustomUser.objects.get(id=user_id)
-    # else:
-    #     sender_id = CustomUser.objects.get(id=)
-    # user1 = UserMessages.objects.filter(conversation_name=conversation_name)[0].sender.username
-    # user2 = UserMessages.objects.filter(conversation_name=conversation_name)[0].receiver.username
     conversation = conversation_name
 
-    # DETERMINING WHETHER OR NOT USER IS SENDER AND THEN GETTING THE RECEIVER
     # YASSS THIS WORKED.
     if request.method == 'POST':
         if request.user == UserMessages.objects.get(id=id).sender:
@@ -46,12 +33,8 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
             receiver_id = UserMessages.objects.get(id=id).sender.id
 
         new_msg = UserMessages.objects.create(
-            # sender = CustomUser.objects.get(id=user_id),
-            # receiver = CustomUser.objects.get()
-            # receiver = CustomUser.objects.get(id=UserMessages.objects.get(conversation_name=conversation_name)),
             sender = CustomUser.objects.get(id=user_id),
             receiver = CustomUser.objects.get(id=receiver_id),
-            # conversation_name = f"{user1} and {user2}'s Conversation",
             conversation_name = conversation,
             body = request.POST['body'],
             user_inbox = UserMessages.objects.filter(conversation_name=conversation_name)[0].user_inbox,
@@ -60,15 +43,12 @@ def user_msg(request, id, conversation_name): # Use this view to continue the co
 
         return redirect(f'/inbox/message/{id}/{conversation_name}/')
 
-    # subject = conversation_name.strip(" ")
     if request.method == "GET":
         context = {
-            # 'profile_id': UserMessages.objects.get(id=user_id).user_inbox.id,
             'message': UserMessages.objects.filter(sender=user_id).order_by('sender', 'created_date'),
             'message': UserMessages.objects.filter(receiver=user_id).order_by('receiver', 'created_date'),
             'message': UserMessages.objects.filter(user_inbox=UserMessages.objects.get(id=id).user_inbox).order_by('user_inbox', 'created_date'),
             'message': UserMessages.objects.filter(conversation_name=conversation_name).order_by('conversation_name', 'created_date'),
-            # 'message': UserMessages.objects.filter(user_inbox=17)
         }
         return render(request, 'inbox/user_inbox_msg.html', context)
 
@@ -106,6 +86,8 @@ def create_msg(request, id):
             'redirect': UserProfile.objects.get(id=id).user.id,
         }
         return render(request, 'inbox/user_inbox_create.html', context)
+
+
 
 # >>> user2 = UserProfile.objects.get(id=17)
 # >>> user2
