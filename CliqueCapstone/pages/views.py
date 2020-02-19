@@ -16,7 +16,9 @@ from django.views.generic.base import TemplateView
 def home(request):
     if request.user.is_authenticated:
 
-        images = ProfilePhotos.objects.order_by('?')[:50]
+        # MINOR FIX UNTIL SOLUTION FOUND
+        # FIGURE OUT HOW TO CACHE
+        images = ProfilePhotos.objects.order_by('?')[:1]
 
         context = {
             'images': images,
