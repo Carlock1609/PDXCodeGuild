@@ -236,3 +236,8 @@ THOUGHTS, ERRORS, IDEAS
     - Add friends list function, already added to model.
     
 
+**StarDate 02/19/2020**
+    - Finished Cloudfront
+    - CURRENTLY working on photo Library
+        - SAME as profile just more photos
+    - THEN work on security and pop this puppy up

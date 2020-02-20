@@ -97,11 +97,45 @@ def delete_image(request, id):
     s3.Object('django-clique-files', f'{image.file.name}').delete()
     image.delete()
     return redirect(f'/users/profile/{user_id}/')
-    
-@login_required
-def photo_library_page(request):
-    return render(request, 'users/photo_library.html')
 
+# CURRENTly WORKING ON
+# FIGURE OUT THE DELETE VIEW ABOVE, WHAT ID IS IT GETTING?
+# "{% url 'delete' image.id %}"
+@login_required
+def photo_library_page(request, id):
+    if request.method == 'POST':
+        image_file = request.FILES.get('image_file')
+        image_type = request.POST.get('image_type')
+        upload = ProfileLibrary(
+            file=image_file,
+            user=request.user
+        )
+        upload.save()
+        image_url = upload.file.url
+
+        return redirect(f'/users/library/{id}/')
+    else:
+        images = ProfileLibrary.objects.filter(user=id)
+
+        context = {
+            'auth': CustomUser.objects.get(id=id),
+            'images': images,
+        }
+        return render(request, 'users/photo_library.html', context)
+
+def delete_library_image(request, id):
+    user_id = request.user.id
+    image = ProfileLibrary.objects.get(id=id)
+
+    s3 = boto3.resource(
+        's3',
+        aws_access_key_id = config("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key = config('AWS_SECRET_ACCESS_KEY')
+    )
+
+    s3.Object('django-clique-files', f'{image.file.name}').delete()
+    image.delete()
+    return redirect(f'/users/library/')
 
 def friends_list_page(request, id):
     user_id = request.user.id

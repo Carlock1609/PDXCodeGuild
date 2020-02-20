@@ -69,7 +69,7 @@
             <a method="GET" href="{% url 'update_profile' %}">
                 <button class="btn btn-outline-dark">Update Profile</button>
             </a>
-            <a href="{% url 'photo_library' %}">
+            <a href="{% url 'photo_library' user.id %}">
                 <button class="btn btn-outline-dark ml-1">Photo Library</button>
             </a>
             <hr>
@@ -84,7 +84,7 @@
                     <a href="{% url 'create-msg' create_msg.id %}">
                         <button class="btn btn-outline-dark mr-1 ml-1">Create Message</button>
                     </a>
-                    <a href="{% url 'photo_library' %}">
+                    <a href="{% url 'photo_library' user_profile.user.id %}">
                         <button class="btn btn-outline-dark ml-1">Photo Library</button>
                     </a>       
             </div>

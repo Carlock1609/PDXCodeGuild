@@ -1,29 +1,59 @@
 {% extends 'base.html' %}
 
+{% block title %}Photo Library{% endblock %}
+
 {% block content %}
 
+    <div id="search_jumbo">
+
+        <div class="row align-items-center">
+        <div class="col-12">
+            <!-- ADD USER specific -->
+            <h4 class="display-4 search_brand">Photo Library</h4>
+        </div>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="container shadow-lg text-center">
+        <div class="container shadow-lg text-center animation_in mt-5">
             <!-- Upload photos -->
+            <button class="postbtn btn btn-outline-dark mt-5 mb-5">Upload Photo</button>
             <form class="postform" action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input class="file-input mb-2" type="file" name="image_file"><br>
                 <button class="btn btn-outline-dark" type="submit" value="Submit">Submit</button>
             </form>
-            <br>
+            
             <div class="row">
                 {% for image in images %}
-                    <div class="col-lg-4 col-md-6 col-sm-12 text-center">
-                        <div id="crop_photo">
-                            <a href="{{ image.file.url }}"><img id="profile_photos" class="user-img" src="{{ image.file.url }}" alt=""></a>      
-                        </div>
-                        <a href="{% url 'delete' image.id %}"><button class="btn btn-outline-dark mb-4 mt-1">Delete</button></a>
+                    <div class="col-lg-3 col-md-4 col-sm-9 text-center">
+                        <img class="user-img profile_photos" id="myImg" src="{{ image.file.url }}" alt="">
+                        {% if request.user.id == auth.id %}
+                            <a href="{% url 'delete_library_image' image.id %}" class="remImage">
+                                <button type="submit" class="btn btn-outline-dark mb-3" id="profile_delete">X</button>
+                            </a>
+                        {% else %}
+                            <br><br>
+                        {% endif %}
                     </div>
                 {% endfor %}
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- The Close Button -->
+                    <span class="close"><br><br>&times;</span>
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="img01">
+                    <br><br>
+                </div>
             </div>
-            <br><br>
+
         </div>
     </div>
 
 {% endblock %}
 
+<!-- {% if images.count <= 12 %}
+<button class="postbtn btn btn-outline-dark mr-1">Upload Photo</button>
+{% else %}
+<p>MAX PHOTO</p>
+{% endif %}  -->
