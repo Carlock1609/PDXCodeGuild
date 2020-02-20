@@ -18,7 +18,7 @@ def home(request):
 
         # MINOR FIX UNTIL SOLUTION FOUND
         # FIGURE OUT HOW TO CACHE
-        images = ProfilePhotos.objects.order_by('?')[:1]
+        images = ProfilePhotos.objects.order_by('?')[:50]
 
         context = {
             'images': images,
