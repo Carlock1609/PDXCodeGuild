@@ -241,3 +241,4 @@ THOUGHTS, ERRORS, IDEAS
     - CURRENTLY working on photo Library
         - SAME as profile just more photos
     - THEN work on security and pop this puppy up
+    - BUG with photo library and delete

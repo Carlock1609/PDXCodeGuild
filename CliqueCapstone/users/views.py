@@ -113,11 +113,13 @@ def photo_library_page(request, id):
         upload.save()
         image_url = upload.file.url
 
-        return redirect(f'/users/library/{id}/')
+        return redirect(f'/users/profile/library/{id}/')
     else:
         images = ProfileLibrary.objects.filter(user=id)
+        users_list = CustomUser.objects.get(id=id)
 
         context = {
+            'users_list': users_list,
             'auth': CustomUser.objects.get(id=id),
             'images': images,
         }
@@ -135,7 +137,7 @@ def delete_library_image(request, id):
 
     s3.Object('django-clique-files', f'{image.file.name}').delete()
     image.delete()
-    return redirect(f'/users/library/')
+    return redirect(f'/users/profile/library/{user_id}/')
 
 def friends_list_page(request, id):
     user_id = request.user.id
