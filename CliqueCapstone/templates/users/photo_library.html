@@ -18,7 +18,7 @@
         <div class="container shadow-lg text-center animation_in mt-5">
             <!-- Upload photos -->
             {% if request.user.id == auth.id %}
-                {% if images.count <= 2 %}
+                {% if images.count <= 30 %}
                     <button class="postbtn btn btn-outline-dark mt-5 mb-5">Upload Photo</button>
                 {% endif %}
             {% endif %}
