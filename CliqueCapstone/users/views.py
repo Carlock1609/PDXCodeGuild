@@ -40,6 +40,8 @@ def profile_page(request, id):
         )
         upload.save()
         image_url = upload.file.url
+        messages.success(request, 'Photo has been Uploaded!')
+
 
         return redirect(f'/users/profile/{user_id}/')
     else:

@@ -16,13 +16,15 @@ from django.views.generic.base import TemplateView
 def home(request):
     if request.user.is_authenticated:
 
-        # MINOR FIX UNTIL SOLUTION FOUND
-        # FIGURE OUT HOW TO CACHE
+        # Figure out to only get the photos from users on the ranking
         images = ProfilePhotos.objects.order_by('?')[:50]
+
+        # Figure out how to show only ranked users
+        user_ranks = UserProfile.objects.order_by('?')[:10]
 
         context = {
             'images': images,
-            'user_profile': UserProfile.objects.all()
+            'user_ranks': user_ranks
         }
         return render(request, 'pages/home.html', context)
     else:

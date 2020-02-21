@@ -55,7 +55,7 @@
               <a method="GET" class="nav-link" href="{% url 'profile' user.id %}">Profile </a>
             </li>
             <li class="nav-item active">
-              <a method="GET" class="nav-link" href="{% url 'user-inbox' %}">Inbox </a>
+              <a method="GET" class="nav-link" href="{% url 'user-inbox' user.id %}">Inbox </a>
             </li>
             <li class="ml-3 mr-3">
               <a class="navbar-brand mx-auto" id="center-nav" href="{% url 'home' %}">CLIQUE <span class="sr-only">(current)</span></a>
@@ -99,9 +99,10 @@
       </div>
     </nav>
 </div>
+<!-- content -->
+{% block content %}
+{% endblock %}
 
-      <!-- content -->
-    {% block content %} {% endblock %}
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

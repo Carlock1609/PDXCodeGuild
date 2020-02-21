@@ -11,7 +11,7 @@
             <div class="row align-items-center">
             <div class="col-12">
         
-                <h4 class="display-4 search_brand">{{ user }}'s Inbox</h4>
+                <h4 class="display-4 search_brand">{{ auth }}'s Inbox</h4>
             </div>
             </div>
         </div>
@@ -19,6 +19,7 @@
         <div class="container text-center animation_in">
             <div class="container mt-5 shadow-lg" id="list_container">
                 <div class="mt-5 mb-5">
+                {% if auth.id == request.user.id %}
                     {% for msg in message_list %}
                     <a href="{% url 'user-msg' msg.id msg.conversation_name %}">
                         <button id="msg_list" class="btn btn-outline-dark mb-1 shadow">
@@ -30,6 +31,9 @@
                     {% empty %}
                         <p>Inbox is EMPTY</p>
                     {% endfor %}
+                {% else %}
+                    <h1>Not Your Inbox</h1>
+                {% endif %}
                 </div>
             </div>
         </div>

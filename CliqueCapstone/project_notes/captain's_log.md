@@ -238,7 +238,20 @@ THOUGHTS, ERRORS, IDEAS
 
 **StarDate 02/19/2020**
     - Finished Cloudfront
-    - CURRENTLY working on photo Library
+    - CURRENTLY working on photo Library DONE*
         - SAME as profile just more photos
     - THEN work on security and pop this puppy up
-    - BUG with photo library and delete
+    - BUG with photo library and delete FIXED**
+
+    - PHOTO LIBRARY DONE AND SECURE WITH LIMITS AND USERS
+
+    - Work on user Security
+
+**StarDate 02/20/2020**
+    - Finished security on messages and list
+
+    - Need to work on user experience and add success messages - FUCK THIS
+    - Work on point system for home page
+        - FIX display only 10 users on ranked page
+
+    - Figure out how to only get photos from users on the ranked page

@@ -8,11 +8,13 @@ from django.contrib import messages
 
 
 @login_required
-def user_inbox(request):
+def user_inbox(request, id):
     user_id = request.user.id
+    auth = CustomUser.objects.get(id=id)
 
     if request.method == "GET":
         context = {
+            'auth': auth,
             # SWAPPING THESE WILL MAKE IT NOT VISIBLE TO SENDER BUT VISIBLE TO RECIEVER AND VICE VERSA
             'message_list': UserMessages.objects.filter(sender=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
             'message_list': UserMessages.objects.filter(receiver=user_id).order_by('conversation_name', '-created_date').distinct('conversation_name'),
