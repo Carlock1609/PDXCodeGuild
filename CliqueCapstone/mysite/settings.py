@@ -161,7 +161,7 @@ AWS_STORAGE_BUCKET_NAME = 'django-clique-files'
 AWS_S3_REGION_NAME = 'us-west-2'
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
+    'CacheControl': 'max-age=31536000',
 }
 # CLOUDFRONT CHANGES
 CLOUDFRONT_DOMAIN = config('CLOUDFRONT_DOMAIN')

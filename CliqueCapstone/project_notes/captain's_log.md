@@ -250,8 +250,10 @@ THOUGHTS, ERRORS, IDEAS
 **StarDate 02/20/2020**
     - Finished security on messages and list
 
-    - Need to work on user experience and add success messages - FUCK THIS
+    - Need to work on user experience and add success messages - NOPE
     - Work on point system for home page
         - FIX display only 10 users on ranked page
 
     - Figure out how to only get photos from users on the ranked page
+
+**StarDate 02/20/2020**

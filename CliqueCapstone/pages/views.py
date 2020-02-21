@@ -20,11 +20,14 @@ def home(request):
         images = ProfilePhotos.objects.order_by('?')[:50]
 
         # Figure out how to show only ranked users
-        user_ranks = UserProfile.objects.order_by('?')[:10]
+        
+        user_ranks5 = UserProfile.objects.order_by('?')[:8]
+        user_ranks10 = UserProfile.objects.order_by('?')[:8]
 
         context = {
             'images': images,
-            'user_ranks': user_ranks
+            'user_ranks5': user_ranks5,
+            'user_ranks10': user_ranks10,
         }
         return render(request, 'pages/home.html', context)
     else:

@@ -61,7 +61,7 @@
         {% if request.user.id == auth.id %}
             <!-- CREATE BUTTON TO PUSH INSTEAD -->
             <!-- DONT FORGET ENCTYPE -->
-            {% if images.count <= 12 %}
+            {% if images.count <= 11 %}
                 <button class="postbtn btn btn-outline-dark mr-1">Upload Photo</button>
             {% else %}
                 <p>MAX PHOTO</p>

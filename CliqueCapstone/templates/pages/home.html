@@ -67,8 +67,9 @@
     <h4>This Weeks TOP Users</h4>
     <div class="container-fluid shadow-lg" id="rank_container">
       <div class="row mt-2">
+    
         
-        {% for user in user_ranks %}
+        {% for user in user_ranks5 %}
           <div class="col-lg-6 col-md-12 col-sm-12">
               <a href="{% url 'profile' user.user.id %}">
                   <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
@@ -87,7 +88,7 @@
             </div>
           {% endfor %}
           
-          {% for user in user_ranks %}
+          {% for user in user_ranks10 %}
           <div class="col-lg-6 col-md-12 col-sm-12">
               <a href="{% url 'profile' user.user.id %}">
                   <button id="small_rank_btn" class="btn btn-outline-dark shadow-lg mb-1">
@@ -105,6 +106,7 @@
               </a>
             </div>
           {% endfor %}
+
       </div>
     </div>
 
