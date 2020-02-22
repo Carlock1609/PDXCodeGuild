@@ -21,6 +21,7 @@ django-filters = "*"
 django-widget-tweaks = "*"
 django-pagination = "*"
 stripe = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
