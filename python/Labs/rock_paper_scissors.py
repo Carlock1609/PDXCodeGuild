@@ -3,7 +3,6 @@
 
 import random
 
-
 def get_comp_turn():
     moves = ["Scissors", "Paper", "Rock"]
     return random.choice(moves)
@@ -15,7 +14,6 @@ def get_user_turn():
         get_user_turn()
     else:
         return get_turn
-
 
 def determine_win(user, comp):
     if user == "Rock" and comp == "Scissors":

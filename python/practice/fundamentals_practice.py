@@ -13,7 +13,7 @@ def opposite(a,b):
         return True
     if a > 0 and b < 0:
         return True
-# print(opposite(2,-2))
+print(opposite(2,-2))
 
 # Problem 3 Done**
 # Write a function that returns True if a number within 10 of 100.
