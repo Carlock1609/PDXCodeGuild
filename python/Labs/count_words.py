@@ -10,7 +10,7 @@ def get_opened_book():
     delete_list = " 1234567890,.'!@#$%^&*()-[]/<>-\"=+_"
     replace_list = "                                   "
 
-    open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", "r")
+    open_book = open("C:\\Users\\jcyat\\Desktop\\book.txt", encoding='utf8')
     read_book = open_book.read()
     clean_book = str.maketrans(delete_list, replace_list)
     cleaned_book = read_book.translate(clean_book)

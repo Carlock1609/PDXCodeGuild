@@ -5,7 +5,7 @@
 # LIST COMPREHENSIONS WERE THE ONLY THING THAT WORKED *** 
 
 def get_digit_dict():
-    credit_card_digits = [4,5,5,6,7,3,7,5,8,6,8,9,9,8,5,5]
+    credit_card_digits = [5,1,7,8,0,5,9,4,2,9,4,4,7,9,7,3]
     check_digit = credit_card_digits.pop(15)
     digit_dict = {"credit_card_digits": credit_card_digits, "check_digit": check_digit}
     return digit_dict

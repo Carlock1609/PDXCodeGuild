@@ -8,7 +8,9 @@ def main():
     get_user_input = float(input("Please enter in a float dollar amount to be converted to pennies: (150.05 or 4.50)"))
 
     quarters = (get_user_input//.25) 
+    print(quarters)
     quarters_remainder = (get_user_input%.25)
+    print(quarters_remainder)
     dimes = (quarters_remainder//.10)
     dimes_remainder = (quarters_remainder%.10)
     nickels = (dimes_remainder//.05)

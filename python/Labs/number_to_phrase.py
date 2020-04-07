@@ -30,7 +30,7 @@ def get_num_tuple(user_input):
                     9: "and Ninety",
                 }
 
-    tens_dict2 = {  
+    teens_dict2 = {  
                     0: "Ten",
                     1: "Eleven",
                     2: "Twelve",
@@ -59,6 +59,7 @@ def get_num_tuple(user_input):
         print(f"{hundreds_dict[user_input//100]} {tens_dict1[(user_input//10)%10]} {singles_dict[user_input%10]}")
     # If user input is less than 320 and greater than 310 --> print hundreds and tens dict
     elif user_input%100 < 20 and user_input%100 >= 10:
+        print('2')
         print(f"{hundreds_dict[user_input//100]} and {tens_dict2[user_input%10]}")
     # If user input is less than 10 and greater than 1 --> print hundreds and singles dict
     elif user_input%100 < 10 and user_input%100 >= 1:

@@ -36,7 +36,6 @@ def get_amount():
 def main():
     my_atm = ATM(balance=1500,
                 print_transactions=[])
-
     while True:
         user_input = input("What would you like to do (Deposit, Withdraw, Check Balance, History): ").lower()
 

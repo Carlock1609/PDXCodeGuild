@@ -36,7 +36,7 @@ def get_book_sentences():
     clean_book = str.maketrans(delete_list, replace_list)
     cleaned_book = read_book.translate(clean_book)
     book = cleaned_book.split(".")
-
+    print(book)
     sentence_count = 0
     for i in book:
         sentence_count += 1
@@ -73,4 +73,60 @@ def main():
     print(f'The ARI for book2.txt is {ARI_result}\nThis corresponds to a {ari_scale[ARI_result]["grade_level"]}\nThat is suitable for an average person {ari_scale[ARI_result]["ages"]} years old')
 
 main()
+while True:
+    some_input = input('Do you want to go again?')
+    if some_input != 'yes':
+        print('goodbye')
+        break
+    else:
+        do stuff
+    
 
+if num > 110:
+    if num % 10 > 5:
+        qualifier = '+'
+        print("Oh wow, an {num}{qualifier}! You're a real scholar!")
+elif num > 98:
+print("Wow, you are receiving an A!")
+elif num > 94:
+print("The grade you are receiving is an A-, excellent!!")
+elif num > 89:
+print("Great job, the grade you are receiving is a B+!")
+elif num > 86:
+print("Alright, a B!")
+elif num > 83:
+print("You are getting a B-, still okay.")
+elif num > 79:
+print("The grade you are receiving is a C+, average.")
+elif num > 76:
+print("You are receiving a C+")
+elif num >73:
+print("You just barely made it to passing with a C-.")
+elif num > 69:
+print("The grade you are receiving is a D+, yikes.")
+elif num > 66:
+print("Oof, you are getting a D.")
+elif num > 63:
+print("Dang, a D-...")
+elif num > 59:
+print("F is for failure, did you even try?")
+else:
+print("You are absolutely failing this class, maybe you should actually try next time...")
+
+
+
+
+
+2:34
+but for this other way
+2:34
+I have this for the second part of the number
+2:34
+int(user_input)
+user_grade % 10
+if user_grade % 10 > 5:
+qualifier = '+'
+elif user grade % 10 == 5:
+qualifier = ''
+elif user_grade % 10 < 5:
+qualifier = '-'

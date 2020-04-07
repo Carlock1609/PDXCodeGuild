@@ -5,7 +5,7 @@
 def problem_1():
     user_input = "hello"
     [print(i*2, end="") for i in user_input]
-
+problem_1()
 # Problem 2 Done**
 # Write a function that takes a string, and returns a list of strings, each missing a different character.
 def problem_2(word):

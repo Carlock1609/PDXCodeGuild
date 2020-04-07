@@ -29,3 +29,7 @@ def main():
     print(f"\n{result} {user_output}")
     
 main()
+
+x = []
+
+x.

@@ -139,3 +139,39 @@ def find_unique(nums):
     [unique_nums.append(i) for i in nums if i not in unique_nums]
     return unique_nums
 # print(find_unique([12, 24, 35, 24, 88, 120, 155, 88, 120, 155]))
+
+
+# list1 = [1,2,3,4,5]
+
+# for i in list1[::2]:
+#     print(i)
+
+
+# Convert the input string into a list of ints
+cc_input = (input('enter cc number: '))
+cc_list = []
+
+for i in cc_input:
+    cc_list.append(int(i))
+
+
+
+# for i in cc_list: 
+#     i = int(i)
+# print(cc_list)
+# print(cc_list)
+# Slice off the last digit. That is the check digit.
+# cc_list = cc_list[:-1]
+# print(cc_list)
+# Reverse the digits.
+# cc_list.reverse()
+# print(cc_list)
+# Double every other element in the reversed list.
+multiply_list = []
+for i in range(len(cc_list)):
+    if i % 2 == 0:
+        multiply_list.append(i*2)
+    else:
+        multiply_list.append(i)
+
+print(multiply_list)
