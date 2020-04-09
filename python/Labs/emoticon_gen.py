@@ -19,5 +19,4 @@ def main():
 
         display_face(eyes,nose,mouths)
         counter += 1
-
 main()

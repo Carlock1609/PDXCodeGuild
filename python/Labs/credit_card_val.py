@@ -1,7 +1,5 @@
 #! python3
-
 # v1 :mans_shoe:
-
 # LIST COMPREHENSIONS WERE THE ONLY THING THAT WORKED *** 
 
 def get_digit_dict():

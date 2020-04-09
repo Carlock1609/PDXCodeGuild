@@ -1,75 +1,50 @@
-class Player:
-    def __init__(self, name, token):
-        self.name = name
-        self.token = token
-# The Game class has the following properties:
-# board = your representation of the board
-class Game:
-    def __init__(self,):
-        self.win_conditions = ((0,1,2),(3,4,5),(6,7,8),(0,4,8),(2,4,6),(0,3,6),(1,4,7),(2,5,8))
-        self.board =  [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    # __repr__() Returns a pretty string representation of the game board
-    def __repr__(self):
-        print('')
-        print(self.board[0], self.board[1], self.board[2])
-        print(self.board[3], self.board[4], self.board[5])
-        print(self.board[6], self.board[7], self.board[8])
-        print('')
-        # 0 1 2
-        # 3 4 5
-        # 6 7 8
-    # move(x, y, player) Place a player's token character string at a given coordinate (top-left is 0, 0), x is horizontal position, y is vertical position.
-    def move(self, player):
-        player_pick = int(input(f'{player.name}, Make your move: '))
-        
-        if self.board[player_pick] != 'X' or self.board[player_pick] != 'O':
-            self.board[player_pick] = player.token
-            return player_pick
-        else:
-            print('Spot is taken, Try another!')
-            self.move(player)
-    
-    # calc_winner() What token character string has won or None if no one has.
-    def calc_winner(self,):
-    #    self.win_conditions = ((0,1,2),(3,4,5),(6,7,8),(0,4,8),(2,4,6),(0,3,6),(1,4,7),(2,5,8))
-        for a in self.win_conditions:
-            if self.board[a[0]] == self.board[a[1]] == self.board[a[2]] == "X":
-                print("PLAYER X WINS")
-                return True
-            if self.board[a[0]] == self.board[a[1]] == self.board[a[2]] == "O":
-                print("PLAYER O WINS")
-                return True
-    
-    # is_full() Returns true if the game board is full.
-    def is_full(self):
-        for i in self.board:
-            if i in [0,1,2,3,4,5,6,7,8]:
-                return False
-        return True
-    # is_game_over() Returns true if the game board is full or a player has won.
-    def is_game_over(self):
-        pass
-def main():
-    player1 = Player('Bob', "X")
-    player2 = Player('Jill', 'O')
-    board = Game()
-  
-    while True:
-        board.__repr__()
-        board.move(player1)
-        if board.calc_winner():
-            board.__repr__()
-            break
-        if board.is_full():
-            print("board is full tie-game")
-            break
-        board.__repr__()
-        board.move(player2)
-        if board.calc_winner():
-            board.__repr__()
-            break
-        if board.is_full():
-            print("board is full tie-game")
-            break
-        board.__repr__()
-main()
+#  version 2:
+import random
+ 
+cards_dict  =  { "K" : 10 , "Q" : 10 , "J" : 10 , "10" : 10 , "9" : 9 , "8" : 8 , "7" : 7 , "6" : 6, "5" : 5 , "4" : 4 , "3" : 3 , "2" : 2 , "A" : 11}
+ 
+# print(cards_dict.values())
+ 
+# print (cards_dict['K'])
+ 
+print("Whats your first card?")
+ 
+card_1 = 'A'
+ 
+# print(type(card_1))
+ 
+print("Whats your second card?")
+ 
+card_2 = 'A'
+ 
+print(card_2)
+ 
+print("Whats your third card?")
+ 
+card_3 = '8'
+ 
+print(card_3)
+user_sum = cards_dict[card_1] + cards_dict[card_2] + cards_dict[card_3]
+
+print(type(user_sum))
+print(user_sum)
+
+if user_sum > 21:
+    cards_dict['A'] = 1
+
+print("Total in hand: ")
+print(cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3))
+# if card_1 or card_2  or card_3 ==  "A"  and cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3) < 10:
+#     cards_dict.update({"A":11})
+# print(f'A: ')
+# print(cards_dict["A"])
+ 
+if cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3) == 21:
+                print("Blackjack")
+if cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3) < 17:
+                print( "Hit" )
+ 
+if 21 > cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3) >= 17:
+                print("Stay")
+if cards_dict.get(card_1) + cards_dict.get(card_2) + cards_dict.get(card_3) > 21:
+                print("Broken")
