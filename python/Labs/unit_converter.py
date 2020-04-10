@@ -31,5 +31,3 @@ def main():
 main()
 
 x = []
-
-x.
