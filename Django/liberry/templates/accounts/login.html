@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- <div class="container mt-5">
+  <div class="container shadow-lg">
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <label for="username">Username: </label>
+      <input type="text" name="username" />
+      <label for="password">Password: </label>
+      <input type="password" name="password" />
+      <input type="submit" value="login" />
+    </form>
+</div>
+</div> -->
+
+<div class="container mt-5 text-center">
+
+
+  <div class="shadow-lg" style="width: 18rem;">
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <label for="username">Username: </label>
+      <input type="text" name="username" />
+      <label for="password">Password: </label>
+      <input type="password" name="password" />
+      <div class="card-body">
+        <button class="btn btn-outline-dark" type="submit" value="login">Login</button>
+      </form>
+      
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+

@@ -15,7 +15,7 @@ def add_todo(request):
     if(request.method == 'GET'):
         # sends user to create.html to add task
         return render(request, 'todos/create.html')
-    elif(request.method == 'POST'):
+    if(request.method == 'POST'):
         # else posts task to list DB
         #  - THIS CREATES NEW POST, THIS IS LIKE USING save()
         new_todo = Todo.objects.create(
@@ -26,12 +26,12 @@ def add_todo(request):
         )
         new_todo.save()
         # returns to list page
-    return redirect('list')
+        return redirect('list')
 
 def remove_todo(request, id):
     a_todo = Todo.objects.get(id = id)
     a_todo.delete()
-    return redirect('list')
+    return redirect('list') 
 
 def update(request, id):
     a_todo = Todo.objects.get(id= id)

@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container text-center mt-5">
+<div class="container shadow-lg">
+  <h1>dashboard</h1>
+  <table class="table">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Status</th>                 
+    </tr>
+    {% for book in user_books %}
+    <tr>
+      <td>{{book.id}}</td>
+      <td>{{book.book.title}}</td>
+      <td>{{book.book.author}}</td>
+      {% if book.is_overdue %}
+        <td class="overdue">{{book.due_back}}</td>
+      {% else %}
+        <td>{{book.due_back}}</td>
+      {% endif %}
+      <td>
+        <a href="{% url 'return_book' book.id %}">Return Book</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}

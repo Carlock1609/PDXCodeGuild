@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container mt-5">
+  <div class="container shadow-lg">
+    <form action="{% url 'register' %}" method="POST">
+      {% csrf_token %}
+      <label for="first_name">First Name: </label>
+      <input type="text" name="first_name" placeholder="Jane"/>
+      <hr>
+      <label for="last_name">Last Name: </label>
+      <input type="text" name="last_name" placeholder="Doe"/>
+      <hr>
+      <label for="email">Email: </label>
+      <input type="text" name="email" placeholder="JaneDoe@Gmail.com"/>
+      <hr>
+      <label for="username">Username: </label>
+      <input type="text" name="username" placeholder="Jane906"/>
+      <hr>
+      <label for="password">Password: </label>
+      <input type="password" name="password" placeholder="Password here..."/>
+      <hr>
+      <label for="password2">Verify Password</label>
+      <input type="password" name="password2" placeholder="Verify here..."/>
+      <hr>
+      <button type="submit" class="btn btn-outline-dark" value="register">Register</button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
